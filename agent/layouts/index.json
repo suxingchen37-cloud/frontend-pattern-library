@@ -1,0 +1,29 @@
+{
+  "count": 6,
+  "layouts": [
+    {
+      "id": "asymmetric-two-col",
+      "name": "不对称双栏"
+    },
+    {
+      "id": "dashboard-grid",
+      "name": "仪表盘栅格"
+    },
+    {
+      "id": "directory-index",
+      "name": "目录索引"
+    },
+    {
+      "id": "full-bleed-hero",
+      "name": "满幅主图"
+    },
+    {
+      "id": "magazine-dense",
+      "name": "杂志密排"
+    },
+    {
+      "id": "single-column-essay",
+      "name": "单栏长文"
+    }
+  ]
+}

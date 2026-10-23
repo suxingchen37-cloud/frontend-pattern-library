@@ -33,7 +33,7 @@
  */
 
 import { readFile, writeFile, mkdir, readdir, unlink, stat } from 'node:fs/promises';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -688,6 +688,33 @@ function buildProducts(ctx) {
     products.set('agent/blocks/' + a.id + '.css', oneText(a.css));
     if (a.init !== null) products.set('agent/blocks/' + a.id + '.js', jsBlock(a));
     products.set('agent/preview/' + a.id + '.html', previewHtml(a, tk));
+  }
+  // 排版手册与版式骨架：原样搬运，不做模板渲染
+  try {
+    const typo = readFileSync(path.join(dataRoot, 'typography.md'), 'utf8');
+    products.set('agent/typography.md', typo.endsWith(NL) ? typo : typo + NL);
+  } catch (e) { /* 没有排版手册就跳过，不影响构建 */ }
+  const layoutsDir = path.join(dataRoot, 'layouts');
+  if (existsSync(layoutsDir)) {
+    const list = [];
+    for (const f of readdirSync(layoutsDir).filter((x) => x.endsWith('.json')).sort()) {
+      const L = JSON.parse(readFileSync(path.join(layoutsDir, f), 'utf8'));
+      list.push({ id: L.id, name: L.name });
+      const md = [
+        '# ' + L.name + '（' + L.id + '）',
+        '',
+        '- 栅格：' + L.grid,
+        '- 行宽/字号：' + L.measure,
+        '- 层级：' + L.hierarchy,
+        '- 留白节奏：' + L.rhythm,
+        '- 典型区块顺序：' + (L.blocks || []).join(' → '),
+        '- 动效性格：' + L.motion,
+        '- 别这么干：' + L.avoid,
+        ''
+      ].join(NL);
+      products.set('agent/layouts/' + L.id + '.md', md);
+    }
+    products.set('agent/layouts/index.json', JSON.stringify({ count: list.length, layouts: list }, null, 2) + NL);
   }
   const llms = llmsTxt(tk, assets, cats, counts, dataRoot);
   products.set('llms.txt', llms);

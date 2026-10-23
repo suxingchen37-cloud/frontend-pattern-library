@@ -90,6 +90,7 @@
 - jsDelivr 有约 12 小时缓存；要最新版加 `?v=<时间戳>`
 
 ## 取料路径
+- 排版：`agent/typography.md` + `agent/layouts/`（先定骨架再动手）
 - agent/index.json：整个库的索引；`count` 是当前条数。files 里的路径相对 agent/，形如 blocks/<id>.css。
 - **agent/tokens.css：变量契约**。先把它内联进页面，再放单条 blocks 的 css——否则 `var(--ink)` / `var(--ease)` 全是空值。里面已含 `:root` 与夜间 `[data-theme="night"]` 两套。
 - data/tokens.json：数字的原始表（拼在同一个基址后面）。注意里面有些值是**片段**（例如 `border` 是 `1px solid var(--line)` 整条可用；但个别字段只是颜色/长度片段，别整段当 CSS 声明用）。
