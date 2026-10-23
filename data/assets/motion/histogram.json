@@ -1,0 +1,18 @@
+{
+  "id": "histogram",
+  "cat": "图表",
+  "t": "直方图",
+  "en": "histogram",
+  "d": "柱子之间不留缝，因为横轴是连续的数值区间，不是几个并列的类别；留缝就会让人以为组与组之间有空白。均值线画在柱子上层、虚线、比柱子深一档，位置对得上才算数。区间宽度取 5：太细看不出形状，太粗只剩三根柱子。",
+  "body": "<div class=\"d-hg\"><svg class=\"d-hg-svg\" viewBox=\"0 0 320 170\" role=\"img\" aria-label=\"测量误差分布直方图，共 14 个区间\"></svg><p class=\"d-hg-note\">虚线是均值 · 区间宽 5</p></div>",
+  "css": ".d-hg{width:100%;max-width:340px}\n.d-hg-svg{display:block;width:100%;height:auto;overflow:visible}\n.d-hg-axis{stroke:var(--line);stroke-width:1}\n.d-hg-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.06em}\n.d-hg-bar{fill:color-mix(in srgb,var(--ink) 78%,var(--paper))}\n.d-hg-bar.hi{fill:var(--ink-vermilion)}\n.d-hg-mean{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 3}\n.d-hg-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  const svg = root.querySelector('.d-hg-svg');\n  if (!svg) return;\n  const bins = [2, 5, 9, 16, 24, 31, 27, 19, 12, 7, 5, 2, 1, 0];\n  const W = 320, H = 170, L = 26, R = 10, T = 14, B = 26;\n  const plotW = W - L - R, plotH = H - T - B;\n  const max = 32, bw = plotW / bins.length;\n  const y = v => T + plotH * (1 - v / max);\n  const NS = 'http://www.w3.org/2000/svg';\n  const mk = (tag, attrs) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); return el; };\n  for (let g = 0; g <= 4; g++) {\n    const gy = T + plotH * g / 4;\n    svg.appendChild(mk('line', { class: 'd-hg-axis', x1: L, y1: gy, x2: W - R, y2: gy }));\n    const t = mk('text', { class: 'd-hg-label', x: 0, y: gy + 2.5 });\n    t.textContent = String(max - g * 8);\n    svg.appendChild(t);\n  }\n  const peak = bins.indexOf(Math.max.apply(null, bins));\n  bins.forEach((v, i) => {\n    if (!v) return;\n    svg.appendChild(mk('rect', { class: 'd-hg-bar' + (i === peak ? ' hi' : ''), x: (L + i * bw).toFixed(1), y: y(v).toFixed(1), width: Math.ceil(bw) + 0.5, height: (y(0) - y(v)).toFixed(1) }));\n  });\n  const mean = 5.4;\n  const mx = L + plotW * mean / bins.length;\n  svg.appendChild(mk('line', { class: 'd-hg-mean', x1: mx, y1: T, x2: mx, y2: H - B }));\n  ['−2', '0', '+2', '+4', '+6'].forEach((lab, k) => { const t = mk('text', { class: 'd-hg-label', x: L + plotW * (k * 3.5) / bins.length, y: H - 8 }); t.textContent = lab; svg.appendChild(t); });\n}",
+  "source": "v4",
+  "motion": "无动效",
+  "tags": [
+    "直方图",
+    "分布",
+    "区间",
+    "图表"
+  ]
+}

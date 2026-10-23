@@ -1,0 +1,10 @@
+.d-hc{width:100%;max-width:340px}
+.d-hc-svg{display:block;width:100%;height:auto}
+.d-hc-cell{stroke:var(--bg);stroke-width:1}
+.d-hc-legend{display:flex;align-items:center;gap:4px;margin-top:6px;font-family:var(--font-mono);font-size:8px;color:var(--faint)}
+.d-hc-legend i{width:9px;height:9px;border-radius:2px;display:block}
+.d-hc-legend i[data-l="0"]{background:color-mix(in srgb,var(--ink) 6%,var(--paper))}
+.d-hc-legend i[data-l="1"]{background:color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.d-hc-legend i[data-l="2"]{background:color-mix(in srgb,var(--ink) 34%,var(--paper))}
+.d-hc-legend i[data-l="3"]{background:color-mix(in srgb,var(--ink) 58%,var(--paper))}
+.d-hc-legend i[data-l="4"]{background:var(--ink)}

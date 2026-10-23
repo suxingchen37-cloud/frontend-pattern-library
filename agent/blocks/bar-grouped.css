@@ -1,0 +1,11 @@
+.d-bg2{width:100%;max-width:340px}
+.d-bg2-svg{display:block;width:100%;height:auto;overflow:visible}
+.d-bg2-axis{stroke:var(--line);stroke-width:1}
+.d-bg2-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.06em}
+.d-bg2-a{fill:var(--ink)}
+.d-bg2-b{fill:color-mix(in srgb,var(--ink) 28%,var(--paper))}
+.d-bg2-g{cursor:default}
+.d-bg2-g .d-bg2-a,.d-bg2-g .d-bg2-b{transition:opacity 160ms var(--ease-print)}
+.d-bg2-svg:hover .d-bg2-g{opacity:.45}
+.d-bg2-svg .d-bg2-g:hover{opacity:1}
+.d-bg2-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

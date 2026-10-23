@@ -1,0 +1,8 @@
+.d-hg{width:100%;max-width:340px}
+.d-hg-svg{display:block;width:100%;height:auto;overflow:visible}
+.d-hg-axis{stroke:var(--line);stroke-width:1}
+.d-hg-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.06em}
+.d-hg-bar{fill:color-mix(in srgb,var(--ink) 78%,var(--paper))}
+.d-hg-bar.hi{fill:var(--ink-vermilion)}
+.d-hg-mean{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 3}
+.d-hg-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

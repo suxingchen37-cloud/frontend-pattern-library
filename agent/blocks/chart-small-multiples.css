@@ -1,0 +1,7 @@
+.d-sm3{width:100%;max-width:340px}
+.d-sm3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.d-sm3 figure{margin:0;padding:6px 6px 4px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.d-sm3 svg{display:block;width:100%;height:34px;overflow:visible}
+.d-sm3 figcaption{margin-top:2px;font-family:var(--font-mono);font-size:8px;letter-spacing:.06em;color:var(--faint)}
+.d-sm3-line{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.d-sm3-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

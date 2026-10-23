@@ -1,0 +1,18 @@
+{
+  "id": "stacked-100",
+  "cat": "图表",
+  "t": "百分比堆叠条",
+  "en": "100% stacked bar",
+  "d": "一行就是 100%，段与段之间留 1px 缝：不留缝时两块深色挨在一起就并成一条，看不出是三类。只在占比超过 12% 的段里写字，小段写字会溢出——小段靠图例，不靠标签。四行并排比高低，比四个饼图准得多。",
+  "body": "<div class=\"d-s1\"><div class=\"d-s1-row\"><span>桌面</span><i class=\"d-s1-bar\"><b style=\"--w:54%\">54%</b><b style=\"--w:31%\">31%</b><b style=\"--w:15%\"></b></i></div><div class=\"d-s1-row\"><span>平板</span><i class=\"d-s1-bar\"><b style=\"--w:38%\">38%</b><b style=\"--w:41%\">41%</b><b style=\"--w:21%\">21%</b></i></div><div class=\"d-s1-row\"><span>手机</span><i class=\"d-s1-bar\"><b style=\"--w:22%\">22%</b><b style=\"--w:33%\">33%</b><b style=\"--w:45%\">45%</b></i></div><p class=\"d-s1-note\">三段：新访 / 回访 / 沉默</p></div>",
+  "css": ".d-s1{width:100%;max-width:340px;display:flex;flex-direction:column;gap:10px}\n.d-s1-row{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:10px}\n.d-s1-row>span{font-size:11px;color:var(--muted)}\n.d-s1-bar{display:flex;gap:1px;height:22px;border-radius:2px;overflow:hidden;background:var(--line)}\n.d-s1-bar b{display:flex;align-items:center;justify-content:center;width:var(--w);background:color-mix(in srgb,var(--ink) 22%,var(--paper));font-family:var(--font-mono);font-size:9px;font-weight:400;color:var(--muted)}\n.d-s1-bar b:nth-child(1){background:var(--ink);color:var(--paper)}\n.d-s1-bar b:nth-child(2){background:color-mix(in srgb,var(--ink) 45%,var(--paper));color:var(--paper)}\n.d-s1-note{margin:2px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": null,
+  "source": "v4",
+  "motion": "无动效",
+  "tags": [
+    "百分比",
+    "堆叠",
+    "构成",
+    "图表"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "annotation-band",
+  "cat": "图表",
+  "t": "目标带与标注",
+  "en": "annotation band",
+  "d": "目标不是一个点，是一个可接受区间：画成一条线，人只会盯着「差 0.3」，画成带子，才知道一直在区间里。事件标注用一根细竖线加一句短语，不写长句——标注是路标，不是注释文章。",
+  "body": "<div class=\"d-ab\"><svg class=\"d-ab-svg\" viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"带目标区间与事件标注的趋势图\"></svg><p class=\"d-ab-note\">灰带是可接受区间 · 两根竖线是事件</p></div>",
+  "css": ".d-ab{width:100%;max-width:340px}\n.d-ab-svg{display:block;width:100%;height:auto;overflow:visible}\n.d-ab-axis{stroke:var(--line);stroke-width:1}\n.d-ab-band{fill:color-mix(in srgb,var(--ink) 9%,var(--paper))}\n.d-ab-line{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}\n.d-ab-mark{stroke:var(--ink-vermilion);stroke-width:1;stroke-dasharray:2 3}\n.d-ab-tag{fill:var(--ink-vermilion);font-family:var(--font-mono);font-size:7px;letter-spacing:.04em}\n.d-ab-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px}\n.d-ab-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  const svg = root.querySelector('.d-ab-svg');\n  if (!svg) return;\n  const W = 320, H = 180, L = 26, R = 10, T = 16, B = 28;\n  const plotW = W - L - R, plotH = H - T - B;\n  const pts = [34, 41, 39, 46, 44, 51, 49, 56, 54, 60, 58, 63, 61, 66];\n  const max = 80;\n  const x = i => L + i * plotW / (pts.length - 1);\n  const y = v => T + plotH * (1 - v / max);\n  const NS = 'http://www.w3.org/2000/svg';\n  const mk = (tag, attrs) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); return el; };\n  for (let g = 0; g <= 4; g++) {\n    svg.appendChild(mk('line', { class: 'd-ab-axis', x1: L, y1: T + plotH * g / 4, x2: W - R, y2: T + plotH * g / 4 }));\n    const t = mk('text', { class: 'd-ab-label', x: 0, y: T + plotH * g / 4 + 2.5 });\n    t.textContent = String(max - g * 20); svg.appendChild(t);\n  }\n  svg.appendChild(mk('rect', { class: 'd-ab-band', x: L, y: y(58).toFixed(1), width: plotW, height: (y(48) - y(58)).toFixed(1) }));\n  const d = pts.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1)).join(' ');\n  svg.appendChild(mk('path', { class: 'd-ab-line', d: d }));\n  [[3, '改版上线'], [9, '换了供应商']].forEach(m => {\n    svg.appendChild(mk('line', { class: 'd-ab-mark', x1: x(m[0]).toFixed(1), y1: T, x2: x(m[0]).toFixed(1), y2: H - B }));\n    const t = mk('text', { class: 'd-ab-tag', x: x(m[0]) + 4, y: T + 8 });\n    t.textContent = m[1];\n    svg.appendChild(t);\n  });\n}",
+  "source": "v4",
+  "motion": "无动效",
+  "tags": [
+    "目标带",
+    "标注",
+    "趋势",
+    "图表"
+  ]
+}

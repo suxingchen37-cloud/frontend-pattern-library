@@ -1,0 +1,7 @@
+.d-dp2{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:340px}
+.d-dp2-svg{display:block;width:132px;height:132px}
+.d-dp2-bg{fill:none;stroke:var(--line);stroke-width:8}
+.d-dp2-fg{fill:none;stroke:var(--ink);stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:60px 60px;stroke-dasharray:0 1000;transition:stroke-dasharray 620ms var(--ease-print)}
+.d-dp2-num{fill:var(--ink);font-size:21px;font-weight:650;letter-spacing:-.02em}
+.d-dp2-cap{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.08em}
+.d-dp2-note{margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

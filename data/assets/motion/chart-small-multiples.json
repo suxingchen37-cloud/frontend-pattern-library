@@ -1,0 +1,18 @@
+{
+  "id": "chart-small-multiples",
+  "cat": "图表",
+  "t": "小多图",
+  "en": "small multiples",
+  "d": "同一个指标切成六组并排，共用一条纵轴：各自缩放会让六张小图看起来一样高，那就什么都比不出来了。小图不画轴、不画网格，只在左下角留一个组名——它们是同一张图的六个切片，不是六张图。",
+  "body": "<div class=\"d-sm3\"><div class=\"d-sm3-grid\"><figure><svg data-v=\"12,15,14,18,17,21\"></svg><figcaption>华东</figcaption></figure><figure><svg data-v=\"22,20,21,19,18,19\"></svg><figcaption>华北</figcaption></figure><figure><svg data-v=\"8,11,10,13,16,19\"></svg><figcaption>华南</figcaption></figure><figure><svg data-v=\"14,13,15,14,16,15\"></svg><figcaption>西南</figcaption></figure><figure><svg data-v=\"6,7,9,8,11,12\"></svg><figcaption>西北</figcaption></figure><figure><svg data-v=\"18,21,20,24,23,26\"></svg><figcaption>海外</figcaption></figure></div><p class=\"d-sm3-note\">同一纵轴 · 六个切片</p></div>",
+  "css": ".d-sm3{width:100%;max-width:340px}\n.d-sm3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}\n.d-sm3 figure{margin:0;padding:6px 6px 4px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}\n.d-sm3 svg{display:block;width:100%;height:34px;overflow:visible}\n.d-sm3 figcaption{margin-top:2px;font-family:var(--font-mono);font-size:8px;letter-spacing:.06em;color:var(--faint)}\n.d-sm3-line{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}\n.d-sm3-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  const NS = 'http://www.w3.org/2000/svg';\n  const groups = [...root.querySelectorAll('.d-sm3 svg')];\n  const all = groups.map(g => (g.dataset.v || '').split(',').map(Number));\n  const flat = all.flat();\n  const min = Math.min.apply(null, flat), max = Math.max.apply(null, flat);\n  const span = max - min || 1;\n  groups.forEach((svg, gi) => {\n    const vals = all[gi];\n    svg.setAttribute('viewBox', '0 0 100 34');\n    svg.setAttribute('preserveAspectRatio', 'none');\n    const d = vals.map((v, i) => (i ? 'L' : 'M') + (i * 100 / (vals.length - 1)).toFixed(1) + ' ' + (31 - (v - min) / span * 27).toFixed(1)).join(' ');\n    const p = document.createElementNS(NS, 'path');\n    p.setAttribute('class', 'd-sm3-line');\n    p.setAttribute('d', d);\n    svg.appendChild(p);\n  });\n}",
+  "source": "v4",
+  "motion": "无动效",
+  "tags": [
+    "小多图",
+    "分组",
+    "对比",
+    "图表"
+  ]
+}
