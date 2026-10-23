@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>场记 SLATE · 片场用的场记与素材标记</title>
+<style>
+:root{
+  --bg:#f3f1e9;--paper:#fbfaf5;--ink:#20241e;--muted:#6b7860;--faint:#94a184;--line:#deded2;
+  --ink-vermilion:#c2402a;--ink-indigo:#2b4b8f;--ink-yellow:#e8c34a;--marker-hi:#d9f875;
+  --sp-4:4px;--sp-8:8px;--sp-12:12px;--sp-16:16px;--sp-24:24px;--sp-40:40px;--sp-64:64px;--sp-96:96px;
+  --r-tag:2px;--r-control:6px;--r-card:10px;--r-pill:999px;
+  --ease-print:cubic-bezier(.2,.75,.25,1);--ease-physical:cubic-bezier(.34,1.56,.64,1);
+  --shadow-overlay:0 12px 24px -8px #20241e26;--shadow-divider:0 1px 0 var(--line);
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --serif:var(--font-serif);--mono:var(--font-mono);--ease:var(--ease-print);
+}
+[data-theme="night"]{--bg:#121610;--paper:#191d18;--ink:#e8efe0;--muted:#a9b8a0;--faint:#7b8a72;--line:#2c3327}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html.embedded .lp-head{display:none}
+.lp-head{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:var(--sp-16);padding:12px var(--sp-24);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.lp-brand{display:flex;align-items:baseline;gap:var(--sp-8);font-weight:700;letter-spacing:-.01em}
+.lp-brand i{font-family:var(--font-mono);font-style:normal;font-size:9px;letter-spacing:.16em;color:var(--faint);font-weight:400}
+.lp-nav{display:flex;gap:var(--sp-16);margin-left:auto}
+.lp-nav a{color:var(--muted);text-decoration:none;font-size:13px}
+.lp-nav a:hover{color:var(--ink)}
+.lp-head button{font:inherit;font-size:11px;padding:5px 12px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);cursor:pointer}
+main{max-width:1080px;margin:0 auto;padding:0 var(--sp-24) 96px}
+.lp-k{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
+.lp-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border:1px solid var(--ink);border-radius:var(--r-control);background:var(--ink);color:var(--paper);font:inherit;font-size:13px;text-decoration:none;cursor:pointer;transition:transform 180ms var(--ease-physical),background-color 180ms var(--ease)}
+.lp-btn:hover{transform:translateY(-2px)}
+.lp-btn.ghost{background:transparent;color:var(--ink)}
+
+/* 首屏 */
+.lp-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--sp-64);align-items:center;padding:96px 0 72px}
+.lp-hero h1{margin:var(--sp-16) 0 0;font-family:var(--font-serif);font-size:56px;line-height:1.05;letter-spacing:-.03em}
+.lp-hero h1 em{font-style:normal;color:var(--ink-vermilion)}
+.lp-hero p{max-width:42ch;margin:var(--sp-24) 0 0;color:var(--muted)}
+.lp-cta{display:flex;gap:var(--sp-12);margin-top:var(--sp-24);flex-wrap:wrap}
+.lp-cta small{display:block;margin-top:var(--sp-8);font-size:11px;color:var(--faint)}
+
+/* 打板卡：跟着指针偏，光跟着指针走 */
+.lp-slate{position:relative;perspective:900px}
+.lp-slate-card{position:relative;padding:0;border:1px solid var(--ink);border-radius:var(--r-card);background:var(--paper);overflow:hidden;transform-style:preserve-3d;will-change:transform;transition:transform 280ms var(--ease-physical);box-shadow:var(--shadow-overlay)}
+.lp-slate-top{display:flex;justify-content:space-between;gap:var(--sp-8);padding:10px 14px;border-bottom:1px solid var(--ink);font-family:var(--font-mono);font-size:11px;letter-spacing:.08em}
+.lp-slate-row{display:grid;grid-template-columns:64px 1fr;gap:var(--sp-12);padding:10px 14px;border-bottom:1px solid var(--line);align-items:baseline}
+.lp-slate-row:last-child{border-bottom:0}
+.lp-slate-row b{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint);font-weight:400}
+.lp-slate-row span{font-size:13px}
+.lp-slate-row span.big{font-family:var(--font-mono);font-size:21px;letter-spacing:-.01em}
+.lp-slate-glow{position:absolute;inset:0;background:radial-gradient(180px 180px at var(--lx,50%) var(--ly,30%),color-mix(in srgb,var(--marker-hi) 45%,transparent),transparent 65%);opacity:0;transition:opacity 220ms var(--ease);pointer-events:none}
+.lp-slate-card.on .lp-slate-glow{opacity:.32}
+.lp-slate-under{display:flex;justify-content:space-between;margin-top:var(--sp-8);font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+
+/* 能力：左文案右实物 */
+.lp-sec{padding-top:96px}
+.lp-sec h2{margin:var(--sp-8) 0 0;font-size:34px;line-height:1.2;letter-spacing:-.02em;max-width:24ch}
+.lp-sec .lead{max-width:52ch;margin:var(--sp-12) 0 0;color:var(--muted)}
+.lp-cap{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-64);align-items:center;padding:var(--sp-40) 0;border-bottom:1px solid var(--line)}
+.lp-cap:nth-of-type(even) .lp-cap-visual{order:-1}
+.lp-cap h3{margin:0 0 var(--sp-8);font-size:21px;letter-spacing:-.01em}
+.lp-cap p{margin:0;color:var(--muted);max-width:44ch}
+.lp-cap ul{margin:var(--sp-16) 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.lp-cap li{position:relative;padding-left:16px;font-size:13px;color:var(--muted)}
+.lp-cap li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--ink)}
+.lp-cap-visual{position:relative;padding:var(--sp-16);border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);box-shadow:var(--shadow-divider)}
+.lp-frag-head{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint);padding-bottom:var(--sp-8);border-bottom:1px solid var(--line)}
+.lp-frag-row{display:grid;grid-template-columns:52px 1fr auto;gap:var(--sp-12);align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px}
+.lp-frag-row:last-child{border-bottom:0}
+.lp-frag-row b{font-family:var(--font-mono);font-size:10px;font-weight:400;color:var(--faint)}
+.lp-frag-row em{font-style:normal;font-family:var(--font-mono);font-size:11px}
+.lp-chip{display:inline-flex;align-items:center;gap:4px;padding:1px 8px;border:1px solid var(--line);border-radius:var(--r-pill);font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--muted)}
+.lp-chip.ok{border-color:var(--ok);color:var(--ok)}
+.lp-chip.warn{border-color:var(--warn);color:var(--warn)}
+
+/* 流程 */
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-24);margin-top:var(--sp-40);counter-reset:s}
+.lp-step{position:relative;padding-top:var(--sp-24);border-top:1px solid var(--ink)}
+.lp-step:before{counter-increment:s;content:"0" counter(s);font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-vermilion)}
+.lp-step h4{margin:var(--sp-8) 0 4px;font-size:15px}
+.lp-step p{margin:0;font-size:13px;color:var(--muted)}
+
+/* 引语 */
+.lp-quote{margin-top:96px;padding:var(--sp-40) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lp-quote blockquote{margin:0;font-family:var(--font-serif);font-size:21px;line-height:1.6;max-width:34ch}
+.lp-quote cite{display:block;margin-top:var(--sp-12);font-style:normal;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--faint)}
+
+/* 价格 */
+.lp-price{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-24);margin-top:var(--sp-40)}
+.lp-plan{padding:var(--sp-24);border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);transition:transform 220ms var(--ease-physical),border-color 180ms var(--ease)}
+.lp-plan:hover{transform:translateY(-6px);border-color:var(--ink)}
+.lp-plan.feature{border-color:var(--ink)}
+.lp-plan h3{margin:0;font-size:15px}
+.lp-plan .amount{margin:var(--sp-8) 0 0;font-family:var(--font-mono);font-size:34px;letter-spacing:-.02em}
+.lp-plan .amount small{font-size:11px;color:var(--faint);letter-spacing:0}
+.lp-plan ul{margin:var(--sp-16) 0 var(--sp-24);padding:0;list-style:none;display:grid;gap:6px;font-size:13px;color:var(--muted)}
+.lp-plan li:before{content:"— ";color:var(--faint)}
+
+/* FAQ */
+.lp-faq{margin-top:var(--sp-40);border-top:1px solid var(--line)}
+.lp-faq details{border-bottom:1px solid var(--line)}
+.lp-faq summary{display:flex;justify-content:space-between;gap:var(--sp-16);padding:var(--sp-16) 0;cursor:pointer;font-size:15px;list-style:none}
+.lp-faq summary::-webkit-details-marker{display:none}
+.lp-faq summary:after{content:"+";font-family:var(--font-mono);color:var(--faint)}
+.lp-faq details[open] summary:after{content:"−"}
+.lp-faq p{margin:0 0 var(--sp-16);color:var(--muted);max-width:62ch}
+
+/* 页脚 */
+.lp-foot{margin-top:96px;padding-top:var(--sp-24);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:var(--sp-16);align-items:baseline;font-size:11px;color:var(--faint)}
+.lp-foot b{font-family:var(--font-mono);letter-spacing:.08em;color:var(--muted)}
+.lp-foot a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+
+.lp-reveal{opacity:0;transform:translateY(14px);transition:opacity 280ms var(--ease),transform 280ms var(--ease)}
+.lp-reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+  .lp-hero{grid-template-columns:1fr;gap:var(--sp-40);padding-top:56px}
+  .lp-hero h1{font-size:34px}
+  .lp-cap,.lp-price{grid-template-columns:1fr;gap:var(--sp-24)}
+  .lp-cap:nth-of-type(even) .lp-cap-visual{order:0}
+  .lp-steps{grid-template-columns:1fr}
+  .lp-nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .lp-btn,.lp-plan,.lp-slate-card,.lp-reveal{transition:none}
+  .lp-reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="lp-head">
+  <span class="lp-brand">场记 SLATE <i>v2.4</i></span>
+  <nav class="lp-nav">
+    <a href="#caps">能做什么</a>
+    <a href="#how">现场怎么用</a>
+    <a href="#price">价格</a>
+    <a href="#faq">常见问题</a>
+  </nav>
+  <button type="button" id="lpTheme">夜间</button>
+</header>
+
+<main>
+  <section class="lp-hero">
+    <div>
+      <span class="lp-k">片场工具 / 2026</span>
+      <h1>第 3 场，第 2 次，<em>别记错</em>。</h1>
+      <p>打板、记条、对素材，三件事挤在同一块屏上。手不用离开扳机，也不用在收工后靠记忆对时码。</p>
+      <div class="lp-cta">
+        <a class="lp-btn" href="#price">下载试拍版</a>
+        <a class="lp-btn ghost" href="#how">先看现场怎么用</a>
+      </div>
+      <small>macOS / iPadOS · 12 天全功能 · 不联网也能记</small>
+    </div>
+    <div class="lp-slate" id="lpSlate">
+      <div class="lp-slate-card" id="lpSlateCard">
+        <div class="lp-slate-top"><span>SLATE · 03/02</span><span id="lpTc">14:22:07</span></div>
+        <div class="lp-slate-row"><b>场次</b><span class="big">S03 · T02</span></div>
+        <div class="lp-slate-row"><b>机位</b><span>B 机 · 50mm</span></div>
+        <div class="lp-slate-row"><b>镜头</b><span>她推门进来，停两秒</span></div>
+        <div class="lp-slate-row"><b>备注</b><span>反光板右侧收一格</span></div>
+        <div class="lp-slate-glow" aria-hidden="true"></div>
+      </div>
+      <div class="lp-slate-under"><span>时码在走 · 以录音机为准</span><span id="lpCount">今天第 47 条</span></div>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="caps">
+    <span class="lp-k">能做什么</span>
+    <h2>三件事，都在拇指能到的地方</h2>
+    <p class="lead">不做排期、不做预算、不做审批。它只管一条素材从打板到收工之间的事。</p>
+
+    <div class="lp-cap lp-reveal">
+      <div>
+        <h3>打板就记条</h3>
+        <p>按下扳机的瞬间，场次、条数、机位、时码一起落库。松手那一刻自动补一个尾号，重复的条会被挡掉。</p>
+        <ul>
+          <li>同场次连拍：条数自动 +1，不用手点</li>
+          <li>双机同时打板：两台机器的时码差在 3 帧内自动对齐</li>
+        </ul>
+      </div>
+      <div class="lp-cap-visual">
+        <div class="lp-frag-head"><span>今日 · 场次 03</span><span>14:22:07</span></div>
+        <div class="lp-frag-row"><b>T01</b><span>推门 · 中景</span><em>00:41:12</em></div>
+        <div class="lp-frag-row"><b>T02</b><span>推门 · 中景</span><em>00:43:05</em></div>
+        <div class="lp-frag-row"><b>T03</b><span>推门 · 近景</span><em>00:47:30</em></div>
+        <div class="lp-frag-row"><b>T04</b><span>推门 · 近景</span><span class="lp-chip ok">已对位</span></div>
+      </div>
+    </div>
+
+    <div class="lp-cap lp-reveal">
+      <div>
+        <h3>收工时就对得上</h3>
+        <p>导入卡的目录，按时间码把素材贴回每一条。对不上的会单独列出来，带着缺口时长——不用整卡重听。</p>
+        <ul>
+          <li>只读目录，不改原文件，也不删卡里的东西</li>
+          <li>缺条按「场次 + 条号」列出，发给剪辑直接看</li>
+        </ul>
+      </div>
+      <div class="lp-cap-visual">
+        <div class="lp-frag-head"><span>素材对位 · A001</span><span>47 / 49 条</span></div>
+        <div class="lp-frag-row"><b>S03T01</b><span>A001_C012</span><span class="lp-chip ok">对上</span></div>
+        <div class="lp-frag-row"><b>S03T02</b><span>A001_C013</span><span class="lp-chip ok">对上</span></div>
+        <div class="lp-frag-row"><b>S03T04</b><span>—</span><span class="lp-chip warn">缺 38 秒</span></div>
+        <div class="lp-frag-row"><b>S03T05</b><span>B002_C004</span><span class="lp-chip ok">双机</span></div>
+      </div>
+    </div>
+
+    <div class="lp-cap lp-reveal">
+      <div>
+        <h3>一张纸交出去</h3>
+        <p>收工生成两页：一页给剪辑，写清每条的场次、时码、备注；一页给制片，只写今天拍了几条、缺几条。都是 PDF，不登录也能导。</p>
+        <ul><li>两页纸，不上传云端，导出即结束</li></ul>
+      </div>
+      <div class="lp-cap-visual">
+        <div class="lp-frag-head"><span>场记单 · S03</span><span>2026-10-23</span></div>
+        <div class="lp-frag-row"><b>条数</b><span>今天 47 条 · 可用 43</span><em>PDF</em></div>
+        <div class="lp-frag-row"><b>缺条</b><span>S03T04 · 38 秒</span><em>PDF</em></div>
+        <div class="lp-frag-row"><b>备注</b><span>反光板调整 3 次</span><em>PDF</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="how">
+    <span class="lp-k">现场怎么用</span>
+    <h2>从开机到收工，三步</h2>
+    <div class="lp-steps lp-reveal">
+      <div class="lp-step"><h4>开机前，建一本</h4><p>选项目、填场次表，或者直接从上一场的场记单接着来。建完就能断网。</p></div>
+      <div class="lp-step"><h4>打板时，按一下</h4><p>一按一条，时码自己走。手上有活的时候，屏幕只留一个能按的地方。</p></div>
+      <div class="lp-step"><h4>收工后，导两页</h4><p>插上卡，对位、补缺、导出。整个过程不联网，也不用把素材拷进电脑。</p></div>
+    </div>
+  </section>
+
+  <div class="lp-quote">
+    <blockquote>以前收工要花四十分钟对时码，现在插上卡，喝口水回来就好了。缺的那两条它会直接告诉我缺多少秒。</blockquote>
+    <cite>虚构用户 · 跟机员，六年剧集经验</cite>
+  </div>
+
+  <section class="lp-sec" id="price">
+    <span class="lp-k">价格</span>
+    <h2>按机器算，不按人头</h2>
+    <p class="lead">一台机器授权一年。换机器可以转移两次，不额外收钱。</p>
+    <div class="lp-price lp-reveal">
+      <div class="lp-plan">
+        <h3>单机</h3>
+        <p class="amount">¥480 <small>/ 年</small></p>
+        <ul>
+          <li>1 台设备，2 个项目同时开</li>
+          <li>打板、对位、两页导出</li>
+          <li>断网可用</li>
+        </ul>
+        <a class="lp-btn ghost" href="#faq">买这个</a>
+      </div>
+      <div class="lp-plan feature">
+        <h3>机组</h3>
+        <p class="amount">¥1,200 <small>/ 年</small></p>
+        <ul>
+          <li>4 台设备，项目不限</li>
+          <li>双机时码自动对齐</li>
+          <li>场记单带项目水印</li>
+          <li>换机器转移不限次</li>
+        </ul>
+        <a class="lp-btn" href="#faq">买这个</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="faq">
+    <span class="lp-k">常见问题</span>
+    <h2>你可能想问的</h2>
+    <div class="lp-faq">
+      <details><summary>一定要联网吗？</summary><p>不用。开机前建好项目，之后全程断网也能打板、对位、导出。只有转移授权的时候需要联网一次。</p></details>
+      <details><summary>素材会不会被改？</summary><p>只读你卡的目录，不写文件、不删文件、不移动文件。卸载的时候卡里什么样，还是什么样。</p></details>
+      <details><summary>双机对不齐怎么办？</summary><p>先看两台机器的时码设置是不是同一个基准。如果是一致的，自动对齐误差在 3 帧内；超出的会标红，让你手动确认，不会偷偷改。</p></details>
+      <details><summary>能只买一个月吗？</summary><p>可以，短片和广告项目常见。按月是 ¥80，随时停，不自动续。</p></details>
+    </div>
+  </section>
+
+  <footer class="lp-foot">
+    <b>SLATE</b>
+    <span>虚构产品页，用《前端模式库》的排版与动效拼成；数据与用户均为虚构。</span>
+    <a href="../index.html?tab=site">返回资源库</a>
+  </footer>
+</main>
+
+<script>
+function applyTheme(v){ document.documentElement.setAttribute('data-theme', v === 'night' ? 'night' : 'paper'); var b = document.getElementById('lpTheme'); if (b) b.textContent = v === 'night' ? '纸色' : '夜间'; }
+var q = new URLSearchParams(location.search).get('theme');
+if (q) applyTheme(q);
+if (window.self !== window.top) document.documentElement.classList.add('embedded');
+addEventListener('message', function (e) { if (e.data && e.data.type === 'site-theme') applyTheme(e.data.value); });
+document.getElementById('lpTheme').addEventListener('click', function () {
+  var night = document.documentElement.getAttribute('data-theme') !== 'night';
+  applyTheme(night ? 'night' : 'paper');
+  try { parent.postMessage({ type: 'site-theme', value: night ? 'night' : 'paper' }, '*'); } catch (err) {}
+});
+
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* 时码：真的在走，按秒进位 */
+(function () {
+  var el = document.getElementById('lpTc');
+  if (!el) return;
+  var t = 14 * 3600 + 22 * 60 + 7;
+  var fmt = function (s) {
+    var h = Math.floor(s / 3600) % 24, m = Math.floor(s / 60) % 60, sec = s % 60;
+    return [h, m, sec].map(function (n) { return (n < 10 ? '0' : '') + n; }).join(':');
+  };
+  if (reduce) { el.textContent = fmt(t); return; }
+  setInterval(function () { t += 1; el.textContent = fmt(t); }, 1000);
+})();
+
+/* 打板卡：指针让卡偏一点，光跟着走 */
+(function () {
+  var box = document.getElementById('lpSlate');
+  var card = document.getElementById('lpSlateCard');
+  if (!box || !card || reduce) return;
+  box.addEventListener('pointermove', function (e) {
+    var r = card.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width - .5;
+    var y = (e.clientY - r.top) / r.height - .5;
+    card.style.transform = 'rotateY(' + (x * 10).toFixed(1) + 'deg) rotateX(' + (-y * 8).toFixed(1) + 'deg)';
+    card.style.setProperty('--lx', ((x + .5) * 100).toFixed(1) + '%');
+    card.style.setProperty('--ly', ((y + .5) * 100).toFixed(1) + '%');
+    card.classList.add('on');
+  });
+  box.addEventListener('pointerleave', function () { card.style.transform = 'none'; card.classList.remove('on'); });
+})();
+
+/* 滚动揭示 */
+(function () {
+  var els = [].slice.call(document.querySelectorAll('.lp-reveal'));
+  if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } });
+  }, { threshold: .25 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
