@@ -79,6 +79,7 @@
       localStorage.setItem(KEY + '.group', group);
       chipsBox.querySelectorAll('[data-group]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
       render();
+      section?.scrollIntoView({ block: 'start' });
     });
     search?.addEventListener('input', (e) => {
       q = e.target.value;
