@@ -1,4 +1,0 @@
-.d-progress-ring-kf svg{width:56px;height:56px;transform:rotate(-90deg)}
-.d-progress-ring-kf circle{fill:none;stroke-width:4;stroke:color-mix(in srgb,var(--ink) 12%,transparent)}
-.d-progress-ring-kf .d-progress-ring-v{stroke:var(--lime);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:30;animation:d-progress-ring-kf 1.6s linear infinite}
-@keyframes d-progress-ring-kf{to{stroke-dashoffset:100}}

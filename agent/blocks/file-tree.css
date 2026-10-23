@@ -1,7 +1,0 @@
-.d-tree{width:200px;font-size:12px}
-.d-tree .d-file-tree-node{padding:3px 0}
-.d-tree .d-file-tree-node b{font-weight:500;cursor:pointer;color:var(--muted)}
-.d-tree .d-file-tree-kids{display:none;padding-left:14px}
-.d-tree .d-file-tree-node[data-open]>.d-file-tree-kids{display:block}
-.d-tree .d-file-tree-leaf{cursor:pointer;color:var(--muted);padding-left:14px}
-.d-tree .d-file-tree-leaf.d-file-tree-sel{color:var(--ink);background:color-mix(in srgb,var(--lime) 35%,transparent);border-radius:6px}

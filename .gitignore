@@ -1,0 +1,15 @@
+# 生成物：由 data/ 重建，不进历史（node tools/build.mjs 生成）
+agent/
+
+# 发布中间目录
+_site/
+
+# 工具状态
+.dsh-project-memory/
+
+# 临时与备份
+*.bak
+*.tmp
+.commitmsg
+.DS_Store
+Thumbs.db

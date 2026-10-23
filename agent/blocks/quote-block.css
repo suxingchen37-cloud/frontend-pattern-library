@@ -1,9 +1,0 @@
-.d-qb{width:300px;max-width:100%;margin:0;padding:2px 0 2px 12px;border-left:1px solid var(--ink)}
-.d-qb-text{margin:0;font-family:var(--serif);font-size:14px;line-height:1.7;color:var(--ink)}
-.d-qb-src{margin-top:4px;font-family:var(--mono);font-size:10px;line-height:1.6;color:var(--faint)}
-.d-qb-more{max-height:0;overflow:hidden;transition:max-height 280ms cubic-bezier(.2,.75,.25,1)}
-.d-qb-ctx{margin:0;padding-top:6px;font-size:11px;line-height:1.65;color:var(--muted)}
-.d-qb.is-open .d-qb-more{max-height:44px}
-.d-qb-btn{margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:4px 8px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--muted);cursor:pointer;transition:border-color 120ms cubic-bezier(.2,.75,.25,1),color 120ms cubic-bezier(.2,.75,.25,1)}
-.d-qb-btn:hover{border-color:var(--ink);color:var(--ink)}
-.d-qb-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

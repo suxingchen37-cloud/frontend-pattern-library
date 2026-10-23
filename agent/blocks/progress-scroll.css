@@ -1,3 +1,0 @@
-.d-prog{position:relative}
-.d-prog .d-bar{position:sticky;top:0;left:0;height:3px;background:var(--lime);width:100%;transform-origin:0 50%;animation:d-grow linear;animation-timeline:scroll(nearest)}
-.d-prog .d-fill{height:400px;margin:0;font-size:11px;color:var(--faint)}

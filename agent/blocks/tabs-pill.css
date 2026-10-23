@@ -1,4 +1,0 @@
-.d-tabs{position:relative;display:flex;gap:2px;border-bottom:1px solid var(--line);padding:0 4px}
-.d-tabs button{position:relative;z-index:1;border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;padding:9px 12px;cursor:pointer}
-.d-tabs button.on{color:var(--ink)}
-.d-tabs .d-tabs-pill-pill{position:absolute;bottom:-1px;height:2px;background:var(--ink);transition:left .26s var(--ease),width .26s var(--ease)}

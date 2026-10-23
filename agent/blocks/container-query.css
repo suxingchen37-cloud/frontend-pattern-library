@@ -1,3 +1,0 @@
-.d-cq{container-type:inline-size;width:100%;resize:horizontal;overflow:auto;border:1px dashed var(--line);border-radius:10px;padding:10px}
-.d-cq .d-container-query-cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:12px}
-@container (max-width:180px){.d-cq .d-container-query-cardd{flex-direction:column;align-items:flex-start}}

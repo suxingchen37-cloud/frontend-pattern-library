@@ -1,6 +1,0 @@
-.d-ie3{width:240px;border-collapse:collapse;font-size:11px}
-.d-ie3 td{padding:6px 8px;border-bottom:1px solid var(--line);color:var(--muted)}
-.d-ie3 td[data-edit3]{color:var(--ink);cursor:text}
-.d-ie3 td[data-edit3]:hover{background:var(--bg)}
-.d-ie3 input{width:100%;border:1px solid var(--ink);border-radius:2px;background:var(--paper);font:inherit;padding:2px 4px;outline:none}
-.d-inline-edit-iehint3{margin:6px 0 0;font:9px var(--mono);color:var(--faint)}

@@ -1,6 +1,0 @@
-.d-bm{display:flex;align-items:center;gap:16px}
-.d-bm-art{width:120px;height:120px}
-.d-bm-shape{fill:#c2402a;stroke:var(--ink);stroke-width:1}
-.d-bm-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}
-.d-bm-btn:hover{border-color:var(--ink);color:var(--ink)}
-.d-bm-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

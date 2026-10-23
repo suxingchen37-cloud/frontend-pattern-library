@@ -1,8 +1,0 @@
-.d-grid-light{display:inline-flex;flex-direction:column;gap:var(--sp-8);font-family:var(--sans);outline:none;cursor:crosshair}
-.d-gl-grid{display:grid;grid-template-columns:repeat(12,22px);grid-auto-rows:22px;gap:1px;width:max-content;background:var(--line);border:1px solid var(--line)}
-.d-gl-cell{background:var(--paper);transition:background 180ms steps(6),opacity 180ms steps(6)}
-.d-gl-cell.is-l1{background:#c2402a}
-.d-gl-cell.is-l2{background:#c2402a;opacity:.5}
-.d-gl-cell.is-l3{background:#c2402a;opacity:.22}
-.d-gl-tip{font-family:var(--mono);font-size:var(--fs-9);letter-spacing:.08em;color:var(--faint)}
-.d-grid-light:focus-visible{outline:1px solid var(--ink);outline-offset:4px}

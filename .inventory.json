@@ -1,0 +1,835 @@
+{
+  "total": 144,
+  "cats": [
+    {
+      "cat": "入场",
+      "items": [
+        {
+          "id": "fade-stagger",
+          "t": "错峰淡入",
+          "en": "staggered fade-up"
+        },
+        {
+          "id": "pop-spring",
+          "t": "弹簧弹出",
+          "en": "spring pop"
+        },
+        {
+          "id": "blur-in",
+          "t": "模糊聚焦",
+          "en": "blur-in"
+        },
+        {
+          "id": "mask-reveal",
+          "t": "遮罩揭示",
+          "en": "clip reveal"
+        },
+        {
+          "id": "choreography",
+          "t": "错峰编排",
+          "en": "choreography"
+        },
+        {
+          "id": "enter-exit",
+          "t": "进出场配对",
+          "en": "enter/exit pair"
+        }
+      ]
+    },
+    {
+      "cat": "加载",
+      "items": [
+        {
+          "id": "skeleton",
+          "t": "骨架到内容",
+          "en": "skeleton → content"
+        },
+        {
+          "id": "progress-ring",
+          "t": "环形进度",
+          "en": "progress ring"
+        },
+        {
+          "id": "typing",
+          "t": "打字指示",
+          "en": "typing dots"
+        },
+        {
+          "id": "optimistic",
+          "t": "乐观上屏",
+          "en": "optimistic send"
+        },
+        {
+          "id": "sweep-glow",
+          "t": "边框流光",
+          "en": "border sweep"
+        },
+        {
+          "id": "four-states",
+          "t": "四态转场",
+          "en": "empty / loading / error / success"
+        },
+        {
+          "id": "skeleton-set",
+          "t": "骨架三种",
+          "en": "skeleton variants"
+        }
+      ]
+    },
+    {
+      "cat": "微交互",
+      "items": [
+        {
+          "id": "ripple",
+          "t": "水波按压",
+          "en": "ripple"
+        },
+        {
+          "id": "toggle-spring",
+          "t": "弹簧开关",
+          "en": "spring switch"
+        },
+        {
+          "id": "copy-check",
+          "t": "复制变对勾",
+          "en": "copy → check morph"
+        },
+        {
+          "id": "press-depth",
+          "t": "按压下沉",
+          "en": "press depth"
+        }
+      ]
+    },
+    {
+      "cat": "光标",
+      "items": [
+        {
+          "id": "magnetic",
+          "t": "磁吸按钮",
+          "en": "magnetic button"
+        },
+        {
+          "id": "tooltip-follow",
+          "t": "跟随提示",
+          "en": "cursor-follow tooltip"
+        },
+        {
+          "id": "custom-cursor",
+          "t": "自定义光标",
+          "en": "custom cursor"
+        },
+        {
+          "id": "tilt",
+          "t": "3D 倾斜卡",
+          "en": "pointer tilt"
+        }
+      ]
+    },
+    {
+      "cat": "滚动",
+      "items": [
+        {
+          "id": "reveal-scroll",
+          "t": "滚动揭示",
+          "en": "IntersectionObserver reveal"
+        },
+        {
+          "id": "progress-scroll",
+          "t": "滚动进度条",
+          "en": "scroll progress"
+        },
+        {
+          "id": "parallax",
+          "t": "视差分层",
+          "en": "parallax layers"
+        },
+        {
+          "id": "scrolly",
+          "t": "滚动叙事",
+          "en": "scrollytelling"
+        },
+        {
+          "id": "sticky-stack",
+          "t": "粘性堆叠",
+          "en": "sticky stack"
+        },
+        {
+          "id": "snap-carousel",
+          "t": "吸附轮播",
+          "en": "scroll-snap"
+        }
+      ]
+    },
+    {
+      "cat": "过渡",
+      "items": [
+        {
+          "id": "view-transition",
+          "t": "视图过渡",
+          "en": "View Transitions API"
+        },
+        {
+          "id": "flip-list",
+          "t": "列表重排",
+          "en": "FLIP reorder"
+        },
+        {
+          "id": "shared-element",
+          "t": "共享元素转场",
+          "en": "shared element"
+        },
+        {
+          "id": "morph-button",
+          "t": "容器变形",
+          "en": "morph button → input"
+        },
+        {
+          "id": "theme-crossfade",
+          "t": "主题过渡",
+          "en": "theme crossfade"
+        }
+      ]
+    },
+    {
+      "cat": "拖拽",
+      "items": [
+        {
+          "id": "drag-scroll",
+          "t": "拖拽滚动",
+          "en": "drag to scroll"
+        }
+      ]
+    },
+    {
+      "cat": "布局",
+      "items": [
+        {
+          "id": "accordion",
+          "t": "手风琴展开",
+          "en": "accordion"
+        },
+        {
+          "id": "splitter",
+          "t": "可拖分栏",
+          "en": "resizable splitter"
+        },
+        {
+          "id": "container-query",
+          "t": "容器查询",
+          "en": "container query"
+        },
+        {
+          "id": "sidebar-collapse",
+          "t": "侧栏折叠",
+          "en": "collapsible sidebar"
+        },
+        {
+          "id": "bento-grid",
+          "t": "便当格",
+          "en": "bento grid"
+        },
+        {
+          "id": "table-to-cards",
+          "t": "表格转卡片",
+          "en": "table → cards"
+        }
+      ]
+    },
+    {
+      "cat": "数据",
+      "items": [
+        {
+          "id": "count-up",
+          "t": "数字滚动",
+          "en": "count-up"
+        },
+        {
+          "id": "bars-grow",
+          "t": "柱状生长",
+          "en": "bars grow"
+        },
+        {
+          "id": "stat-spark",
+          "t": "指标卡 + 迷你折线",
+          "en": "stat card + sparkline"
+        },
+        {
+          "id": "donut",
+          "t": "环形占比",
+          "en": "donut chart"
+        },
+        {
+          "id": "gauge",
+          "t": "半圆仪表",
+          "en": "gauge"
+        },
+        {
+          "id": "heatmap",
+          "t": "热力格",
+          "en": "heatmap"
+        },
+        {
+          "id": "timeline",
+          "t": "竖向时间线",
+          "en": "timeline"
+        },
+        {
+          "id": "flip-number",
+          "t": "数字翻牌",
+          "en": "flip number"
+        }
+      ]
+    },
+    {
+      "cat": "反馈",
+      "items": [
+        {
+          "id": "toast-stack",
+          "t": "堆叠提示",
+          "en": "toast stack"
+        },
+        {
+          "id": "badge-pop",
+          "t": "角标跳动",
+          "en": "badge pop"
+        },
+        {
+          "id": "inline-valid",
+          "t": "行内校验",
+          "en": "inline validation"
+        },
+        {
+          "id": "success",
+          "t": "成功勾 + 礼花",
+          "en": "success draw + confetti"
+        },
+        {
+          "id": "error-retry",
+          "t": "错误卡 + 重试",
+          "en": "error state with retry"
+        },
+        {
+          "id": "empty-actions",
+          "t": "空态带动作",
+          "en": "empty state with action"
+        },
+        {
+          "id": "undo-snackbar",
+          "t": "撤销提示",
+          "en": "undo snackbar"
+        },
+        {
+          "id": "autosave-x",
+          "t": "自动保存状态",
+          "en": "autosave"
+        },
+        {
+          "id": "upload-progress",
+          "t": "上传进度",
+          "en": "upload progress"
+        },
+        {
+          "id": "step-status",
+          "t": "步骤状态",
+          "en": "step status"
+        }
+      ]
+    },
+    {
+      "cat": "排印",
+      "items": [
+        {
+          "id": "split-text",
+          "t": "逐字揭示",
+          "en": "split text"
+        },
+        {
+          "id": "gradient-sweep",
+          "t": "渐变扫光",
+          "en": "gradient sweep"
+        },
+        {
+          "id": "variable-weight",
+          "t": "字重呼吸",
+          "en": "variable font weight"
+        }
+      ]
+    },
+    {
+      "cat": "无障碍",
+      "items": [
+        {
+          "id": "reduced-motion",
+          "t": "尊重减少动效",
+          "en": "prefers-reduced-motion"
+        },
+        {
+          "id": "focus-ring",
+          "t": "焦点环",
+          "en": "focus-visible"
+        },
+        {
+          "id": "contrast-badge",
+          "t": "对比度自检",
+          "en": "contrast check"
+        },
+        {
+          "id": "motion-scale",
+          "t": "动效强度档",
+          "en": "motion scale"
+        }
+      ]
+    },
+    {
+      "cat": "表单",
+      "items": [
+        {
+          "id": "float-label",
+          "t": "浮动标签",
+          "en": "floating label"
+        },
+        {
+          "id": "otp",
+          "t": "验证码分格",
+          "en": "OTP input"
+        },
+        {
+          "id": "tag-input",
+          "t": "标签输入",
+          "en": "tag input"
+        },
+        {
+          "id": "segmented",
+          "t": "分段选择",
+          "en": "segmented control"
+        },
+        {
+          "id": "strength",
+          "t": "密码强度",
+          "en": "password strength"
+        },
+        {
+          "id": "rating",
+          "t": "星级评分",
+          "en": "star rating"
+        },
+        {
+          "id": "dropzone",
+          "t": "拖拽上传区",
+          "en": "dropzone"
+        },
+        {
+          "id": "multi-step",
+          "t": "多步表单",
+          "en": "multi-step form"
+        },
+        {
+          "id": "range-dual",
+          "t": "双端范围",
+          "en": "dual range"
+        },
+        {
+          "id": "date-pick",
+          "t": "日期选择",
+          "en": "date picker"
+        },
+        {
+          "id": "autocomplete-x",
+          "t": "联想输入",
+          "en": "autocomplete"
+        },
+        {
+          "id": "char-count",
+          "t": "字数统计",
+          "en": "character count"
+        },
+        {
+          "id": "currency-input",
+          "t": "金额格式化",
+          "en": "currency input"
+        },
+        {
+          "id": "radio-cards",
+          "t": "卡片单选",
+          "en": "radio cards"
+        }
+      ]
+    },
+    {
+      "cat": "导航",
+      "items": [
+        {
+          "id": "tabs-pill",
+          "t": "滑动页签",
+          "en": "sliding tabs"
+        },
+        {
+          "id": "breadcrumb",
+          "t": "面包屑折叠",
+          "en": "collapsed breadcrumb"
+        },
+        {
+          "id": "palette",
+          "t": "命令面板",
+          "en": "command palette"
+        },
+        {
+          "id": "pagination",
+          "t": "分页器",
+          "en": "pagination"
+        },
+        {
+          "id": "stepper",
+          "t": "步骤条",
+          "en": "stepper"
+        },
+        {
+          "id": "fab",
+          "t": "悬浮操作钮",
+          "en": "floating action button"
+        },
+        {
+          "id": "shortcut-sheet",
+          "t": "快捷键面板",
+          "en": "shortcut sheet"
+        },
+        {
+          "id": "mega-menu",
+          "t": "大菜单",
+          "en": "mega menu"
+        },
+        {
+          "id": "hide-header",
+          "t": "滚动隐藏顶栏",
+          "en": "hide on scroll"
+        },
+        {
+          "id": "mobile-tabbar",
+          "t": "底部标签栏",
+          "en": "mobile tabbar"
+        },
+        {
+          "id": "skip-target",
+          "t": "跳到正文",
+          "en": "skip link"
+        }
+      ]
+    },
+    {
+      "cat": "浮层",
+      "items": [
+        {
+          "id": "dropdown",
+          "t": "下拉菜单",
+          "en": "dropdown menu"
+        },
+        {
+          "id": "popover",
+          "t": "气泡浮层",
+          "en": "popover"
+        },
+        {
+          "id": "ctxmenu",
+          "t": "右键菜单",
+          "en": "context menu"
+        },
+        {
+          "id": "sheet",
+          "t": "底部抽屉",
+          "en": "bottom sheet"
+        },
+        {
+          "id": "confirm",
+          "t": "输入确认删除",
+          "en": "type-to-confirm"
+        }
+      ]
+    },
+    {
+      "cat": "列表",
+      "items": [
+        {
+          "id": "swipe-delete",
+          "t": "左滑删除",
+          "en": "swipe to delete"
+        },
+        {
+          "id": "drag-reorder",
+          "t": "拖拽排序",
+          "en": "drag reorder"
+        },
+        {
+          "id": "multiselect",
+          "t": "多选操作条",
+          "en": "multi-select toolbar"
+        },
+        {
+          "id": "chips",
+          "t": "筛选标签",
+          "en": "filter chips"
+        },
+        {
+          "id": "avatar-stack",
+          "t": "头像叠 + 在线点",
+          "en": "avatar stack + presence"
+        },
+        {
+          "id": "sticky-table",
+          "t": "粘性表头",
+          "en": "sticky table header"
+        },
+        {
+          "id": "kanban",
+          "t": "看板列",
+          "en": "kanban board"
+        },
+        {
+          "id": "infinite-scroll",
+          "t": "无限滚动",
+          "en": "infinite scroll"
+        },
+        {
+          "id": "sticky-group",
+          "t": "分组吸顶",
+          "en": "sticky group headers"
+        },
+        {
+          "id": "row-expand",
+          "t": "行内展开",
+          "en": "inline row expand"
+        }
+      ]
+    },
+    {
+      "cat": "手势",
+      "items": [
+        {
+          "id": "pull-refresh",
+          "t": "下拉刷新",
+          "en": "pull to refresh"
+        },
+        {
+          "id": "drop-target",
+          "t": "拖到目标区",
+          "en": "drop target"
+        },
+        {
+          "id": "inertia",
+          "t": "拖拽惯性",
+          "en": "inertia drag"
+        }
+      ]
+    },
+    {
+      "cat": "内容",
+      "items": [
+        {
+          "id": "image-viewer",
+          "t": "图片查看器",
+          "en": "image viewer"
+        },
+        {
+          "id": "diff-view",
+          "t": "差异视图",
+          "en": "diff view"
+        },
+        {
+          "id": "file-tree",
+          "t": "文件树",
+          "en": "file tree"
+        }
+      ]
+    },
+    {
+      "cat": "长文",
+      "items": [
+        {
+          "id": "drop-cap",
+          "t": "首字下沉",
+          "en": "drop cap"
+        },
+        {
+          "id": "pull-quote-x",
+          "t": "引文浮出",
+          "en": "pull quote"
+        },
+        {
+          "id": "footnote-pop",
+          "t": "脚注浮层",
+          "en": "footnote popover"
+        },
+        {
+          "id": "read-progress-x",
+          "t": "阅读进度",
+          "en": "reading progress"
+        },
+        {
+          "id": "toc-follow",
+          "t": "目录跟随",
+          "en": "toc follow"
+        },
+        {
+          "id": "reading-time",
+          "t": "阅读时长",
+          "en": "reading time"
+        },
+        {
+          "id": "sidenote-x",
+          "t": "边注",
+          "en": "sidenote"
+        },
+        {
+          "id": "text-wrap",
+          "t": "文字绕图",
+          "en": "shape-outside"
+        },
+        {
+          "id": "column-flow",
+          "t": "分栏切换",
+          "en": "column flow"
+        },
+        {
+          "id": "text-annotate",
+          "t": "划词标记",
+          "en": "text annotate"
+        }
+      ]
+    },
+    {
+      "cat": "表格",
+      "items": [
+        {
+          "id": "table-sort",
+          "t": "表头排序",
+          "en": "sortable table"
+        },
+        {
+          "id": "col-pin",
+          "t": "固定首列",
+          "en": "pinned column"
+        },
+        {
+          "id": "inline-edit",
+          "t": "行内编辑",
+          "en": "inline edit"
+        },
+        {
+          "id": "virtual-list",
+          "t": "虚拟滚动",
+          "en": "virtual list"
+        },
+        {
+          "id": "col-resize",
+          "t": "拖拽列宽",
+          "en": "column resize"
+        },
+        {
+          "id": "row-select",
+          "t": "行选择与批量条",
+          "en": "row selection"
+        },
+        {
+          "id": "filter-builder",
+          "t": "状态筛选",
+          "en": "status filter"
+        },
+        {
+          "id": "density-toggle",
+          "t": "密度切换",
+          "en": "density toggle"
+        }
+      ]
+    },
+    {
+      "cat": "状态页",
+      "items": [
+        {
+          "id": "page-404",
+          "t": "404 页",
+          "en": "404 page"
+        },
+        {
+          "id": "offline-banner",
+          "t": "离线横幅",
+          "en": "offline banner"
+        },
+        {
+          "id": "page-403",
+          "t": "无权限页",
+          "en": "403 page"
+        },
+        {
+          "id": "session-expired",
+          "t": "会话过期",
+          "en": "session expired"
+        },
+        {
+          "id": "empty-search",
+          "t": "搜索无结果",
+          "en": "empty search"
+        },
+        {
+          "id": "error-retry-x",
+          "t": "失败与重试",
+          "en": "error retry"
+        },
+        {
+          "id": "maintenance-x",
+          "t": "维护倒计时",
+          "en": "maintenance"
+        },
+        {
+          "id": "success-next",
+          "t": "成功与下一步",
+          "en": "success next steps"
+        }
+      ]
+    },
+    {
+      "cat": "媒体",
+      "items": [
+        {
+          "id": "before-after",
+          "t": "前后对比滑杆",
+          "en": "before / after"
+        },
+        {
+          "id": "player-skin",
+          "t": "播放器皮肤",
+          "en": "player skin"
+        },
+        {
+          "id": "audio-wave",
+          "t": "音频波形",
+          "en": "audio waveform"
+        },
+        {
+          "id": "masonry-x",
+          "t": "瀑布流",
+          "en": "masonry"
+        },
+        {
+          "id": "zoom-view",
+          "t": "缩放与拖看",
+          "en": "zoom & pan"
+        },
+        {
+          "id": "lazy-media",
+          "t": "懒加载占位",
+          "en": "lazy media"
+        },
+        {
+          "id": "ratio-switch",
+          "t": "比例容器",
+          "en": "aspect-ratio"
+        },
+        {
+          "id": "hotspots",
+          "t": "图片热点",
+          "en": "hotspots"
+        }
+      ]
+    }
+  ]
+}

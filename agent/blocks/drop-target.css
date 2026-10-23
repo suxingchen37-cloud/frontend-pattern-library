@@ -1,4 +1,0 @@
-.d-dz{display:flex;gap:12px;align-items:center}
-.d-drop-target-dz-card{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font:inherit;font-size:12px;cursor:grab}
-.d-drop-target-dz-col{width:110px;height:70px;border:1.5px dashed var(--line);border-radius:10px;display:grid;place-items:center;font-size:11px;color:var(--faint);transition:border-color .16s,background-color .16s,color .16s}
-.d-drop-target-dz-col.over{border-color:var(--ink);background:color-mix(in srgb,var(--lime) 20%,transparent);color:var(--ink)}

@@ -1,6 +1,0 @@
-.d-zv3{width:240px}
-.d-zoom-view-zvstage3{height:110px;overflow:hidden;border:1px solid var(--line);border-radius:6px;position:relative;cursor:grab;background:var(--bg)}
-.d-zoom-view-zvart3{position:absolute;inset:0;background:repeating-linear-gradient(45deg,var(--lime) 0 12px,var(--paper) 12px 24px);transition:transform .2s var(--ease)}
-.d-zoom-view-zvbtns3{display:flex;gap:4px;margin-top:6px}
-.d-zoom-view-zvbtns3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}
-.d-zoom-view-zvbtns3 button.d-zoom-view-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}

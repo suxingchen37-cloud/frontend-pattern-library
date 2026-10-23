@@ -1,5 +1,0 @@
-.d-rate{display:flex;gap:2px}
-.d-rate button{border:0;background:transparent;font-size:22px;line-height:1;color:color-mix(in srgb,var(--ink) 18%,transparent);cursor:pointer;transition:transform .12s,color .12s}
-.d-rate button.on{color:#f2c14e}
-.d-rate button:hover{transform:scale(1.12)}
-.d-hint{font-size:11px;color:var(--faint)}

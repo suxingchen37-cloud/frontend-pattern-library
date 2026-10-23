@@ -1,7 +1,0 @@
-.d-oc-stage{position:relative;width:100%;max-width:340px;padding:8px 0 0;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;touch-action:none;cursor:grab}
-.d-oc-stage.d-oc-drag{cursor:grabbing}
-.d-oc-scene{position:relative;height:172px;margin:0 auto;width:220px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-40deg) translateZ(-18px);will-change:transform}
-.d-oc-floor{position:absolute;left:0;bottom:0;width:200px;height:120px;background-image:repeating-linear-gradient(0deg,var(--line) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 24px);opacity:.9}
-.d-oc-bar{position:absolute;bottom:0;left:calc(var(--i) * 38px + 12px);width:20px;height:var(--h);border-radius:2px 2px 0 0;background:var(--ink);transform:translateZ(0);transform-origin:50% 100%}
-.d-oc-bar:nth-child(odd){background:var(--ink-vermilion)}
-.d-oc-note{margin:4px 0 8px;text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--faint)}

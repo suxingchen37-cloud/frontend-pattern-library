@@ -1,8 +1,0 @@
-.d-strike-draw{display:inline-flex;flex-direction:column;gap:2px;font-family:var(--sans);outline:none;cursor:pointer}
-.d-strike-draw .d-sd-old{position:relative;display:inline-block;font-size:var(--fs-21);font-weight:600;letter-spacing:-.01em;color:var(--muted)}
-.d-strike-draw .d-sd-old::after{content:"";position:absolute;left:-2px;right:-2px;top:calc(50% + 1px);height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left center;animation:d-text-strike-draw-line 280ms cubic-bezier(.2,.75,.25,1) 120ms both}
-.d-strike-draw .d-sd-new{font-size:var(--fs-13);color:var(--ink);opacity:0;animation:d-text-strike-draw-new 120ms linear 280ms both}
-.d-strike-draw.is-reset .d-sd-old::after,.d-strike-draw.is-reset .d-sd-new{animation:none}
-.d-strike-draw:focus-visible{outline:1px solid var(--ink);outline-offset:6px}
-@keyframes d-text-strike-draw-line{to{transform:scaleX(1)}}
-@keyframes d-text-strike-draw-new{to{opacity:1}}

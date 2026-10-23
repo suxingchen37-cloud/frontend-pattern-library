@@ -1,4 +1,0 @@
-.d-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:10px;min-width:220px}
-.d-tags input{border:0;background:transparent;color:inherit;font:inherit;font-size:12px;outline:none;flex:1;min-width:90px}
-.d-tags .d-tag-input-chip{display:inline-flex;gap:6px;align-items:center;padding:3px 8px;border-radius:999px;background:color-mix(in srgb,var(--ink) 8%,transparent);font-size:11px}
-.d-tags .d-tag-input-chip i{font-style:normal;cursor:pointer;opacity:.6}

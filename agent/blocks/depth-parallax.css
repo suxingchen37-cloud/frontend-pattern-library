@@ -1,9 +1,0 @@
-.d-dp{box-sizing:border-box;width:300px;max-width:100%;height:150px;border:1px solid var(--line);border-radius:10px;background:var(--bg);perspective:560px;overflow:hidden}
-.d-dp-scene{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform}
-.d-dp-plane{position:absolute;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border-radius:6px}
-.d-dp-back{left:16px;top:16px;right:16px;bottom:16px;border:1px solid var(--line);background:var(--paper);transform:translateZ(-120px)}
-.d-dp-mid{left:64px;top:40px;width:172px;height:70px;border:1px solid var(--faint);background:var(--bg);transform:translateZ(-30px)}
-.d-dp-front{left:112px;top:56px;width:76px;height:38px;background:var(--ink);color:var(--bg);transform:translateZ(60px)}
-.d-dp-k{font-size:11px;letter-spacing:.08em;color:var(--muted)}
-.d-dp-v{font-family:var(--font-mono);font-size:11px}
-.d-dp:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

@@ -1,0 +1,31 @@
+name: design-check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # agent/ 是生成物（.gitignore），CI 里先重建，再校验「提交的生成物是否与数据一致」
+      - name: 重建 AI 产物
+        run: node tools/build.mjs
+
+      # lab-extra4.js 与两个 HTML 的补丁是入库的，这一步能抓到「改了 data 忘了重建」
+      - name: 站点补丁漂移检查
+        run: node tools/site.mjs --check
+
+      # 三方一致性：数据 ↔ AI 产物 ↔ 站点
+      - name: 三方一致性
+        run: node tools/verify.mjs
+
+      - name: 构建确定性检查（重跑一遍后产物不变）
+        run: node tools/build.mjs --check

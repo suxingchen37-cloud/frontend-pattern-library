@@ -1,3 +1,0 @@
-.d-stack2{height:130px;overflow:auto;display:flex;flex-direction:column;gap:50px;padding:4px}
-.d-stack2 div{position:sticky;top:4px;padding:14px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-size:12px;box-shadow:0 6px 16px #20241e10}
-.d-stack2 div:nth-child(2){top:14px}.d-stack2 div:nth-child(3){top:24px}

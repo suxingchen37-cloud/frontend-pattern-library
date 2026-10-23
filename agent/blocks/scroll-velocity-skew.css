@@ -1,6 +1,0 @@
-.d-vel{box-sizing:border-box;width:300px;max-width:100%;height:150px;overflow-x:hidden;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
-.d-vel-body{padding:12px;transform-origin:50% 0;transition:transform 120ms linear;will-change:transform}
-.d-vel-h{margin:0 0 4px;font-size:15px;color:var(--ink)}
-.d-vel-p{margin:0 0 8px;font-size:11px;line-height:1.6;color:var(--muted)}
-.d-vel-p:last-child{margin-bottom:0}
-.d-vel:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

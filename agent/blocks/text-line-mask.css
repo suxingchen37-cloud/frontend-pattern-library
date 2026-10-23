@@ -1,8 +1,0 @@
-.d-line-mask{width:248px;max-width:100%;padding:4px 0;font-family:var(--sans);color:var(--ink);outline:none}
-.d-line-mask .d-lm-row{display:block;overflow:hidden;padding-bottom:1px}
-.d-line-mask .d-lm-row i{display:block;font-style:normal;font-size:var(--fs-21);font-weight:650;line-height:var(--lh-display);letter-spacing:-.03em;transform:translateY(112%);animation:d-text-line-mask-rise 280ms cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--i,0) * 120ms)}
-.d-line-mask .d-lm-row:nth-child(2){--i:1}
-.d-line-mask .d-lm-row:nth-child(3){--i:2}
-.d-line-mask.is-reset .d-lm-row i{animation:none}
-.d-line-mask:focus-visible{outline:1px solid var(--ink);outline-offset:6px}
-@keyframes d-text-line-mask-rise{to{transform:translateY(0)}}

@@ -1,9 +1,0 @@
-.d-aw3{width:240px}
-.d-audio-wave-wave3{display:flex;align-items:center;gap:3px;height:52px;margin-bottom:8px}
-.d-audio-wave-wave3 i{height:var(--h);flex:1;background:var(--ink);border-radius:2px;transform-origin:center;opacity:.35}
-.d-audio-wave-wave3.on i{opacity:1;animation:d-audio-wave-kf .8s ease-in-out infinite alternate}
-.d-audio-wave-wave3.on i:nth-child(3n){animation-duration:.62s}
-.d-audio-wave-wave3.on i:nth-child(4n){animation-duration:.94s}
-@keyframes d-audio-wave-kf{from{transform:scaleY(.45)}to{transform:scaleY(1.4)}}
-@media(prefers-reduced-motion:reduce){.d-audio-wave-wave3.on i{animation:none}}
-.d-aw3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 10px;cursor:pointer}

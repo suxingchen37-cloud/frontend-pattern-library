@@ -1,2 +1,0 @@
-.d-drag{display:flex;gap:10px;width:100%;overflow:auto;cursor:grab;scrollbar-width:none;padding:4px}
-.d-drag i{flex:0 0 90px;height:70px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line)}

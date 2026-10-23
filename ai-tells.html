@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="AI 默认写法与本库改法的八组反例对照：左栏认清模板味，右栏直接抄参数。">
+<title>AI 默认写法，与本库的改法（前端模式库）</title>
+<script>
+(function(){
+  var d=document.documentElement;
+  d.classList.add('js');
+  try{if(localStorage.getItem('ai-tells.theme')==='night'){d.setAttribute('data-theme','night');}}catch(e){}
+})();
+</script>
+<style>
+:root{
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  --red:#c2402a;
+  --serif:Songti SC,STSong,"Noto Serif CJK SC",SimSun,serif;
+  --sans:Inter,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --ease-print:cubic-bezier(.2,.75,.25,1);
+  color-scheme:light;
+}
+[data-theme=night]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:15px/1.7 var(--sans);overflow-wrap:break-word}
+svg{display:block}
+a{color:inherit}
+::selection{background:var(--ink);color:var(--bg)}
+:is(a,button,input):focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+
+.skip{position:absolute;left:16px;top:-96px;z-index:10;padding:8px 12px;background:var(--paper);border:1px solid var(--ink);border-radius:2px;font-size:13px;text-decoration:none}
+.skip:focus{top:16px}
+
+.bar{display:flex;align-items:center;gap:12px;padding:8px 40px;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar .brand{font-size:15px;font-weight:600;letter-spacing:-.02em;text-decoration:none}
+.bar .where{font-size:11px;color:var(--muted);border-left:1px solid var(--line);padding-left:12px}
+.bar .grow{flex:1}
+.bar button{font:inherit;font-size:13px;line-height:1.2;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--ink);cursor:pointer;transition:border-color 120ms linear}
+.bar button:hover{border-color:var(--ink)}
+
+.page{max-width:68em;margin:0 auto;padding:64px 40px 96px}
+.mast{padding:0 0 64px}
+.mast::before{content:"";display:block;width:40px;height:1px;background:var(--red);margin:0 0 24px}
+.mast h1{font-family:var(--serif);font-weight:400;font-size:56px;line-height:1.1;letter-spacing:-.03em;margin:0;max-width:16em}
+.br-m{display:none}
+.dek{max-width:40em;margin:24px 0 0;font-size:15px;line-height:1.8;color:var(--muted)}
+.mast .hint{max-width:40em;margin:16px 0 0;font-size:11px;line-height:1.7;color:var(--muted)}
+
+.pair{border-top:1px solid var(--line);padding-top:40px;margin-top:40px}
+.pairhead{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 24px;align-items:start}
+.pairhead .no{grid-row:1/3;font-family:var(--mono);font-size:11px;line-height:1.7;letter-spacing:.08em;color:var(--faint);padding-top:8px}
+.pairhead h2{grid-column:2;margin:0;font-size:21px;line-height:1.4;font-weight:600;letter-spacing:-.01em}
+.pairhead .gist{grid-column:2;margin:0;font-size:13px;line-height:1.7;color:var(--muted);max-width:46em}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;align-items:stretch}
+.col{min-width:0;display:flex;flex-direction:column;margin:0}
+.col figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding-top:8px;border-top:1px solid var(--line);font-size:11px;line-height:1.6}
+.col.is-ai figcaption{border-top-color:var(--red)}
+.col figcaption .who{font-size:13px;font-weight:600;color:var(--ink)}
+.col figcaption .say{font-size:11px;color:var(--muted)}
+.col figcaption .replay{margin-left:auto}
+.replay{font:inherit;font-size:11px;line-height:1.2;padding:4px 8px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--muted);cursor:pointer}
+.replay:hover{border-color:var(--ink);color:var(--ink)}
+.stage{flex:1;min-width:0;margin-top:8px;padding:24px;background:var(--bg);border:1px solid var(--line);border-radius:2px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.stage.center{align-items:center;text-align:center}
+
+.why{display:grid;gap:8px;margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.why>div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:24px}
+.why dt{font-size:11px;line-height:1.7;color:var(--muted)}
+.why dd{margin:0;font-size:13px;line-height:1.7;color:var(--ink);overflow-wrap:anywhere}
+
+.cardbox{width:100%;max-width:240px;padding:16px;background:var(--paper)}
+.is-ok .cardbox{border-radius:6px;border:1px solid var(--line);box-shadow:0 1px 0 var(--line);transition:transform 180ms var(--ease-print)}
+.is-ok .cardbox:hover{transform:translateY(-1px)}
+.metric-k{margin:0;font-size:11px;line-height:1.6;color:var(--muted)}
+.metric-v{margin:4px 0 0;font-family:var(--mono);font-size:34px;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.metric-t{margin:8px 0 0;font-size:11px;line-height:1.6;color:var(--muted)}
+
+.btn{font:inherit;font-size:13px;line-height:1.4;padding:8px 16px;border-radius:6px;border:1px solid transparent;cursor:pointer;align-self:flex-start}
+.btn:hover{text-decoration:none}
+.is-ok .btn{background:var(--paper);color:var(--ink);border-color:var(--ink);transition:background-color 120ms linear}
+.is-ok .btn:hover{background:var(--bg)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.02em}
+
+.enter-ai{margin:0;font-size:21px;line-height:1.5;letter-spacing:-.01em;max-width:20em}
+.mask{overflow:hidden;width:100%}
+.mask-inner{display:grid;gap:8px;width:100%}
+.mask-inner p{margin:0}
+.mask-inner .ex{font-size:21px;line-height:1.5;letter-spacing:-.01em}
+.mask-inner .sub{font-size:13px;line-height:1.7;color:var(--muted)}
+
+.iconrow{display:flex;align-items:center;gap:12px}
+.iconrow .txt{display:grid;gap:4px}
+.iconrow .t{font-size:13px;font-weight:600;line-height:1.4}
+.iconrow .s{font-size:11px;line-height:1.6;color:var(--muted)}
+.ico{display:grid;place-items:center;width:24px;height:24px;color:var(--ink)}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+.is-ai .icoblock{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;color:#fff}
+.is-ai .icoblock svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+.empty-ai{display:grid;justify-items:center;gap:16px;color:var(--muted)}
+.empty-ai svg{width:96px;height:72px;fill:none;stroke:var(--faint);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.empty-ai p{margin:0;font-size:13px;line-height:1.6;color:var(--muted)}
+.empty-ok{display:grid;gap:12px;justify-items:start;width:100%}
+.empty-ok p{margin:0;font-size:13px;line-height:1.7;color:var(--ink);max-width:28em}
+
+.field{display:grid;gap:8px;width:100%;max-width:280px}
+.field label{font-size:11px;line-height:1.6;color:var(--muted)}
+.field input{width:100%;font:inherit;font-size:13px;line-height:1.4;padding:8px 12px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:2px}
+.field .msg{margin:0}
+.err-ai{font-size:11px;line-height:1.6;color:var(--ink)}
+.err-ok{font-size:13px;line-height:1.7;color:var(--ink);padding-left:12px;border-left:1px solid var(--red)}
+
+.demohead{display:grid;gap:8px;justify-items:center;text-align:center}
+/* 反例（只此一栏）：全大写眉标，仅作用于 .is-ai */
+.demohead .eyebrow{margin:0;font-size:11px;line-height:1.6;letter-spacing:.14em;color:var(--faint)}
+.is-ai .demohead .eyebrow{text-transform:uppercase;letter-spacing:.14em}
+.demohead .t{margin:0;font-size:21px;line-height:1.4;font-weight:600;letter-spacing:-.01em}
+.demohead .s{margin:0;font-size:13px;line-height:1.7;color:var(--muted)}
+.statbig{display:grid;gap:4px;width:100%}
+.statbig .idx{font-family:var(--mono);font-size:11px;line-height:1.6;letter-spacing:.08em;color:var(--muted)}
+.statbig .n{font-family:var(--mono);font-size:56px;line-height:1.05;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.statbig .cap{margin:0;font-size:13px;line-height:1.7;color:var(--ink)}
+
+.meta-ai{margin:0;font-size:11px;line-height:1.6;color:var(--faint)}
+.meta-ok{margin:0;font-size:13px;line-height:1.7;color:var(--muted)}
+.meta-ok .when{display:block;color:var(--ink)}
+.meta-ok .howlong{display:block;margin-top:4px;font-size:11px;color:var(--muted)}
+
+.closing{margin-top:96px;border-top:1px solid var(--line);padding-top:40px;display:grid;gap:24px;justify-items:start}
+.closing p{margin:0;max-width:40em;font-size:15px;line-height:1.8;color:var(--muted)}
+.closing .back{font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.closing .back:hover{background:var(--paper)}
+.closing .colophon{font-size:11px;line-height:1.7;color:var(--muted);max-width:46em}
+
+/* 反例颜料开始：以下规则只服务左栏 .is-ai；越界写法点名在每组的 HTML 注释里 */
+.is-ai .cardbox{border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform 300ms ease,box-shadow 300ms ease}
+.is-ai .cardbox:hover{transform:translateY(-4px);box-shadow:0 12px 24px -8px #20241e26}
+.is-ai .btn{background:linear-gradient(135deg,#6a5cff,#3b82f6);color:#fff;border-color:transparent;transition:all .3s}
+.is-ai .btn:hover{transform:scale(1.03);box-shadow:0 6px 18px rgba(58,72,220,.35)}
+.is-ai .icoblock{background:linear-gradient(140deg,#6a5cff,#3b82f6);box-shadow:0 6px 18px rgba(58,72,220,.35)}
+.is-ai .field input{border-color:var(--red)}
+html.js .enter-ai{opacity:0;transform:translateY(8px)}
+.enter-ai.run{animation:ai-fade-up 300ms ease both}
+@keyframes ai-fade-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* 反例颜料结束 */
+
+html.js .mask-inner{transform:translateY(100%)}
+.mask.run .mask-inner{animation:print-reveal 280ms var(--ease-print) both}
+@keyframes print-reveal{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+@media(prefers-reduced-motion:reduce){
+  .is-ai .cardbox,.is-ai .cardbox:hover,.is-ai .btn,.is-ai .btn:hover,.bar button,.replay,.closing .back{transition:none}
+  .is-ai .cardbox:hover,.is-ai .btn:hover{transform:none}
+  .enter-ai.run{animation:none}
+  html.js .enter-ai{opacity:1;transform:none}
+  html.js .mask-inner,.mask.run .mask-inner{transform:none}
+  .mask.run .mask-inner{animation:none}
+}
+
+@media(max-width:900px){
+  .mast h1{font-size:34px}
+}
+@media(max-width:460px){
+  .br-m{display:inline}
+}
+@media(max-width:760px){
+  .bar{padding:8px 16px}
+  .page{padding:40px 16px 64px}
+  .mast{padding-bottom:40px}
+  .mast h1{font-size:34px}
+  .pair{margin-top:40px;padding-top:40px}
+  .pairhead{grid-template-columns:24px minmax(0,1fr);gap:4px 16px}
+  .pairhead .no{padding-top:4px}
+  .cols{grid-template-columns:1fr;gap:40px}
+  .why>div{grid-template-columns:1fr;gap:4px}
+  .stage{padding:16px}
+  .closing{margin-top:64px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#pairs">跳到八组对照</a>
+<header class="bar">
+  <a class="brand" href="./">前端模式库</a>
+  <span class="where">反例对照</span>
+  <span class="grow"></span>
+  <button id="theme" type="button" aria-pressed="false">夜间</button>
+</header>
+<main class="page" id="pairs" tabindex="-1">
+  <header class="mast">
+    <h1>AI 默认写法，<br class="br-m">与本库的改法</h1>
+    <p class="dek">这页是给 AI 看的：左栏是会让人一眼认出「这是模板」的默认写法，右栏是本库的改法。八组对照，每组只差三个参数，右边那栏可以直接抄。</p>
+    <p class="hint">左右两边放的是同一段内容，只差参数。左栏标着「别照抄」，右栏标着「直接抄」。</p>
+  </header>
+
+  <section class="pair" id="p01" aria-labelledby="h01">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">01</span>
+      <h2 id="h01">卡片</h2>
+      <p class="gist">软阴影加 4px 上浮，换成一条硬边和 1px 位移。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：12px 圆角、0 4px 12px rgba(0,0,0,.08) 软阴影、hover 上浮 4px -->
+        <div class="stage">
+          <div class="cardbox">
+            <p class="metric-k">本周活跃</p>
+            <p class="metric-v">1 284</p>
+            <p class="metric-t">较上周 +6.2%</p>
+          </div>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：border-radius:6px; border:1px solid var(--line); box-shadow:0 1px 0 var(--line); hover 位移 1px -->
+        <div class="stage">
+          <div class="cardbox">
+            <p class="metric-k">本周活跃</p>
+            <p class="metric-v">1 284</p>
+            <p class="metric-t">较上周 +6.2%</p>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>12px 圆角配一层柔和投影、鼠标移上去整块上浮 4px，是任何模板的第一块砖。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>圆角 12px → 6px；阴影 0 4px 12px rgba(0,0,0,.08) → 0 1px 0 var(--line)；hover 位移 4px → 1px。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>卡片落在纸面上有一条实边，悬停只挪 1px，不会整块飘起来。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p02" aria-labelledby="h02">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">02</span>
+      <h2 id="h02">按钮</h2>
+      <p class="gist">紫蓝渐变加放大，换成纸色底、1px 描边，只动 background。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：紫蓝渐变、scale(1.03)、transition:all .3s -->
+        <div class="stage">
+          <button class="btn" type="button">保存更改</button>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：background:var(--paper); border:1px solid var(--ink); transition:background-color 120ms linear -->
+        <div class="stage">
+          <button class="btn" type="button">保存更改</button>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>紫蓝渐变加 hover 放大 1.03，是 AI 在没有设计题目时最先写出来的按钮。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>背景 紫蓝渐变 → var(--paper)；边框 无 → 1px solid var(--ink)；过渡 all .3s + scale(1.03) → 只动 background 120ms。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>按钮不再变大，悬停只是底色沉一格，像纸被手指按住。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p03" aria-labelledby="h03">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">03</span>
+      <h2 id="h03">入场</h2>
+      <p class="gist">整块淡入 8px，换成遮罩揭示与印刷曲线。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption>
+          <span class="who">AI 默认</span><span class="say">别照抄</span>
+          <button class="replay" type="button" data-replay="enter-ai" aria-label="重播左栏入场">重播</button>
+        </figcaption>
+        <!-- 反例（只此一栏）：fade-up 8px、300ms、默认 ease 曲线 -->
+        <div class="stage">
+          <p class="enter-ai" id="enter-ai" data-enter>滚到这里，这一段整块从下往上淡入。</p>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption>
+          <span class="who">本库改法</span><span class="say">直接抄</span>
+          <button class="replay" type="button" data-replay="enter-mask" aria-label="重播右栏入场">重播</button>
+        </figcaption>
+        <!-- 抄：overflow:hidden 遮罩；内层 translateY(100%)→0；280ms cubic-bezier(.2,.75,.25,1) -->
+        <div class="stage">
+          <div class="mask" id="enter-mask" data-enter>
+            <div class="mask-inner">
+              <p class="ex">滚到这里，这一行从纸缝里被抽出来。</p>
+              <p class="sub">遮罩不动，里面的字动。</p>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>整块从下往上淡入 8px、配 300ms 默认缓动，是 AI 给每一段的固定入场。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>位移 8px → 遮罩位移；曲线 ease → cubic-bezier(.2,.75,.25,1)；时长 300ms → 280ms。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>文字像从一条纸缝里抽出来，眼睛能看出方向，而不是整块发亮。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p04" aria-labelledby="h04">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">04</span>
+      <h2 id="h04">图标块</h2>
+      <p class="gist">渐变圆角方块加发光，换成 1px 线条、无底色。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：渐变圆角方块 10px、彩色发光阴影、白色描边 -->
+        <div class="stage">
+          <div class="iconrow">
+            <span class="icoblock" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 4v9"/><path d="M8.5 9.5 12 13l3.5-3.5"/><path d="M5 17v2h14v-2"/></svg>
+            </span>
+            <span class="txt"><span class="t">导出报告</span><span class="s">上月的数据</span></span>
+          </div>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：stroke-width:1; color:var(--ink); 24px；不加底色块与发光 -->
+        <div class="stage">
+          <div class="iconrow">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 4v9"/><path d="M8.5 9.5 12 13l3.5-3.5"/><path d="M5 17v2h14v-2"/></svg>
+            </span>
+            <span class="txt"><span class="t">导出报告</span><span class="s">上月的数据</span></span>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>圆角方块、渐变底、再补一层彩色发光，是功能图标最常见的美化手法。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>图标 渐变方块 → 1px 线条；底色 有 → 无；发光 0 6px 18px 紫 → 只留 currentColor。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>视线先落在文字上，图标只负责指路，不再抢走一块彩色。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p05" aria-labelledby="h05">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">05</span>
+      <h2 id="h05">空态</h2>
+      <p class="gist">插画加「暂无数据」，换成一句具体引导和一个动作。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：通用插画居中 + 「暂无数据」，不给出下一步 -->
+        <div class="stage center">
+          <div class="empty-ai">
+            <svg viewBox="0 0 96 72" aria-hidden="true">
+              <rect x="8" y="12" width="80" height="52" rx="6"/>
+              <circle cx="32" cy="32" r="7"/>
+              <path d="M8 56l20-16 13 10 10-8 37 14"/>
+            </svg>
+            <p>暂无数据</p>
+          </div>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：一句具体状态 + 一个动作按钮，左对齐，不配插画 -->
+        <div class="stage">
+          <div class="empty-ok">
+            <p>还没有导入过数据。先把导出的 CSV 拖进来。</p>
+            <button class="btn" type="button">导入 CSV</button>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>插画配一句「暂无数据」，等于承认这里空了，却没告诉人下一步做什么。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>文案 暂无数据 → 一句具体状态；动作 无 → 「导入 CSV」按钮；对齐 居中 → 左对齐。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>空状态第一次给出了下一步，用户不用猜该点哪里。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p06" aria-labelledby="h06">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">06</span>
+      <h2 id="h06">表单错误</h2>
+      <p class="gist">整框红边加「输入有误」，换成字段下就地写清原因。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：整框红边 + 「输入有误」，只说失败不说原因 -->
+        <div class="stage">
+          <div class="field">
+            <label for="mail-ai">邮箱</label>
+            <input id="mail-ai" name="mail-ai" type="email" value="zhang@" aria-invalid="true" aria-describedby="mail-ai-msg" autocomplete="off" spellcheck="false">
+            <p class="msg err-ai" id="mail-ai-msg">输入有误</p>
+          </div>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：字段下就地写原因与正确示例；错误只用 1px 红标记，不整框变红 -->
+        <div class="stage">
+          <div class="field">
+            <label for="mail-ok">邮箱</label>
+            <input id="mail-ok" name="mail-ok" type="email" value="zhang@" aria-invalid="true" aria-describedby="mail-ok-msg" autocomplete="off" spellcheck="false">
+            <p class="msg err-ok" id="mail-ok-msg">少了 @ 后面的域名。补成 <span class="mono">name@example.com</span> 这样就行。</p>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>整框变红加一句「输入有误」，只报了失败，没报原因。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>范围 整框 → 只标字段；文案 输入有误 → 缺什么（少了 @ 后的域名）；补充 无 → 一个正确示例。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>用户改一个字就能过，不用重读整张表单。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p07" aria-labelledby="h07">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">07</span>
+      <h2 id="h07">区块头</h2>
+      <p class="gist">英文眉标加标题加副标题，换成编号加大数字加一句说明。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：全大写英文眉标 + 大标题 + 副标题的三段式 -->
+        <div class="stage">
+          <div class="demohead">
+            <p class="eyebrow">OUR FEATURES</p>
+            <p class="t">为团队提供强大支持</p>
+            <p class="s">一站式解决方案，助力业务持续增长</p>
+          </div>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：等宽编号 11px + 大数字 56px + 一句说明 13px，只留两层 -->
+        <div class="stage">
+          <div class="statbig">
+            <span class="idx">02</span>
+            <span class="n">184</span>
+            <p class="cap">条已归档的动效，按用途分了 25 类。</p>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>全大写英文眉标、大标题、副标题，三段式是模板区块头的固定姿势。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>层级 3 段 → 2 段；主角 文字标题 → 56px 数字；编号 无 → 等宽 02。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>一整块只看得到一个数，先读数，再读它下面那句说明。</dd></div>
+    </dl>
+  </section>
+
+  <section class="pair" id="p08" aria-labelledby="h08">
+    <div class="pairhead">
+      <span class="no" aria-hidden="true">08</span>
+      <h2 id="h08">元信息</h2>
+      <p class="gist">中点串成一行，换成两行自然语言。</p>
+    </div>
+    <div class="cols">
+      <figure class="col is-ai">
+        <figcaption><span class="who">AI 默认</span><span class="say">别照抄</span></figcaption>
+        <!-- 反例（只此一栏）：A · B · C 中点拼接，名词堆在一行 -->
+        <div class="stage">
+          <p class="meta-ai">设计系统 · 2026 · 阅读 6 分钟</p>
+        </div>
+      </figure>
+      <figure class="col is-ok">
+        <figcaption><span class="who">本库改法</span><span class="say">直接抄</span></figcaption>
+        <!-- 抄：两行，13px 主行 + 11px 次行；不用中点，写完整句子 -->
+        <div class="stage">
+          <p class="meta-ok">
+            <span class="when"><time datetime="2026-10-23">2026 年 10 月更新</time></span>
+            <span class="howlong">读完约 6 分钟，含 3 个可抄示例</span>
+          </p>
+        </div>
+      </figure>
+    </div>
+    <dl class="why">
+      <div><dt>为什么像 AI</dt><dd>用中点把几个词串成一行，是模板作者省排版的写法。</dd></div>
+      <div><dt>改了哪三个参数</dt><dd>分隔 中点 → 换行；行数 1 → 2；字号 11px 一行 → 13px 与 11px 分主次。</dd></div>
+      <div><dt>能被看见的差别</dt><dd>两行小字能读成一句完整的话，不再是一串标签。</dd></div>
+    </dl>
+  </section>
+
+  <footer class="closing">
+    <p>左栏用来认，右栏用来抄。新页面动手之前先把左栏扫一遍，能省掉一次返工。</p>
+    <a class="back" href="./">回到前端模式库</a>
+    <p class="colophon">本页自己也按右栏的规则写：颜色、字号、间距、圆角、阴影都取库里的令牌。左栏的越界只用于演示，并已在注释里点名。</p>
+  </footer>
+</main>
+<script>
+(function(){
+  var root=document.documentElement;
+  var btn=document.getElementById('theme');
+  var KEY='ai-tells.theme';
+  function paint(){
+    var night=root.getAttribute('data-theme')==='night';
+    btn.textContent=night?'白天':'夜间';
+    btn.setAttribute('aria-pressed',night?'true':'false');
+  }
+  paint();
+  btn.addEventListener('click',function(){
+    var night=root.getAttribute('data-theme')==='night';
+    if(night){root.removeAttribute('data-theme');}else{root.setAttribute('data-theme','night');}
+    try{localStorage.setItem(KEY,night?'paper':'night');}catch(e){}
+    paint();
+  });
+
+  var targets=document.querySelectorAll('[data-enter]');
+  var io=null;
+  if('IntersectionObserver' in window){
+    io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('run');io.unobserve(en.target);}
+      });
+    },{threshold:0.35});
+    Array.prototype.forEach.call(targets,function(el){io.observe(el);});
+  }else{
+    Array.prototype.forEach.call(targets,function(el){el.classList.add('run');});
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-replay]'),function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-replay'));
+      if(!el){return;}
+      el.classList.remove('run');
+      void el.offsetWidth;
+      el.classList.add('run');
+    });
+  });
+})();
+</script>
+</body>
+</html>

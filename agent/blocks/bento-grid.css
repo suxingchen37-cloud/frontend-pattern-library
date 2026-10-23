@@ -1,8 +1,0 @@
-.d-bg3{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:60px 60px 44px;gap:5px;width:250px}
-.d-bg3>div{border:1px solid var(--line);border-radius:6px;padding:7px 8px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;transition:background .15s}
-.d-bg3>div:hover{background:var(--bg)}
-.d-bg3 b{font-size:11px}
-.d-bg3 span{font:8.5px var(--mono);color:var(--faint)}
-.d-bento-grid-bgbig3{grid-row:1/3;background:var(--lime-soft);border-color:var(--ink)}
-.d-bento-grid-bgbig3 b{font-family:var(--serif);font-size:15px}
-.d-bento-grid-bgwide3{grid-column:1/3;flex-direction:row;justify-content:space-between;align-items:center}

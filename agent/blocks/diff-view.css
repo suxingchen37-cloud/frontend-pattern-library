@@ -1,6 +1,0 @@
-.d-diff{width:250px;font:12px ui-monospace,Consolas,monospace;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
-.d-diff .d-diff-view-line{padding:3px 9px;white-space:pre;overflow:hidden;text-overflow:ellipsis}
-.d-diff .d-diff-view-add{background:#e4f3d8;color:#22421a}
-.d-diff .d-diff-view-del{background:#fbe1da;color:#6d2415}
-.d-diff .d-diff-view-ctx{color:var(--muted)}
-.d-diff .d-diff-view-fold{border:0;border-top:1px solid var(--line);background:transparent;width:100%;font:11px inherit;padding:5px;color:var(--faint);cursor:pointer}

@@ -1,0 +1,61 @@
+name: deploy-pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 生成 AI 取料产物（agent/ 不在仓库里，必须在这里重建，否则线上 404）
+        run: node tools/build.mjs
+
+      - name: 站点补丁必须与数据一致
+        run: node tools/site.mjs --check
+
+      - name: 三方一致性
+        run: node tools/verify.mjs
+
+      - name: 组装发布目录（显式白名单，不发布 data/ tools/ 等源与杂物）
+        run: |
+          mkdir -p _site
+          cp -R agent _site/
+          cp -R site _site/
+          cp index.html motion-lab.html design-system.html ai-tells.html llms.txt _site/
+          cp lab-more.js lab-extra2.js lab-extra3.js lab-extra4.js lab-recipe.js _site/
+          cp ds-specs.js ds-content.js ds-render.js _site/
+          # 防御：确保取料入口真的在发布物里
+          test -f _site/agent/index.json
+          test -f _site/llms.txt
+          test -f _site/lab-extra4.js
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

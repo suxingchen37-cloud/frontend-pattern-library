@@ -1,5 +1,0 @@
-.d-tl{position:relative;padding-left:16px;display:flex;flex-direction:column;gap:12px}
-.d-tl:before{content:"";position:absolute;left:4px;top:4px;bottom:4px;width:1px;background:var(--line)}
-.d-tl div{position:relative}
-.d-tl div:before{content:"";position:absolute;left:-16px;top:4px;width:7px;height:7px;border-radius:999px;background:var(--ink)}
-.d-tl b{font-size:11.5px}.d-tl p{margin:2px 0 0;font-size:10.5px;color:var(--muted)}

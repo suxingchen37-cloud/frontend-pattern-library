@@ -1,7 +1,0 @@
-.d-ba3{position:relative;width:270px;height:120px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
-.d-before-after-after3,.d-before-after-before3{position:absolute;inset:0;display:flex;align-items:flex-end;padding:8px}
-.d-before-after-after3{background:linear-gradient(90deg,var(--lime),#c7ec9a)}
-.d-before-after-before3{background:var(--ink);color:var(--paper);overflow:hidden;width:55%}
-.d-before-after-after3 span,.d-before-after-before3 span{font:9px var(--mono);letter-spacing:.1em;white-space:nowrap}
-.d-before-after-before3 span{position:absolute;left:8px;bottom:8px}
-.d-ba3 input{position:absolute;left:8px;right:8px;bottom:6px;width:calc(100% - 16px);accent-color:var(--ink);z-index:2}

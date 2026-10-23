@@ -1,4 +1,0 @@
-.d-scale{width:120px}
-.d-scaledot{width:26px;height:26px;border-radius:10px;background:var(--lime);animation:d-motion-scale-hop 1.2s var(--ease) infinite}
-@keyframes d-motion-scale-hop{50%{transform:translateY(-8px)}}
-.d-hint{font-size:11px;color:var(--faint)}
