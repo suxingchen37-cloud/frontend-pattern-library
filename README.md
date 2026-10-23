@@ -38,7 +38,7 @@ data/schema.md                 字段契约与机器校验规则
 ## 改完数据必须跑这三条
 
 ```bash
-node tools/build.mjs && node tools/site.mjs && node tools/verify.mjs
+node tools/build.mjs && node tools/site.mjs && node tools/emit.mjs && node tools/verify.mjs
 ```
 
 三条都退出 0 才算改完。**`agent/` 目前入库**，所以改完还要把再生后的 `agent/` 一起提交
