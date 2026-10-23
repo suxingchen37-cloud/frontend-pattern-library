@@ -1,0 +1,11 @@
+.d-ghost{position:relative;width:300px;height:150px;padding:16px;color:var(--ink)}
+.d-ghost-slot{position:relative;width:120px;height:80px}
+.d-ghost-frame{position:absolute;inset:0;border:1px dashed var(--line);border-radius:10px}
+.d-ghost-card,.d-ghost-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:8px 10px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
+.d-ghost-card{box-shadow:0 1px 0 var(--line);cursor:grab;touch-action:none;user-select:none;transition:opacity .18s linear}
+.d-ghost-copy{border-color:var(--ink);box-shadow:0 12px 24px -8px #20241e26;opacity:0;pointer-events:none;will-change:transform}
+.d-ghost[data-drag="1"] .d-ghost-card{opacity:.28;border-style:dashed;cursor:grabbing}
+.d-ghost-card b,.d-ghost-copy b{font-size:13px;font-weight:650}
+.d-ghost-card em,.d-ghost-copy em{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--faint)}
+.d-ghost-card:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-ghost-hint{position:absolute;left:16px;bottom:8px;margin:0;font-family:var(--mono);font-size:9px;color:var(--faint)}

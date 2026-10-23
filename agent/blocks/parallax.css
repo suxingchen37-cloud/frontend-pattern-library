@@ -1,0 +1,6 @@
+.d-par{position:relative;width:220px;height:90px;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.d-par i{position:absolute;border-radius:999px}
+.d-par .d-parallax-l1{inset:18px;background:var(--mint);opacity:.5;transition:transform .2s}
+.d-par .d-parallax-l2{inset:30px;background:var(--lav);opacity:.6;transition:transform .2s}
+.d-par .d-parallax-l3{inset:44px;background:var(--ink);opacity:.8;transition:transform .2s}
+.d-hint{font-size:11px;color:var(--faint)}

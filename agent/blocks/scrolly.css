@@ -1,0 +1,5 @@
+.d-scrolly{display:flex;gap:12px;width:100%}
+.d-scrolly .d-scrolly-steps{display:flex;flex-direction:column;gap:8px;font-size:11.5px;color:var(--faint)}
+.d-scrolly .d-scrolly-steps b.d-scrolly-on{color:var(--ink)}
+.d-scrolly .d-scrolly-panes{flex:1;height:110px;overflow:auto;scroll-snap-type:y mandatory;border-left:1px solid var(--line);padding-left:12px}
+.d-scrolly .d-scrolly-panes div{height:110px;scroll-snap-align:start;font-size:11.5px;color:var(--muted);display:flex;align-items:center}

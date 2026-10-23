@@ -1,0 +1,8 @@
+.d-sk3{display:flex;gap:10px;flex-wrap:wrap}
+.d-sk3>div{display:flex;flex-direction:column;gap:6px;width:86px;padding:8px;border:1px solid var(--line);border-radius:10px}
+.d-sk3 i{height:8px;border-radius:2px;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 7%,transparent),color-mix(in srgb,var(--ink) 15%,transparent),color-mix(in srgb,var(--ink) 7%,transparent));background-size:200% 100%;animation:d-skeleton-set-shim2 1.2s linear infinite}
+.d-sk3 .d-skeleton-set-k-card .d-skeleton-set-big{height:26px}
+.d-sk3 .d-skeleton-set-k-card .d-skeleton-set-short{width:60%}
+.d-sk3 .d-skeleton-set-k-chat i{height:14px;width:70%}
+.d-sk3 .d-skeleton-set-k-chat .d-skeleton-set-me{align-self:flex-end;background:color-mix(in srgb,var(--lime) 50%,transparent)}
+@keyframes d-skeleton-set-shim2{to{background-position:-200% 0}}

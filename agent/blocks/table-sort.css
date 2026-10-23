@@ -1,0 +1,6 @@
+.d-ts3{width:250px;border-collapse:collapse;font-size:11px}
+.d-ts3 th{font:9px var(--mono);letter-spacing:.06em;color:var(--faint);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none}
+.d-ts3 th span{opacity:.5}
+.d-ts3 td{padding:6px 8px;border-bottom:1px solid var(--line);color:var(--muted)}
+.d-ts3 td:last-child{text-align:right;font-family:var(--mono)}
+.d-ts3 th:last-child{text-align:right}

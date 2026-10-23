@@ -1,0 +1,11 @@
+.d-icon-morph-menu{display:inline-flex;align-items:center;gap:var(--sp-12);font-family:var(--sans);outline:none}
+.d-im-btn{position:relative;width:40px;height:40px;padding:0;border:1px solid var(--line);border-radius:6px;background:var(--paper);box-shadow:inset 0 1px 0 #fff5;cursor:pointer}
+.d-im-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-im-bar{position:absolute;left:10px;width:18px;height:1px;background:var(--ink);transform-origin:center;transition:transform 280ms cubic-bezier(.34,1.56,.64,1) 120ms,opacity 120ms linear}
+.d-im-top{top:13px}
+.d-im-mid{top:19px}
+.d-im-bot{top:25px}
+.d-im-btn[aria-expanded=true] .d-im-top{transform:translateY(6px) rotate(45deg)}
+.d-im-btn[aria-expanded=true] .d-im-mid{opacity:0;transform:scaleX(.4)}
+.d-im-btn[aria-expanded=true] .d-im-bot{transform:translateY(-6px) rotate(-45deg)}
+.d-im-label{font-size:var(--fs-11);letter-spacing:.08em;color:var(--muted);min-width:26px}

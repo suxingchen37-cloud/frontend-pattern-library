@@ -70,6 +70,13 @@ C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长�
 3. 这一页独有的细节是什么（换个页面不会有的那种）。
 4. 自检哪几条没过（全过就写「全过」）。
 
+## 直接从 GitHub 取料（没有 Pages 时用这个）
+
+- 远程基址（raw）：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`
+- 索引：`<基址>/agent/index.json`
+- 单条：`<基址>/agent/blocks/<id>.html`（同目录 `.css`，有交互再加 `.js`）
+- 预览页在 Pages 上是网页；从 raw 取时直接读 `.html` 文本即可
+
 ## 取料路径
 - agent/index.json：整个库的索引，一行一条 item；files 里的路径相对 agent/，形如 blocks/<id>.css。
 - agent/blocks/<id>.html：body 原文，直接放进你的容器；外层自己加作用域（例如 #c-<id>）。

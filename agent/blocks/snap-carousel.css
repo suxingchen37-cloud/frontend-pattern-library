@@ -1,0 +1,2 @@
+.d-snap{display:flex;gap:10px;width:100%;overflow:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.d-snap i{flex:0 0 78%;height:70px;scroll-snap-align:center;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);font-style:normal;font-size:12px;color:var(--muted)}

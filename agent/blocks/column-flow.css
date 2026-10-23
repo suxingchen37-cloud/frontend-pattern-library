@@ -1,0 +1,5 @@
+.d-cf3{width:280px;height:110px;overflow:hidden}
+.d-cf3 p{margin:0;font-size:10.5px;line-height:1.75;color:var(--muted);column-count:2;column-gap:14px}
+.d-column-flow-cfbtns3{display:flex;gap:4px}
+.d-column-flow-cfbtns3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:2px;padding:2px 7px;cursor:pointer}
+.d-column-flow-cfbtns3 button.d-column-flow-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}

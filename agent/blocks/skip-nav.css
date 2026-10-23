@@ -1,0 +1,11 @@
+.d-skn{position:relative;width:300px;max-width:100%;height:150px;border:1px solid var(--line);border-radius:2px;background:var(--paper);overflow:hidden;font-family:var(--sans)}
+.d-skn-link{position:absolute;left:8px;top:-26px;z-index:2;display:block;padding:4px 8px;border:1px solid var(--ink);border-radius:2px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-decoration:none;transition:top 120ms linear}
+.d-skn-link:focus,.d-skn-link:focus-visible{top:8px;outline:1px solid var(--paper);outline-offset:2px}
+.d-skn-nav{display:flex;gap:8px;padding:6px 8px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+.d-skn-body{padding:10px 8px 0}
+.d-skn-lead{margin:0 0 6px;font-size:10.5px;line-height:1.65;color:var(--muted)}
+.d-skn-main{padding:6px 8px;border-radius:2px;background:var(--bg);font-size:10px;line-height:1.6;color:var(--ink);outline:0;outline-offset:2px}
+.d-skn-main.is-hit{outline:1px solid var(--ink)}
+.d-skn-try{margin-top:8px;padding:3px 8px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--faint);font-family:var(--mono);font-size:9px;letter-spacing:.06em;cursor:pointer;transition:border-color 120ms linear,color 120ms linear}
+.d-skn-try:hover{border-color:var(--ink);color:var(--ink)}
+.d-skn-try:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

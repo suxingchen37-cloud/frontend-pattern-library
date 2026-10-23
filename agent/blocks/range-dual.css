@@ -1,0 +1,5 @@
+.d-rd3{width:240px}
+.d-range-dual-rdvals3{display:flex;gap:6px;align-items:baseline;font:10px var(--mono);color:var(--faint);margin-bottom:6px}
+.d-range-dual-rdvals3 b{font-size:14px;color:var(--ink);font-family:var(--sans)}
+.d-range-dual-rdtrack3{position:relative;height:24px}
+.d-range-dual-rdtrack3 input{position:absolute;left:0;width:100%;top:4px;accent-color:var(--ink);margin:0}

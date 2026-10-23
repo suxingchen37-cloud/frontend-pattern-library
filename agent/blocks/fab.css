@@ -1,0 +1,5 @@
+.d-fab{position:relative;width:180px;height:120px}
+.d-fab .d-fab-fab{position:absolute;right:8px;bottom:8px;width:40px;height:40px;border-radius:999px;border:0;background:var(--ink);color:var(--paper);font-size:18px;cursor:pointer;box-shadow:0 8px 20px #20241e26;transition:transform .2s var(--ease)}
+.d-fab[data-open] .d-fab-fab{transform:rotate(45deg)}
+.d-fab .d-fab-acts{position:absolute;right:10px;bottom:56px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.d-fab .d-fab-acts button{font:inherit;font-size:11px;padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--paper);cursor:pointer;color:inherit}

@@ -1,0 +1,12 @@
+.d-bound{position:relative;width:300px;height:150px;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink)}
+.d-bound-box{position:relative;width:280px;height:120px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
+.d-bound-arrow{position:absolute;width:6px;height:6px;border-top:1px solid var(--ink);border-right:1px solid var(--ink);opacity:0;transition:opacity .12s linear}
+.d-bound-arrow[data-side="l"]{left:4px;top:50%;margin-top:-3px;transform:rotate(-135deg)}
+.d-bound-arrow[data-side="r"]{right:4px;top:50%;margin-top:-3px;transform:rotate(45deg)}
+.d-bound-arrow[data-side="t"]{top:4px;left:50%;margin-left:-3px;transform:rotate(-45deg)}
+.d-bound-arrow[data-side="b"]{bottom:4px;left:50%;margin-left:-3px;transform:rotate(135deg)}
+.d-bound-box[data-push="l"] .d-bound-arrow[data-side="l"],.d-bound-box[data-push="r"] .d-bound-arrow[data-side="r"],.d-bound-box[data-push="t"] .d-bound-arrow[data-side="t"],.d-bound-box[data-push="b"] .d-bound-arrow[data-side="b"]{opacity:1}
+.d-bound-knob{position:absolute;left:8px;top:8px;width:88px;height:56px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--ink);border-radius:6px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);cursor:grab;touch-action:none;user-select:none;will-change:transform}
+.d-bound-knob[data-drag]{cursor:grabbing;box-shadow:0 12px 24px -8px #20241e26}
+.d-bound-knob:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-bound-hint{margin:0;font-family:var(--mono);font-size:9px;color:var(--faint)}

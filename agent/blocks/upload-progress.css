@@ -1,0 +1,7 @@
+.d-up3{width:220px}
+.d-upload-progress-upfile3{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:4px}
+.d-upload-progress-upfile3 b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.d-upload-progress-upbar3{height:5px;background:var(--line);border-radius:999px;overflow:hidden}
+.d-upload-progress-upbar3 i{display:block;height:100%;width:0;background:var(--ink);transition:width .12s linear}
+.d-upload-progress-upacts3{display:flex;gap:4px;margin-top:6px}
+.d-upload-progress-upacts3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}

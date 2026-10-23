@@ -1,0 +1,5 @@
+.d-an3{width:280px;font-size:12px;line-height:1.9;position:relative}
+.d-an3 p{margin:0;user-select:text}
+.d-an3 mark{background:var(--lime);color:#141a10;padding:0 2px}
+.d-text-annotate-antip3{position:absolute;right:0;bottom:-8px;z-index:2}
+.d-text-annotate-antip3 button{font:9.5px var(--mono);border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:2px;padding:3px 8px;cursor:pointer}

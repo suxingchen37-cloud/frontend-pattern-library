@@ -1,0 +1,4 @@
+.d-pw{width:200px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:12px;outline:none}
+.d-bars3{display:flex;gap:5px;width:200px;margin-top:8px}
+.d-bars3 i{height:4px;flex:1;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,transparent);transition:background .2s}
+.d-hint{font-size:11px;color:var(--faint)}

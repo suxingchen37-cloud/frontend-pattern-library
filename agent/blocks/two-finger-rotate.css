@@ -1,0 +1,11 @@
+.d-rot{position:relative;width:300px;height:150px;color:var(--ink)}
+.d-rot-stage{position:absolute;left:14px;top:16px;width:200px;height:112px;border:1px dashed var(--line);border-radius:6px}
+.d-rot-axis-h{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.d-rot-axis-v{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--line)}
+.d-rot-card{position:absolute;left:50%;top:50%;width:112px;height:72px;margin:-36px 0 0 -56px;display:flex;flex-direction:column;justify-content:space-between;padding:8px 10px;background:var(--paper);border:1px solid var(--ink);border-radius:6px;box-shadow:0 1px 0 var(--line);cursor:grab;touch-action:none;user-select:none;will-change:transform}
+.d-rot-card b{font-size:11px;font-weight:650;letter-spacing:.02em}
+.d-rot-card em{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}
+.d-rot-card[data-drag]{cursor:grabbing;box-shadow:0 12px 24px -8px #20241e26}
+.d-rot-card:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-rot-num{position:absolute;right:14px;top:16px;font-family:var(--mono);font-size:21px;line-height:1.05;letter-spacing:-.02em;color:#2b4b8f}
+.d-rot-hint{position:absolute;left:14px;bottom:8px;margin:0;font-family:var(--mono);font-size:9px;line-height:1.6;color:var(--faint)}

@@ -1,0 +1,4 @@
+.d-iv{display:flex;flex-direction:column;gap:4px;width:200px}
+.d-iv input{padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:12px;outline:none}
+.d-iv input.bad{border-color:#c4553a}
+.d-iv span{font-size:10.5px;color:#a4442c;min-height:14px}

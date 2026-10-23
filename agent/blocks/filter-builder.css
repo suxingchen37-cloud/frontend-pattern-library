@@ -1,0 +1,6 @@
+.d-fb3{width:250px}
+.d-filter-builder-fbtabs3{display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap}
+.d-filter-builder-fbtabs3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:999px;padding:2px 8px;cursor:pointer}
+.d-filter-builder-fbtabs3 button.d-filter-builder-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.d-filter-builder-fbrows3 div{font-size:10.5px;padding:6px 8px;border-bottom:1px solid var(--line);color:var(--muted)}
+.d-filter-builder-fbrows3 div[hidden]{display:none}
