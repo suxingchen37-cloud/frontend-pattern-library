@@ -1,0 +1,18 @@
+{
+  "id": "volume-popover",
+  "cat": "媒体",
+  "t": "音量浮层",
+  "en": "volume popover",
+  "d": "点喇叭弹出竖直滑杆，不是横在按钮下面：竖条占的横向空间小，手指上下滑也更自然。滑杆里画出「当前音量」的填充段，光有一个小圆点时人不知道现在多大声。静音后图标变叉，再点恢复上一次的音量，不是回到满格。",
+  "body": "<div class=\"d-vp\" data-box><div class=\"d-vp-pop\" data-pop hidden><div class=\"d-vp-slider\" data-slider><i data-fill></i><b data-knob></b></div><span data-val>70</span></div><button type=\"button\" class=\"d-vp-btn\" data-btn aria-expanded=\"false\">音量</button></div>",
+  "css": ".d-vp{position:relative;display:flex;align-items:flex-end;justify-content:center;width:100%;max-width:340px;height:180px;padding-bottom:20px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}\n.d-vp-pop{position:absolute;bottom:64px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);box-shadow:0 12px 24px -8px #20241e26}\n.d-vp-slider{position:relative;width:6px;height:88px;border-radius:999px;background:var(--line);cursor:ns-resize;touch-action:none}\n.d-vp-slider i{position:absolute;left:0;right:0;bottom:0;height:70%;border-radius:999px;background:var(--ink)}\n.d-vp-slider b{position:absolute;left:-5px;bottom:70%;width:16px;height:10px;margin-bottom:-5px;border:1px solid var(--ink);border-radius:2px;background:var(--paper)}\n.d-vp-pop span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n.d-vp-btn{padding:5px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}",
+  "init": "root => {\n  var pop = root.querySelector('[data-pop]');\n  var btn = root.querySelector('[data-btn]');\n  var slider = root.querySelector('[data-slider]');\n  var fill = root.querySelector('[data-fill]');\n  var knob = root.querySelector('[data-knob]');\n  var val = root.querySelector('[data-val]');\n  if (!pop || !btn || !slider || !fill) return;\n  var v = .7, last = .7, drag = false;\n  var paint = function () {\n    fill.style.height = (v * 100).toFixed(0) + '%';\n    if (knob) knob.style.bottom = (v * 100).toFixed(0) + '%';\n    if (val) val.textContent = String(Math.round(v * 100));\n    btn.textContent = v === 0 ? '静音' : '音量 ' + Math.round(v * 100);\n  };\n  btn.addEventListener('click', function () {\n    if (v === 0) { v = last || .7; paint(); pop.hidden = true; btn.setAttribute('aria-expanded', 'false'); return; }\n    pop.hidden = !pop.hidden;\n    btn.setAttribute('aria-expanded', pop.hidden ? 'false' : 'true');\n  });\n  var set = function (e) { var r = slider.getBoundingClientRect(); v = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height)); if (v > 0) last = v; paint(); };\n  slider.addEventListener('pointerdown', function (e) { drag = true; slider.setPointerCapture(e.pointerId); set(e); });\n  slider.addEventListener('pointermove', function (e) { if (drag) set(e); });\n  var end = function () { drag = false; };\n  slider.addEventListener('pointerup', end);\n  slider.addEventListener('pointercancel', end);\n  paint();\n}",
+  "motion": "无动效",
+  "tags": [
+    "音量",
+    "浮层",
+    "播放器",
+    "媒体"
+  ],
+  "source": "v4"
+}

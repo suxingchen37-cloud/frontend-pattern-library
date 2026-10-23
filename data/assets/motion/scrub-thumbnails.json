@@ -1,0 +1,18 @@
+{
+  "id": "scrub-thumbnails",
+  "cat": "媒体",
+  "t": "擦洗缩略图",
+  "en": "scrub thumbnails",
+  "d": "拖动进度时在手指上方弹出一帧缩略图，比只显示时间好找：人能认出画面，认不出「03:14」。缩略图跟着手指但不出边界，出边界时贴边——弹到屏幕外等于没有。松手才真正跳转，拖的时候不打断播放。",
+  "body": "<div class=\"d-st2\" data-box><div class=\"d-st2-track\" data-track><i data-fill></i></div><div class=\"d-st2-thumb\" data-thumb><b data-tc>00:00</b><span>预览帧</span></div><p class=\"d-st2-note\">按住进度条左右拖</p></div>",
+  "css": ".d-st2{position:relative;width:100%;max-width:340px;height:170px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end}\n.d-st2-track{position:relative;height:8px;border-radius:999px;background:var(--line);cursor:ew-resize;touch-action:none}\n.d-st2-track i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:var(--ink)}\n.d-st2-thumb{position:absolute;left:16px;bottom:44px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 10px;border:1px solid var(--ink);border-radius:6px;background:var(--bg);opacity:0;transition:opacity 120ms var(--ease);pointer-events:none}\n.d-st2-thumb.on{opacity:1}\n.d-st2-thumb b{font-family:var(--font-mono);font-size:11px}\n.d-st2-thumb span{font-size:9px;color:var(--faint)}\n.d-st2-note{position:absolute;right:14px;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var box = root.querySelector('[data-box]');\n  var track = root.querySelector('[data-track]');\n  var fill = root.querySelector('[data-fill]');\n  var thumb = root.querySelector('[data-thumb]');\n  var tc = root.querySelector('[data-tc]');\n  if (!box || !track || !thumb) return;\n  var dur = 118, dragging = false;\n  var fmt = function (s) { var m = Math.floor(s / 60), sec = Math.floor(s % 60); return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec; };\n  var update = function (e) {\n    var r = track.getBoundingClientRect();\n    var p = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n    fill.style.width = (p * 100).toFixed(1) + '%';\n    if (tc) tc.textContent = fmt(p * dur);\n    thumb.style.left = Math.max(8, Math.min(box.clientWidth - 70, p * r.width + 16 - 30)) + 'px';\n  };\n  track.addEventListener('pointerdown', function (e) { dragging = true; thumb.classList.add('on'); track.setPointerCapture(e.pointerId); update(e); });\n  track.addEventListener('pointermove', function (e) { if (dragging) update(e); });\n  var end = function () { dragging = false; thumb.classList.remove('on'); };\n  track.addEventListener('pointerup', end);\n  track.addEventListener('pointercancel', end);\n}",
+  "motion": "机械",
+  "tags": [
+    "进度",
+    "缩略图",
+    "擦洗",
+    "媒体"
+  ],
+  "source": "v4"
+}

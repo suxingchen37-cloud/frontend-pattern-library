@@ -1,0 +1,18 @@
+{
+  "id": "live-indicator",
+  "cat": "媒体",
+  "t": "直播标记",
+  "en": "live indicator",
+  "d": "直播的红点只在真的在播时闪：暂停了还闪，等于告诉观众「现在是直播」，这是假信息。旁边写延迟秒数，因为直播总归有延迟，不写会有人在弹幕里问「怎么慢半拍」。画面上加一道扫描线，是唯一允许的低成本「在播」信号。",
+  "body": "<div class=\"d-li\" data-box><div class=\"d-li-frame\"><span class=\"d-li-scan\"></span><em data-lat>延迟 2.4s</em></div><div class=\"d-li-bar\"><span class=\"d-li-dot\" data-dot></span><b data-state>直播中</b><button type=\"button\" data-toggle>暂停</button></div></div>",
+  "css": ".d-li{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-li-frame{position:relative;height:110px;overflow:hidden;background:color-mix(in srgb,var(--ink) 70%,var(--paper))}\n.d-li-scan{position:absolute;left:0;right:0;height:36px;top:-36px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--paper) 16%,transparent),transparent);animation:d-live-indicator-scan 3.6s linear infinite}\n.d-li-frame em{position:absolute;right:10px;bottom:8px;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--paper);opacity:.85}\n.d-li-bar{display:flex;align-items:center;gap:8px;padding:8px 12px}\n.d-li-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-vermilion);animation:d-live-indicator-blink 1.4s steps(2) infinite}\n.d-li-bar.paused .d-li-dot{animation:none;background:var(--faint)}\n.d-li-bar.paused .d-li-scan{animation:none;opacity:0}\n.d-li-bar b{font-size:11px;font-weight:400}\n.d-li-bar button{margin-left:auto;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}\n@keyframes d-live-indicator-blink{50%{opacity:.25}}\n@keyframes d-live-indicator-scan{from{top:-36px}to{top:110px}}",
+  "init": "root => {\n  var bar = root.querySelector('.d-li-bar');\n  var btn = root.querySelector('[data-toggle]');\n  var state = root.querySelector('[data-state]');\n  var lat = root.querySelector('[data-lat]');\n  if (!bar || !btn) return;\n  var on = true, t = 2.4, timer = setInterval(function () { t = Math.min(9.9, t + .1); if (lat && on) lat.textContent = '延迟 ' + t.toFixed(1) + 's'; }, 900);\n  btn.addEventListener('click', function () {\n    on = !on;\n    bar.classList.toggle('paused', !on);\n    btn.textContent = on ? '暂停' : '继续';\n    if (state) state.textContent = on ? '直播中' : '已暂停';\n  });\n}",
+  "motion": "机械",
+  "tags": [
+    "直播",
+    "延迟",
+    "状态",
+    "媒体"
+  ],
+  "source": "v4"
+}

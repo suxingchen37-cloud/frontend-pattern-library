@@ -1,0 +1,18 @@
+{
+  "id": "chapter-markers",
+  "cat": "媒体",
+  "t": "章节标记",
+  "en": "chapter markers",
+  "d": "章节标记画在进度条上，不另开列表：看片时想跳的是「哪里」，不是「第几章」。每条标记有一根 2px 的刻度，悬停出名字；正在播放的那一章在下方文字里显示，不占画面。章节按秒切，不做淡入。",
+  "body": "<div class=\"d-cm\" data-box><div class=\"d-cm-bar\" data-bar><i data-fill></i><b data-mark style=\"--p:18%\"></b><b data-mark style=\"--p:46%\"></b><b data-mark style=\"--p:74%\"></b></div><div class=\"d-cm-row\"><span data-now>开场 · 00:00</span><em data-hint>点在刻度上跳章</em></div></div>",
+  "css": ".d-cm{width:100%;max-width:340px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}\n.d-cm-bar{position:relative;height:10px;border-radius:999px;background:var(--line);touch-action:none;cursor:pointer}\n.d-cm-bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:var(--ink)}\n.d-cm-bar b{position:absolute;top:-4px;left:var(--p);width:2px;height:18px;margin-left:-1px;background:var(--ink-vermilion)}\n.d-cm-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:10px}\n.d-cm-row span{font-size:11px}\n.d-cm-row em{font-style:normal;font-family:var(--font-mono);font-size:9px;color:var(--faint)}",
+  "init": "root => {\n  var bar = root.querySelector('[data-bar]');\n  var fill = root.querySelector('[data-fill]');\n  var now = root.querySelector('[data-now]');\n  if (!bar || !fill) return;\n  var marks = [[0, '开场'], [18, '推门'], [46, '停顿'], [74, '反打']];\n  var dur = 120, t = 0;\n  var fmt = function (s) { var m = Math.floor(s / 60), sec = Math.floor(s % 60); return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec; };\n  var paint = function () {\n    var p = t / dur;\n    fill.style.width = (p * 100).toFixed(1) + '%';\n    var cur = marks[0];\n    marks.forEach(function (m) { if (m[0] / 100 <= p) cur = m; });\n    if (now) now.textContent = cur[1] + ' · ' + fmt(t);\n  };\n  bar.addEventListener('pointerdown', function (e) { var r = bar.getBoundingClientRect(); t = Math.max(0, Math.min(dur, (e.clientX - r.left) / r.width * dur)); paint(); });\n  paint();\n}",
+  "motion": "机械",
+  "tags": [
+    "章节",
+    "进度",
+    "跳转",
+    "媒体"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "video-controls-minimal",
+  "cat": "媒体",
+  "t": "极简播放控件",
+  "en": "minimal player controls",
+  "d": "一条进度条上画三层：已播、缓冲、总长。缓冲不画出来，加载时用户只会看到「卡住」。播放键只放在左下角一个，时长放右下角——控件越少，画面越像片子而不是网页。空格键也能播，是因为看片的人手本来就在键盘上。",
+  "body": "<div class=\"d-vc\" data-player tabindex=\"0\"><div class=\"d-vc-frame\"><span data-tc>00:00</span><em data-state>暂停</em></div><div class=\"d-vc-bar\" data-bar><i class=\"d-vc-buf\"></i><i class=\"d-vc-play\" data-fill></i></div><div class=\"d-vc-row\"><button type=\"button\" class=\"d-vc-toggle\" data-toggle aria-label=\"播放或暂停\">▶</button><span data-total>00:42</span></div></div>",
+  "css": ".d-vc{position:relative;width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;outline:none}\n.d-vc:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n.d-vc-frame{position:relative;display:flex;align-items:flex-end;justify-content:space-between;height:120px;padding:10px 12px;background:linear-gradient(150deg,color-mix(in srgb,var(--ink) 82%,var(--paper)),color-mix(in srgb,var(--ink) 55%,var(--paper)));color:var(--paper)}\n.d-vc-frame span,.d-vc-frame em{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;font-style:normal;opacity:.85}\n.d-vc-bar{position:relative;height:6px;background:var(--line);cursor:pointer}\n.d-vc-buf{position:absolute;left:0;top:0;bottom:0;width:62%;background:color-mix(in srgb,var(--ink) 18%,transparent)}\n.d-vc-play{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink)}\n.d-vc-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px}\n.d-vc-toggle{width:30px;height:30px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-vc-row span{font-family:var(--font-mono);font-size:10px;color:var(--faint)}",
+  "init": "root => {\n  var box = root.querySelector('[data-player]');\n  var fill = root.querySelector('[data-fill]');\n  var tc = root.querySelector('[data-tc]');\n  var st = root.querySelector('[data-state]');\n  var btn = root.querySelector('[data-toggle]');\n  var bar = root.querySelector('[data-bar]');\n  if (!box || !fill || !bar) return;\n  var dur = 42, t = 0, playing = false, timer = 0;\n  var fmt = function (s) { return '00:' + (s < 10 ? '0' : '') + Math.floor(s); };\n  var paint = function () { fill.style.width = (t / dur * 100).toFixed(2) + '%'; if (tc) tc.textContent = fmt(t); };\n  var tick = function () { t = Math.min(dur, t + .25); paint(); if (t >= dur) pause(); };\n  var play = function () { if (playing) return; playing = true; if (btn) btn.textContent = '❚❚'; if (st) st.textContent = '播放中'; timer = setInterval(tick, 250); };\n  var pause = function () { playing = false; clearInterval(timer); if (btn) btn.textContent = '▶'; if (st) st.textContent = '暂停'; };\n  if (btn) btn.addEventListener('click', function () { playing ? pause() : play(); });\n  box.addEventListener('keydown', function (e) { if (e.key === ' ') { e.preventDefault(); playing ? pause() : play(); } });\n  bar.addEventListener('pointerdown', function (e) { var r = bar.getBoundingClientRect(); t = Math.max(0, Math.min(dur, (e.clientX - r.left) / r.width * dur)); paint(); });\n  paint();\n}",
+  "motion": "机械",
+  "tags": [
+    "播放器",
+    "进度",
+    "键盘",
+    "媒体"
+  ],
+  "source": "v4"
+}

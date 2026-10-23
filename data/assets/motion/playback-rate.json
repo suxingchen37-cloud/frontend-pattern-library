@@ -1,0 +1,18 @@
+{
+  "id": "playback-rate",
+  "cat": "媒体",
+  "t": "倍速切换",
+  "en": "playback rate",
+  "d": "倍速只在 1 / 1.5 / 2 三档循环，不做 0.75：审片要的是快，慢放另有逐帧。当前倍速直接写在按钮上，不藏进菜单——正在用哪个速度是播放状态的一部分。切倍速不打断播放，音高不变。",
+  "body": "<div class=\"d-pr\" data-box><div class=\"d-pr-screen\"><b data-clock>00:00</b><span data-rate>1.0×</span></div><div class=\"d-pr-row\"><button type=\"button\" data-play>播放</button><button type=\"button\" data-ratebtn>1×</button></div></div>",
+  "css": ".d-pr{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-pr-screen{position:relative;display:flex;align-items:center;justify-content:center;height:110px;background:color-mix(in srgb,var(--ink) 72%,var(--paper));color:var(--paper)}\n.d-pr-screen b{font-family:var(--font-mono);font-size:34px;font-weight:500;letter-spacing:-.02em}\n.d-pr-screen span{position:absolute;right:10px;bottom:8px;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;opacity:.8}\n.d-pr-row{display:flex;gap:6px;padding:8px 12px}\n.d-pr-row button{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-pr-row button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}",
+  "init": "root => {\n  var clock = root.querySelector('[data-clock]');\n  var rateLabel = root.querySelector('[data-rate]');\n  var play = root.querySelector('[data-play]');\n  var rate = root.querySelector('[data-ratebtn]');\n  if (!clock || !play || !rate) return;\n  var t = 0, on = false, timer = 0, speeds = [1, 1.5, 2], si = 0;\n  var fmt = function (s) { var m = Math.floor(s / 60), sec = Math.floor(s % 60); return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec; };\n  var tick = function () { t += .1 * speeds[si]; clock.textContent = fmt(t); };\n  play.addEventListener('click', function () {\n    on = !on;\n    play.textContent = on ? '暂停' : '播放';\n    play.classList.toggle('on', on);\n    clearInterval(timer);\n    if (on) timer = setInterval(tick, 100);\n  });\n  rate.addEventListener('click', function () {\n    si = (si + 1) % speeds.length;\n    rate.textContent = speeds[si] + '×';\n    if (rateLabel) rateLabel.textContent = speeds[si].toFixed(1) + '×';\n  });\n}",
+  "motion": "机械",
+  "tags": [
+    "倍速",
+    "播放",
+    "审片",
+    "媒体"
+  ],
+  "source": "v4"
+}

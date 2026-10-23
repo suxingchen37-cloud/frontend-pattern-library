@@ -1,0 +1,18 @@
+{
+  "id": "playlist-next",
+  "cat": "媒体",
+  "t": "播放列表接续",
+  "en": "playlist next",
+  "d": "当前这首在列表里高亮并保持可见；播完自动接下一首，中间不留「播放结束」的空档。列表项显示时长而不是序号，因为下一首该放哪儿，人是用时长判断的。手动点任意一首会立刻切，不排队。",
+  "body": "<div class=\"d-pl\" data-box><div class=\"d-pl-now\"><b data-title>场记 · 第一条</b><span data-time>00:00 / 00:08</span></div><ol class=\"d-pl-list\" data-list><li data-d=\"8\" class=\"on\">场记 · 第一条<em>0:08</em></li><li data-d=\"12\">场记 · 第二条<em>0:12</em></li><li data-d=\"6\">现场环境音<em>0:06</em></li></ol></div>",
+  "css": ".d-pl{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-pl-now{display:flex;justify-content:space-between;align-items:baseline;padding:10px 12px;border-bottom:1px solid var(--line)}\n.d-pl-now b{font-size:12px}\n.d-pl-now span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n.d-pl-list{list-style:none;margin:0;padding:4px 0}\n.d-pl-list li{display:flex;justify-content:space-between;padding:6px 12px;font-size:11px;color:var(--muted);cursor:pointer;border-left:2px solid transparent}\n.d-pl-list li.on{color:var(--ink);border-left-color:var(--ink);background:color-mix(in srgb,var(--ink) 5%,transparent)}\n.d-pl-list em{font-style:normal;font-family:var(--font-mono);font-size:9px;color:var(--faint)}",
+  "init": "root => {\n  var list = root.querySelector('[data-list]');\n  var title = root.querySelector('[data-title]');\n  var time = root.querySelector('[data-time]');\n  if (!list) return;\n  var items = [].slice.call(list.children), i = 0, t = 0, timer = 0;\n  var fmt = function (s) { return '00:' + (s < 10 ? '0' : '') + s; };\n  var paint = function () {\n    items.forEach(function (li, k) { li.classList.toggle('on', k === i); });\n    if (title) title.textContent = items[i].firstChild.textContent.trim();\n    if (time) time.textContent = fmt(Math.floor(t)) + ' / 00:' + String(items[i].dataset.d).padStart(2, '0');\n  };\n  var next = function () { i = (i + 1) % items.length; t = 0; paint(); };\n  var start = function () { clearInterval(timer); timer = setInterval(function () { t += .25; if (t >= Number(items[i].dataset.d)) next(); paint(); }, 250); };\n  items.forEach(function (li, k) { li.addEventListener('click', function () { i = k; t = 0; paint(); start(); }); });\n  paint(); start();\n}",
+  "motion": "机械",
+  "tags": [
+    "播放列表",
+    "自动",
+    "媒体",
+    "音频"
+  ],
+  "source": "v4"
+}

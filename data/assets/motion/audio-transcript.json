@@ -1,0 +1,18 @@
+{
+  "id": "audio-transcript",
+  "cat": "媒体",
+  "t": "音频转写跟随",
+  "en": "audio transcript",
+  "d": "转写按句高亮，跟着播放进度走；点某一句直接跳过去。高亮不用整块底色，只在左侧加一条 2px 竖线——整块底色会让人以为那句被选中了。播放时高亮句自动滚动到中间偏上，不滚到正中间，留一眼下一句。",
+  "body": "<div class=\"d-at\" data-box><div class=\"d-at-head\"><button type=\"button\" data-play>▶ 播放录音</button><span data-time>00:00 / 00:12</span></div><ol class=\"d-at-list\" data-list><li data-t=\"0\">场记，第 3 场第 2 次。</li><li data-t=\"2.5\">机位 B，五十毫米。</li><li data-t=\"5\">反光板在右侧收一格。</li><li data-t=\"8\">这条要过，但别过太早。</li><li data-t=\"10.5\">好，这条过了。</li></ol></div>",
+  "css": ".d-at{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-at-head{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line)}\n.d-at-head button{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-at-head span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}\n.d-at-list{list-style:none;margin:0;padding:6px 0;max-height:110px;overflow:auto}\n.d-at-list li{padding:4px 12px 4px 14px;font-size:11px;color:var(--muted);border-left:2px solid transparent;cursor:pointer;transition:color 160ms var(--ease),border-color 160ms var(--ease)}\n.d-at-list li.on{color:var(--ink);border-left-color:var(--ink-vermilion)}",
+  "init": "root => {\n  var btn = root.querySelector('[data-play]');\n  var list = root.querySelector('[data-list]');\n  var time = root.querySelector('[data-time]');\n  if (!btn || !list) return;\n  var items = [].slice.call(list.children);\n  var t = 0, on = false, timer = 0, dur = 12;\n  var fmt = function (s) { return '00:' + (s < 10 ? '0' : '') + Math.floor(s); };\n  var paint = function () {\n    var active = null;\n    items.forEach(function (li) { var start = Number(li.dataset.t) || 0; if (start <= t) active = li; li.classList.toggle('on', li === active); });\n    if (active) { var top = active.offsetTop - list.clientHeight / 2 + 20; list.scrollTop = Math.max(0, top); }\n    if (time) time.textContent = fmt(t) + ' / 00:12';\n  };\n  var tick = function () { t += .2; if (t >= dur) { t = 0; on = false; clearInterval(timer); btn.textContent = '▶ 播放录音'; } paint(); };\n  btn.addEventListener('click', function () {\n    on = !on;\n    btn.textContent = on ? '❚❚ 暂停' : '▶ 播放录音';\n    clearInterval(timer);\n    if (on) timer = setInterval(tick, 200);\n  });\n  items.forEach(function (li) { li.addEventListener('click', function () { t = Number(li.dataset.t) || 0; paint(); }); });\n  paint();\n}",
+  "motion": "机械",
+  "tags": [
+    "转写",
+    "跟随",
+    "音频",
+    "媒体"
+  ],
+  "source": "v4"
+}
