@@ -15,18 +15,18 @@ header b{font-size:14px}
 header .sub{font-size:11px;color:var(--faint);border-left:1px solid var(--line);padding-left:12px}
 header .grow{flex:1}
 header button{font:inherit;font-size:12px;padding:6px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;cursor:pointer}
-nav{display:flex;gap:6px;padding:8px 20px;background:var(--paper);border-bottom:1px solid var(--line);flex:0 0 auto}
-nav button{font:inherit;font-size:12.5px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+nav{display:flex;gap:6px;padding:6px 20px;background:var(--paper);border-bottom:1px solid var(--line);flex:0 0 auto}
+nav button{font:inherit;font-size:12.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
 nav button[data-on]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 nav .sp{flex:1}
 nav code{font-size:11px;color:var(--faint);align-self:center}
 main{flex:1;min-height:0;position:relative}
 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg)}
 #home{position:absolute;inset:0;overflow:auto;padding:28px 24px}
-.round{max-width:960px;margin:0 auto}
+.round{max-width:1600px;margin:0 auto}
 h1{font-size:26px;letter-spacing:-.03em;margin:0 0 6px}
 .lead{color:var(--muted);font-size:13px;margin:0 0 22px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:transform .16s var(--ease),box-shadow .16s}
 .card:hover{transform:translateY(-2px);box-shadow:0 10px 26px #20241e14}
 .card b{font-size:15px}
@@ -103,19 +103,24 @@ const frame = document.getElementById('frame');
 const home = document.getElementById('home');
 const SRC = { motion: 'motion-lab.html', system: 'design-system.html#design', content: 'design-system.html#content', site: 'site/index.html' };
 function themeNow() { return document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'paper'; }
-function go(tab) {
+function go(tab, demo) {
   document.querySelectorAll('nav button[data-tab]').forEach(b => b.toggleAttribute('data-on', b.dataset.tab === tab));
   localStorage.setItem('site.tab', tab);
   if (tab === 'home') { frame.hidden = true; frame.src = 'about:blank'; home.hidden = false; return; }
   home.hidden = true; frame.hidden = false;
   const [base, hash] = SRC[tab].split('#');
-  frame.src = base + '?t=' + Date.now() + '&theme=' + themeNow() + (hash ? '#' + hash : '');
+  let src = base + '?t=' + Date.now() + '&theme=' + themeNow();
+  if (demo && tab === 'motion') src += '&demo=' + encodeURIComponent(demo);
+  frame.src = src + (hash ? '#' + hash : '');
 }
 document.querySelectorAll('[data-tab]').forEach(el => el.addEventListener('click', () => go(el.dataset.tab)));
-if (localStorage.getItem('site.theme') === 'night') document.documentElement.setAttribute('data-theme', 'night');
+const boot = new URLSearchParams(location.search);
+if (boot.get('theme') === 'night') document.documentElement.setAttribute('data-theme', 'night');
+else if (localStorage.getItem('site.theme') === 'night') document.documentElement.setAttribute('data-theme', 'night');
 document.getElementById('themebtn').textContent = themeNow() === 'night' ? '纸色' : '夜间';
-const saved = localStorage.getItem('site.tab');
-if (saved && SRC[saved]) go(saved);
+const bootDemo = boot.get('demo');
+const bootTab = boot.get('tab') || (bootDemo ? 'motion' : localStorage.getItem('site.tab'));
+if (bootTab && (bootTab === 'home' || SRC[bootTab])) go(bootTab, bootDemo);
 document.getElementById('themebtn').addEventListener('click', e => {
   const night = themeNow() !== 'night';
   document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');

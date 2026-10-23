@@ -25,7 +25,7 @@ header h1{margin:0;font-size:15px}
 header .sub{font-size:11px;color:var(--faint);border-left:1px solid var(--line);padding-left:12px}
 header .grow{flex:1}
 header button{font:inherit;font-size:12px;padding:7px 12px;border:1px solid var(--line);border-radius:var(--r2);background:transparent;color:inherit;cursor:pointer}
-main{max-width:1180px;margin:0 auto;padding:28px 24px 100px;display:flex;flex-direction:column;gap:40px}
+main{max-width:none;margin:0 auto;padding:28px clamp(24px,4vw,64px) 100px;display:flex;flex-direction:column;gap:40px}
 section{background:var(--paper);border:1px solid var(--line);border-radius:var(--r3);padding:22px 24px}
 section>h2{margin:0 0 4px;font-size:var(--f17);letter-spacing:-.01em}
 section>.lead{margin:0 0 18px;font-size:var(--f12);color:var(--muted)}
@@ -95,22 +95,46 @@ table.spec th{font-size:10.5px;color:var(--faint);font-weight:600;letter-spacing
 @media(max-width:640px){main{padding:16px 12px 80px}section{padding:16px}}
 html.embedded header{display:none}
 html.embedded main{padding-top:22px}
-.lab-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0 0}
+.lab-head h2{margin:0 0 4px}
+.lab-head .lead{margin:0}
+.lab-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:start;margin-top:14px}
+.lab-rail2{position:sticky;top:0;align-self:start;border-right:1px solid var(--line);padding:2px 14px 10px 0;max-height:calc(100vh - 16px);overflow:auto}
+html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
+.lab-rail-title{font:9.5px var(--mono);letter-spacing:.12em;color:var(--faint);margin-bottom:7px}
+.lab-rail2 .lab-chips{flex-direction:column;gap:2px}
+.lab-rail2 .lab-chip{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;border:0;border-radius:6px;padding:5px 7px;font-size:12px}
+.lab-rail2 .lab-chip[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.lab-rail-note{margin:12px 0 0;font-size:10px;line-height:1.7;color:var(--faint)}
+.lab-body{min-width:0}
+.lab-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px}
+.lab-density{font:10.5px var(--sans);border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.lab-density[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .lab-chips{display:flex;flex-wrap:wrap;gap:4px}
 .lab-chip{font:11px var(--sans);border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
 .lab-chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .lab-search{margin-left:auto;display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--paper)}
-.lab-search input{border:0;background:transparent;outline:none;font-size:11px;width:150px;color:var(--ink)}
+.lab-search input{border:0;background:transparent;outline:none;font-size:11px;width:160px;color:var(--ink)}
 .lab-count{font:9.5px var(--mono);color:var(--faint);white-space:nowrap}
-.lab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
-.lab-card{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px;min-width:0;display:flex;flex-direction:column;gap:7px}
+.lab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:0}
+.lab-card{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px;min-width:0;display:flex;flex-direction:column;gap:7px;content-visibility:auto;contain-intrinsic-size:auto 360px}
 .lab-top{display:flex;justify-content:space-between;gap:6px;font:8.5px var(--mono);color:var(--faint);letter-spacing:.06em}
 .lab-card h3{margin:0;font-size:13px;letter-spacing:-.01em}
 .lab-card .stage{position:relative;min-height:104px;background:var(--bg);border-radius:8px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
 .lab-rule{margin:0;font-size:10.5px;line-height:1.65;color:var(--muted)}
 .lab-dont{margin:0;padding-top:6px;border-top:1px dashed var(--line);font-size:9.5px;line-height:1.6;color:var(--faint)}
 .lab-empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--faint);font-size:12px;border:1px dashed var(--line);border-radius:10px}
-@media(max-width:640px){.lab-search{margin-left:0;width:100%}.lab-search input{width:100%}.lab-grid{grid-template-columns:1fr}}
+.lab-section[data-density=compact] .lab-card{padding:10px;gap:5px}
+.lab-section[data-density=compact] .lab-card .stage{min-height:88px;padding:8px}
+.lab-section[data-density=compact] .lab-rule{font-size:9.5px}
+.lab-section[data-density=compact] .lab-card h3{font-size:12px}
+@media(max-width:1000px){
+  .lab-layout{grid-template-columns:1fr;gap:14px}
+  .lab-rail2{position:static;border-right:0;border-bottom:1px solid var(--line);padding:0 0 10px;max-height:none}
+  .lab-rail2 .lab-chips{flex-direction:row;flex-wrap:wrap}
+  .lab-rail2 .lab-chip{width:auto;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+  .lab-rail-note{display:none}
+}
+@media(max-width:640px){.lab-search{margin-left:0;width:100%}.lab-search input{width:100%}.lab-grid{grid-template-columns:1fr}.lab-count{margin-left:auto}}
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
@@ -203,15 +227,26 @@ html.embedded main{padding-top:22px}
   </table>
 </section>
 
-<section id="specs">
-  <h2>组件图鉴：50 条活体规格</h2>
-  <p class="lead">每条一个令牌、组件或状态：上面是活体示例，下面是一句规则和一个反例。按分组筛选，或直接搜。</p>
-  <div class="lab-tools">
-    <div class="lab-chips" id="specChips" role="group" aria-label="按分组筛选设计图鉴"></div>
-    <label class="lab-search"><input id="specSearch" type="search" placeholder="搜组件或规则" aria-label="搜索设计系统图鉴"></label>
-    <span class="lab-count" id="specCount" aria-live="polite"></span>
+<section id="specs" class="lab-section">
+  <div class="lab-head">
+    <h2>组件图鉴：50 条活体规格</h2>
+    <p class="lead">每条一个令牌、组件或状态：上面是活体示例，下面是一句规则和一个反例。按分组筛选，或直接搜。</p>
   </div>
-  <div class="lab-grid" id="specGrid"></div>
+  <div class="lab-layout">
+    <aside class="lab-rail2" aria-label="设计图鉴分组">
+      <div class="lab-rail-title">分组</div>
+      <div class="lab-chips" id="specChips" role="group" aria-label="按分组筛选设计图鉴"></div>
+      <p class="lab-rail-note">点分组筛选；每条都带规则和反例。</p>
+    </aside>
+    <div class="lab-body">
+      <div class="lab-tools">
+        <label class="lab-search"><input id="specSearch" type="search" placeholder="搜组件或规则" aria-label="搜索设计系统图鉴"></label>
+        <span class="lab-count" id="specCount" aria-live="polite"></span>
+        <button class="lab-density" id="specDensity" type="button" aria-pressed="false">密度：舒适</button>
+      </div>
+      <div class="lab-grid" id="specGrid"></div>
+    </div>
+  </div>
 </section>
 
 <section id="content">
@@ -275,15 +310,26 @@ html.embedded main{padding-top:22px}
   <p class="caption">三条规矩：说清发生了什么、给一个能照做的动作、不吓人也不卖萌。</p>
 </section>
 
-<section id="content-specs">
-  <h2>内容图鉴：50 条可点小样</h2>
-  <p class="lead">文本、数据、媒体、引用、长文、代码、交互内容与页面结构。每条都能点，规则和反例写在示例下面。</p>
-  <div class="lab-tools">
-    <div class="lab-chips" id="contentChips" role="group" aria-label="按分组筛选内容图鉴"></div>
-    <label class="lab-search"><input id="contentSearch" type="search" placeholder="搜内容类型" aria-label="搜索内容图鉴"></label>
-    <span class="lab-count" id="contentCount" aria-live="polite"></span>
+<section id="content-specs" class="lab-section">
+  <div class="lab-head">
+    <h2>内容图鉴：50 条可点小样</h2>
+    <p class="lead">文本、数据、媒体、引用、长文、代码、交互内容与页面结构。每条都能点，规则和反例写在示例下面。</p>
   </div>
-  <div class="lab-grid" id="contentGrid"></div>
+  <div class="lab-layout">
+    <aside class="lab-rail2" aria-label="内容图鉴分组">
+      <div class="lab-rail-title">分组</div>
+      <div class="lab-chips" id="contentChips" role="group" aria-label="按分组筛选内容图鉴"></div>
+      <p class="lab-rail-note">点分组筛选；16 条可点。</p>
+    </aside>
+    <div class="lab-body">
+      <div class="lab-tools">
+        <label class="lab-search"><input id="contentSearch" type="search" placeholder="搜内容类型" aria-label="搜索内容图鉴"></label>
+        <span class="lab-count" id="contentCount" aria-live="polite"></span>
+        <button class="lab-density" id="contentDensity" type="button" aria-pressed="false">密度：舒适</button>
+      </div>
+      <div class="lab-grid" id="contentGrid"></div>
+    </div>
+  </div>
 </section>
 </main>
 
@@ -373,6 +419,22 @@ document.getElementById('themebtn').addEventListener('click', e => {
 </script>
 <script src="ds-specs.js?v=1"></script>
 <script src="ds-content.js?v=1"></script>
-<script src="ds-render.js?v=1"></script>
+<script src="ds-render.js?v=2"></script>
+<script>
+(function () {
+  const key = 'ds.scroll.' + ((location.hash || '#design').slice(1));
+  const saved = Number(localStorage.getItem(key) || 0);
+  if (saved > 0) setTimeout(() => window.scrollTo(0, saved), 220);
+  let tick = false;
+  window.addEventListener('scroll', () => {
+    if (tick) return;
+    tick = true;
+    requestAnimationFrame(() => {
+      tick = false;
+      localStorage.setItem(key, String(Math.round(window.scrollY)));
+    });
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

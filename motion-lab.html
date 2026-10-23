@@ -62,6 +62,87 @@ html.embedded #catbar button{flex:0 0 auto}
 .catbar-tools input[type=search]{width:190px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;font:inherit;font-size:12px}
 #catbar .catbar-tools button{font:inherit;font-size:12px;padding:7px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;cursor:pointer}
 @media(max-width:640px){.catbar-tools input[type=search]{display:none}.catbar-tools{padding-left:6px}}
+
+/* ---------- wide workspace ---------- */
+.lab-shell{display:grid;grid-template-columns:minmax(0,1fr);min-height:100vh}
+.lab-center{min-width:0}
+.lab-rail,.picked-panel{display:none}
+main#lab{max-width:none;margin:0;padding:20px 22px 96px}
+.grid{--card-min:320px;grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr))}
+.grid:empty{min-height:300px}
+.card{content-visibility:auto;contain-intrinsic-size:auto 380px;scroll-margin-top:20px}
+.card.flash{outline:2px solid var(--lime);outline-offset:3px}
+.rail-head{display:flex;align-items:center;justify-content:space-between;font:10px var(--mono);letter-spacing:.12em;color:var(--faint);padding:0 5px 4px}
+.rail-total{font:10px var(--mono);color:var(--faint)}
+.rail-tools{display:flex;flex-direction:column;gap:5px;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:2px}
+.rail-tools input{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:inherit;font:11.5px var(--sans);outline:none}
+.rail-tools input:focus{border-color:var(--ink)}
+.rail-tools button,.rail-top{font:11px var(--sans);padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--muted);cursor:pointer;text-align:left}
+.rail-tools button:hover,.rail-top:hover{border-color:var(--ink);color:var(--ink)}
+.rail-cats{display:flex;flex-direction:column;gap:1px;flex:1;min-height:0;overflow:auto;padding-right:2px}
+.rail-cats button{display:flex;align-items:center;justify-content:space-between;gap:6px;border:0;background:transparent;color:var(--muted);font:12px var(--sans);padding:5px 7px;border-radius:6px;cursor:pointer;text-align:left}
+.rail-cats button:hover{background:var(--bg)}
+.rail-cats button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.rail-cats em{font:9.5px var(--mono);font-style:normal;opacity:.55}
+.rail-top{margin-top:8px;flex:0 0 auto}
+@media(min-width:1200px){
+  .lab-shell{grid-template-columns:214px minmax(0,1fr)}
+  #catbar{display:none}
+  .lab-rail{display:flex;flex-direction:column;gap:8px;position:sticky;top:0;align-self:start;height:100vh;overflow:hidden;padding:14px 12px;background:var(--paper);border-right:1px solid var(--line);z-index:7}
+  html:not(.embedded) .lab-rail{top:62px;height:calc(100vh - 62px)}
+}
+@media(min-width:1600px){
+  .lab-shell{grid-template-columns:214px minmax(0,1fr) 286px}
+  .picked-panel{display:flex}
+  .picked-pill{display:none}
+}
+@media(max-width:1199px){.lab-rail,.picked-panel{display:none}}
+
+/* picked panel / pill / sheet */
+.picked-panel{position:sticky;top:0;height:100vh;flex-direction:column;gap:9px;padding:14px 12px;background:var(--paper);border-left:1px solid var(--line);overflow:hidden}
+html:not(.embedded) .picked-panel{top:62px;height:calc(100vh - 62px)}
+.pp-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:650}
+.pp-head span[data-count]{color:var(--muted);font-weight:500}
+.pp-hint{font:8.5px var(--mono);color:var(--faint);font-weight:400}
+.pp-list{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:4px}
+.pp-item{display:flex;align-items:center;gap:3px;border:1px solid var(--line);border-radius:7px;padding:4px 5px;min-width:0}
+.pp-go{flex:1;min-width:0;border:0;background:transparent;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:1px;padding:2px;color:inherit}
+.pp-go span{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-go code{font:9px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-x{border:0;background:transparent;color:var(--faint);font-size:13px;cursor:pointer;padding:2px 4px;line-height:1}
+.pp-x:hover{color:var(--warn,#a8502f)}
+.pp-empty{font-size:11px;color:var(--faint);line-height:1.7;margin:0;padding:8px 0}
+.pp-actions{display:flex;flex-wrap:wrap;gap:4px;border-top:1px solid var(--line);padding-top:9px}
+.pp-actions button,.pp-close{font:10px var(--sans);padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}
+.pp-actions button:hover,.pp-close:hover{border-color:var(--ink);color:var(--ink)}
+.pp-actions button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.picked-pill{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:999px;background:var(--ink);color:var(--paper);font:12px var(--sans);cursor:pointer;box-shadow:0 10px 28px #20241e33}
+.picked-pill b{font:11px var(--mono);color:var(--lime)}
+.picked-pill span{font-size:10px;opacity:.7}
+.to-top{position:fixed;left:16px;bottom:16px;z-index:40;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);font-size:11px;cursor:pointer;box-shadow:0 6px 18px #20241e18}
+.sheet-wrap{position:fixed;inset:0;z-index:50}
+.sheet-wrap[hidden]{display:none}
+.sheet-scrim{position:absolute;inset:0;background:#0c0f0a55}
+.sheet{position:absolute;right:14px;bottom:14px;width:min(330px,calc(100vw - 28px));max-height:70vh;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 20px 44px #0004}
+
+/* preview */
+.preview{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:#0c0f0a66}
+.preview[hidden]{display:none}
+.preview-card{width:min(720px,100%);max-height:90vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px}
+.preview-head button{font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
+.preview-stage{min-height:260px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:24px;background:var(--bg);border-radius:10px;overflow:auto}
+.preview-stage>*{min-width:0;max-width:100%}
+.preview-note{margin:0;font-size:12px;color:var(--muted);line-height:1.8}
+.preview-actions{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px}
+.preview-actions button{font-size:10.5px;padding:5px 9px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
+
+/* density */
+html[data-density=compact] .grid{--card-min:270px;gap:12px}
+html[data-density=compact] .card{padding:13px;gap:8px}
+html[data-density=compact] .stage{min-height:96px;padding:10px}
+html[data-density=compact] .card p{font-size:11px;line-height:1.7}
+@media(min-width:1600px){.picked-pill{display:none}}
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
@@ -75,13 +156,55 @@ html.embedded #catbar button{flex:0 0 auto}
   <button id="allbtn" title="全选当前筛选">全选可见</button>
   <button id="themebtn">夜间</button>
 </header>
-<div id="catbar"></div>
-<main id="lab"></main>
-<div id="dock">
-  <b id="count">已选 0</b>
-  <code id="ids" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></code>
-  <button class="btn" id="clearbtn">清空</button>
-  <button class="btn primary" id="copybtn">复制清单</button>
+<div class="lab-shell">
+  <aside class="lab-rail" id="labRail" aria-label="分类与工具">
+    <div class="rail-head"><span>分类</span><span class="rail-total" id="railTotal"></span></div>
+    <div class="rail-tools" id="railTools"></div>
+    <div class="rail-cats" id="railCats"></div>
+    <button class="rail-top" id="railTop" type="button">↑ 回到顶部</button>
+  </aside>
+  <div class="lab-center">
+    <div id="catbar"></div>
+    <main id="lab"></main>
+  </div>
+  <aside class="picked-panel" id="pickedPanel" aria-label="已选效果">
+    <div class="pp-head"><span>已选 <span data-count>0</span></span><span class="pp-hint">点标题定位</span></div>
+    <div class="pp-list" id="ppList"></div>
+    <div class="pp-actions">
+      <button type="button" data-only aria-pressed="false">只看已选</button>
+      <button type="button" data-copy>复制清单</button>
+      <button type="button" data-clear>清空</button>
+    </div>
+  </aside>
+</div>
+
+<button class="picked-pill" id="pickedPill" type="button">已选 <b data-count>0</b><span>展开</span></button>
+<button class="to-top" id="toTop" type="button" hidden>↑ 顶部</button>
+
+<div class="sheet-wrap" id="sheet" hidden>
+  <div class="sheet-scrim" data-sheetclose></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="已选效果">
+    <div class="pp-head"><span>已选 <span data-count>0</span></span><button class="pp-close" type="button" data-sheetclose>关闭</button></div>
+    <div class="pp-list" id="sheetList"></div>
+    <div class="pp-actions">
+      <button type="button" data-only aria-pressed="false">只看已选</button>
+      <button type="button" data-copy>复制清单</button>
+      <button type="button" data-clear>清空</button>
+    </div>
+  </div>
+</div>
+
+<div class="preview" id="preview" hidden>
+  <div class="preview-card" role="dialog" aria-modal="true" aria-labelledby="pvTitle">
+    <div class="preview-head"><b id="pvTitle">预览</b><button type="button" data-pvclose>关闭</button></div>
+    <div class="preview-stage" id="pvStage"></div>
+    <p class="preview-note" id="pvNote"></p>
+    <div class="preview-actions">
+      <button type="button" data-pvcss>复制 CSS</button>
+      <button type="button" data-pvcard>复制整卡</button>
+      <button type="button" data-pvlink>复制链接</button>
+    </div>
+  </div>
 </div>
 
 <script src="lab-more.js?v=3"></script>
@@ -236,87 +359,360 @@ const DEMOS = [
 ];
 DEMOS.push(...(window.DEMOS_EXTRA || []));
 
-/* ——— 渲染 ——— */
+/* ——— 状态、分类与选中 ——— */
 const lab = document.getElementById('lab');
 const cats = [...new Set(DEMOS.map(d => d.cat))];
 const picked = new Set(JSON.parse(localStorage.getItem('lab.picks') || '[]'));
-let filter = 'all', q = '';
+for (const id of [...picked]) if (!DEMOS.some(d => d.id === id)) picked.delete(id);
+localStorage.setItem('lab.picks', JSON.stringify([...picked]));
+let filter = localStorage.getItem('lab.filter') || 'all';
+if (filter !== 'all' && !cats.includes(filter)) filter = 'all';
+let q = localStorage.getItem('lab.q') || '';
+let onlyPicked = false;
+let renderTimer = null;
+let previewId = null;
 
 const catbar = document.getElementById('catbar');
-catbar.innerHTML = ['全部', ...cats].map((c, i) => `<button data-cat="${c}" ${i === 0 ? 'data-on' : ''}>${c} <span style="opacity:.55">${c === '全部' ? DEMOS.length : DEMOS.filter(d => d.cat === c).length}</span></button>`).join('');
-if (document.documentElement.classList.contains('embedded')) {
-  const tools = document.createElement('span');
-  tools.className = 'catbar-tools';
-  tools.append(document.getElementById('q'), document.getElementById('allbtn'));
-  catbar.append(tools);
+const railCats = document.getElementById('railCats');
+const railTools = document.getElementById('railTools');
+const railTotal = document.getElementById('railTotal');
+const qInput = document.getElementById('q');
+const allBtn = document.getElementById('allbtn');
+const densityBtn = document.createElement('button');
+densityBtn.type = 'button';
+densityBtn.id = 'densityBtn';
+railTools.append(densityBtn);
+railTotal.textContent = DEMOS.length + ' 个';
+
+const countOf = (c) => c === 'all' ? DEMOS.length : DEMOS.filter(d => d.cat === c).length;
+function buildNav() {
+  catbar.innerHTML = ['全部', ...cats].map(c => {
+    const on = (c === '全部' && filter === 'all') || c === filter;
+    return `<button data-cat="${c}" ${on ? 'data-on' : ''}>${c} <span style="opacity:.55">${countOf(c === '全部' ? 'all' : c)}</span></button>`;
+  }).join('');
+  railCats.innerHTML = ['全部', ...cats].map(c => {
+    const on = (c === '全部' && filter === 'all') || c === filter;
+    return `<button type="button" data-rail-cat="${c}" aria-pressed="${on}"><span>${c}</span><em>${countOf(c === '全部' ? 'all' : c)}</em></button>`;
+  }).join('');
+}
+buildNav();
+qInput.value = q;
+
+function ensureCatTools() {
+  let t = catbar.querySelector('.catbar-tools');
+  if (!t) { t = document.createElement('span'); t.className = 'catbar-tools'; catbar.append(t); }
+  return t;
+}
+function applyLayout() {
+  if (innerWidth >= 1200) railTools.append(qInput, allBtn, densityBtn);
+  else ensureCatTools().append(qInput, allBtn, densityBtn);
 }
 
-function scopedCss(id, css) {
+/* CSS 作用域：卡内 #c-，预览 #pv- */
+function scoped(prefix, id, css) {
   const out = []; let buf = '', depth = 0;
   for (let i = 0; i < css.length; i++) {
     const c = css[i]; buf += c;
     if (c === '{') depth++;
-    if (c === '}') { depth--;
+    if (c === '}') {
+      depth--;
       if (depth === 0) {
         const open = buf.indexOf('{');
         const sel = buf.slice(0, open).trim();
         const body = buf.slice(open);
         if (sel.startsWith('@')) out.push(buf);
-        else out.push(sel.split(',').map(x => '#c-' + id + ' ' + x.trim()).join(',') + body);
+        else out.push(sel.split(',').map(x => '#' + prefix + id + ' ' + x.trim()).join(',') + body);
         buf = '';
       }
     }
   }
   return out.join(String.fromCharCode(10));
 }
-
-function render() {
-  const shown = DEMOS.filter(d => (filter === 'all' || d.cat === filter)
-    && (!q || (d.t + d.en + d.d + d.id).toLowerCase().includes(q)));
-  lab.innerHTML = cats.map(c => {
-    const list = shown.filter(d => d.cat === c);
-    if (!list.length) return '';
-    return `<h2 class="cat">${c}</h2><div class="grid">` + list.map(d => `
-      <article class="card" id="c-${d.id}" ${picked.has(d.id) ? 'data-pick' : ''}>
-        <h3>${d.t} <em>${d.en}</em></h3>
-        <div class="stage" data-demo="${d.id}">${d.body}</div>
-        <style>${scopedCss(d.id, d.css)}</style>
-        <p>${d.d}</p>
-        <div class="acts">
-          <button data-copy-css="${d.id}">复制 CSS</button>
-          <span class="hint" data-flag="${d.id}"></span>
-          <button class="pick" data-pick="${d.id}" aria-pressed="${picked.has(d.id)}">${picked.has(d.id) ? '已选' : '选中'}</button>
-        </div>
-      </article>`).join('') + '</div>';
-  }).join('') || '<p style="color:var(--faint)">没有匹配的效果</p>';
-  // 重挂各演示的行为（innerHTML 重建后需要重新绑定）
-  document.querySelectorAll('[data-demo]').forEach(el => { const id = el.dataset.demo; INITS[id] && INITS[id](el); });
-  document.querySelectorAll('[data-copy-css]').forEach(b => b.onclick = () => {
-    const d = DEMOS.find(x => x.id === b.dataset.copyCss);
-    copy(d.css); b.textContent = '已复制'; setTimeout(() => b.textContent = '复制 CSS', 1400);
-  });
-  document.querySelectorAll('[data-pick]').forEach(b => b.onclick = () => toggle(b.dataset.pick));
-  syncDock();
+function scopedCss(id, css) { return scoped('c-', id, css); }
+function cardSnippet(d) {
+  return '<div id="c-' + d.id + '">\n' + d.body + '\n</div>\n<style>\n' + scopedCss(d.id, d.css) + '\n</style>';
 }
-
-function toggle(id) {
-  picked.has(id) ? picked.delete(id) : picked.add(id);
-  localStorage.setItem('lab.picks', JSON.stringify([...picked]));
-  const card = document.getElementById('c-' + id);
-  const btn = card && card.querySelector('[data-pick]');
-  if (card) card.toggleAttribute('data-pick', picked.has(id));
-  if (btn) { btn.setAttribute('aria-pressed', String(picked.has(id))); btn.textContent = picked.has(id) ? '已选' : '选中'; }
-  syncDock();
-}
-function syncDock() {
-  document.getElementById('count').textContent = '已选 ' + picked.size;
-  document.getElementById('ids').textContent = [...picked].join(', ');
+function linkFor(id) {
+  const theme = document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'paper';
+  if (window.self !== window.top) {
+    const u = new URL(location.origin + '/');
+    u.searchParams.set('tab', 'motion');
+    u.searchParams.set('demo', id);
+    u.searchParams.set('theme', theme);
+    return u.href;
+  }
+  const u = new URL(location.origin + location.pathname);
+  u.searchParams.set('demo', id);
+  u.searchParams.set('theme', theme);
+  return u.href;
 }
 function copy(text) {
   try { navigator.clipboard.writeText(text); } catch {
     const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
   }
 }
+function flashLabel(btn, text) {
+  const old = btn.textContent; btn.textContent = text;
+  setTimeout(() => { btn.textContent = old; }, 1200);
+}
+function visibleList() {
+  return DEMOS.filter(d => (filter === 'all' || d.cat === filter)
+    && (!q || (d.t + d.en + d.d + d.id).toLowerCase().includes(q)));
+}
+
+function cardHTML(d) {
+  return `<article class="card" id="c-${d.id}" data-id="${d.id}" ${picked.has(d.id) ? 'data-pick' : ''}>
+    <h3>${d.t} <em>${d.en}</em></h3>
+    <div class="stage" data-demo="${d.id}">${d.body}</div>
+    <style>${scopedCss(d.id, d.css)}</style>
+    <p>${d.d}</p>
+    <div class="acts">
+      <button data-copy-css="${d.id}">复制 CSS</button>
+      <button data-copy-card="${d.id}">整卡</button>
+      <button data-preview="${d.id}">预览</button>
+      <button class="pick" data-pick="${d.id}" aria-pressed="${picked.has(d.id)}">${picked.has(d.id) ? '已选' : '选中'}</button>
+    </div>
+  </article>`;
+}
+function bindCards(scope) {
+  scope.querySelectorAll('[data-demo]').forEach(el => { const id = el.dataset.demo; if (INITS[id]) INITS[id](el); });
+  scope.querySelectorAll('[data-copy-css]').forEach(b => b.onclick = () => {
+    const d = DEMOS.find(x => x.id === b.dataset.copyCss);
+    copy(d.css); flashLabel(b, '已复制');
+  });
+  scope.querySelectorAll('[data-copy-card]').forEach(b => b.onclick = () => {
+    const d = DEMOS.find(x => x.id === b.dataset.copyCard);
+    copy(cardSnippet(d)); flashLabel(b, '已复制');
+  });
+  scope.querySelectorAll('[data-preview]').forEach(b => b.onclick = () => openPreview(b.dataset.preview));
+  scope.querySelectorAll('[data-pick]').forEach(b => b.onclick = () => toggle(b.dataset.pick));
+}
+
+let blockIO = null;
+let fillCat = () => {};
+let currentShown = [];
+function render() {
+  currentShown = onlyPicked ? DEMOS.filter(d => picked.has(d.id)) : visibleList();
+  if (blockIO) { blockIO.disconnect(); blockIO = null; }
+  if (!currentShown.length) {
+    lab.innerHTML = `<p style="color:var(--faint);padding:30px 4px">${onlyPicked ? '还没有选中的效果。点卡片右下「选中」。' : '没有匹配的效果'}</p>`;
+    syncPicked();
+    return;
+  }
+  lab.innerHTML = cats.map(c => {
+    const n = currentShown.filter(d => d.cat === c).length;
+    if (!n) return '';
+    return `<section class="cat-block" data-cat="${c}"><h2 class="cat" id="cat-${c}">${c} <span style="opacity:.45;font-size:10px">${n}</span></h2><div class="grid" data-grid="${c}"></div></section>`;
+  }).join('');
+
+  fillCat = (cat) => {
+    const block = lab.querySelector(`.cat-block[data-cat="${CSS.escape(cat)}"]`);
+    const grid = lab.querySelector(`.grid[data-grid="${CSS.escape(cat)}"]`);
+    if (!block || !grid || block.dataset.filled === '1') return;
+    block.dataset.filled = '1';
+    const list = currentShown.filter(d => d.cat === cat);
+    grid.innerHTML = list.map(cardHTML).join('');
+    bindCards(grid);
+    syncPicked();
+  };
+
+  if (currentShown.length <= 48) {
+    [...lab.querySelectorAll('.cat-block')].forEach(b => fillCat(b.dataset.cat));
+  } else {
+    blockIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        fillCat(e.target.dataset.cat);
+        blockIO.unobserve(e.target);
+      });
+    }, { rootMargin: '300px 0px' });
+    lab.querySelectorAll('.cat-block').forEach(b => blockIO.observe(b));
+  }
+  syncPicked();
+}
+
+function setFilter(cat) {
+  filter = cat === '全部' ? 'all' : cat;
+  localStorage.setItem('lab.filter', filter);
+  onlyPicked = false;
+  buildNav();
+  applyLayout();
+  render();
+  window.scrollTo(0, 0);
+}
+railCats.addEventListener('click', e => { const b = e.target.closest('[data-rail-cat]'); if (b) setFilter(b.dataset.railCat); });
+catbar.addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (b) setFilter(b.dataset.cat); });
+qInput.addEventListener('input', e => {
+  q = e.target.value.trim().toLowerCase();
+  localStorage.setItem('lab.q', q);
+  clearTimeout(renderTimer);
+  renderTimer = setTimeout(() => { render(); window.scrollTo(0, 0); }, 120);
+});
+
+/* ——— 选中、已选面板、复制 ——— */
+function syncPicked() {
+  const n = picked.size;
+  document.querySelectorAll('[data-count]').forEach(el => el.textContent = n);
+  document.querySelectorAll('[data-only]').forEach(b => b.setAttribute('aria-pressed', String(onlyPicked)));
+  const items = DEMOS.filter(d => picked.has(d.id));
+  const html = items.length ? items.map(d => `<div class="pp-item">
+    <button class="pp-go" type="button" data-go="${d.id}" title="定位到卡片"><span>${d.t}</span><code>${d.id}</code></button>
+    <button class="pp-x" type="button" data-remove="${d.id}" aria-label="从已选移除">×</button>
+  </div>`).join('') : '<p class="pp-empty">还没选。点卡片右下「选中」。</p>';
+  ['ppList', 'sheetList'].forEach(id => {
+    const box = document.getElementById(id);
+    if (!box) return;
+    box.innerHTML = html;
+    box.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { closeSheet(); jumpTo(b.dataset.go); });
+    box.querySelectorAll('[data-remove]').forEach(b => b.onclick = () => toggle(b.dataset.remove));
+  });
+}
+function toggle(id) {
+  picked.has(id) ? picked.delete(id) : picked.add(id);
+  localStorage.setItem('lab.picks', JSON.stringify([...picked]));
+  const card = document.getElementById('c-' + id);
+  if (card) {
+    card.toggleAttribute('data-pick', picked.has(id));
+    const btn = card.querySelector('[data-pick]');
+    if (btn) { btn.setAttribute('aria-pressed', String(picked.has(id))); btn.textContent = picked.has(id) ? '已选' : '选中'; }
+  }
+  if (onlyPicked) render(); else syncPicked();
+}
+document.querySelectorAll('[data-only]').forEach(b => b.onclick = () => {
+  onlyPicked = !onlyPicked; render(); window.scrollTo(0, 0);
+});
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => {
+  const ids = [...picked];
+  copy(ids.length ? ids.join(', ') : '(还没选)');
+  flashLabel(b, '已复制');
+});
+document.querySelectorAll('[data-clear]').forEach(b => b.onclick = () => {
+  picked.clear(); localStorage.setItem('lab.picks', '[]'); render();
+});
+
+/* 已选 sheet */
+const sheet = document.getElementById('sheet');
+function openSheet() { sheet.hidden = false; document.querySelector('#sheet [data-sheetclose]')?.focus(); }
+function closeSheet() { if (sheet) sheet.hidden = true; }
+document.getElementById('pickedPill').onclick = openSheet;
+document.querySelectorAll('[data-sheetclose]').forEach(b => b.onclick = closeSheet);
+
+/* 预览 */
+const preview = document.getElementById('preview');
+const pvTitle = document.getElementById('pvTitle');
+const pvNote = document.getElementById('pvNote');
+const pvStage = document.getElementById('pvStage');
+let pvReturn = null;
+function openPreview(id) {
+  const d = DEMOS.find(x => x.id === id);
+  if (!d) return;
+  previewId = id; pvReturn = document.activeElement;
+  pvTitle.textContent = d.t + ' · ' + d.en;
+  pvNote.textContent = d.d;
+  pvStage.id = 'pv-' + id;
+  pvStage.innerHTML = d.body + '<style>' + scoped('pv-', id, d.css) + '</style>';
+  preview.hidden = false;
+  document.body.style.overflow = 'hidden';
+  if (INITS[id]) INITS[id](pvStage);
+  preview.querySelector('[data-pvclose]').focus();
+}
+function closePreview() {
+  if (preview.hidden) return;
+  preview.hidden = true;
+  document.body.style.overflow = '';
+  pvStage.innerHTML = '';
+  previewId = null;
+  pvReturn?.focus?.();
+}
+preview.querySelector('[data-pvclose]').onclick = closePreview;
+preview.addEventListener('click', e => { if (e.target === preview) closePreview(); });
+preview.querySelector('[data-pvcss]').onclick = () => {
+  const d = DEMOS.find(x => x.id === previewId); if (d) copy(d.css);
+};
+preview.querySelector('[data-pvcard]').onclick = () => {
+  const d = DEMOS.find(x => x.id === previewId); if (d) copy(cardSnippet(d));
+};
+preview.querySelector('[data-pvlink]').onclick = () => {
+  if (!previewId) return;
+  copy(linkFor(previewId));
+  flashLabel(preview.querySelector('[data-pvlink]'), '链接已复制');
+};
+
+function jumpTo(id) {
+  const d = DEMOS.find(x => x.id === id);
+  if (!d) return;
+  if (!document.getElementById('c-' + id)) {
+    filter = 'all';
+    q = '';
+    qInput.value = '';
+    onlyPicked = false;
+    localStorage.setItem('lab.filter', 'all');
+    localStorage.setItem('lab.q', '');
+    buildNav();
+    applyLayout();
+    render();
+  }
+  fillCat(d.cat);
+  requestAnimationFrame(() => {
+    const card = document.getElementById('c-' + id);
+    if (!card) return;
+    card.scrollIntoView({ block: 'center', behavior: 'auto' });
+    card.classList.add('flash');
+    setTimeout(() => card.classList.remove('flash'), 1800);
+  });
+}
+
+/* 密度 */
+function paintDensity() {
+  const compact = document.documentElement.getAttribute('data-density') === 'compact';
+  densityBtn.textContent = compact ? '密度：紧凑' : '密度：舒适';
+  densityBtn.setAttribute('aria-pressed', String(compact));
+}
+densityBtn.onclick = () => {
+  const compact = document.documentElement.getAttribute('data-density') !== 'compact';
+  document.documentElement.setAttribute('data-density', compact ? 'compact' : 'cozy');
+  localStorage.setItem('lab.density', compact ? 'compact' : 'cozy');
+  paintDensity();
+};
+if (localStorage.getItem('lab.density') === 'compact') document.documentElement.setAttribute('data-density', 'compact');
+paintDensity();
+
+/* 键盘与滚动 */
+document.addEventListener('keydown', e => {
+  const tag = (e.target.tagName || '').toLowerCase();
+  const typing = tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable;
+  if (e.key === '/' && !typing) { e.preventDefault(); qInput.focus(); qInput.select(); }
+  if (e.key === 'Escape') {
+    if (!preview.hidden) return closePreview();
+    if (!sheet.hidden) return closeSheet();
+    if (q) { q = ''; qInput.value = ''; localStorage.setItem('lab.q', ''); render(); }
+  }
+});
+const toTop = document.getElementById('toTop');
+let ticking = false;
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    ticking = false;
+    localStorage.setItem('lab.scroll', String(Math.round(scrollY)));
+    toTop.hidden = scrollY < 600;
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+toTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+document.getElementById('railTop').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+window.addEventListener('resize', applyLayout);
+applyLayout();
+
+allBtn.addEventListener('click', () => {
+  visibleList().forEach(d => picked.add(d.id));
+  localStorage.setItem('lab.picks', JSON.stringify([...picked]));
+  document.querySelectorAll('#lab [data-pick]').forEach(b => { b.setAttribute('aria-pressed', 'true'); b.textContent = '已选'; });
+  document.querySelectorAll('#lab .card').forEach(c => c.setAttribute('data-pick', ''));
+  syncPicked();
+});
 
 /* ——— 每个效果的行为（没有则为纯 CSS） ——— */
 const INITS = {
@@ -465,15 +861,9 @@ const INITS = {
   }
 };
 
-/* ——— 顶栏与筛选 ——— */
-document.getElementById('q').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); render(); });
-catbar.addEventListener('click', e => {
-  const b = e.target.closest('button'); if (!b) return;
-  filter = b.dataset.cat === '全部' ? 'all' : b.dataset.cat;
-  catbar.querySelectorAll('button').forEach(x => x.toggleAttribute('data-on', x === b));
-  render();
-});
-document.getElementById('themebtn').addEventListener('click', e => {
+/* ——— 主题 ——— */
+const themeBtn = document.getElementById('themebtn');
+themeBtn.addEventListener('click', (e) => {
   const night = document.documentElement.getAttribute('data-theme') !== 'night';
   document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');
   e.target.textContent = night ? '纸色' : '夜间';
@@ -481,24 +871,36 @@ document.getElementById('themebtn').addEventListener('click', e => {
 });
 const startTheme = new URLSearchParams(location.search).get('theme') || localStorage.getItem('lab.theme');
 if (startTheme === 'night') document.documentElement.setAttribute('data-theme', 'night');
-window.addEventListener('message', e => {
+window.addEventListener('message', (e) => {
   if (!e.data || e.data.type !== 'site-theme') return;
   const night = e.data.value === 'night';
   document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');
-  document.getElementById('themebtn').textContent = night ? '纸色' : '夜间';
-});
-document.getElementById('clearbtn').addEventListener('click', () => { picked.clear(); localStorage.setItem('lab.picks', '[]'); render(); });
-document.getElementById('copybtn').addEventListener('click', async e => {
-  await copy([...picked].join(', ') || '(还没选)');
-  e.target.textContent = '已复制'; setTimeout(() => e.target.textContent = '复制清单', 1400);
-});
-document.getElementById('allbtn').addEventListener('click', () => {
-  DEMOS.filter(d => (filter === 'all' || d.cat === filter) && (!q || (d.t + d.en + d.d + d.id).toLowerCase().includes(q))).forEach(d => picked.add(d.id));
-  localStorage.setItem('lab.picks', JSON.stringify([...picked])); render();
+  themeBtn.textContent = night ? '纸色' : '夜间';
 });
 
 Object.assign(INITS, window.INITS_EXTRA || {});
+
+/* ——— 启动：深链、滚动恢复 ——— */
+const demoParam = new URLSearchParams(location.search).get('demo');
+if (demoParam && DEMOS.some(d => d.id === demoParam)) {
+  filter = 'all';
+  q = '';
+  qInput.value = '';
+  onlyPicked = false;
+  localStorage.setItem('lab.filter', 'all');
+  localStorage.setItem('lab.q', '');
+  buildNav();
+  applyLayout();
+}
 render();
+if (demoParam && DEMOS.some(d => d.id === demoParam)) {
+  requestAnimationFrame(() => requestAnimationFrame(() => jumpTo(demoParam)));
+} else {
+  const saved = Number(localStorage.getItem('lab.scroll') || 0);
+  if (saved > 0) requestAnimationFrame(() => window.scrollTo(0, saved));
+}
+onScroll();
+
 </script>
 </body>
 </html>

@@ -9,7 +9,7 @@
   --f11:11px;--f12:12px;--f13:13px;--f14:14px;--f15:15px;--f17:17px;--f22:22px;--f28:28px;--f40:40px;
   --r1:4px;--r2:8px;--r3:12px;--r4:18px;
   --ease:cubic-bezier(.2,.75,.25,1);
-  --shell:1180px;
+  --shell:1560px;
 }
 [data-theme=night]{
   --paper:#191d18;--bg:#121610;--ink:#e8efe0;--muted:#a9b8a0;--faint:#7b8a72;--line:#2c3327;
@@ -167,7 +167,7 @@ h3{font-weight:650;font-size:16px;line-height:1.45;margin:0 0 4px}
 .article-head .dek{font-size:15px;max-width:56ch}
 .byline{display:flex;gap:18px;margin-top:22px;font:10.5px var(--mono);color:var(--faint);flex-wrap:wrap}
 .byline b{color:var(--ink);font-weight:500}
-.article-layout{display:grid;grid-template-columns:1fr 210px;gap:56px;padding:38px 0 72px;align-items:start}
+.article-layout{display:grid;grid-template-columns:minmax(0,760px) 210px;justify-content:center;gap:64px;padding:38px 0 72px;align-items:start}
 .article-body{font-family:var(--serif);font-size:16.5px;line-height:2.05;color:var(--ink);max-width:66ch;min-width:0}
 .article-body p{margin:0 0 20px}
 .article-body h2{font-size:23px;margin:38px 0 12px;scroll-margin-top:100px}
