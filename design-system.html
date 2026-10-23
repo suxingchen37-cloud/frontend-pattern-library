@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>前端模式库 · 设计系统 & 内容呈现</title>
+<style>
+:root{
+  --bg:#f3f1e9;--paper:#fbfaf5;--ink:#20241e;--muted:#6b7860;--faint:#94a184;--line:#deded2;
+  --lime:#d9f875;--mint:#83d9bd;--coral:#ff886e;--lav:#c4b6ff;--blue:#7e88ff;--amber:#f2c14e;--red:#c4553a;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;--rpill:999px;
+  --sh1:0 1px 2px #20241e0f;--sh2:0 6px 18px #20241e14;--sh3:0 18px 40px #20241e26;
+  --ease:cubic-bezier(.2,.75,.25,1);
+  --f11:11px;--f12:12px;--f13:13px;--f14:14px;--f17:17px;--f22:22px;--f28:28px;
+}
+[data-theme=night]{--bg:#121610;--paper:#191d18;--ink:#e8efe0;--muted:#a9b8a0;--faint:#7b8a72;--line:#2c3327;
+  --sh1:0 1px 2px #0006;--sh2:0 6px 18px #0007;--sh3:0 18px 40px #000a}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:var(--f14)/1.85 Inter,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:12px 24px;background:var(--paper);border-bottom:1px solid var(--line)}
+header h1{margin:0;font-size:15px}
+header .sub{font-size:11px;color:var(--faint);border-left:1px solid var(--line);padding-left:12px}
+header .grow{flex:1}
+header button{font:inherit;font-size:12px;padding:7px 12px;border:1px solid var(--line);border-radius:var(--r2);background:transparent;color:inherit;cursor:pointer}
+main{max-width:1180px;margin:0 auto;padding:28px 24px 100px;display:flex;flex-direction:column;gap:40px}
+section{background:var(--paper);border:1px solid var(--line);border-radius:var(--r3);padding:22px 24px}
+section>h2{margin:0 0 4px;font-size:var(--f17);letter-spacing:-.01em}
+section>.lead{margin:0 0 18px;font-size:var(--f12);color:var(--muted)}
+.grid{display:grid;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.token{display:flex;flex-direction:column;gap:6px;font-size:10.5px;color:var(--muted)}
+.sw{width:100%;height:56px;border-radius:var(--r2);border:1px solid var(--line)}
+table.spec{width:100%;border-collapse:collapse;font-size:12.5px}
+table.spec th,table.spec td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.spec th{font-size:10.5px;color:var(--faint);font-weight:600;letter-spacing:.06em}
+.ico-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}
+.ico{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border:1px solid var(--line);border-radius:var(--r2);cursor:pointer;background:transparent;color:inherit;font:inherit}
+.ico:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 4%,transparent)}
+.ico span{font-size:9.5px;color:var(--faint)}
+.ico svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.empty-set{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.empty{padding:18px;border:1px dashed var(--line);border-radius:var(--r3);text-align:center;color:var(--muted);font-size:11.5px}
+.empty svg{width:96px;height:72px;margin-bottom:8px}
+.matrix td,.matrix th{font-size:11.5px}
+.mx-btn{font:inherit;font-size:11.5px;padding:6px 12px;border-radius:var(--r2);border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.mx-btn.hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.mx-btn.active{transform:scale(.97);background:color-mix(in srgb,var(--ink) 10%,transparent)}
+.mx-btn.focus{outline:2px solid var(--blue);outline-offset:3px}
+.mx-btn.disabled{opacity:.42}
+.mx-btn.loading{color:transparent;position:relative}
+.mx-btn.loading:after{content:"";position:absolute;inset:0;margin:auto;width:12px;height:12px;border:2px solid var(--muted);border-top-color:transparent;border-radius:99px;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.md{font-size:13.5px;line-height:1.9;max-width:70ch}
+.md h3{font-size:15px;margin:18px 0 6px}
+.md table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0}
+.md th,.md td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left}
+.md th{color:var(--faint);font-weight:600;font-size:11px}
+.md ul.task{list-style:none;padding-left:2px}
+.md ul.task li{display:flex;gap:8px;align-items:flex-start}
+.md ul.task input{margin-top:5px}
+.md blockquote{margin:10px 0;padding:6px 12px;border-left:2px solid var(--focus,var(--blue));color:var(--muted);font-size:12.5px}
+.md code.inl{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font:12px ui-monospace,Consolas,monospace}
+.code{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;margin:10px 0}
+.code .bar{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid var(--line);font:11px ui-monospace,Consolas,monospace;color:var(--faint)}
+.code .bar b{font-weight:600;color:var(--muted)}
+.code .bar button{margin-left:auto;font:11px inherit;padding:3px 8px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
+.code pre{margin:0;padding:10px 12px;overflow:auto;font:12.5px/1.75 ui-monospace,Consolas,monospace}
+.code .ln{display:block;white-space:pre}
+.code .num{display:inline-block;width:22px;color:var(--faint);user-select:none}
+.tk-k{color:#7a4fd0}.tk-s{color:#2f7d4f}.tk-c{color:var(--faint);font-style:italic}.tk-f{color:#2b6cb0}.tk-n{color:#b0602a}
+.diff{font:12.5px/1.7 ui-monospace,Consolas,monospace;border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.diff div{padding:3px 10px;white-space:pre}
+.diff .add{background:#e4f3d8;color:#22421a}
+.diff .del{background:#fbe1da;color:#6d2415}
+.diff .ctx{color:var(--muted)}
+[data-theme=night] .diff .add{background:#20301a;color:#c9e8b0}
+[data-theme=night] .diff .del{background:#39211a;color:#f3c3b2}
+.gallery{display:flex;gap:12px;flex-wrap:wrap}
+.thumb{position:relative;width:150px;height:100px;border-radius:var(--r2);overflow:hidden;border:1px solid var(--line);cursor:zoom-in;background:background:#e7eedd;background-image:repeating-linear-gradient(135deg,#dfe8d2 0 8px,#e9f0df 8px 16px)}
+.thumb span{position:absolute;left:8px;bottom:6px;font-size:10px;color:#0f1a12;background:#ffffffaa;border-radius:4px;padding:1px 5px}
+#lightbox{position:fixed;inset:0;background:#0b0f0acc;display:none;place-items:center;z-index:50}
+#lightbox.on{display:grid}
+#lightbox img,#lightbox .big{width:min(80vw,760px);height:min(70vh,480px);border-radius:var(--r3);background:background:#e7eedd;background-image:repeating-linear-gradient(135deg,#dfe8d2 0 8px,#e9f0df 8px 16px)}
+#lightbox .bar{position:absolute;top:16px;right:20px;display:flex;gap:8px}
+#lightbox button{font:inherit;font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid #ffffff44;background:#ffffff14;color:#fff;cursor:pointer}
+.caption{font-size:10.5px;color:var(--faint);margin-top:6px}
+.voice{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.voice div{padding:12px 14px;border:1px solid var(--line);border-radius:var(--r2);background:var(--bg)}
+.voice b{font-size:11px;color:var(--faint);display:block;margin-bottom:4px}
+.voice p{margin:0;font-size:12.5px}
+.kbd{font:11px ui-monospace,Consolas,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 6px;background:var(--bg)}
+@media(max-width:640px){main{padding:16px 12px 80px}section{padding:16px}}
+html.embedded header{display:none}
+html.embedded main{padding-top:22px}
+</style>
+<script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
+</head>
+<body>
+<header>
+  <h1>前端模式库 · 设计系统 & 内容呈现</h1>
+  <span class="sub">设计系统 / 内容呈现 —— 点图标可复制 SVG，点图片看大图</span>
+  <span class="grow"></span>
+  <button id="themebtn">夜间</button>
+</header>
+
+<main>
+<section id="design">
+  <h2>A 颜色：原语 → 语义</h2>
+  <p class="lead">组件只准引用语义色；换主题时只换语义层。<b>正文对比度 ≥ 7:1，次要 ≥ 4.5:1。</b></p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))">
+    <div class="token"><i class="sw" style="background:var(--bg)"></i>--bg 底</div>
+    <div class="token"><i class="sw" style="background:var(--paper)"></i>--paper 纸面</div>
+    <div class="token"><i class="sw" style="background:var(--ink)"></i>--ink 正文</div>
+    <div class="token"><i class="sw" style="background:var(--muted)"></i>--muted 次要</div>
+    <div class="token"><i class="sw" style="background:var(--faint)"></i>--faint 极淡</div>
+    <div class="token"><i class="sw" style="background:var(--line)"></i>--line 线</div>
+    <div class="token"><i class="sw" style="background:var(--lime)"></i>--lime 主强调</div>
+    <div class="token"><i class="sw" style="background:var(--mint)"></i>--mint 成功/人</div>
+    <div class="token"><i class="sw" style="background:var(--amber)"></i>--amber 注意</div>
+    <div class="token"><i class="sw" style="background:var(--coral)"></i>--coral 警示</div>
+    <div class="token"><i class="sw" style="background:var(--red)"></i>--red 危险</div>
+    <div class="token"><i class="sw" style="background:var(--lav)"></i>--lav 辅助</div>
+    <div class="token"><i class="sw" style="background:var(--blue)"></i>--blue 焦点</div>
+  </div>
+</section>
+
+<section>
+  <h2>B 字阶与间距</h2>
+  <p class="lead">7 档字阶，正文 14 / 行高 1.9；间距只用 4 的倍数。</p>
+  <table class="spec">
+    <tr><th>令牌</th><th>字号</th><th>用在哪</th><th>样例</th></tr>
+    <tr><td>--f11</td><td>11px</td><td>时间戳、标签、脚注</td><td><span style="font-size:var(--f11);color:var(--faint)">刚刚 · 前端</span></td></tr>
+    <tr><td>--f12</td><td>12px</td><td>次要说明、列表副行</td><td><span style="font-size:var(--f12);color:var(--muted)">3 条未读 · 刚刚更新</span></td></tr>
+    <tr><td>--f13</td><td>13px</td><td>紧凑模式正文</td><td><span style="font-size:var(--f13)">紧凑模式下的正文行</span></td></tr>
+    <tr><td>--f14</td><td>14px</td><td><b>正文默认</b></td><td><span style="font-size:var(--f14)">把复杂留给系统，把简单留给用户。</span></td></tr>
+    <tr><td>--f17</td><td>17px</td><td>区块标题、页面名</td><td><span style="font-size:var(--f17);font-weight:650">产品首页</span></td></tr>
+    <tr><td>--f22</td><td>22px</td><td>页面小节标题</td><td><span style="font-size:var(--f22);font-weight:700;letter-spacing:-.02em">把重要的留下来</span></td></tr>
+    <tr><td>--f28</td><td>28px</td><td>首屏主标题</td><td><span style="font-size:var(--f28);font-weight:750;letter-spacing:-.035em">把复杂交给我们</span></td></tr>
+  </table>
+  <div class="chips" style="margin-top:14px">
+    <span class="token"><i class="sw" style="height:12px;width:var(--s1)"></i>4</span>
+    <span class="token"><i class="sw" style="height:12px;width:var(--s2)"></i>8</span>
+    <span class="token"><i class="sw" style="height:12px;width:var(--s3)"></i>12</span>
+    <span class="token"><i class="sw" style="height:12px;width:var(--s4)"></i>16</span>
+    <span class="token"><i class="sw" style="height:12px;width:var(--s5)"></i>24</span>
+    <span class="token"><i class="sw" style="height:12px;width:var(--s6)"></i>32</span>
+    <span class="token"><i class="sw" style="height:12px;width:var(--s7)"></i>48</span>
+  </div>
+  <div class="chips" style="margin-top:14px">
+    <span style="border-radius:var(--r1);border:1px solid var(--line);padding:4px 10px;font-size:11px">r1 6</span>
+    <span style="border-radius:var(--r2);border:1px solid var(--line);padding:4px 10px;font-size:11px">r2 10</span>
+    <span style="border-radius:var(--r3);border:1px solid var(--line);padding:4px 10px;font-size:11px">r3 14</span>
+    <span style="border-radius:var(--r4);border:1px solid var(--line);padding:4px 10px;font-size:11px">r4 20</span>
+    <span style="border-radius:var(--rpill);border:1px solid var(--line);padding:4px 10px;font-size:11px">pill</span>
+    <span style="box-shadow:var(--sh1);border-radius:var(--r2);padding:4px 10px;font-size:11px;background:var(--paper)">sh1</span>
+    <span style="box-shadow:var(--sh2);border-radius:var(--r2);padding:4px 10px;font-size:11px;background:var(--paper)">sh2</span>
+    <span style="box-shadow:var(--sh3);border-radius:var(--r2);padding:4px 10px;font-size:11px;background:var(--paper)">sh3</span>
+  </div>
+</section>
+
+<section>
+  <h2>C 图标集（24 个 · 24×24 线性 · stroke 1.8）</h2>
+  <p class="lead">点任意一个复制它的 SVG。命名按"它在表达什么"，不按形状。</p>
+  <div class="ico-grid" id="icons"></div>
+</section>
+
+<section>
+  <h2>D 空态插画（几何 ✳ 体系）</h2>
+  <p class="lead">只用圆、轨道、✳ 三种元素组合，跟随主题色；每种空态给一句能照做的文案。</p>
+  <div class="empty-set" id="empties"></div>
+</section>
+
+<section>
+  <h2>E 组件状态矩阵</h2>
+  <p class="lead">任何可点组件都必须定义这 6 态；缺"焦点"和"禁用"是最常见的问题。</p>
+  <table class="spec matrix">
+    <tr><th>状态</th><th>按钮</th><th>说明</th></tr>
+    <tr><td>默认</td><td><button class="mx-btn">发送</button></td><td>无修饰</td></tr>
+    <tr><td>悬停</td><td><button class="mx-btn hover">发送</button></td><td>底色加深一档，不加边框</td></tr>
+    <tr><td>按下</td><td><button class="mx-btn active">发送</button></td><td>缩放 0.97，不要改变位置</td></tr>
+    <tr><td>焦点</td><td><button class="mx-btn focus">发送</button></td><td>2px 焦点环 + 3px 偏移，仅键盘</td></tr>
+    <tr><td>禁用</td><td><button class="mx-btn disabled">发送</button></td><td>不透明度 0.42，不拦 hover</td></tr>
+    <tr><td>加载</td><td><button class="mx-btn loading">发送</button></td><td>文字隐藏、原地转圈，宽度不变</td></tr>
+  </table>
+</section>
+
+<section id="content">
+  <h2>F Markdown：表格 / 任务列表 / 引用 / 行内代码</h2>
+  <div class="md">
+    <h3>本周发布结论</h3>
+    <p>新版首页的加载与兼容都达标，<code class="inl">LCP</code> 超标的那一版已退回重做。</p>
+    <table>
+      <thead><tr><th>页面</th><th>首屏</th><th>包体</th><th>结论</th></tr></thead>
+      <tbody>
+        <tr><td>首页</td><td>1.2s</td><td>86KB</td><td>通过</td></tr>
+        <tr><td>列表页</td><td>2.4s</td><td>132KB</td><td>退回</td></tr>
+        <tr><td>详情页</td><td>1.1s</td><td>91KB</td><td>通过</td></tr>
+      </tbody>
+    </table>
+    <ul class="task">
+      <li><input type="checkbox" checked> 核对移动端断点</li>
+      <li><input type="checkbox" checked> 核对键盘焦点顺序</li>
+      <li><input type="checkbox"> 出上线检查清单</li>
+    </ul>
+    <blockquote>没有度量，就不宣称优化。</blockquote>
+  </div>
+</section>
+
+<section>
+  <h2>G 代码块：行号 + 轻量高亮 + 复制</h2>
+  <div class="code">
+    <div class="bar"><b>utils.js</b><span>· 8 行</span><button data-copy="code">复制</button></div>
+    <pre id="code"><span class="ln"><span class="num">1</span><span class="tk-c">// 防抖：停止输入后再请求</span></span><span class="ln"><span class="num">2</span><span class="tk-k">function</span> <span class="tk-f">debounce</span>(fn, wait) {</span><span class="ln"><span class="num">3</span>  <span class="tk-k">let</span> timer;</span><span class="ln"><span class="num">4</span>  <span class="tk-k">return</span> (...args) => {</span><span class="ln"><span class="num">5</span>    <span class="tk-f">clearTimeout</span>(timer);</span><span class="ln"><span class="num">6</span>    timer = <span class="tk-f">setTimeout</span>(() => <span class="tk-f">fn</span>(...args), wait);</span><span class="ln"><span class="num">7</span>  };</span><span class="ln"><span class="num">8</span>}</span></pre>
+  </div>
+</section>
+
+<section>
+  <h2>H 差异视图（一眼看出版本改了什么）</h2>
+  <div class="diff">
+    <div class="ctx">  "dependencies": { "react": "^19.0.0" },</div>
+    <div class="del">- "vite": "^5.0.0",</div>
+    <div class="add">+ "vite": "^6.1.0",</div>
+    <div class="ctx">  "private": true,</div>
+  </div>
+  <p class="caption">红=删、绿=增、灰=上下文；超过 8 行折叠成「展开其余 12 行」。</p>
+</section>
+
+<section>
+  <h2>I 图片：缩略图 → 大图（点开、Esc 关）</h2>
+  <div class="gallery">
+    <div class="thumb" data-big="截图 1 · 登录页"><span>截图 1</span></div>
+    <div class="thumb" data-big="截图 2 · 数据看板"><span>截图 2</span></div>
+    <div class="thumb" data-big="截图 3 · 移动端列表"><span>截图 3</span></div>
+  </div>
+  <p class="caption">现在是纯色占位；接真数据时换成缩略图 + 原图两级，支持 ←/→ 翻页与缩放。</p>
+</section>
+
+<section>
+  <h2>J 文案语气（空态 / 错误 / 确认）</h2>
+  <div class="voice">
+    <div><b>空态</b><p>还没有项目。新建一个，或从模板开始。</p></div>
+    <div><b>错误</b><p>连不上服务端：接口 502，网关没有响应。重载一次页面再试。</p></div>
+    <div><b>确认</b><p>要删除「素材库」吗？其中的文件会一起消失，其他内容不受影响。</p></div>
+  </div>
+  <p class="caption">三条规矩：说清发生了什么、给一个能照做的动作、不吓人也不卖萌。</p>
+</section>
+</main>
+
+<div id="lightbox"><div class="big"></div><div class="bar"><button id="lbclose">关闭 (Esc)</button></div></div>
+
+<script>
+/* 图标：24×24，全部 1.8 描边、圆角端点 */
+const ICONS = {
+  '对话': '<path d="M4 5h16v10H8l-4 3z"/>',
+  '现场': '<circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/>',
+  '会话': '<path d="M4 6h16M4 12h16M4 18h10"/>',
+  '角色': '<circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5"/><circle cx="17" cy="10" r="2"/><path d="M15 19c0-2 1.5-3.5 4-3.5"/>',
+  '项目': '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  '能力': '<path d="M13 3 4 14h6l-1 7 9-11h-6z"/>',
+  '记忆': '<path d="M6 4h10a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2z"/><path d="M6 4v14"/>',
+  '本机': '<rect x="3" y="5" width="18" height="11" rx="2"/><path d="M8 20h8M12 16v4"/>',
+  '发送': '<path d="M4 12h14M13 6l6 6-6 6"/>',
+  '停止': '<rect x="7" y="7" width="10" height="10" rx="2"/>',
+  '复制': '<rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/>',
+  '引用': '<path d="M8 7H5v5h3v4H4V7zM19 7h-3v5h3v4h-4V7z"/>',
+  '搜索': '<circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/>',
+  '筛选': '<path d="M4 6h16M7 12h10M10 18h4"/>',
+  '更多': '<circle cx="6" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/>',
+  '关闭': '<path d="m6 6 12 12M18 6 6 18"/>',
+  '检查': '<path d="m4 12 5 5L20 6"/>',
+  '警告': '<path d="M12 4 3 20h18z"/><path d="M12 10v4M12 17h.01"/>',
+  '下拉': '<path d="m6 9 6 6 6-6"/>',
+  '附件': '<path d="m20 11-7.5 7.5a5 5 0 0 1-7-7L13 4a3.5 3.5 0 0 1 5 5l-8 8a2 2 0 0 1-3-3l7-7"/>',
+  '运行': '<path d="M7 5v14l12-7z"/>',
+  '时钟': '<circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/>',
+  '排序': '<path d="M7 4v16M4 17l3 3 3-3M17 20V4M14 7l3-3 3 3"/>',
+  '设置': '<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>'
+};
+const grid = document.getElementById('icons');
+grid.innerHTML = Object.entries(ICONS).map(([name, d]) =>
+  `<button class="ico" data-svg='<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>'><svg viewBox="0 0 24 24">${d}</svg><span>${name}</span></button>`).join('');
+
+/* 空态插画：圆 + 轨道 + ✳ 三种元素的组合 */
+const EMPTIES = [
+  ['还没有项目', '新建一个，或从模板开始。', '<circle cx="48" cy="36" r="22" stroke="var(--line)" fill="none"/><circle cx="48" cy="36" r="13" stroke="var(--line)" fill="none"/><text x="48" y="43" font-size="20" text-anchor="middle" fill="var(--muted)">✳</text>'],
+  ['没有进行中', '新建一个任务，这里会出现进度。', '<circle cx="30" cy="36" r="10" stroke="var(--line)" fill="none"/><circle cx="48" cy="36" r="14" stroke="var(--line)" fill="none"/><circle cx="66" cy="36" r="10" stroke="var(--line)" fill="none"/><text x="48" y="42" font-size="14" text-anchor="middle" fill="var(--muted)">✳</text>'],
+  ['连不上服务端', '重载页面；还不行就看网关日志。', '<path d="M20 48c8-10 20-10 28 0" stroke="var(--line)" fill="none"/><path d="M28 40c5-6 12-6 17 0" stroke="var(--line)" fill="none"/><circle cx="48" cy="30" r="3" fill="var(--muted)"/>']
+];
+document.getElementById('empties').innerHTML = EMPTIES.map(([t, d, svg]) =>
+  `<div class="empty"><svg viewBox="0 0 96 72">${svg}</svg><div style="color:var(--ink);font-size:12.5px;margin-bottom:2px">${t}</div>${d}</div>`).join('');
+
+/* 点图标复制 SVG */
+grid.addEventListener('click', async e => {
+  const b = e.target.closest('.ico'); if (!b) return;
+  const svg = b.dataset.svg;
+  try { await navigator.clipboard.writeText(svg); } catch {
+    const ta = document.createElement('textarea'); ta.value = svg; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+  }
+  const s = b.querySelector('span'), old = s.textContent; s.textContent = '已复制'; setTimeout(() => s.textContent = old, 1200);
+});
+
+/* 代码复制 */
+document.querySelector('[data-copy="code"]').addEventListener('click', async e => {
+  const txt = [...document.querySelectorAll('#code .ln')].map(l => l.textContent.replace(/^\d+/, '')).join('\n');
+  try { await navigator.clipboard.writeText(txt); } catch { }
+  e.target.textContent = '已复制'; setTimeout(() => e.target.textContent = '复制', 1200);
+});
+
+/* 图片查看器 */
+const lb = document.getElementById('lightbox');
+document.querySelectorAll('.thumb').forEach(t => t.addEventListener('click', () => {
+  lb.querySelector('.big').textContent = t.dataset.big;
+  lb.classList.add('on');
+}));
+const closeLb = () => lb.classList.remove('on');
+lb.addEventListener('click', e => { if (e.target === lb || e.target.id === 'lbclose') closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+/* 主题 */
+if (new URLSearchParams(location.search).get('theme') === 'night') document.documentElement.setAttribute('data-theme', 'night');
+window.addEventListener('message', e => {
+  if (!e.data || e.data.type !== 'site-theme') return;
+  const night = e.data.value === 'night';
+  document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');
+  document.getElementById('themebtn').textContent = night ? '纸色' : '夜间';
+});
+document.getElementById('themebtn').addEventListener('click', e => {
+  const night = document.documentElement.getAttribute('data-theme') !== 'night';
+  document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');
+  e.target.textContent = night ? '纸色' : '夜间';
+});
+</script>
+</body>
+</html>

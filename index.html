@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>前端模式库</title>
+<style>
+:root{--bg:#f3f1e9;--paper:#fbfaf5;--ink:#20241e;--muted:#6b7860;--faint:#94a184;--line:#deded2;--lime:#d9f875;--ease:cubic-bezier(.2,.75,.25,1)}
+[data-theme=night]{--bg:#121610;--paper:#191d18;--ink:#e8efe0;--muted:#a9b8a0;--faint:#7b8a72;--line:#2c3327}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:14px/1.7 Inter,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+body{display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:12px;padding:10px 20px;background:var(--paper);border-bottom:1px solid var(--line);flex:0 0 auto}
+header b{font-size:14px}
+header .sub{font-size:11px;color:var(--faint);border-left:1px solid var(--line);padding-left:12px}
+header .grow{flex:1}
+header button{font:inherit;font-size:12px;padding:6px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;cursor:pointer}
+nav{display:flex;gap:6px;padding:8px 20px;background:var(--paper);border-bottom:1px solid var(--line);flex:0 0 auto}
+nav button{font:inherit;font-size:12.5px;padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+nav button[data-on]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+nav .sp{flex:1}
+nav code{font-size:11px;color:var(--faint);align-self:center}
+main{flex:1;min-height:0;position:relative}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(--bg)}
+#home{position:absolute;inset:0;overflow:auto;padding:28px 24px}
+.round{max-width:960px;margin:0 auto}
+h1{font-size:26px;letter-spacing:-.03em;margin:0 0 6px}
+.lead{color:var(--muted);font-size:13px;margin:0 0 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:transform .16s var(--ease),box-shadow .16s}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px #20241e14}
+.card b{font-size:15px}
+.card p{margin:0;font-size:12px;color:var(--muted);line-height:1.8}
+.card .n{font-size:10.5px;color:var(--faint);letter-spacing:.08em}
+.card .go{margin-top:auto;font-size:12px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px}
+.hint{margin-top:26px;font-size:11.5px;color:var(--faint);line-height:1.9}
+@media(max-width:640px){
+  header{padding:10px 16px}
+  header .sub{display:none}
+  nav{padding:8px 16px;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav button{flex:0 0 auto;white-space:nowrap}
+  nav code{display:none}
+  #home{padding:20px 16px}
+  h1{font-size:22px}
+}
+</style>
+</head>
+<body>
+<header>
+  <b>前端模式库</b>
+  <span class="sub">通用前端参考：动效与交互 / 设计系统 / 内容呈现</span>
+  <span class="grow"></span>
+  <button id="themebtn">夜间</button>
+</header>
+<nav>
+  <button data-tab="home" data-on>总览</button>
+  <button data-tab="motion">动效与交互 · 94</button>
+  <button data-tab="system">设计系统</button>
+  <button data-tab="content">内容呈现</button>
+  <span class="sp"></span>
+  <code>统一配色 · 明暗两套</code>
+</nav>
+<main>
+  <div id="home">
+    <div class="round">
+      <h1>前端模式库，从这里进</h1>
+      <p class="lead">三块内容共用同一套设计语言；这里不绑定任何具体产品，示例一律用中性数据。</p>
+      <div class="cards">
+        <div class="card" data-tab="motion">
+          <span class="n">MOTION & INTERACTION</span>
+          <b>动效与交互实验室</b>
+          <p>94 个可交互效果、18 个分类：入场、加载、微交互、光标、滚动、过渡、拖拽、布局、数据、反馈、排印、无障碍、表单、导航、浮层、列表。</p>
+          <span class="go">打开 → 点「选中」挑你想要的</span>
+        </div>
+        <div class="card" data-tab="system">
+          <span class="n">DESIGN SYSTEM</span>
+          <b>设计系统</b>
+          <p>颜色（原语→语义）、7 档字阶、4 的倍数间距、4 档圆角、3 档阴影、24 个图标（点了复制 SVG）、空态插画、组件六态矩阵。</p>
+          <span class="go">打开 → 图标可直接复制</span>
+        </div>
+        <div class="card" data-tab="content">
+          <span class="n">CONTENT RENDERING</span>
+          <b>内容呈现</b>
+          <p>Markdown 表格/任务列表/引用、代码块（行号+高亮+复制）、差异视图、图片查看器（点开大图、Esc 关）、文案语气模板。</p>
+          <span class="go">打开 → 点缩略图看大图</span>
+        </div>
+      </div>
+      <p class="hint">说明：这里是通用前端参考库 —— 动效与交互、设计系统、内容呈现三大块，每一条都能点、能复制。挑中的可以拿去任何项目用。</p>
+    </div>
+  </div>
+  <iframe id="frame" hidden></iframe>
+</main>
+<script>
+const frame = document.getElementById('frame');
+const home = document.getElementById('home');
+const SRC = { motion: 'motion-lab.html', system: 'design-system.html#design', content: 'design-system.html#content' };
+function themeNow() { return document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'paper'; }
+function go(tab) {
+  document.querySelectorAll('nav button[data-tab]').forEach(b => b.toggleAttribute('data-on', b.dataset.tab === tab));
+  localStorage.setItem('site.tab', tab);
+  if (tab === 'home') { frame.hidden = true; frame.src = 'about:blank'; home.hidden = false; return; }
+  home.hidden = true; frame.hidden = false;
+  const [base, hash] = SRC[tab].split('#');
+  frame.src = base + '?t=' + Date.now() + '&theme=' + themeNow() + (hash ? '#' + hash : '');
+}
+document.querySelectorAll('[data-tab]').forEach(el => el.addEventListener('click', () => go(el.dataset.tab)));
+if (localStorage.getItem('site.theme') === 'night') document.documentElement.setAttribute('data-theme', 'night');
+document.getElementById('themebtn').textContent = themeNow() === 'night' ? '纸色' : '夜间';
+const saved = localStorage.getItem('site.tab');
+if (saved && SRC[saved]) go(saved);
+document.getElementById('themebtn').addEventListener('click', e => {
+  const night = themeNow() !== 'night';
+  document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');
+  e.target.textContent = night ? '纸色' : '夜间';
+  localStorage.setItem('site.theme', night ? 'night' : 'paper');
+  try { frame.contentWindow?.postMessage({ type: 'site-theme', value: night ? 'night' : 'paper' }, '*'); } catch { }
+});
+</script>
+</body>
+</html>
