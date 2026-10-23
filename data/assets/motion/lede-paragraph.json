@@ -1,0 +1,18 @@
+{
+  "id": "lede-paragraph",
+  "cat": "内容",
+  "t": "导语段",
+  "en": "lede paragraph",
+  "d": "导语比正文大两档、行高更松、宽度更窄：它的活是让人决定要不要往下读，所以一行不能塞太多字。导语不放粗、不加底色——加粗会变成标题，底色会变成提示框，两者都让它看起来像结论而不是引子。",
+  "body": "<div class=\"d-lp3\"><p class=\"d-lp3-lede\">这间屋子的光是斜着进来的。早上七点打在桌面，十点就退到柜子上；一天里只有四十分钟，桌角那块木纹是亮的。</p><p class=\"d-lp3-body\">其余时间它都在暗处。所以这张桌子最常被用来放东西，而不是写字。</p></div>",
+  "css": ".d-lp3{max-width:340px;font-family:var(--font-serif)}\n.d-lp3-lede{margin:0;font-size:21px;line-height:1.6;letter-spacing:-.01em;max-width:26ch}\n.d-lp3-body{margin:12px 0 0;font-family:var(--font-sans);font-size:13px;line-height:1.8;color:var(--muted);max-width:34ch}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "导语",
+    "长文",
+    "排版",
+    "内容"
+  ],
+  "source": "v4"
+}

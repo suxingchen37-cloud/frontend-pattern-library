@@ -1,0 +1,6 @@
+.d-db{display:flex;gap:10px;width:100%;max-width:340px}
+.d-db-card{position:relative;flex:1;height:110px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-db-art{position:absolute;inset:0;display:flex;align-items:flex-end;padding:8px;background:color-mix(in srgb,var(--ink) 64%,var(--paper));color:var(--paper)}
+.d-db-art b{font-size:12px}
+.d-db-badge{position:absolute;right:6px;bottom:6px;padding:1px 6px;border-radius:2px;background:color-mix(in srgb,var(--ink) 78%,transparent);color:var(--paper);font-family:var(--font-mono);font-size:9px;letter-spacing:.04em}
+.d-db-prog{position:absolute;left:0;bottom:0;height:2px;width:var(--p);background:var(--ink-vermilion)}

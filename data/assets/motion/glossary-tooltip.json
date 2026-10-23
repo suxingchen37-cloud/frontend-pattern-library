@@ -1,0 +1,18 @@
+{
+  "id": "glossary-tooltip",
+  "cat": "内容",
+  "t": "术语解释",
+  "en": "glossary tooltip",
+  "d": "术语用虚线下划线，不改成蓝色链接：蓝色会让人以为点了会跳走。解释浮层里第一句是人话，第二句才给数字。键盘 Tab 也能打开，因为不是所有人用鼠标。点空白处关掉，不用非得再点一次术语。",
+  "body": "<div class=\"d-gt\"><p class=\"d-gt-body\">这盏灯的<button type=\"button\" class=\"d-gt-term\" data-term>显色指数<i class=\"d-gt-tip\" data-tip>灯照在物体上，颜色跟自然光下差多少。九十分以上，木头的暖色基本不走样。</i></button>在九十二，木头的暖色基本不走样。</p></div>",
+  "css": ".d-gt{max-width:340px;padding:12px}\n.d-gt-body{margin:0;font-size:13px;line-height:2}\n.d-gt-term{position:relative;padding:0;border:0;background:none;color:inherit;font:inherit;border-bottom:1px dashed var(--muted);cursor:help}\n.d-gt-tip{position:absolute;left:50%;bottom:calc(100% + 8px);width:210px;margin-left:-105px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);box-shadow:0 12px 24px -8px #20241e26;font-style:normal;font-size:11px;line-height:1.7;color:var(--muted);text-align:left;opacity:0;transform:translateY(4px);transition:opacity 160ms var(--ease),transform 160ms var(--ease);pointer-events:none;z-index:2}\n.d-gt-term.on .d-gt-tip{opacity:1;transform:none}\n.d-gt-term:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n  var term = root.querySelector('[data-term]');\n  if (!term) return;\n  var toggle = function (e) { e.stopPropagation(); term.classList.toggle('on'); };\n  term.addEventListener('click', toggle);\n  term.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); } });\n  document.addEventListener('click', function () { term.classList.remove('on'); });\n}",
+  "motion": "印刷",
+  "tags": [
+    "术语",
+    "浮层",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,10 @@
+.d-cn{display:grid;gap:8px;max-width:340px}
+.d-cn-item{padding:8px 12px;border-left:2px solid var(--line);background:var(--paper)}
+.d-cn-item b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;font-weight:400;margin-bottom:2px}
+.d-cn-item p{margin:0;font-size:12px;line-height:1.7;color:var(--muted)}
+.d-cn-warn{border-left-color:var(--warn)}
+.d-cn-warn b{color:var(--warn)}
+.d-cn-exc{border-left-color:var(--ink-yellow)}
+.d-cn-exc b{color:var(--muted)}
+.d-cn-do{border-left-color:var(--ok)}
+.d-cn-do b{color:var(--ok)}

@@ -1,0 +1,18 @@
+{
+  "id": "gallery-strip",
+  "cat": "媒体",
+  "t": "缩略图条",
+  "en": "gallery strip",
+  "d": "缩略图条只在主图下方放一行，选中项用 2px 边框标出，不用放大：放大缩略图会推开两边的图，滑动时整条都在动。键盘左右键也能换图，因为看片的人手常在键盘上。",
+  "body": "<div class=\"d-gs\" data-box><div class=\"d-gs-main\"><b data-title>01 · 开场</b></div><div class=\"d-gs-strip\" data-strip><button type=\"button\" class=\"d-gs-th d-gs-on\" data-i=\"0\">01</button><button type=\"button\" class=\"d-gs-th\" data-i=\"1\">02</button><button type=\"button\" class=\"d-gs-th\" data-i=\"2\">03</button><button type=\"button\" class=\"d-gs-th\" data-i=\"3\">04</button></div></div>",
+  "css": ".d-gs{width:100%;max-width:340px}\n.d-gs-main{display:flex;align-items:flex-end;height:130px;padding:10px;border:1px solid var(--line);border-radius:10px 10px 0 0;background:color-mix(in srgb,var(--ink) 66%,var(--paper));color:var(--paper)}\n.d-gs-main b{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;font-weight:400}\n.d-gs-strip{display:flex;gap:6px;padding:6px;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;background:var(--paper)}\n.d-gs-th{width:100%;height:38px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--muted);font:inherit;font-family:var(--font-mono);font-size:10px;cursor:pointer;transition:border-color 160ms var(--ease),color 160ms var(--ease)}\n.d-gs-th.d-gs-on{border-color:var(--ink);color:var(--ink);border-width:2px}",
+  "init": "root => {\n  var title = root.querySelector('[data-title]');\n  var ths = [].slice.call(root.querySelectorAll('.d-gs-th'));\n  if (!title || !ths.length) return;\n  var names = ['开场', '推门', '停顿', '反打'], cur = 0;\n  var pick = function (i) { cur = (i + ths.length) % ths.length; ths.forEach(function (t, k) { t.classList.toggle('d-gs-on', k === cur); }); title.textContent = ths[cur].textContent + ' · ' + names[cur]; };\n  ths.forEach(function (t, i) { t.addEventListener('click', function () { pick(i); }); });\n  document.addEventListener('keydown', function (e) {\n    if (!root.contains(document.activeElement) && document.activeElement !== document.body) return;\n    if (e.key === 'ArrowRight') pick(cur + 1);\n    if (e.key === 'ArrowLeft') pick(cur - 1);\n  });\n  pick(0);\n}",
+  "motion": "无动效",
+  "tags": [
+    "缩略图",
+    "相册",
+    "键盘",
+    "媒体"
+  ],
+  "source": "v4"
+}

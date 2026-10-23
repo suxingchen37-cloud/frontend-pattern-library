@@ -1,0 +1,12 @@
+.d-mer{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-mer-frame{position:relative;height:130px}
+.d-mer-ok{position:absolute;inset:0;display:flex;align-items:flex-end;padding:10px;background:color-mix(in srgb,var(--ink) 68%,var(--paper));color:var(--paper)}
+.d-mer-ok span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;opacity:.85}
+.d-mer-err{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--bg);text-align:center}
+.d-mer-err b{font-size:13px}
+.d-mer-err p{margin:0;font-size:11px;color:var(--muted)}
+.d-mer-acts{display:flex;gap:6px;margin-top:6px}
+.d-mer-acts button{padding:3px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.d-mer-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;border-top:1px solid var(--line)}
+.d-mer-bar span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}
+.d-mer-bar button{padding:2px 10px;border:0;background:none;color:var(--faint);font:inherit;font-size:10px;cursor:pointer;text-decoration:underline}

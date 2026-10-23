@@ -1,0 +1,18 @@
+{
+  "id": "spoiler-reveal",
+  "cat": "内容",
+  "t": "剧透折叠",
+  "en": "spoiler reveal",
+  "d": "剧透默认模糊而不是直接隐藏：隐藏会让人以为那段不存在，模糊保留长度和排版，说明「这里有内容，但你可能不想看」。点一下变清晰，不做动画——动画会让被遮住的字先闪一下。",
+  "body": "<div class=\"d-sr\"><p>结尾那场戏，父亲其实没有进门，他站在<button type=\"button\" class=\"d-sr-mask\" data-mask aria-pressed=\"false\">门外听了两分钟就下楼了</button>。这件事全片只提过一次。</p></div>",
+  "css": ".d-sr{max-width:340px;padding:12px}\n.d-sr p{margin:0;font-size:13px;line-height:1.9}\n.d-sr-mask{padding:0 2px;border:0;background:var(--ink);color:transparent;font:inherit;border-radius:2px;cursor:pointer;filter:blur(1px);transition:filter 120ms var(--ease),background-color 120ms var(--ease),color 120ms var(--ease)}\n.d-sr-mask.on{background:transparent;color:inherit;filter:none}\n.d-sr-mask:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n  var m = root.querySelector('[data-mask]');\n  if (!m) return;\n  m.addEventListener('click', function () { var on = m.classList.toggle('on'); m.setAttribute('aria-pressed', on ? 'true' : 'false'); });\n}",
+  "motion": "无动效",
+  "tags": [
+    "剧透",
+    "折叠",
+    "正文",
+    "内容"
+  ],
+  "source": "v4"
+}

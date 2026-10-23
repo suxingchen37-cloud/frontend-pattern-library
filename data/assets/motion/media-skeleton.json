@@ -1,0 +1,18 @@
+{
+  "id": "media-skeleton",
+  "cat": "媒体",
+  "t": "播放器骨架",
+  "en": "media skeleton",
+  "d": "加载时先铺一层和视频同尺寸的骨架，比例锁死 16:9：骨架和真视频尺寸不一致，加载完页面会跳一下。骨架用呼吸而不是扫光，扫光更像广告位。超过 2 秒才出现「还在加载」的文字，快的时候不闪一下。",
+  "body": "<div class=\"d-msk\" data-box><div class=\"d-msk-frame\" data-frame><div class=\"d-msk-bones\"><i></i><i></i><i></i></div><span data-hint>载入中</span></div><div class=\"d-msk-bar\"><button type=\"button\" data-done>模拟加载完成</button><span data-state>骨架显示中</span></div></div>",
+  "css": ".d-msk{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-msk-frame{position:relative;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:10px;background:color-mix(in srgb,var(--ink) 8%,var(--paper));overflow:hidden}\n.d-msk-bones{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 18px}\n.d-msk-bones i{display:block;height:8px;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,var(--paper));animation:d-media-skeleton-breathe 1.2s var(--ease) infinite alternate}\n.d-msk-bones i:nth-child(2){width:70%;animation-delay:120ms}\n.d-msk-bones i:nth-child(3){width:44%;animation-delay:240ms}\n.d-msk-frame span{position:relative;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint);opacity:0;transition:opacity 200ms var(--ease)}\n.d-msk-frame.slow span{opacity:1}\n.d-msk-frame.done .d-msk-bones{display:none}\n.d-msk-frame.done{background:color-mix(in srgb,var(--ink) 62%,var(--paper));color:var(--paper)}\n.d-msk-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;border-top:1px solid var(--line)}\n.d-msk-bar button{padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}\n.d-msk-bar span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n@keyframes d-media-skeleton-breathe{from{opacity:.5}to{opacity:1}}",
+  "init": "root => {\n  var frame = root.querySelector('[data-frame]');\n  var done = root.querySelector('[data-done]');\n  var state = root.querySelector('[data-state]');\n  if (!frame || !done) return;\n  var timer = setTimeout(function () { frame.classList.add('slow'); }, 2000);\n  done.addEventListener('click', function () {\n    clearTimeout(timer);\n    var isDone = frame.classList.toggle('done');\n    frame.classList.remove('slow');\n    if (state) state.textContent = isDone ? '已载入' : '骨架显示中';\n    done.textContent = isDone ? '重新加载' : '模拟加载完成';\n    var hint = frame.querySelector('span');\n    if (hint) hint.textContent = isDone ? '16:9 · 00:42' : '载入中';\n  });\n}",
+  "motion": "机械",
+  "tags": [
+    "骨架",
+    "加载",
+    "播放器",
+    "媒体"
+  ],
+  "source": "v4"
+}

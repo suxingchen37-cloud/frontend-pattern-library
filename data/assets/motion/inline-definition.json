@@ -1,0 +1,18 @@
+{
+  "id": "inline-definition",
+  "cat": "内容",
+  "t": "行内定义",
+  "en": "inline definition",
+  "d": "术语第一次出现时在括号里给一句定义，之后再出现就不重复：每次都解释会打断阅读，一次不解释则后文全废。定义用正文同字号、淡化颜色，不用斜体——中文斜体是伪斜体，看起来像出错。",
+  "body": "<div class=\"d-id2\"><p>灯的<span class=\"d-id2-def\">显色指数（灯照在物体上，颜色跟自然光下差多少）</span>到九十以上，木头的暖色基本不走样；低于八十，红色会发灰。<span class=\"d-id2-dim\">这个数字通常印在包装侧面。</span></p></div>",
+  "css": ".d-id2{max-width:340px;padding:12px}\n.d-id2 p{margin:0;font-size:13px;line-height:1.9}\n.d-id2-def{color:var(--muted)}\n.d-id2-dim{color:var(--faint)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "定义",
+    "术语",
+    "正文",
+    "内容"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,6 @@
+.d-gs{width:100%;max-width:340px}
+.d-gs-main{display:flex;align-items:flex-end;height:130px;padding:10px;border:1px solid var(--line);border-radius:10px 10px 0 0;background:color-mix(in srgb,var(--ink) 66%,var(--paper));color:var(--paper)}
+.d-gs-main b{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;font-weight:400}
+.d-gs-strip{display:flex;gap:6px;padding:6px;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;background:var(--paper)}
+.d-gs-th{width:100%;height:38px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--muted);font:inherit;font-family:var(--font-mono);font-size:10px;cursor:pointer;transition:border-color 160ms var(--ease),color 160ms var(--ease)}
+.d-gs-th.d-gs-on{border-color:var(--ink);color:var(--ink);border-width:2px}

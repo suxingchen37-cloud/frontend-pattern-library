@@ -1,0 +1,18 @@
+{
+  "id": "audio-peaks",
+  "cat": "媒体",
+  "t": "峰值条跳转",
+  "en": "audio peaks seek",
+  "d": "峰值条每一根都能量，点是跳转不是装饰：波形能点的概率比一条细进度条高得多，因为它看起来就是内容。已播部分只降不压暗背景，压暗会让整条看起来是灰的。播放时峰值跟着走过，滚动条不动。",
+  "body": "<div class=\"d-ap\" data-box><div class=\"d-ap-head\"><button type=\"button\" data-play>▶</button><span data-time>00:00.0</span></div><div class=\"d-ap-wave\" data-wave></div></div>",
+  "css": ".d-ap{width:100%;max-width:340px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}\n.d-ap-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}\n.d-ap-head button{width:26px;height:26px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}\n.d-ap-head span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n.d-ap-wave{display:flex;align-items:center;gap:1px;height:70px;cursor:pointer;touch-action:none}\n.d-ap-wave i{flex:1;background:color-mix(in srgb,var(--ink) 22%,var(--paper));border-radius:2px;transition:background-color 120ms var(--ease)}\n.d-ap-wave i.on{background:var(--ink)}",
+  "init": "root => {\n  var wave = root.querySelector('[data-wave]');\n  var play = root.querySelector('[data-play]');\n  var time = root.querySelector('[data-time]');\n  if (!wave || !play) return;\n  var bars = [], n = 54, i;\n  for (i = 0; i < n; i++) { var b = document.createElement('i'); b.style.height = (14 + Math.abs(Math.sin(i * .7) * Math.cos(i * .23)) * 86).toFixed(0) + '%'; wave.appendChild(b); bars.push(b); }\n  var dur = 12, t = 0, on = false, timer = 0;\n  var paint = function () {\n    var upto = Math.round(t / dur * n);\n    bars.forEach(function (b, k) { b.classList.toggle('on', k < upto); });\n    if (time) time.textContent = '00:' + (t < 10 ? '0' : '') + t.toFixed(1);\n  };\n  var tick = function () { t = Math.min(dur, t + .1); paint(); if (t >= dur) { on = false; clearInterval(timer); play.textContent = '▶'; } };\n  play.addEventListener('click', function () { on = !on; play.textContent = on ? '❚❚' : '▶'; clearInterval(timer); if (on) timer = setInterval(tick, 100); });\n  wave.addEventListener('pointerdown', function (e) { var r = wave.getBoundingClientRect(); t = Math.max(0, Math.min(dur, (e.clientX - r.left) / r.width * dur)); paint(); });\n  paint();\n}",
+  "motion": "机械",
+  "tags": [
+    "峰值",
+    "跳转",
+    "音频",
+    "媒体"
+  ],
+  "source": "v4"
+}

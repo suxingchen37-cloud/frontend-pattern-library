@@ -1,0 +1,18 @@
+{
+  "id": "reading-meta",
+  "cat": "内容",
+  "t": "阅读信息",
+  "en": "reading meta",
+  "d": "阅读时长按每分钟三百字算，不写「约」：写了「约」就等于承认不准。更新日期和初发日期都写，改了什么都不说，只写「已更新」等于没说。三个信息用一根细线隔开，不堆成一行点号。",
+  "body": "<div class=\"d-rm\"><span>2 分钟读完</span><i></i><span>初发 2026-09-18</span><i></i><span>更新 2026-10-02 · 改了第二段的数据</span></div>",
+  "css": ".d-rm{display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:340px;padding:8px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}\n.d-rm i{width:1px;height:10px;background:var(--line)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "阅读",
+    "元信息",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

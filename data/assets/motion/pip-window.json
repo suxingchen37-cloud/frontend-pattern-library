@@ -1,0 +1,18 @@
+{
+  "id": "pip-window",
+  "cat": "媒体",
+  "t": "画中画小窗",
+  "en": "picture in picture",
+  "d": "小窗固定在右下角、占主画面 28%：再小看不清表情，再大就把主画面挡了。小窗带一个「回主画面」的角标，不然用户不知道能点回去。拖动能挪位置，但松手会吸附到最近的角——飘在中间的小窗总是挡字幕。",
+  "body": "<div class=\"d-pw\" data-box><div class=\"d-pw-main\"><span>主画面 · 场记 03</span></div><div class=\"d-pw-pip\" data-pip><b>B 机</b><span>点右下角回主画面</span><button type=\"button\" data-back aria-label=\"回到主画面\">⤢</button></div></div>",
+  "css": ".d-pw{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-pw-main{position:absolute;inset:0;display:flex;align-items:flex-end;padding:10px;background:linear-gradient(160deg,color-mix(in srgb,var(--ink) 74%,var(--paper)),color-mix(in srgb,var(--ink) 48%,var(--paper)))}\n.d-pw-main span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--paper);opacity:.8}\n.d-pw-pip{position:absolute;right:10px;bottom:10px;width:96px;height:60px;padding:6px;border:1px solid var(--paper);border-radius:6px;background:color-mix(in srgb,var(--ink) 35%,var(--paper));color:var(--paper);cursor:grab;touch-action:none;transition:left 200ms var(--ease),top 200ms var(--ease),right 200ms var(--ease),bottom 200ms var(--ease)}\n.d-pw-pip b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;font-weight:400}\n.d-pw-pip span{display:block;margin-top:2px;font-size:8px;opacity:.75;line-height:1.4}\n.d-pw-pip button{position:absolute;right:2px;top:2px;width:18px;height:18px;border:0;border-radius:2px;background:transparent;color:var(--paper);font-size:10px;cursor:pointer;opacity:.8}",
+  "init": "root => {\n  var box = root.querySelector('[data-box]');\n  var pip = root.querySelector('[data-pip]');\n  var back = root.querySelector('[data-back]');\n  if (!box || !pip) return;\n  var drag = null;\n  pip.addEventListener('pointerdown', function (e) {\n    if (e.target === back) return;\n    var r = pip.getBoundingClientRect(), br = box.getBoundingClientRect();\n    drag = { dx: e.clientX - r.left, dy: e.clientY - r.top, w: r.width, h: r.height, bw: br.width, bh: br.height };\n    pip.style.transition = 'none';\n    pip.setPointerCapture(e.pointerId);\n  });\n  pip.addEventListener('pointermove', function (e) {\n    if (!drag) return;\n    var br = box.getBoundingClientRect();\n    var x = Math.max(0, Math.min(drag.bw - drag.w, e.clientX - br.left - drag.dx));\n    var y = Math.max(0, Math.min(drag.bh - drag.h, e.clientY - br.top - drag.dy));\n    pip.style.left = x + 'px'; pip.style.top = y + 'px';\n    pip.style.right = 'auto'; pip.style.bottom = 'auto';\n  });\n  var end = function () {\n    if (!drag) return;\n    drag = null;\n    pip.style.transition = 'left 200ms cubic-bezier(.2,.75,.25,1),top 200ms cubic-bezier(.2,.75,.25,1)';\n    var br = box.getBoundingClientRect(), r = pip.getBoundingClientRect();\n    var left = (r.left - br.left) < (br.width - r.width) / 2;\n    var top = (r.top - br.top) < (br.height - r.height) / 2;\n    pip.style.left = left ? '10px' : (br.width - r.width - 10) + 'px';\n    pip.style.top = top ? '10px' : (br.height - r.height - 10) + 'px';\n  };\n  pip.addEventListener('pointerup', end);\n  pip.addEventListener('pointercancel', end);\n  if (back) back.addEventListener('click', function () { pip.style.transition = 'none'; pip.style.left = ''; pip.style.top = ''; pip.style.right = '10px'; pip.style.bottom = '10px'; });\n}",
+  "motion": "物理",
+  "tags": [
+    "画中画",
+    "小窗",
+    "拖动",
+    "媒体"
+  ],
+  "source": "v4"
+}

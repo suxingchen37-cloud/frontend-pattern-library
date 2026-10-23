@@ -1,0 +1,6 @@
+.d-en{max-width:340px;padding:12px}
+.d-en-body{margin:0 0 10px;font-size:13px;line-height:1.9}
+.d-en-body sup a{font-family:var(--font-mono);font-size:9px;color:var(--ink-vermilion);text-decoration:none;padding:0 1px}
+.d-en-list{margin:0;padding:10px 0 0;border-top:1px solid var(--line);list-style:none;display:grid;gap:5px}
+.d-en-list li{display:flex;gap:8px;font-size:11px;line-height:1.7;color:var(--muted)}
+.d-en-list b{font-family:var(--font-mono);font-size:9px;color:var(--faint);font-weight:400;padding-top:2px}

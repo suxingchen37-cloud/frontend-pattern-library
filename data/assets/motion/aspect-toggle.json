@@ -1,0 +1,18 @@
+{
+  "id": "aspect-toggle",
+  "cat": "媒体",
+  "t": "画面比例切换",
+  "en": "aspect ratio toggle",
+  "d": "16:9 与 9:16 切换时容器高度真的变，不是把画面压扁：压扁会把脸拉长，是最容易看出来的假。竖屏时两侧留出纸色底，而不是黑边——黑边像老电视，纸色是这套系统里「没有内容」的颜色。",
+  "body": "<div class=\"d-asp\" data-box><div class=\"d-asp-stage\"><div class=\"d-asp-frame\" data-frame><span>画面</span></div></div><div class=\"d-asp-row\"><button type=\"button\" data-ratio=\"16/9\" class=\"d-asp-on\">16 : 9</button><button type=\"button\" data-ratio=\"9/16\">9 : 16</button><span data-size>320 × 180</span></div></div>",
+  "css": ".d-asp{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-asp-stage{display:flex;justify-content:center;padding:12px;background:var(--bg)}\n.d-asp-frame{display:flex;align-items:center;justify-content:center;width:100%;max-height:170px;aspect-ratio:16/9;border:1px solid var(--ink);border-radius:6px;background:color-mix(in srgb,var(--ink) 62%,var(--paper));color:var(--paper);transition:aspect-ratio 240ms var(--ease),width 240ms var(--ease)}\n.d-asp-frame span{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;opacity:.8}\n.d-asp-row{display:flex;align-items:center;gap:6px;padding:8px 12px;border-top:1px solid var(--line)}\n.d-asp-row button{padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font:inherit;font-family:var(--font-mono);font-size:10px;cursor:pointer}\n.d-asp-row button.d-asp-on{border-color:var(--ink);color:var(--ink)}\n.d-asp-row span{margin-left:auto;font-family:var(--font-mono);font-size:9px;color:var(--faint)}",
+  "init": "root => {\n  var frame = root.querySelector('[data-frame]');\n  var size = root.querySelector('[data-size]');\n  var btns = [].slice.call(root.querySelectorAll('[data-ratio]'));\n  if (!frame || !btns.length) return;\n  btns.forEach(function (b) {\n    b.addEventListener('click', function () {\n      var r = b.dataset.ratio;\n      frame.style.aspectRatio = r;\n      frame.style.width = r === '9/16' ? '58%' : '100%';\n      btns.forEach(function (x) { x.classList.toggle('d-asp-on', x === b); });\n      var w = frame.clientWidth, h = frame.clientHeight;\n      if (size) size.textContent = Math.round(w) + ' × ' + Math.round(h);\n    });\n  });\n  var w0 = frame.clientWidth, h0 = frame.clientHeight;\n  if (size) size.textContent = Math.round(w0) + ' × ' + Math.round(h0);\n}",
+  "motion": "印刷",
+  "tags": [
+    "比例",
+    "竖屏",
+    "容器",
+    "媒体"
+  ],
+  "source": "v4"
+}

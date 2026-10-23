@@ -1,0 +1,18 @@
+{
+  "id": "caption-cue",
+  "cat": "媒体",
+  "t": "字幕逐句上屏",
+  "en": "caption cue",
+  "d": "字幕按句上屏，一句停留的时间按字数算（每秒约 5 字），不是固定 2 秒：长句没读完就换、短句停太久，都是硬伤。换句时不做淡入淡出，直接切——淡出会让字幕先变灰再消失，像信号不良。",
+  "body": "<div class=\"d-cc\" data-box><div class=\"d-cc-frame\"><p class=\"d-cc-line\" data-line></p></div><div class=\"d-cc-foot\"><span data-idx>01 / 04</span><button type=\"button\" data-next>下一句</button></div></div>",
+  "css": ".d-cc{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-cc-frame{position:relative;display:flex;align-items:flex-end;height:120px;padding:12px;background:linear-gradient(160deg,color-mix(in srgb,var(--ink) 78%,var(--paper)),color-mix(in srgb,var(--ink) 52%,var(--paper)))}\n.d-cc-line{margin:0;font-size:13px;line-height:1.6;color:var(--paper);min-height:2.2em}\n.d-cc-foot{display:flex;justify-content:space-between;align-items:center;padding:6px 12px}\n.d-cc-foot span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n.d-cc-foot button{padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}",
+  "init": "root => {\n  var line = root.querySelector('[data-line]');\n  var idx = root.querySelector('[data-idx]');\n  var next = root.querySelector('[data-next]');\n  if (!line || !next) return;\n  var cues = ['场记，第 3 场第 2 次。', '机位 B，五十毫米，反光板在右侧收一格。', '这条要过，但别过太早。', '好，这条过了，收工。'];\n  var i = 0, timer = 0;\n  var show = function () {\n    clearTimeout(timer);\n    line.textContent = cues[i];\n    if (idx) idx.textContent = '0' + (i + 1) + ' / 04';\n    timer = setTimeout(function () { i = (i + 1) % cues.length; show(); }, Math.max(1200, cues[i].length * 200));\n  };\n  next.addEventListener('click', function () { i = (i + 1) % cues.length; show(); });\n  show();\n}",
+  "motion": "无动效",
+  "tags": [
+    "字幕",
+    "逐句",
+    "节奏",
+    "媒体"
+  ],
+  "source": "v4"
+}

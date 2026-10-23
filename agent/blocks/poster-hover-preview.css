@@ -1,0 +1,11 @@
+.d-pp2{width:100%;max-width:340px}
+.d-pp2-card{position:relative;height:150px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;cursor:pointer}
+.d-pp2-poster{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:10px;background:linear-gradient(150deg,color-mix(in srgb,var(--ink) 70%,var(--paper)),color-mix(in srgb,var(--ink) 45%,var(--paper)));color:var(--paper);transition:opacity 200ms var(--ease)}
+.d-pp2-poster b{font-size:13px}
+.d-pp2-poster span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;opacity:.85}
+.d-pp2-live{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;background:color-mix(in srgb,var(--ink) 82%,var(--paper));color:var(--paper);opacity:0;transition:opacity 200ms var(--ease);pointer-events:none}
+.d-pp2-card.on .d-pp2-live{opacity:1}
+.d-pp2-live i{width:6px;height:6px;border-radius:50%;background:var(--marker-hi);animation:d-poster-hover-preview-blink 1s steps(2) infinite}
+.d-pp2-live em{font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em}
+.d-pp2-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+@keyframes d-poster-hover-preview-blink{50%{opacity:.3}}

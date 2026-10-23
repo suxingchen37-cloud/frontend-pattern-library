@@ -1,0 +1,7 @@
+.d-ap{width:100%;max-width:340px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.d-ap-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.d-ap-head button{width:26px;height:26px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}
+.d-ap-head span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}
+.d-ap-wave{display:flex;align-items:center;gap:1px;height:70px;cursor:pointer;touch-action:none}
+.d-ap-wave i{flex:1;background:color-mix(in srgb,var(--ink) 22%,var(--paper));border-radius:2px;transition:background-color 120ms var(--ease)}
+.d-ap-wave i.on{background:var(--ink)}

@@ -1,0 +1,18 @@
+{
+  "id": "video-frame-step",
+  "cat": "媒体",
+  "t": "逐帧步进",
+  "en": "frame step",
+  "d": "逐帧按 1/24 秒走，显示到两位小数：审片要的是「再往前一格」，不是「再来半秒」。按住不放会连续步进但不能快过 24fps，否则屏幕只在闪。左右方向键也能走，和剪辑软件一致。",
+  "body": "<div class=\"d-vf\" data-box><div class=\"d-vf-screen\"><b data-time>00:14.08</b><span data-frame>FRAME 338</span></div><div class=\"d-vf-row\"><button type=\"button\" data-back aria-label=\"上一帧\">◀</button><button type=\"button\" data-fwd aria-label=\"下一帧\">▶</button><button type=\"button\" data-jump>跳到 00:20</button></div></div>",
+  "css": ".d-vf{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-vf-screen{position:relative;display:flex;align-items:center;justify-content:center;height:110px;background:color-mix(in srgb,var(--ink) 70%,var(--paper));color:var(--paper)}\n.d-vf-screen b{font-family:var(--font-mono);font-size:26px;font-weight:500;letter-spacing:-.01em}\n.d-vf-screen span{position:absolute;right:10px;bottom:8px;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;opacity:.75}\n.d-vf-row{display:flex;gap:6px;padding:8px 12px}\n.d-vf-row button{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-vf-row button:last-child{margin-left:auto}",
+  "init": "root => {\n  var tEl = root.querySelector('[data-time]');\n  var fEl = root.querySelector('[data-frame]');\n  var back = root.querySelector('[data-back]');\n  var fwd = root.querySelector('[data-fwd]');\n  var jump = root.querySelector('[data-jump]');\n  if (!tEl || !fwd) return;\n  var fps = 24, frame = 338, timer = 0;\n  var fmt = function () {\n    var s = frame / fps, m = Math.floor(s / 60), sec = s % 60;\n    var ss = (sec < 10 ? '0' : '') + sec.toFixed(2);\n    tEl.textContent = (m < 10 ? '0' : '') + m + ':' + ss;\n    if (fEl) fEl.textContent = 'FRAME ' + frame;\n  };\n  var step = function (d) { frame = Math.max(0, frame + d); fmt(); };\n  back.addEventListener('click', function () { step(-1); });\n  fwd.addEventListener('click', function () { step(1); });\n  var hold = function (el, d) {\n    el.addEventListener('pointerdown', function () { clearInterval(timer); timer = setInterval(function () { step(d); }, 1000 / fps); });\n    el.addEventListener('pointerup', function () { clearInterval(timer); });\n    el.addEventListener('pointercancel', function () { clearInterval(timer); });\n  };\n  hold(back, -1); hold(fwd, 1);\n  if (jump) jump.addEventListener('click', function () { frame = 20 * fps; fmt(); });\n  root.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') step(-1); if (e.key === 'ArrowRight') step(1); });\n  root.tabIndex = 0;\n  fmt();\n}",
+  "motion": "机械",
+  "tags": [
+    "逐帧",
+    "审片",
+    "键盘",
+    "媒体"
+  ],
+  "source": "v4"
+}

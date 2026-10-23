@@ -1,0 +1,5 @@
+.d-sr{max-width:340px;padding:12px}
+.d-sr p{margin:0;font-size:13px;line-height:1.9}
+.d-sr-mask{padding:0 2px;border:0;background:var(--ink);color:transparent;font:inherit;border-radius:2px;cursor:pointer;filter:blur(1px);transition:filter 120ms var(--ease),background-color 120ms var(--ease),color 120ms var(--ease)}
+.d-sr-mask.on{background:transparent;color:inherit;filter:none}
+.d-sr-mask:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

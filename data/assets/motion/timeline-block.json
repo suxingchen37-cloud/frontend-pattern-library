@@ -1,0 +1,18 @@
+{
+  "id": "timeline-block",
+  "cat": "内容",
+  "t": "时间线片段",
+  "en": "timeline block",
+  "d": "时间线竖向排、左侧一条细线、节点是小圆点：横向时间线在窄屏一定会被压扁。时间放左边、内容放右边，年份用等宽字对齐，扫一眼就能比较间隔。只给有转折的年份，平年不写。",
+  "body": "<div class=\"d-tb\"><ol><li><b>2018</b><div><span>第一次给剧组布光</span><p>一天拍十六个小时，学会先看窗。</p></div></li><li><b>2021</b><div><span>转到剧场</span><p>灯位固定，光要跟着人走。</p></div></li><li><b>2024</b><div><span>开始做展厅</span><p>观众会停下来，光可以更暗。</p></div></li></ol></div>",
+  "css": ".d-tb{max-width:340px;padding-left:4px}\n.d-tb ol{list-style:none;margin:0;padding:0 0 0 18px;border-left:1px solid var(--line)}\n.d-tb li{position:relative;padding:0 0 14px 10px}\n.d-tb li:last-child{padding-bottom:0}\n.d-tb li:before{content:\"\";position:absolute;left:-23px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--bg);border:1px solid var(--ink)}\n.d-tb b{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--faint);font-weight:400}\n.d-tb span{display:block;font-size:13px;margin-top:1px}\n.d-tb p{margin:1px 0 0;font-size:11px;line-height:1.7;color:var(--muted)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "时间线",
+    "历程",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

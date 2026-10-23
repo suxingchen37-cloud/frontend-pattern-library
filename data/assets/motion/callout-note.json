@@ -1,0 +1,18 @@
+{
+  "id": "callout-note",
+  "cat": "内容",
+  "t": "提示块三型",
+  "en": "callout variants",
+  "d": "提示块只分三型：注意、例外、做法。四型以上就开始凭感觉挑。三型靠左侧竖线的颜色和标签字区分，不靠底色——三块不同底色放在一起，页面会花。提示块不用感叹号，感叹号多了等于没有重点。",
+  "body": "<div class=\"d-cn\"><div class=\"d-cn-item d-cn-warn\"><b>注意</b><p>色温低于三千开尔文，蓝色会发闷。</p></div><div class=\"d-cn-item d-cn-exc\"><b>例外</b><p>如果墙是米色的，可以再低两百开。</p></div><div class=\"d-cn-item d-cn-do\"><b>做法</b><p>先定色温，再调亮度，最后看阴影。</p></div></div>",
+  "css": ".d-cn{display:grid;gap:8px;max-width:340px}\n.d-cn-item{padding:8px 12px;border-left:2px solid var(--line);background:var(--paper)}\n.d-cn-item b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;font-weight:400;margin-bottom:2px}\n.d-cn-item p{margin:0;font-size:12px;line-height:1.7;color:var(--muted)}\n.d-cn-warn{border-left-color:var(--warn)}\n.d-cn-warn b{color:var(--warn)}\n.d-cn-exc{border-left-color:var(--ink-yellow)}\n.d-cn-exc b{color:var(--muted)}\n.d-cn-do{border-left-color:var(--ok)}\n.d-cn-do b{color:var(--ok)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "提示",
+    "标注",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

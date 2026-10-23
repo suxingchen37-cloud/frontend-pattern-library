@@ -1,0 +1,5 @@
+.d-ps2{max-width:340px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.d-ps2 b{display:block;font-family:var(--font-mono);font-size:56px;line-height:1;letter-spacing:-.04em;font-weight:500}
+.d-ps2 b span{font-size:21px;letter-spacing:0;margin-left:2px;color:var(--muted)}
+.d-ps2 p{margin:8px 0 0;font-family:var(--font-serif);font-size:15px;line-height:1.7;max-width:24ch}
+.d-ps2 em{display:block;margin-top:6px;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}

@@ -1,0 +1,7 @@
+.d-pw{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-pw-main{position:absolute;inset:0;display:flex;align-items:flex-end;padding:10px;background:linear-gradient(160deg,color-mix(in srgb,var(--ink) 74%,var(--paper)),color-mix(in srgb,var(--ink) 48%,var(--paper)))}
+.d-pw-main span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--paper);opacity:.8}
+.d-pw-pip{position:absolute;right:10px;bottom:10px;width:96px;height:60px;padding:6px;border:1px solid var(--paper);border-radius:6px;background:color-mix(in srgb,var(--ink) 35%,var(--paper));color:var(--paper);cursor:grab;touch-action:none;transition:left 200ms var(--ease),top 200ms var(--ease),right 200ms var(--ease),bottom 200ms var(--ease)}
+.d-pw-pip b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;font-weight:400}
+.d-pw-pip span{display:block;margin-top:2px;font-size:8px;opacity:.75;line-height:1.4}
+.d-pw-pip button{position:absolute;right:2px;top:2px;width:18px;height:18px;border:0;border-radius:2px;background:transparent;color:var(--paper);font-size:10px;cursor:pointer;opacity:.8}

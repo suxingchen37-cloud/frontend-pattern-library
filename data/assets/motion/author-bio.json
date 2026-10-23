@@ -1,0 +1,18 @@
+{
+  "id": "author-bio",
+  "cat": "内容",
+  "t": "作者小传",
+  "en": "author bio",
+  "d": "作者信息放文末，一行头像加两行字：资历写具体年份和做过什么，不写「资深」「热爱」。头像用姓氏一个字，因为虚构作者的真人照片会抢注意力，而首字母没有任何信息负担。",
+  "body": "<div class=\"d-ab2\"><span class=\"d-ab2-ava\">周</span><div class=\"d-ab2-txt\"><b>周迟</b><p>做了九年灯光，前五年在剧组，后四年在剧场。现在给展厅布光。</p></div></div>",
+  "css": ".d-ab2{display:flex;gap:12px;max-width:340px;padding:14px 0;border-top:1px solid var(--line)}\n.d-ab2-ava{flex:0 0 36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-serif);font-size:15px}\n.d-ab2-txt b{display:block;font-size:13px}\n.d-ab2-txt p{margin:2px 0 0;font-size:11px;line-height:1.7;color:var(--muted)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "作者",
+    "小传",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}
