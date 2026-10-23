@@ -72,10 +72,18 @@ C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长�
 
 ## 直接从 GitHub 取料（没有 Pages 时用这个）
 
-- 远程基址（raw）：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`
-- 索引：`<基址>/agent/index.json`
-- 单条：`<基址>/agent/blocks/<id>.html`（同目录 `.css`，有交互再加 `.js`）
-- 预览页在 Pages 上是网页；从 raw 取时直接读 `.html` 文本即可
+两种基址，按可用性挑一个（国内网络优先 jsDelivr）：
+
+- **jsDelivr（推荐，实测可用）**：`https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`
+- raw.githubusercontent.com：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常被墙或超时）
+
+取料路径（把基址拼在前面）：
+- 索引：`agent/index.json`
+- 单条：`agent/blocks/<id>.html`（同目录 `.css`；有交互再加 `.js`）
+- 说明：`llms.txt`
+
+注意：jsDelivr 有缓存（约 12 小时），刚推上去的内容可能延迟出现；需要立刻拿到最新版时用 raw 或加 `?v=<时间戳>`。
+
 
 ## 取料路径
 - agent/index.json：整个库的索引，一行一条 item；files 里的路径相对 agent/，形如 blocks/<id>.css。
