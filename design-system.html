@@ -8,6 +8,7 @@
 :root{
   --bg:#f3f1e9;--paper:#fbfaf5;--ink:#20241e;--muted:#6b7860;--faint:#94a184;--line:#deded2;
   --lime:#d9f875;--mint:#83d9bd;--coral:#ff886e;--lav:#c4b6ff;--blue:#7e88ff;--amber:#f2c14e;--red:#c4553a;
+  --ok:#3d7347;--warn:#a8502f;
   --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;
   --r1:6px;--r2:10px;--r3:14px;--r4:20px;--rpill:999px;
   --sh1:0 1px 2px #20241e0f;--sh2:0 6px 18px #20241e14;--sh3:0 18px 40px #20241e26;
@@ -15,6 +16,7 @@
   --f11:11px;--f12:12px;--f13:13px;--f14:14px;--f17:17px;--f22:22px;--f28:28px;
 }
 [data-theme=night]{--bg:#121610;--paper:#191d18;--ink:#e8efe0;--muted:#a9b8a0;--faint:#7b8a72;--line:#2c3327;
+  --ok:#8fd3a4;--warn:#f0a184;
   --sh1:0 1px 2px #0006;--sh2:0 6px 18px #0007;--sh3:0 18px 40px #000a}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:var(--f14)/1.85 Inter,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
@@ -93,6 +95,22 @@ table.spec th{font-size:10.5px;color:var(--faint);font-weight:600;letter-spacing
 @media(max-width:640px){main{padding:16px 12px 80px}section{padding:16px}}
 html.embedded header{display:none}
 html.embedded main{padding-top:22px}
+.lab-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:14px 0 0}
+.lab-chips{display:flex;flex-wrap:wrap;gap:4px}
+.lab-chip{font:11px var(--sans);border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.lab-chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lab-search{margin-left:auto;display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--paper)}
+.lab-search input{border:0;background:transparent;outline:none;font-size:11px;width:150px;color:var(--ink)}
+.lab-count{font:9.5px var(--mono);color:var(--faint);white-space:nowrap}
+.lab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+.lab-card{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:13px;min-width:0;display:flex;flex-direction:column;gap:7px}
+.lab-top{display:flex;justify-content:space-between;gap:6px;font:8.5px var(--mono);color:var(--faint);letter-spacing:.06em}
+.lab-card h3{margin:0;font-size:13px;letter-spacing:-.01em}
+.lab-card .stage{position:relative;min-height:104px;background:var(--bg);border-radius:8px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.lab-rule{margin:0;font-size:10.5px;line-height:1.65;color:var(--muted)}
+.lab-dont{margin:0;padding-top:6px;border-top:1px dashed var(--line);font-size:9.5px;line-height:1.6;color:var(--faint)}
+.lab-empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--faint);font-size:12px;border:1px dashed var(--line);border-radius:10px}
+@media(max-width:640px){.lab-search{margin-left:0;width:100%}.lab-search input{width:100%}.lab-grid{grid-template-columns:1fr}}
 </style>
 <script>if (window.self !== window.top) document.documentElement.classList.add('embedded');</script>
 </head>
@@ -185,6 +203,17 @@ html.embedded main{padding-top:22px}
   </table>
 </section>
 
+<section id="specs">
+  <h2>组件图鉴：50 条活体规格</h2>
+  <p class="lead">每条一个令牌、组件或状态：上面是活体示例，下面是一句规则和一个反例。按分组筛选，或直接搜。</p>
+  <div class="lab-tools">
+    <div class="lab-chips" id="specChips" role="group" aria-label="按分组筛选设计图鉴"></div>
+    <label class="lab-search"><input id="specSearch" type="search" placeholder="搜组件或规则" aria-label="搜索设计系统图鉴"></label>
+    <span class="lab-count" id="specCount" aria-live="polite"></span>
+  </div>
+  <div class="lab-grid" id="specGrid"></div>
+</section>
+
 <section id="content">
   <h2>F Markdown：表格 / 任务列表 / 引用 / 行内代码</h2>
   <div class="md">
@@ -244,6 +273,17 @@ html.embedded main{padding-top:22px}
     <div><b>确认</b><p>要删除「素材库」吗？其中的文件会一起消失，其他内容不受影响。</p></div>
   </div>
   <p class="caption">三条规矩：说清发生了什么、给一个能照做的动作、不吓人也不卖萌。</p>
+</section>
+
+<section id="content-specs">
+  <h2>内容图鉴：50 条可点小样</h2>
+  <p class="lead">文本、数据、媒体、引用、长文、代码、交互内容与页面结构。每条都能点，规则和反例写在示例下面。</p>
+  <div class="lab-tools">
+    <div class="lab-chips" id="contentChips" role="group" aria-label="按分组筛选内容图鉴"></div>
+    <label class="lab-search"><input id="contentSearch" type="search" placeholder="搜内容类型" aria-label="搜索内容图鉴"></label>
+    <span class="lab-count" id="contentCount" aria-live="polite"></span>
+  </div>
+  <div class="lab-grid" id="contentGrid"></div>
 </section>
 </main>
 
@@ -331,5 +371,8 @@ document.getElementById('themebtn').addEventListener('click', e => {
   e.target.textContent = night ? '纸色' : '夜间';
 });
 </script>
+<script src="ds-specs.js?v=1"></script>
+<script src="ds-content.js?v=1"></script>
+<script src="ds-render.js?v=1"></script>
 </body>
 </html>

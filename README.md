@@ -16,8 +16,8 @@ node serve.mjs
 | 标签 | 文件 | 内容 |
 |---|---|---|
 | 动效与交互 | `motion-lab.html` + `lab-more.js` + `lab-extra2.js` + `lab-extra3.js` | 144 个真交互效果，22 个分类；点「选中」→「复制清单」取 id |
-| 设计系统 | `design-system.html#design` | 颜色令牌、7 档字阶、间距/圆角/阴影、24 个可复制图标、空态插画、组件六态矩阵 |
-| 内容呈现 | `design-system.html#content` | Markdown、代码块（行号/高亮/复制）、diff、图片查看器、文案语气 |
+| 设计系统 | `design-system.html#design` + `ds-specs.js` | 颜色令牌、7 档字阶、间距/圆角/阴影、24 个可复制图标、空态插画、组件六态矩阵；另加 50 条组件/状态图鉴（活体示例 + 规则 + 反例） |
+| 内容呈现 | `design-system.html#content` + `ds-content.js` | Markdown、代码块（行号/高亮/复制）、diff、图片查看器、文案语气；另加 50 条内容小样（文本/数据/媒体/引用/长文/代码/交互/结构） |
 | 整站实战 | `site/` | 虚构独立刊物《缓坡》：首页 / 文章 / 往期 / 关于，编辑版式、长文、筛选、表单与明暗主题 |
 
 `index.html` 是唯一入口与标签外壳；页面选择存 `localStorage`，夜间主题通过 `?theme=` 与 `postMessage` 同步进内容页与示范站。
@@ -30,6 +30,10 @@ node serve.mjs
 - `site/about.html`：编辑室、撰稿人、投稿步骤、联系表单（前端校验）
 
 全部为静态演示，不连接后端；表单只做本地校验与反馈。
+
+## 设计图鉴 / 内容图鉴
+
+`ds-specs.js`（50 条规格）和 `ds-content.js`（50 条内容小样）用同一套条目结构：`{ id, group, t, en, rule, dont?, body, css, init? }`；`ds-render.js` 负责按分组筛选、搜索、作用域化 CSS 和挂载交互。新增一条图鉴只需往对应数组里追加条目，不用改页面结构。
 
 ## 加一个效果
 
