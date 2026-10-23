@@ -4,6 +4,14 @@ agent/
 # 发布中间目录
 _site/
 
+# 这个目录里与本站无关的草稿（mock 试验品）
+chat*.html
+chat-*.png
+a-strip*.html
+a-strip*.png
+.inventory.json
+.serve.log
+
 # 工具状态
 .dsh-project-memory/
 
