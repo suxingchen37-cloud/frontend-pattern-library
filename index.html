@@ -55,9 +55,10 @@ h1{font-size:26px;letter-spacing:-.03em;margin:0 0 6px}
 </header>
 <nav>
   <button data-tab="home" data-on>总览</button>
-  <button data-tab="motion">动效与交互 · 94</button>
+  <button data-tab="motion">动效与交互 · 144</button>
   <button data-tab="system">设计系统</button>
   <button data-tab="content">内容呈现</button>
+  <button data-tab="site">整站实战</button>
   <span class="sp"></span>
   <code>统一配色 · 明暗两套</code>
 </nav>
@@ -65,12 +66,12 @@ h1{font-size:26px;letter-spacing:-.03em;margin:0 0 6px}
   <div id="home">
     <div class="round">
       <h1>前端模式库，从这里进</h1>
-      <p class="lead">三块内容共用同一套设计语言；这里不绑定任何具体产品，示例一律用中性数据。</p>
+      <p class="lead">三个资料库共用一套设计语言；再加一个整站实战，用来检验把它们拼成一个真站点是什么效果。</p>
       <div class="cards">
         <div class="card" data-tab="motion">
           <span class="n">MOTION & INTERACTION</span>
           <b>动效与交互实验室</b>
-          <p>94 个可交互效果、18 个分类：入场、加载、微交互、光标、滚动、过渡、拖拽、布局、数据、反馈、排印、无障碍、表单、导航、浮层、列表。</p>
+          <p>144 个可交互效果、22 个分类：入场、加载、微交互、光标、滚动、过渡、拖拽、布局、数据、反馈、排印、无障碍、表单、导航、浮层、列表、手势、内容、长文、表格、状态页、媒体。</p>
           <span class="go">打开 → 点「选中」挑你想要的</span>
         </div>
         <div class="card" data-tab="system">
@@ -85,8 +86,14 @@ h1{font-size:26px;letter-spacing:-.03em;margin:0 0 6px}
           <p>Markdown 表格/任务列表/引用、代码块（行号+高亮+复制）、差异视图、图片查看器（点开大图、Esc 关）、文案语气模板。</p>
           <span class="go">打开 → 点缩略图看大图</span>
         </div>
+        <div class="card" data-tab="site">
+          <span class="n">LIVE SITE / 4 PAGES</span>
+          <b>整站实战 · 缓坡</b>
+          <p>虚构独立刊物《缓坡》：首页 / 文章 / 往期 / 关于四页，编辑版式、长文阅读、筛选、表单和明暗主题都真能用。</p>
+          <span class="go">打开 → 评审搭建质量</span>
+        </div>
       </div>
-      <p class="hint">说明：这里是通用前端参考库 —— 动效与交互、设计系统、内容呈现三大块，每一条都能点、能复制。挑中的可以拿去任何项目用。</p>
+      <p class="hint">说明：动效与交互、设计系统、内容呈现三块资料，加上一个完整示范站；每一条都能点、能复制。挑中的可以拿去任何项目用。</p>
     </div>
   </div>
   <iframe id="frame" hidden></iframe>
@@ -94,7 +101,7 @@ h1{font-size:26px;letter-spacing:-.03em;margin:0 0 6px}
 <script>
 const frame = document.getElementById('frame');
 const home = document.getElementById('home');
-const SRC = { motion: 'motion-lab.html', system: 'design-system.html#design', content: 'design-system.html#content' };
+const SRC = { motion: 'motion-lab.html', system: 'design-system.html#design', content: 'design-system.html#content', site: 'site/index.html' };
 function themeNow() { return document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'paper'; }
 function go(tab) {
   document.querySelectorAll('nav button[data-tab]').forEach(b => b.toggleAttribute('data-on', b.dataset.tab === tab));
@@ -115,6 +122,14 @@ document.getElementById('themebtn').addEventListener('click', e => {
   e.target.textContent = night ? '纸色' : '夜间';
   localStorage.setItem('site.theme', night ? 'night' : 'paper');
   try { frame.contentWindow?.postMessage({ type: 'site-theme', value: night ? 'night' : 'paper' }, '*'); } catch { }
+});
+window.addEventListener('message', e => {
+  if (!e.data || e.data.type !== 'site-theme') return;
+  if (frame.hidden || e.source !== frame.contentWindow) return;
+  const night = e.data.value === 'night';
+  document.documentElement.setAttribute('data-theme', night ? 'night' : 'paper');
+  localStorage.setItem('site.theme', night ? 'night' : 'paper');
+  document.getElementById('themebtn').textContent = night ? '纸色' : '夜间';
 });
 </script>
 </body>

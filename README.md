@@ -1,6 +1,6 @@
 # 前端模式库
 
-一套可直接点、可直接复制的通用前端参考库：动效与交互 94 个效果、设计系统、内容呈现规范。纯静态、零依赖、单页入口。
+一套可直接点、可直接复制的通用前端参考库：144 个真交互效果、设计系统、内容呈现规范，外加一个完整示范站《缓坡》。纯静态、零依赖、单页入口。
 
 ## 运行
 
@@ -15,15 +15,25 @@ node serve.mjs
 
 | 标签 | 文件 | 内容 |
 |---|---|---|
-| 动效与交互 | `motion-lab.html` + `lab-more.js` + `lab-extra2.js` | 94 个真交互效果，18 个分类；点「选中」→「复制清单」取 id |
+| 动效与交互 | `motion-lab.html` + `lab-more.js` + `lab-extra2.js` + `lab-extra3.js` | 144 个真交互效果，22 个分类；点「选中」→「复制清单」取 id |
 | 设计系统 | `design-system.html#design` | 颜色令牌、7 档字阶、间距/圆角/阴影、24 个可复制图标、空态插画、组件六态矩阵 |
 | 内容呈现 | `design-system.html#content` | Markdown、代码块（行号/高亮/复制）、diff、图片查看器、文案语气 |
+| 整站实战 | `site/` | 虚构独立刊物《缓坡》：首页 / 文章 / 往期 / 关于，编辑版式、长文、筛选、表单与明暗主题 |
 
-`index.html` 是唯一入口与标签外壳；页面选择存 `localStorage`，夜间主题通过 `?theme=` 与 `postMessage` 同步进内容页。
+`index.html` 是唯一入口与标签外壳；页面选择存 `localStorage`，夜间主题通过 `?theme=` 与 `postMessage` 同步进内容页与示范站。
+
+## 示范站《缓坡》
+
+- `site/index.html`：封面、本期文章、编辑室手记、订阅表单
+- `site/article.html`：长文排版，阅读进度、目录跟随、脚注浮层、复制链接
+- `site/archive.html`：12 篇文章，栏目筛选、搜索、列表/网格切换、空结果
+- `site/about.html`：编辑室、撰稿人、投稿步骤、联系表单（前端校验）
+
+全部为静态演示，不连接后端；表单只做本地校验与反馈。
 
 ## 加一个效果
 
-1. 在 `lab-more.js` 或 `lab-extra2.js` 的 `window.DEMOS_EXTRA` 里追加 `{ id, cat, t, en, d, body, css }`。
+1. 在 `lab-more.js`、`lab-extra2.js` 或 `lab-extra3.js` 的 `window.DEMOS_EXTRA` 里追加 `{ id, cat, t, en, d, body, css }`。
 2. 需要交互时，在 `window.INITS_EXTRA` 里挂同名初始化函数。
 3. 每张卡的 CSS 会被 `scopedCss()` 按卡片 id 作用域化；卡内布局注意 `min-width: 0`，避免撑破网格。
 

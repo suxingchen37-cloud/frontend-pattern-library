@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>关于 · 缓坡</title>
+<meta name="description" content="缓坡是一本关于日常设计的独立刊物。编辑室、撰稿人、投稿方式与联系。">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html" aria-label="缓坡首页"><b>缓坡</b><span>SLOPE</span></a>
+    <span class="issue-no">第 07 期 / 2026 秋</span>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="index.html">本期</a>
+      <a href="archive.html">往期</a>
+      <a href="about.html" aria-current="page">关于</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="themebtn" type="button" aria-label="切换到夜间主题">夜间</button>
+      <button class="icon-btn menu" id="menubtn" type="button" aria-expanded="false" aria-controls="nav">菜单</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="cover" style="padding-bottom:40px">
+  <div class="wrap">
+    <p class="kicker" data-reveal>ABOUT / 缓坡</p>
+    <h1 data-reveal style="max-width:16ch">我们只写那些，<br>说明书里没有的东西。</h1>
+    <p class="dek" data-reveal style="font-size:15px;max-width:52ch">缓坡是一本关于日常设计的独立刊物。不追新品，不写软文，只关心东西为什么做成这样、用起来顺不顺手。</p>
+  </div>
+</section>
+
+<div class="wrap about-grid">
+  <div class="about-lede" data-reveal>「设计」这个词被用得太大了。我们更愿意聊一块招牌的字距、一张价签的写法、一把椅子的修补——那些每天都在用、却没人解释的东西。</div>
+  <div class="about-body" data-reveal>
+    <p><strong>缓坡从 2024 年开始。</strong>最初是三个人在城南做的一次口述记录：找十位手艺人，聊他们工具的形状。后来变成一份不定期出刊的电子刊物，每期四到六篇。</p>
+    <p>我们不接受品牌投放，也不做「测评」。如果文章里提到某个产品，是因为它正好能说明问题，而不是因为它给了钱。</p>
+    <p><strong>几条编辑原则：</strong>采访对象先看稿；出现事实错误就改，并在文末标注；不用 AI 生成配图；不为了更新而更新。做不到就不出刊。</p>
+    <p>如果你也对这些小事感兴趣，欢迎投稿，或者只是写封信来聊聊。</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><h2>编辑室</h2><span class="meta">三个人 · 不定期碰头</span></div>
+    <div class="people" data-reveal>
+      <div class="person"><div class="av" aria-hidden="true">林</div><b>林一舟</b><span>主编 / 街道</span><p>前报纸编辑。习惯先走路再看稿，包里常年带着卷尺。</p></div>
+      <div class="person"><div class="av" aria-hidden="true">周</div><b>周见</b><span>摄影 / 物件</span><p>拍东西之前先问「这东西被谁用过」。不喜欢摆拍。</p></div>
+      <div class="person"><div class="av" aria-hidden="true">陈</div><b>陈默</b><span>排版 / 字体</span><p>做书籍装帧，业余研究路牌和菜市场的字。坚持纸色底。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about-grid" style="padding-top:0">
+    <div data-reveal>
+      <p class="kicker">投稿</p>
+      <h2 style="font-size:28px">写一件你每天都看见，<br>但从没想过的东西。</h2>
+      <div class="submit-list" style="margin-top:20px">
+        <div>先写一段 200 字左右的提要：你想写什么、为什么值得写。</div>
+        <div>附上你观察到的细节：尺寸、时间、对话，或者一张你自己拍的图。</div>
+        <div>编辑室会在三个工作日内回信；不合适的稿子也会说明原因。</div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm" data-reveal novalidate>
+      <label>名字<input type="text" name="name" autocomplete="name" placeholder="怎么称呼你"></label>
+      <label>邮箱<input type="email" name="email" autocomplete="email" placeholder="能收到回信的邮箱"></label>
+      <label>想写什么<textarea name="message" rows="5" placeholder="一段提要，或者一个你一直想弄明白的小问题"></textarea></label>
+      <button class="btn" type="submit">寄给编辑室</button>
+      <p class="contact-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="wrap">
+    <div data-reveal>
+      <h2>不想投稿，也可以读。</h2>
+      <p>每期出刊寄一封短信。只发出刊通知和一篇推荐文章。</p>
+    </div>
+    <form class="news-form" id="newsForm" data-reveal novalidate>
+      <input type="email" placeholder="你的邮箱" aria-label="邮箱" autocomplete="email">
+      <button class="btn" type="submit">订阅</button>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="index.html"><b>缓坡</b><span>SLOPE</span></a>
+        <p>一本关于日常设计的独立刊物。纸色优先，慢慢更新。</p>
+      </div>
+      <div class="foot-links">
+        <div><span class="h">读</span><a href="index.html">本期</a><a href="archive.html">往期</a><a href="about.html">关于</a></div>
+        <div><span class="h">栏目</span><span>街道</span><span>字体</span><span>物件</span><span>手艺</span></div>
+      </div>
+    </div>
+    <div class="foot-base"><span>© 2026 缓坡 SLOPE</span><span>整站实战示范 · 内容与数据均为本地演示</span></div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
