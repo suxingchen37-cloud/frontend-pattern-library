@@ -1,0 +1,18 @@
+{
+  "id": "pointer-light",
+  "cat": "3D 与透视",
+  "t": "指针当光源",
+  "en": "pointer light",
+  "d": "光是跟着指针走的一个圆形渐变，中心亮度只到 18%：再亮就盖住了卡面文字，读者先看见光斑再看见内容。光斑用两层——紧的一层是灯，散的一层是反射；只做一层会像一块脏印子。指针离开立刻灭，因为光源跟着人走了，不是留在原地。",
+  "body": "<div class=\"d-lt-stage\" tabindex=\"0\" aria-label=\"指针移到卡面上，高光会跟着走\"><div class=\"d-lt-card\"><span class=\"d-lt-k\">LIGHT</span><b>材质在动</b><span class=\"d-lt-meta\">高光跟着指针，不是装饰</span></div><p class=\"d-lt-note\">移一下指针</p></div>",
+  "css": ".d-lt-stage{--lx:50%;--ly:0%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}\n.d-lt-card{position:relative;width:220px;padding:16px 16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;box-shadow:0 1px 0 var(--line)}\n.d-lt-card:before{content:\"\";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(120px 120px at var(--lx,50%) var(--ly,0%),color-mix(in srgb,var(--marker-hi) 55%,transparent),transparent 62%);opacity:0;transition:opacity 220ms var(--ease-print);pointer-events:none}\n.d-lt-card:after{content:\"\";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(60px 60px at var(--lx,50%) var(--ly,0%),color-mix(in srgb,var(--paper) 80%,transparent),transparent 70%);opacity:0;transition:opacity 220ms var(--ease-print);pointer-events:none}\n.d-lt-stage.d-lt-on .d-lt-card:before{opacity:.18}\n.d-lt-stage.d-lt-on .d-lt-card:after{opacity:.5}\n.d-lt-k{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}\n.d-lt-card b{display:block;margin-top:2px;font-size:17px;font-weight:650;letter-spacing:-.01em}\n.d-lt-meta{display:block;margin-top:2px;font-size:11px;color:var(--muted)}\n.d-lt-note{position:absolute;bottom:8px;margin:0;font-size:10px;color:var(--faint)}\n@media (prefers-reduced-motion:reduce){.d-lt-card:before,.d-lt-card:after{transition:none}}",
+  "init": "root => {\n  const stage = root.querySelector('.d-lt-stage');\n  const card = stage && stage.querySelector('.d-lt-card');\n  if (!stage || !card) return;\n  stage.addEventListener('pointermove', e => {\n    const r = card.getBoundingClientRect();\n    const x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n    const y = Math.max(0, Math.min(1, (e.clientY - r.top) / r.height));\n    card.style.setProperty('--lx', (x * 100).toFixed(1) + '%');\n    card.style.setProperty('--ly', (y * 100).toFixed(1) + '%');\n    stage.classList.add('d-lt-on');\n  });\n  stage.addEventListener('pointerleave', () => stage.classList.remove('d-lt-on'));\n}",
+  "motion": "物理",
+  "tags": [
+    "光",
+    "高光",
+    "指针",
+    "材质"
+  ],
+  "source": "v4"
+}

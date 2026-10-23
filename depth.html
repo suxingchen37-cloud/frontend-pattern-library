@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>格点 · 一台测距仪的使用说明</title>
+<style>
+:root{
+  --bg:#f3f1e9;--paper:#fbfaf5;--ink:#20241e;--muted:#6b7860;--faint:#94a184;--line:#deded2;
+  --ink-vermilion:#c2402a;--ink-indigo:#2b4b8f;--ink-yellow:#e8c34a;--marker-hi:#d9f875;
+  --sp-4:4px;--sp-8:8px;--sp-12:12px;--sp-16:16px;--sp-24:24px;--sp-40:40px;--sp-64:64px;--sp-96:96px;
+  --r-tag:2px;--r-control:6px;--r-card:10px;--r-pill:999px;
+  --ease-print:cubic-bezier(.2,.75,.25,1);--ease-physical:cubic-bezier(.34,1.56,.64,1);
+  --shadow-overlay:0 12px 24px -8px #20241e26;--shadow-divider:0 1px 0 var(--line);
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif: Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --serif:var(--font-serif);--mono:var(--font-mono);--ease:var(--ease-print);
+}
+[data-theme="night"]{--bg:#121610;--paper:#191d18;--ink:#e8efe0;--muted:#a9b8a0;--faint:#7b8a72;--line:#2c3327;--shadow-overlay:0 12px 24px -8px #00000066}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html.embedded .dp-top{display:none}
+.dp-top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--sp-12);padding:10px var(--sp-24);background:color-mix(in srgb,var(--bg) 88%,transparent);border-bottom:1px solid var(--line)}
+.dp-top b{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.dp-top span{margin-left:auto;font-size:11px;color:var(--faint)}
+.dp-top button{font:inherit;font-size:11px;padding:4px 12px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--paper);color:var(--ink);cursor:pointer}
+.dp-progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--ink-vermilion);z-index:30;transition:width 80ms linear}
+html.embedded .dp-progress{top:0}
+main{max-width:960px;margin:0 auto;padding:0 var(--sp-24) 120px}
+.dp-k{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
+.dp-hero{position:relative;padding:96px 0 64px;perspective:900px}
+.dp-hero h1{position:relative;margin:0;font-family:var(--font-serif);font-size:96px;line-height:1.05;letter-spacing:-.03em;color:var(--ink);text-shadow:1px 1px 0 var(--muted),2px 2px 0 var(--muted),3px 3px 0 var(--muted),4px 4px 0 var(--muted),5px 5px 0 var(--faint),6px 6px 0 var(--faint),7px 7px 0 var(--faint),8px 8px 0 var(--faint),10px 10px 0 var(--faint);transform-style:preserve-3d;will-change:transform;transition:transform 280ms var(--ease-physical)}
+.dp-hero p{max-width:46ch;margin:var(--sp-24) 0 0;color:var(--muted);font-size:15px}
+.dp-hero .dp-fig{position:absolute;right:0;bottom:64px;width:240px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);overflow:hidden;box-shadow:var(--shadow-divider)}
+.dp-hero .dp-fig:before{content:"";position:absolute;inset:0;background:radial-gradient(140px 140px at var(--lx,50%) var(--ly,20%),color-mix(in srgb,var(--marker-hi) 55%,transparent),transparent 62%);opacity:0;transition:opacity 220ms var(--ease-print);pointer-events:none}
+.dp-hero .dp-fig.on:before{opacity:.22}
+.dp-hero .dp-fig b{display:block;font-size:21px;letter-spacing:-.01em}
+.dp-hero .dp-fig i{display:block;margin-top:2px;font-family:var(--font-mono);font-style:normal;font-size:10px;letter-spacing:.08em;color:var(--faint)}
+@media (max-width:760px){.dp-hero .dp-fig{position:static;margin-top:var(--sp-24);width:100%}.dp-hero h1{font-size:56px}}
+
+.dp-sec{padding:96px 0 0}
+.dp-sec h2{margin:0 0 var(--sp-12);font-size:21px;letter-spacing:-.01em}
+.dp-sec p{max-width:62ch;margin:0 0 var(--sp-16);color:var(--muted)}
+.dp-sec .dp-note{font-size:11px;color:var(--faint)}
+
+/* 分层视差：整页三层 */
+.dp-par{position:relative;height:340px;margin-top:var(--sp-24);border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);overflow:hidden}
+.dp-par-layer{position:absolute;left:0;right:0;display:flex;align-items:center;padding:0 var(--sp-24);will-change:transform}
+.dp-par-back{top:24px;height:120px;background:color-mix(in srgb,var(--ink) 7%,var(--paper));color:var(--faint)}
+.dp-par-mid{top:150px;height:104px;background:color-mix(in srgb,var(--ink) 13%,var(--paper));color:var(--muted)}
+.dp-par-front{top:276px;height:88px;background:var(--ink);color:var(--paper)}
+.dp-par-layer span{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em}
+.dp-par svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+
+/* 滚动立起 */
+.dp-rev{display:grid;gap:var(--sp-16);margin-top:var(--sp-24)}
+.dp-rev article{padding:var(--sp-24);border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);transform-origin:50% 100%;transform:rotateX(58deg) translateY(24px);opacity:.3;will-change:transform,opacity}
+.dp-rev article b{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--ink-vermilion)}
+.dp-rev article h3{margin:var(--sp-4) 0 var(--sp-4);font-size:15px}
+.dp-rev article p{margin:0;font-size:13px;color:var(--muted)}
+
+/* 等距图层 */
+.dp-iso{position:relative;display:flex;align-items:center;justify-content:center;height:360px;margin-top:var(--sp-24);border:1px solid var(--line);border-radius:var(--r-card);background:var(--bg);perspective:900px;overflow:hidden}
+.dp-iso-scene{position:relative;width:260px;height:180px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-40deg)}
+.dp-iso-layer{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px 16px;border:1px solid var(--ink);border-radius:var(--r-control);background:var(--paper);font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;box-shadow:0 6px 14px #20241e26;transition:transform 380ms var(--ease-physical)}
+.dp-iso-l1{transform:translateZ(0)}
+.dp-iso-l2{transform:translateZ(20px);background:color-mix(in srgb,var(--ink) 6%,var(--paper))}
+.dp-iso-l3{transform:translateZ(40px);background:color-mix(in srgb,var(--ink) 12%,var(--paper))}
+.dp-iso.on .dp-iso-l1{transform:translateZ(-30px)}
+.dp-iso.on .dp-iso-l3{transform:translateZ(72px)}
+
+/* 立体图表 */
+.dp-chart{position:relative;display:flex;align-items:center;justify-content:center;height:360px;margin-top:var(--sp-24);border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);overflow:hidden;cursor:grab;touch-action:none}
+.dp-chart.drag{cursor:grabbing}
+.dp-chart-scene{position:relative;width:240px;height:140px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-40deg);will-change:transform}
+.dp-chart-floor{position:absolute;left:0;bottom:0;width:220px;height:130px;background-image:repeating-linear-gradient(0deg,var(--line) 0 1px,transparent 1px 26px),repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 26px)}
+.dp-chart-bar{position:absolute;bottom:0;left:calc(var(--i) * 42px + 12px);width:22px;height:var(--h);border-radius:var(--r-tag) var(--r-tag) 0 0;background:var(--ink)}
+.dp-chart-bar:nth-child(odd){background:var(--ink-vermilion)}
+.dp-chart-tip{position:absolute;left:var(--sp-16);bottom:var(--sp-12);font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--faint)}
+
+/* 标签球 */
+.dp-sphere{position:relative;height:380px;margin-top:var(--sp-24);border:1px solid var(--line);border-radius:var(--r-card);background:var(--bg);overflow:hidden;touch-action:none;cursor:grab}
+.dp-sphere span{position:absolute;left:50%;top:50%;padding:4px 10px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--paper);font-size:12px;white-space:nowrap;will-change:transform,opacity}
+
+/* 悬浮卡 */
+.dp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-24);margin-top:var(--sp-24)}
+.dp-lift{position:relative;padding:var(--sp-24) var(--sp-24) 52px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);cursor:default;transform:translateY(0);transition:transform 280ms var(--ease-physical),border-color 180ms var(--ease-print)}
+.dp-lift:hover,.dp-lift:focus-visible{transform:translateY(-10px);border-color:var(--ink);outline:none}
+.dp-lift b{display:block;font-size:15px}
+.dp-lift i{display:block;margin-top:var(--sp-4);font-style:normal;font-size:12px;color:var(--muted)}
+.dp-lift em{position:absolute;left:var(--sp-24);bottom:var(--sp-16);font-family:var(--font-mono);font-style:normal;font-size:10px;letter-spacing:.08em;color:var(--faint)}
+.dp-lift:after{content:"";position:absolute;left:50%;bottom:14px;width:60%;height:10px;margin-left:-30%;border-radius:50%;background:var(--ink);opacity:.14;filter:blur(5px);transition:transform 280ms var(--ease-physical),opacity 280ms var(--ease-print),filter 280ms var(--ease-print)}
+.dp-lift:hover:after{transform:translateY(8px) scale(1.1);opacity:.08;filter:blur(9px)}
+
+/* 粒子带 */
+.dp-band{position:relative;height:220px;margin-top:96px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--paper);overflow:hidden}
+.dp-band canvas{display:block;width:100%;height:100%}
+.dp-band p{position:absolute;left:var(--sp-24);bottom:var(--sp-16);margin:0;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--faint)}
+
+.dp-foot{margin-top:var(--sp-64);padding-top:var(--sp-16);border-top:1px solid var(--line);display:flex;gap:var(--sp-16);flex-wrap:wrap;font-size:11px;color:var(--faint)}
+.dp-foot b{font-family:var(--font-mono);letter-spacing:.08em;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){
+  .dp-hero h1{transition:none}
+  .dp-rev article{transform:none;opacity:1}
+  .dp-lift,.dp-lift:after,.dp-iso-layer{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="dp-progress" id="dpProgress"></div>
+<header class="dp-top">
+  <b>GRID · 01</b>
+  <span>一台测距仪的使用说明 · 纵深示范</span>
+  <button type="button" id="dpTheme">夜间</button>
+</header>
+
+<main>
+  <section class="dp-hero" id="dpHero">
+    <span class="dp-k">Specimen / 纵深</span>
+    <h1 id="dpTitle">格点</h1>
+    <p>十二米以内，它测的是墙；十二米以外，它测的是你站的位置。这份说明不解释原理，只讲你把它拿在手上会遇到的六件事。</p>
+    <div class="dp-fig" id="dpFig">
+      <b>GRID·01</b>
+      <i>量程 0.2–12 m · 误差 ±2 mm</i>
+      <i>光斑直径 6 mm</i>
+    </div>
+  </section>
+
+  <section class="dp-sec" id="dpDepth">
+    <span class="dp-k">01 / 距离</span>
+    <h2>近的东西走得快</h2>
+    <p>把仪器对着走廊，滚一下这页：远处的墙几乎不动，扶手先走。这不是特效，是你在往前走——近的东西在视野里本来就该挪得更多。</p>
+    <div class="dp-par" data-par>
+      <svg viewBox="0 0 960 340" aria-hidden="true">
+        <line x1="0" y1="120" x2="960" y2="96" stroke="var(--line)" stroke-width="1"/>
+        <line x1="0" y1="228" x2="960" y2="196" stroke="var(--line)" stroke-width="1"/>
+        <line x1="0" y1="316" x2="960" y2="286" stroke="var(--line)" stroke-width="1"/>
+      </svg>
+      <div class="dp-par-layer dp-par-back" data-k=".16"><span>远景 · 走廊尽头</span></div>
+      <div class="dp-par-layer dp-par-mid" data-k=".42"><span>中景 · 门框</span></div>
+      <div class="dp-par-layer dp-par-front" data-k=".82"><span>近景 · 扶手</span></div>
+    </div>
+    <p class="dp-note">系数 0.16 / 0.42 / 0.82：远景只跟一成六，近景几乎贴身。</p>
+  </section>
+
+  <section class="dp-sec" id="dpReveal">
+    <span class="dp-k">02 / 读数</span>
+    <h2>滚到才立起来</h2>
+    <p>每一块按它自己的位置算进度，不按整页滚了多少算。所以第一块立完，第二块才开始。</p>
+    <div class="dp-rev" data-rev>
+      <article><b>01</b><h3>先对准</h3><p>把底部贴住墙根，光斑落在你要量的那条线上。歪三度，十二米外就差六十毫米。</p></article>
+      <article><b>02</b><h3>再按住</h3><p>按住测量键不放，读数会连续刷新；松手锁住最后一位。别在它刷新的时候读数。</p></article>
+      <article><b>03</b><h3>最后记</h3><p>按两次是存一组，存满二十组会从最早的开始覆盖。屏幕上那个小三角就是还剩几组。</p></article>
+    </div>
+  </section>
+
+  <section class="dp-sec" id="dpIso">
+    <span class="dp-k">03 / 结构</span>
+    <h2>三层，从下往上</h2>
+    <p>底下是测距模组，中间是校准数据，最上面才是你看到的读数。把三层抽出来，是为了让你知道哪一层出错时读数会怎么坏。</p>
+    <div class="dp-iso" id="dpIsoBox">
+      <div class="dp-iso-scene">
+        <div class="dp-iso-layer dp-iso-l1">模组 · 激光与接收</div>
+        <div class="dp-iso-layer dp-iso-l2">校准 · 温度补偿表</div>
+        <div class="dp-iso-layer dp-iso-l3">读数 · 四位小数</div>
+      </div>
+    </div>
+    <p class="dp-note">等距不是斜一下：X 压到 cos(60°)、Y 压到 sin(60°)。</p>
+  </section>
+
+  <section class="dp-sec" id="dpChart">
+    <span class="dp-k">04 / 分布</span>
+    <h2>拖一下换个角度</h2>
+    <p>这是过去五个月里，误差超过两毫米的次数。柱子有高有矮，但你得转到侧面才看得出后排被挡住多少——挡住才是真的立体。</p>
+    <div class="dp-chart" id="dpChartBox">
+      <div class="dp-chart-scene" id="dpChartScene">
+        <div class="dp-chart-floor"></div>
+        <div class="dp-chart-bar" style="--h:58px;--i:0"></div>
+        <div class="dp-chart-bar" style="--h:92px;--i:1"></div>
+        <div class="dp-chart-bar" style="--h:38px;--i:2"></div>
+        <div class="dp-chart-bar" style="--h:74px;--i:3"></div>
+        <div class="dp-chart-bar" style="--h:47px;--i:4"></div>
+      </div>
+      <span class="dp-chart-tip">拖动换角度 · 单位：次</span>
+    </div>
+  </section>
+
+  <section class="dp-sec" id="dpSphere">
+    <span class="dp-k">05 / 词</span>
+    <h2>它会记的词</h2>
+    <p>这些是仪器自己会用的词。拖一下球，词会跟着转，松手还带着刚才那一下的惯性。</p>
+    <div class="dp-sphere" id="dpSphereBox" aria-label="标签球：拖动旋转">
+      <span>墙根</span><span>光斑</span><span>校准</span><span>温度</span><span>偏移</span><span>锁数</span><span>背光</span><span>电量</span><span>零点</span>
+    </div>
+  </section>
+
+  <section class="dp-sec" id="dpCards">
+    <span class="dp-k">06 / 手感</span>
+    <h2>抬起来要有影子</h2>
+    <p>三张卡，悬停时抬起十像素。影子跟着变大变虚——没有影子的立体是贴图在飘。</p>
+    <div class="dp-cards">
+      <div class="dp-lift" tabindex="0"><b>贴墙量</b><i>底部压住墙根，适合量净空</i><em>MODE 01</em></div>
+      <div class="dp-lift" tabindex="0"><b>悬空量</b><i>从机身尾端算起，适合量梁下</i><em>MODE 02</em></div>
+      <div class="dp-lift" tabindex="0"><b>连续量</b><i>按住刷新，适合量斜面</i><em>MODE 03</em></div>
+    </div>
+  </section>
+
+  <section class="dp-sec">
+    <div class="dp-band">
+      <canvas id="dpBand" aria-label="粒子景深示意" role="img"></canvas>
+      <p>远的又小又慢，近的又大又快 · 离开屏幕就停</p>
+    </div>
+    <div class="dp-foot">
+      <b>GRID · 01</b><span>虚构的仪器说明书，用来示范纵深怎么叠：分层视差 / 滚动立起 / 等距图层 / 立体图表 / 标签球 / 悬浮影子 / 粒子景深。</span>
+    </div>
+  </section>
+</main>
+
+<script>
+/* 主题：外层传进来，也能自己切 */
+function applyTheme(v){ document.documentElement.setAttribute('data-theme', v === 'night' ? 'night' : 'paper'); var b = document.getElementById('dpTheme'); if (b) b.textContent = v === 'night' ? '纸色' : '夜间'; }
+var q = new URLSearchParams(location.search).get('theme');
+if (q) applyTheme(q);
+if (window.self !== window.top) document.documentElement.classList.add('embedded');
+addEventListener('message', function (e) {
+  if (!e.data || e.data.type !== 'site-theme') return;
+  applyTheme(e.data.value);
+});
+document.getElementById('dpTheme').addEventListener('click', function () {
+  var night = document.documentElement.getAttribute('data-theme') !== 'night';
+  applyTheme(night ? 'night' : 'paper');
+  try { parent.postMessage({ type: 'site-theme', value: night ? 'night' : 'paper' }, '*'); } catch (err) {}
+});
+
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hero = document.getElementById('dpHero');
+var title = document.getElementById('dpTitle');
+var progress = document.getElementById('dpProgress');
+
+/* 指针：标题偏一点，右边那张卡上有一盏灯 */
+if (!reduce) {
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    var x = ((e.clientX - r.left) / r.width - .5) * 2;
+    var y = ((e.clientY - r.top) / r.height - .5) * 2;
+    title.style.transform = 'rotateY(' + (x * 7).toFixed(1) + 'deg) rotateX(' + (-y * 5).toFixed(1) + 'deg)';
+    var fig = document.getElementById('dpFig');
+    var fr = fig.getBoundingClientRect();
+    fig.style.setProperty('--lx', ((e.clientX - fr.left) / fr.width * 100).toFixed(1) + '%');
+    fig.style.setProperty('--ly', ((e.clientY - fr.top) / fr.height * 100).toFixed(1) + '%');
+    fig.classList.add('on');
+  });
+  hero.addEventListener('pointerleave', function () { title.style.transform = 'none'; document.getElementById('dpFig').classList.remove('on'); });
+}
+
+/* 滚动：进度条 + 整页视差 + 立起 */
+var parBox = document.querySelector('[data-par]');
+var parLayers = [].slice.call(document.querySelectorAll('[data-k]'));
+var revBox = document.querySelector('[data-rev]');
+var revCards = revBox ? [].slice.call(revBox.querySelectorAll('article')) : [];
+var queued = false;
+function frame() {
+  queued = false;
+  var h = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
+  if (!reduce && parBox) {
+    var r = parBox.getBoundingClientRect();
+    var p = (innerHeight - r.top) / (innerHeight + r.height);
+    parLayers.forEach(function (el) {
+      var k = parseFloat(el.dataset.k) || 0;
+      el.style.transform = 'translate3d(0,' + ((p - .5) * 120 * k).toFixed(1) + 'px,0)';
+    });
+  }
+  if (!reduce && revCards.length) {
+    revCards.forEach(function (card) {
+      var r = card.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * .7)));
+      card.style.transform = 'rotateX(' + (58 * (1 - p)).toFixed(1) + 'deg) translateY(' + (24 * (1 - p)).toFixed(1) + 'px)';
+      card.style.opacity = String(.3 + .7 * p);
+    });
+  }
+}
+function onScroll() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+addEventListener('scroll', onScroll, { passive: true });
+addEventListener('resize', onScroll);
+frame();
+
+/* 等距：进入视口就抽开 */
+var isoBox = document.getElementById('dpIsoBox');
+if (isoBox && 'IntersectionObserver' in window) {
+  new IntersectionObserver(function (es) {
+    es.forEach(function (x) { if (x.isIntersecting) isoBox.classList.add('on'); });
+  }, { threshold: .5 }).observe(isoBox);
+} else if (isoBox) isoBox.classList.add('on');
+
+/* 立体图表：拖拽旋转 + 惯性 */
+(function () {
+  var box = document.getElementById('dpChartBox'), scene = document.getElementById('dpChartScene');
+  if (!box || !scene) return;
+  var rz = -40, rx = 58, drag = null, vx = 0, vy = 0, raf = 0, live = false;
+  function apply() { scene.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg)'; }
+  function tick() {
+    if (!live) return;
+    if (!drag) {
+      rz += vx; rx += vy; vx *= .93; vy *= .93;
+      if (Math.abs(vx) < .01) vx = 0;
+      if (Math.abs(vy) < .01) vy = 0;
+      rx = Math.max(30, Math.min(76, rx));
+      apply();
+    }
+    if (drag || vx || vy) raf = requestAnimationFrame(tick); else live = false;
+  }
+  function start() { if (!live) { live = true; raf = requestAnimationFrame(tick); } }
+  box.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY }; box.classList.add('drag'); box.setPointerCapture(e.pointerId); vx = vy = 0; });
+  box.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    rz += (e.clientX - drag.x) * .4;
+    rx = Math.max(30, Math.min(76, rx - (e.clientY - drag.y) * .25));
+    vx = (e.clientX - drag.x) * .06; vy = -(e.clientY - drag.y) * .04;
+    drag = { x: e.clientX, y: e.clientY };
+    apply(); start();
+  });
+  function release() { drag = null; box.classList.remove('drag'); start(); }
+  box.addEventListener('pointerup', release);
+  box.addEventListener('pointercancel', release);
+  apply();
+})();
+
+/* 标签球 */
+(function () {
+  var box = document.getElementById('dpSphereBox');
+  if (!box) return;
+  var tags = [].slice.call(box.querySelectorAll('span'));
+  var R = 150, FOV = 320;
+  var pts = tags.map(function (el, i) {
+    var y = 1 - (i / (tags.length - 1)) * 2;
+    var rad = Math.sqrt(Math.max(0, 1 - y * y));
+    var th = i * 2.399963229728653;
+    return { el: el, x: Math.cos(th) * rad, y: y, z: Math.sin(th) * rad };
+  });
+  var ry = .4, rx = -.16, vy = reduce ? 0 : .004, vx = 0, live = false, drag = null, raf = 0;
+  function draw() {
+    var cy = Math.cos(ry), sy = Math.sin(ry), cx = Math.cos(rx), sx = Math.sin(rx);
+    pts.forEach(function (p) {
+      var x1 = p.x * cy - p.z * sy;
+      var z1 = p.x * sy + p.z * cy;
+      var y1 = p.y * cx - z1 * sx;
+      var z2 = p.y * sx + z1 * cx;
+      var s = FOV / (FOV + z2 * R);
+      p.el.style.transform = 'translate3d(' + (x1 * R * s).toFixed(1) + 'px,' + (y1 * R * s).toFixed(1) + 'px,0) translate(-50%,-50%) scale(' + s.toFixed(3) + ')';
+      p.el.style.opacity = (0.35 + 0.65 * ((s - 0.55) / 0.6)).toFixed(3);
+      p.el.style.zIndex = String(Math.round((z2 + 1) * 100));
+    });
+  }
+  function tick() {
+    if (!live) return;
+    ry += vy; rx += vx;
+    rx = Math.max(-1.1, Math.min(1.1, rx));
+    vy *= .96; vx *= .9;
+    if (!drag && Math.abs(vy) < .0006) vy = reduce ? 0 : .004;
+    draw();
+    raf = requestAnimationFrame(tick);
+  }
+  function start() { if (!live) { live = true; raf = requestAnimationFrame(tick); } }
+  function stop() { live = false; cancelAnimationFrame(raf); }
+  box.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY }; box.setPointerCapture(e.pointerId); vy = 0; vx = 0; });
+  box.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    ry += (e.clientX - drag.x) * .006;
+    rx = Math.max(-1.1, Math.min(1.1, rx + (e.clientY - drag.y) * .004));
+    vx = (e.clientY - drag.y) * .0006;
+    drag = { x: e.clientX, y: e.clientY };
+    draw();
+  });
+  function release() { drag = null; }
+  box.addEventListener('pointerup', release);
+  box.addEventListener('pointercancel', release);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (x) { x.isIntersecting ? start() : stop(); }); }, { rootMargin: '140px' }).observe(box);
+  else start();
+  draw();
+})();
+
+/* 粒子带 */
+(function () {
+  var cv = document.getElementById('dpBand');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var w = 0, h = 0, dpr = 1, ps = [], live = false, raf = 0;
+  function seed() {
+    var ink = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#20241e';
+    ps = [];
+    for (var i = 0; i < 70; i++) ps.push({ x: (Math.random() - .5) * 2, y: (Math.random() - .5) * 2, z: Math.random() * 1.8 + .1, ink: ink });
+  }
+  function draw() {
+    if (!w) return;
+    ctx.clearRect(0, 0, w, h);
+    ps.forEach(function (p) {
+      var s = 1 / p.z;
+      var x = w / 2 + (p.x * w) * s * .5;
+      var y = h / 2 + (p.y * h) * s * .5;
+      ctx.globalAlpha = Math.max(.12, Math.min(.8, .72 / p.z));
+      ctx.fillStyle = p.ink;
+      ctx.beginPath(); ctx.arc(x, y, Math.max(.6, 2.2 * s), 0, Math.PI * 2); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+  function resize() {
+    dpr = Math.min(2, devicePixelRatio || 1);
+    w = cv.clientWidth; h = cv.clientHeight;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (!ps.length) seed();
+    draw();
+  }
+  function tick() {
+    if (!live) return;
+    ps.forEach(function (p) {
+      p.z -= .006 + (1.9 - p.z) * .0045;
+      if (p.z < .12) { p.z = 1.9; p.x = (Math.random() - .5) * 2; p.y = (Math.random() - .5) * 2; }
+    });
+    draw();
+    raf = requestAnimationFrame(tick);
+  }
+  function start() { if (!live && !reduce) { live = true; raf = requestAnimationFrame(tick); } }
+  function stop() { live = false; cancelAnimationFrame(raf); }
+  new ResizeObserver(resize).observe(cv);
+  resize();
+  if (!reduce) {
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (x) { x.isIntersecting ? start() : stop(); }); }, { rootMargin: '120px' }).observe(cv);
+    else start();
+  }
+})();
+</script>
+</body>
+</html>

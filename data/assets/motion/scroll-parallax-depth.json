@@ -1,0 +1,18 @@
+{
+  "id": "scroll-parallax-depth",
+  "cat": "3D 与透视",
+  "t": "滚动分层视差",
+  "en": "scroll parallax depth",
+  "d": "三层给 0.18 / 0.42 / 0.8 三个系数，不是随便取的：远景只跟四分之一，近景几乎贴身，中间那层压在大约一半，读者才信这三层在同一个空间里。层内文字靠左对齐同一条线，滚动时错开的是距离不是位置，所以看起来是你在往纵深里走，不是三张图各飘各的。",
+  "body": "<div class=\"d-pp-scroll\" tabindex=\"0\" aria-label=\"滚动这块区域，看三层景物以不同速度移动\"><div class=\"d-pp-space\"><div class=\"d-pp-layer d-pp-back\"><span>远景 · 山脊</span></div><div class=\"d-pp-layer d-pp-mid\"><span>中景 · 树线</span></div><div class=\"d-pp-layer d-pp-front\"><span>近景 · 栏杆</span></div></div></div>",
+  "css": ".d-pp-scroll{position:relative;width:100%;max-width:340px;height:168px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg);overscroll-behavior:contain}\n.d-pp-space{position:relative;height:420px}\n.d-pp-layer{position:absolute;left:0;right:0;display:flex;align-items:center;padding:0 14px;box-sizing:border-box;will-change:transform}\n.d-pp-layer span{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em}\n.d-pp-back{top:40px;height:78px;background:color-mix(in srgb,var(--ink) 8%,var(--bg));color:var(--faint);border-bottom:1px solid var(--line)}\n.d-pp-mid{top:118px;height:70px;background:color-mix(in srgb,var(--ink) 14%,var(--bg));color:var(--muted)}\n.d-pp-front{top:196px;height:64px;background:var(--ink);color:var(--paper)}\n@media (prefers-reduced-motion:reduce){.d-pp-layer{will-change:auto}}",
+  "init": "root => {\n  const box = root.querySelector('.d-pp-scroll');\n  if (!box) return;\n  const map = [['.d-pp-back', 0.18], ['.d-pp-mid', 0.42], ['.d-pp-front', 0.8]]\n    .map(p => [box.querySelector(p[0]), p[1]])\n    .filter(p => p[0]);\n  const apply = () => {\n    const y = box.scrollTop;\n    map.forEach(p => { p[0].style.transform = 'translate3d(0,' + (-y * p[1]).toFixed(1) + 'px,0)'; });\n  };\n  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) box.addEventListener('scroll', apply, { passive: true });\n  apply();\n}",
+  "motion": "印刷",
+  "tags": [
+    "视差",
+    "滚动",
+    "景深",
+    "整页"
+  ],
+  "source": "v4"
+}

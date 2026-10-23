@@ -1,0 +1,12 @@
+.d-iso-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;max-width:340px;height:196px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
+.d-iso-scene{position:relative;width:150px;height:104px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-40deg) translateY(-4px)}
+.d-iso-layer{position:absolute;inset:0;display:flex;align-items:flex-end;padding:8px 10px;box-sizing:border-box;border:1px solid var(--ink);border-radius:6px;background:var(--paper);font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--ink);box-shadow:0 6px 14px #20241e26;transition:transform 280ms var(--ease-spring)}
+.d-iso-l1{transform:translateZ(0)}
+.d-iso-l2{transform:translateZ(16px);background:color-mix(in srgb,var(--ink) 6%,var(--paper))}
+.d-iso-l3{transform:translateZ(32px);background:color-mix(in srgb,var(--ink) 12%,var(--paper))}
+.d-iso-stage.d-iso-open .d-iso-l1{transform:translateZ(-26px)}
+.d-iso-stage.d-iso-open .d-iso-l2{transform:translateZ(16px)}
+.d-iso-stage.d-iso-open .d-iso-l3{transform:translateZ(58px)}
+.d-iso-btn{position:absolute;bottom:10px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.d-iso-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.d-iso-layer{transition:none}}

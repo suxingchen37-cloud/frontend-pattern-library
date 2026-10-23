@@ -1,0 +1,18 @@
+{
+  "id": "orbit-chart",
+  "cat": "3D 与透视",
+  "t": "可转立体图表",
+  "en": "orbit chart",
+  "d": "柱子高度直接写进每根自己的变量里，换数据只改数字，不用动布局；地面网格给 5 格是为了让眼睛有刻度，不给格子就只能看个大概。拖到侧面时后排柱子会被前排挡住一点，这是真三维该有的遮挡，不是 bug——反过来，如果完全不遮，说明只是在斜切一张平面图。",
+  "body": "<div class=\"d-oc-stage\" aria-label=\"立体柱状图：拖动可以换角度\"><div class=\"d-oc-scene\"><div class=\"d-oc-floor\"></div><div class=\"d-oc-bar\" style=\"--h:58px;--i:0\"></div><div class=\"d-oc-bar\" style=\"--h:92px;--i:1\"></div><div class=\"d-oc-bar\" style=\"--h:38px;--i:2\"></div><div class=\"d-oc-bar\" style=\"--h:74px;--i:3\"></div><div class=\"d-oc-bar\" style=\"--h:47px;--i:4\"></div></div><p class=\"d-oc-note\">拖动换角度 · 单位：次</p></div>",
+  "css": ".d-oc-stage{position:relative;width:100%;max-width:340px;padding:8px 0 0;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;touch-action:none;cursor:grab}\n.d-oc-stage.d-oc-drag{cursor:grabbing}\n.d-oc-scene{position:relative;height:172px;margin:0 auto;width:220px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-40deg) translateZ(-18px);will-change:transform}\n.d-oc-floor{position:absolute;left:0;bottom:0;width:200px;height:120px;background-image:repeating-linear-gradient(0deg,var(--line) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 24px);opacity:.9}\n.d-oc-bar{position:absolute;bottom:0;left:calc(var(--i) * 38px + 12px);width:20px;height:var(--h);border-radius:2px 2px 0 0;background:var(--ink);transform:translateZ(0);transform-origin:50% 100%}\n.d-oc-bar:nth-child(odd){background:var(--ink-vermilion)}\n.d-oc-note{margin:4px 0 8px;text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:var(--faint)}",
+  "init": "root => {\n  const stage = root.querySelector('.d-oc-stage');\n  if (!stage) return;\n  const scene = stage.querySelector('.d-oc-scene');\n  if (!scene) return;\n  let rz = -40, rx = 58, drag = null, vx = 0, vy = 0, raf = 0, live = false;\n  const apply = () => { scene.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg) translateZ(-18px)'; };\n  const tick = () => {\n    if (!live) return;\n    if (!drag) { rz += vx; rx += vy; vx *= 0.93; vy *= 0.93; if (Math.abs(vx) < 0.01) vx = 0; if (Math.abs(vy) < 0.01) vy = 0; rx = Math.max(30, Math.min(76, rx)); apply(); }\n    if (drag || vx || vy) raf = requestAnimationFrame(tick); else live = false;\n  };\n  const start = () => { if (!live) { live = true; raf = requestAnimationFrame(tick); } };\n  stage.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY }; stage.classList.add('d-oc-drag'); stage.setPointerCapture(e.pointerId); vx = vy = 0; });\n  stage.addEventListener('pointermove', e => {\n    if (!drag) return;\n    rz += (e.clientX - drag.x) * 0.4;\n    rx = Math.max(30, Math.min(76, rx - (e.clientY - drag.y) * 0.25));\n    vx = (e.clientX - drag.x) * 0.06; vy = -(e.clientY - drag.y) * 0.04;\n    drag = { x: e.clientX, y: e.clientY };\n    apply(); start();\n  });\n  const release = () => { drag = null; stage.classList.remove('d-oc-drag'); start(); };\n  stage.addEventListener('pointerup', release);\n  stage.addEventListener('pointercancel', release);\n  apply();\n}",
+  "motion": "物理",
+  "tags": [
+    "图表",
+    "柱状",
+    "拖拽",
+    "三维"
+  ],
+  "source": "v4"
+}

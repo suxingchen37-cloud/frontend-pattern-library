@@ -15,7 +15,7 @@
 | body | string | 是 | HTML 片段。只用本条自己的 class 前缀 `d-`，禁止全局选择器；行内 `style` 只允许 `--自定义属性`（逐元素数据） |
 | css | string | 是 | 纯 CSS 文本，不带 `<style>` 标签，不写 `#c-` 前缀（外层自动作用域） |
 | init | string \| null | 是 | 交互初始化函数的源码字符串，签名为 `root => { ... }`；无交互填 null |
-| source | string | 是 | 来源批次：`inline` / `lab-more` / `lab-extra2` / `lab-extra3` / `v4` |
+| source | string | 是 | 来源批次：`inline` / `lab-more` / `lab-extra2` / `lab-extra3` / `v4` / `v5`（两批新增，v5 为第二批） |
 | motion | string | 是 | 运动语言：`机械` / `物理` / `印刷` / `无动效`。判据看这条自己用的曲线，不看名字；`无动效` 只描述现状——要加动画随时按前三族加 |
 | tags | string[] | 否 | 检索词，2–5 个 |
 

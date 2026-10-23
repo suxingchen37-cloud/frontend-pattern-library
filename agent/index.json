@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "tokensVersion": "1.0.0",
-  "count": 196,
+  "count": 206,
   "categories": [
     { "name": "入场", "count": 8 },
     { "name": "加载", "count": 7 },
@@ -26,7 +26,7 @@
     { "name": "状态页", "count": 8 },
     { "name": "媒体", "count": 8 },
     { "name": "SVG 与路径", "count": 10 },
-    { "name": "3D 与透视", "count": 7 },
+    { "name": "3D 与透视", "count": 17 },
     { "name": "滚动驱动", "count": 7 }
   ],
   "items": [
@@ -217,7 +217,17 @@
     {"id":"cube-flip","cat":"3D 与透视","t":"立方体翻转","en":"cube flip","d":"90° 是面间夹角，多一度露缝、少一度会看到第二条面；两面必须同尺寸同圆角，否则转过去边缘对不齐，这是立方体最容易露馅的地方。B 面给 34px 大字压在朱墨块上：换面时最先被认出来的是整块颜色，不是小字。","motion":"物理","tags":["立方体","翻转","换面","立体"],"hasInit":true,"files":{"html":"blocks/cube-flip.html","css":"blocks/cube-flip.css","js":"blocks/cube-flip.js"}},
     {"id":"depth-parallax","cat":"3D 与透视","t":"分层视差","en":"depth parallax","d":"三层靠 translateZ 分景深，不手算每层位移：场景绕 Y 轴转 11° 时，近层在屏幕上走过的像素自然多于远层，跟真实透视一致。11° / 9° 是上限，再转背板边缘就会露出空边；方向键一次 3°，和鼠标手感同档。","motion":"物理","tags":["视差","景深","指针","立体"],"hasInit":true,"files":{"html":"blocks/depth-parallax.html","css":"blocks/depth-parallax.css","js":"blocks/depth-parallax.js"}},
     {"id":"drawer-perspective","cat":"3D 与透视","t":"抽屉透视推出","en":"drawer perspective","d":"拉出用 translateZ 而不是 translateY：只有朝观察者推，边框才会出现轻微斜切，跟真抽屉抽出来一样；再叠 6° rotateX 让上沿先出来一点，超过 8° 就开始像在翻书。底层始终留一条 1px 缝，提醒下面还有东西。","motion":"物理","tags":["抽屉","透视","拉出","立体"],"hasInit":true,"files":{"html":"blocks/drawer-perspective.html","css":"blocks/drawer-perspective.css","js":"blocks/drawer-perspective.js"}},
+    {"id":"extruded-text","cat":"3D 与透视","t":"立体文字","en":"extruded text","d":"厚度用 14 层同字叠出来，每层错 1px：用阴影做会糊，用 3D 变换做会连字重一起变形。指针只让整块偏 8°，超过就开始晕，而且字要能被读出来，不能被当成一张立体贴纸。厚度色比正面深一档，光才像是从左上来的。","motion":"物理","tags":["文字","厚度","指针","标题"],"hasInit":true,"files":{"html":"blocks/extruded-text.html","css":"blocks/extruded-text.css","js":"blocks/extruded-text.js"}},
+    {"id":"hover-lift-shadow","cat":"3D 与透视","t":"悬浮与影子","en":"hover lift shadow","d":"抬起 12px 的同时影子放大 8px、变虚、变淡：影子不是装饰，是告诉你它离桌面多高。只抬不散影，看起来像整个卡片在往上滚；只散影不抬，像地上有水汽。落回去用 180ms 比抬起快，手感才对——按住东西落下的速度本来就比松开快。","motion":"物理","tags":["悬浮","影子","卡片","质感"],"hasInit":false,"files":{"html":"blocks/hover-lift-shadow.html","css":"blocks/hover-lift-shadow.css"}},
+    {"id":"isometric-stack","cat":"3D 与透视","t":"等距图层","en":"isometric stack","d":"等距不是随便斜一下：X 轴压到 cos(60°)、Y 轴压到 sin(60°)，比例不对就不像等距而像被拉歪的平面。抽出时每层间距 26px，是 1px 描边在这个尺度下还能数清层数的最小值。三层封顶——再往上加，抽出来就飞出框了。","motion":"物理","tags":["等距","图层","架构","展开"],"hasInit":true,"files":{"html":"blocks/isometric-stack.html","css":"blocks/isometric-stack.css","js":"blocks/isometric-stack.js"}},
     {"id":"layer-explode","cat":"3D 与透视","t":"分层爆炸图","en":"layer explode","d":"三层沿 Z 轴拉开 26px，是 1px 描边在 640px 透视下还能认出「这是三层」的最小间隙，再挤就糊成一张卡；指针进入某层时它抬到 64px、其余退到 -18px 并压到 45% 不透明度，读者先看清被抽出的那一层，再回头对它在原图里的位置。记忆点：抽屉式抽层。","motion":"物理","tags":["分层","爆炸图","悬停","透视"],"hasInit":true,"files":{"html":"blocks/layer-explode.html","css":"blocks/layer-explode.css","js":"blocks/layer-explode.js"}},
+    {"id":"orbit-chart","cat":"3D 与透视","t":"可转立体图表","en":"orbit chart","d":"柱子高度直接写进每根自己的变量里，换数据只改数字，不用动布局；地面网格给 5 格是为了让眼睛有刻度，不给格子就只能看个大概。拖到侧面时后排柱子会被前排挡住一点，这是真三维该有的遮挡，不是 bug——反过来，如果完全不遮，说明只是在斜切一张平面图。","motion":"物理","tags":["图表","柱状","拖拽","三维"],"hasInit":true,"files":{"html":"blocks/orbit-chart.html","css":"blocks/orbit-chart.css","js":"blocks/orbit-chart.js"}},
+    {"id":"particle-depth","cat":"3D 与透视","t":"粒子景深","en":"particle depth","d":"远近决定三件事：大小、速度、亮度。远的粒子又小又慢还压暗，近的又大又快，这样看起来才是往屏幕外飞，而不是一堆点在平移。数量按面积给，340×180 只放 46 个，多了就糊成噪点。离开屏幕就停，不白烧电。","motion":"机械","tags":["粒子","景深","画布","背景"],"hasInit":true,"files":{"html":"blocks/particle-depth.html","css":"blocks/particle-depth.css","js":"blocks/particle-depth.js"}},
+    {"id":"pointer-light","cat":"3D 与透视","t":"指针当光源","en":"pointer light","d":"光是跟着指针走的一个圆形渐变，中心亮度只到 18%：再亮就盖住了卡面文字，读者先看见光斑再看见内容。光斑用两层——紧的一层是灯，散的一层是反射；只做一层会像一块脏印子。指针离开立刻灭，因为光源跟着人走了，不是留在原地。","motion":"物理","tags":["光","高光","指针","材质"],"hasInit":true,"files":{"html":"blocks/pointer-light.html","css":"blocks/pointer-light.css","js":"blocks/pointer-light.js"}},
+    {"id":"scroll-camera-dolly","cat":"3D 与透视","t":"滚动推镜","en":"scroll camera dolly","d":"把滚动量直接接到纵深上，等于相机往前推：近层涨得比远层快，是因为它本来离你近，不是给每层各设一个放大系数。推到顶时停在 150px，再往前近层会糊出框；回滚不弹，因为镜头不该有回弹。","motion":"机械","tags":["推镜","滚动","纵深","相机"],"hasInit":true,"files":{"html":"blocks/scroll-camera-dolly.html","css":"blocks/scroll-camera-dolly.css","js":"blocks/scroll-camera-dolly.js"}},
+    {"id":"scroll-parallax-depth","cat":"3D 与透视","t":"滚动分层视差","en":"scroll parallax depth","d":"三层给 0.18 / 0.42 / 0.8 三个系数，不是随便取的：远景只跟四分之一，近景几乎贴身，中间那层压在大约一半，读者才信这三层在同一个空间里。层内文字靠左对齐同一条线，滚动时错开的是距离不是位置，所以看起来是你在往纵深里走，不是三张图各飘各的。","motion":"印刷","tags":["视差","滚动","景深","整页"],"hasInit":true,"files":{"html":"blocks/scroll-parallax-depth.html","css":"blocks/scroll-parallax-depth.css","js":"blocks/scroll-parallax-depth.js"}},
+    {"id":"scroll-tilt-reveal","cat":"3D 与透视","t":"滚动立起","en":"scroll tilt reveal","d":"躺到立走 68° 而不是 90°：90° 是纯平贴地，滚到一半会像一块被翻过来的板子，68° 还留着一眼能读到的厚度。每块按自己的位置算进度，不按整页滚动量算，所以长页面上第一块立完第二块才开始，不会一起倒。","motion":"印刷","tags":["滚动","立起","揭示","纵深"],"hasInit":true,"files":{"html":"blocks/scroll-tilt-reveal.html","css":"blocks/scroll-tilt-reveal.css","js":"blocks/scroll-tilt-reveal.js"}},
+    {"id":"tag-sphere","cat":"3D 与透视","t":"标签球","en":"tag sphere","d":"每个词的位置用等距球面点算，不手写坐标：手写的坐标会挤在赤道。远小近大按 260 的焦距算，透明度跟着深度掉，最远的降到 35%——不是为了好看，是为了让眼睛分得清前后。拖一下会带着惯性转，松手后慢慢停，停的位置由松手那一下的速度决定。","motion":"物理","tags":["标签球","球面","拖拽","惯性"],"hasInit":true,"files":{"html":"blocks/tag-sphere.html","css":"blocks/tag-sphere.css","js":"blocks/tag-sphere.js"}},
     {"id":"tilt-stack","cat":"3D 与透视","t":"倾斜叠层","en":"tilt stack","d":"三张卡只错 8px 与 16px，再大就会被读成三张独立的卡，而不是一叠；指针移动时整叠只偏 8°（纵轴 6°），超过这个角度卡面文字开始难读。最上层抬 4px 是为了让「手正按着一叠纸」这件事有落点。记忆点：纸叠被指尖压得一歪，上面那张先翘起来。","motion":"物理","tags":["3D","叠层","指针","透视"],"hasInit":true,"files":{"html":"blocks/tilt-stack.html","css":"blocks/tilt-stack.css","js":"blocks/tilt-stack.js"}},
     {"id":"scroll-counters","cat":"滚动驱动","t":"滚动计数","en":"scroll counters","d":"数字不做补间，而是用 scroll-timeline 把 0 到目标值切成 6 格（steps(6)），126 / 18 / 96 除得尽，所以每格分别是 21 / 3 / 16，读数永远落在整数上——仪器式的计数不该出现小数抖动。记忆点：往下滚，三个数字像计数器一样一格一格跳。","motion":"机械","tags":["计数","滚动","数字","仪表"],"hasInit":false,"files":{"html":"blocks/scroll-counters.html","css":"blocks/scroll-counters.css"}},
     {"id":"scroll-horizontal-pin","cat":"滚动驱动","t":"横向锁定","en":"horizontal pin","d":"纵向留 390px 换横向 600px，不是 1:1：横向三块各 300，必须走满 600 才能让第三块贴住左边；纵向 390 是「走完横向刚好也到底」，多一屏会让人以为卡住。pin 用 sticky 而不是 transform 顶住，因为 sticky 在滚动容器里天然对齐，不用算偏移。","motion":"机械","tags":["滚动","横向","锁定","叙事"],"hasInit":false,"files":{"html":"blocks/scroll-horizontal-pin.html","css":"blocks/scroll-horizontal-pin.css"}},

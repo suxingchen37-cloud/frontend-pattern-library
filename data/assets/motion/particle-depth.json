@@ -1,0 +1,18 @@
+{
+  "id": "particle-depth",
+  "cat": "3D 与透视",
+  "t": "粒子景深",
+  "en": "particle depth",
+  "d": "远近决定三件事：大小、速度、亮度。远的粒子又小又慢还压暗，近的又大又快，这样看起来才是往屏幕外飞，而不是一堆点在平移。数量按面积给，340×180 只放 46 个，多了就糊成噪点。离开屏幕就停，不白烧电。",
+  "body": "<canvas class=\"d-pd-canvas\" aria-label=\"粒子向屏幕外飞出的景深示意\" role=\"img\"></canvas>",
+  "css": ".d-pd-canvas{display:block;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}",
+  "init": "root => {\n  const cv = root.querySelector('.d-pd-canvas');\n  if (!cv || !cv.getContext) return;\n  const ctx = cv.getContext('2d');\n  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;\n  let w = 0, h = 0, dpr = 1, ps = [], raf = 0, live = false;\n  const seed = (n) => {\n    const ink = getComputedStyle(cv).getPropertyValue('--ink').trim() || '#20241e';\n    const out = [];\n    for (let i = 0; i < n; i++) out.push({ x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2, z: Math.random() * 1.8 + 0.1, ink });\n    return out;\n  };\n  const draw = () => {\n    if (!w) return;\n    ctx.clearRect(0, 0, w, h);\n    for (const p of ps) {\n      const s = 1 / p.z;\n      const x = w / 2 + (p.x * w) * s * 0.5;\n      const y = h / 2 + (p.y * h) * s * 0.5;\n      const r = Math.max(0.6, 2.4 * s);\n      ctx.globalAlpha = Math.max(0.12, Math.min(0.85, 0.75 / p.z));\n      ctx.fillStyle = p.ink;\n      ctx.beginPath();\n      ctx.arc(x, y, r, 0, Math.PI * 2);\n      ctx.fill();\n    }\n    ctx.globalAlpha = 1;\n  };\n  const resize = () => {\n    dpr = Math.min(2, window.devicePixelRatio || 1);\n    w = cv.clientWidth; h = cv.clientHeight;\n    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);\n    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);\n    if (!ps.length) ps = seed(46);\n    draw();\n  };\n  const tick = () => {\n    for (const p of ps) {\n      p.z -= 0.006 + (1.9 - p.z) * 0.0045;\n      if (p.z < 0.12) { p.z = 1.9; p.x = (Math.random() - 0.5) * 2; p.y = (Math.random() - 0.5) * 2; }\n    }\n    draw();\n    raf = requestAnimationFrame(tick);\n  };\n  const start = () => { if (!live && !reduce) { live = true; raf = requestAnimationFrame(tick); } };\n  const stop = () => { live = false; cancelAnimationFrame(raf); };\n  new ResizeObserver(resize).observe(cv);\n  resize();\n  if (!reduce) {\n    if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(x => (x.isIntersecting ? start() : stop())), { rootMargin: '120px' }).observe(cv);\n    else start();\n  }\n}",
+  "motion": "机械",
+  "tags": [
+    "粒子",
+    "景深",
+    "画布",
+    "背景"
+  ],
+  "source": "v4"
+}

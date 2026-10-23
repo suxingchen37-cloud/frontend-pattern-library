@@ -1,0 +1,18 @@
+{
+  "id": "scroll-camera-dolly",
+  "cat": "3D 与透视",
+  "t": "滚动推镜",
+  "en": "scroll camera dolly",
+  "d": "把滚动量直接接到纵深上，等于相机往前推：近层涨得比远层快，是因为它本来离你近，不是给每层各设一个放大系数。推到顶时停在 150px，再往前近层会糊出框；回滚不弹，因为镜头不该有回弹。",
+  "body": "<div class=\"d-cd-scroll\" tabindex=\"0\" aria-label=\"滚动这块区域，镜头向前推进\"><div class=\"d-cd-space\"><div class=\"d-cd-scene\"><div class=\"d-cd-plane d-cd-far\"><span>背景板</span></div><div class=\"d-cd-plane d-cd-mid\"><span>中层</span></div><div class=\"d-cd-plane d-cd-near\"><span>前景</span></div></div><p class=\"d-cd-hint\">往下滚</p></div></div>",
+  "css": ".d-cd-scroll{width:100%;max-width:340px;height:168px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--ink) 5%,var(--bg));overscroll-behavior:contain}\n.d-cd-space{height:460px;display:flex;align-items:flex-start;justify-content:center;padding-top:24px}\n.d-cd-scene{position:relative;width:220px;height:120px;perspective:520px;perspective-origin:50% 50%}\n.d-cd-plane{position:absolute;inset:0;display:grid;place-items:center;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);transform-style:preserve-3d}\n.d-cd-far{transform:translateZ(-140px) scale(1.16);background:color-mix(in srgb,var(--ink) 7%,var(--paper))}\n.d-cd-mid{transform:translateZ(-70px) scale(1.07);color:var(--ink)}\n.d-cd-near{transform:translateZ(0);border-color:var(--ink);color:var(--ink)}\n.d-cd-hint{margin:26px 0 0;font-size:11px;color:var(--faint);text-align:center}",
+  "init": "root => {\n  const box = root.querySelector('.d-cd-scroll');\n  if (!box) return;\n  const scene = box.querySelector('.d-cd-scene');\n  const hint = box.querySelector('.d-cd-hint');\n  if (!scene || !hint) return;\n  const apply = () => {\n    const max = box.scrollHeight - box.clientHeight || 1;\n    const p = Math.min(1, box.scrollTop / max);\n    scene.style.transform = 'translateZ(' + (p * 150).toFixed(1) + 'px)';\n    hint.style.opacity = String(1 - p);\n  };\n  box.addEventListener('scroll', apply, { passive: true });\n  apply();\n}",
+  "motion": "机械",
+  "tags": [
+    "推镜",
+    "滚动",
+    "纵深",
+    "相机"
+  ],
+  "source": "v4"
+}
