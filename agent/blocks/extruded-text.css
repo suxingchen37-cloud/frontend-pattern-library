@@ -1,4 +1,4 @@
 .d-xt-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--bg);perspective:600px;overflow:hidden}
 .d-xt-word{position:relative;font-family:var(--font-serif);font-size:56px;font-weight:700;line-height:1;letter-spacing:.02em;color:var(--ink);text-shadow:1px 1px 0 var(--muted),2px 2px 0 var(--muted),3px 3px 0 var(--muted),4px 4px 0 var(--muted),5px 5px 0 var(--muted),6px 6px 0 var(--faint),7px 7px 0 var(--faint),8px 8px 0 var(--faint),9px 9px 0 var(--faint),10px 10px 0 var(--faint),11px 11px 0 var(--faint),12px 12px 0 var(--faint),14px 14px 0 var(--faint);transform-style:preserve-3d;transition:transform 280ms var(--ease-spring);will-change:transform}
-.d-xt-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;color:var(--faint)}
+.d-xt-sub{font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;color:var(--faint)}
 @media (prefers-reduced-motion:reduce){.d-xt-word{transition:none}}

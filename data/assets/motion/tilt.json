@@ -5,7 +5,7 @@
   "en": "pointer tilt",
   "d": "卡片随指针轻微倾斜；角度控制在 6° 内，否则廉价。",
   "body": "<div class=\"d-tilt\"><b>悬停倾斜</b><span>6° 以内</span></div>",
-  "css": ".d-tilt{width:160px;height:90px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform .18s var(--ease);will-change:transform;box-shadow:0 8px 24px #20241e10}\n.d-tilt span{font-size:11px;color:var(--faint)}",
+  "css": ".d-tilt{width:160px;height:90px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform  180ms var(--ease);will-change:transform;box-shadow:0 8px 24px #20241e10}\n.d-tilt span{font-size:11px;color:var(--faint)}",
   "init": "root => {\n    const c = root.querySelector('.d-tilt');\n    c.addEventListener('pointermove', e => {\n      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;\n      c.style.transform = `perspective(600px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;\n    });\n    c.addEventListener('pointerleave', () => c.style.transform = '');\n  }",
   "source": "inline",
   "motion": "印刷"

@@ -5,7 +5,7 @@
 .d-press-card[data-hold]{transform:scale(.985)}
 .d-press-card:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
 .d-press-bar{position:absolute;left:0;bottom:0;width:0;height:1px;background:#e8c34a}
-.d-press-menu{position:absolute;left:150px;top:26px;width:132px;display:flex;flex-direction:column;gap:1px;padding:4px;background:var(--paper);border:1px solid var(--ink);border-radius:6px;box-shadow:0 12px 24px -8px #20241e26;transform-origin:0 0;opacity:0;transform:translateX(-6px) scale(.96);pointer-events:none;transition:opacity .18s cubic-bezier(.34,1.56,.64,1),transform .18s cubic-bezier(.34,1.56,.64,1)}
+.d-press-menu{position:absolute;left:150px;top:26px;width:132px;display:flex;flex-direction:column;gap:1px;padding:4px;background:var(--paper);border:1px solid var(--ink);border-radius:6px;box-shadow:0 12px 24px -8px #20241e26;transform-origin:0 0;opacity:0;transform:translateX(-6px) scale(.96);pointer-events:none;transition:opacity  180ms cubic-bezier(.34,1.56,.64,1),transform  180ms cubic-bezier(.34,1.56,.64,1)}
 .d-press-menu[data-open]{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
 .d-press-item{border:0;background:transparent;color:var(--ink);font-family:inherit;font-size:11px;line-height:1.4;text-align:left;padding:6px 8px;border-radius:2px;cursor:pointer}
 .d-press-item:hover{background:var(--bg)}
