@@ -1,0 +1,5 @@
+.d-tf{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:100%;max-width:340px;height:170px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;cursor:crosshair;touch-action:manipulation}
+.d-tf b{font-size:13px}
+.d-tf span{font-size:11px;color:var(--muted)}
+.d-tf i{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1px solid var(--ink);opacity:.9;pointer-events:none;animation:d-tap-feedback-ring 520ms var(--ease) forwards}
+@keyframes d-tap-feedback-ring{to{transform:scale(3.6);opacity:0}}

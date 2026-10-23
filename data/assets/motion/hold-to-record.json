@@ -1,0 +1,18 @@
+{
+  "id": "hold-to-record",
+  "cat": "手势",
+  "t": "按住录音",
+  "en": "hold to record",
+  "d": "按下去才开始计时，松手立刻结束并给出时长：录音类交互最怕「按了没录上」，所以按压的 120ms 内就出红点和计时，不用等。上滑超过 60px 取消录音，这是手指不离屏也能反悔的唯一办法。",
+  "body": "<div class=\"d-hr\" data-box><button type=\"button\" class=\"d-hr-btn\" data-rec><span></span>按住说话</button><p class=\"d-hr-note\" data-note>上滑取消 · 松手结束</p></div>",
+  "css": ".d-hr{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;touch-action:none}\n.d-hr-btn{position:relative;display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1px solid var(--ink);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px;cursor:pointer;transition:transform 160ms var(--ease-physical),background-color 160ms var(--ease)}\n.d-hr-btn span{display:block;width:8px;height:8px;border-radius:50%;background:var(--ink-vermilion);opacity:0;transition:opacity 120ms var(--ease)}\n.d-hr-btn.on{transform:scale(1.04);background:var(--ink);color:var(--paper)}\n.d-hr-btn.on span{opacity:1;animation:d-hold-to-record-blink 1s steps(2) infinite}\n.d-hr-btn.cancel{background:var(--ink-vermilion);border-color:var(--ink-vermilion);color:var(--paper)}\n.d-hr-note{position:absolute;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}\n@keyframes d-hold-to-record-blink{50%{opacity:.25}}",
+  "init": "root => {\n  var btn = root.querySelector('[data-rec]');\n  var note = root.querySelector('[data-note]');\n  if (!btn) return;\n  var t0 = 0, startY = 0, timer = 0, on = false, cancelled = false;\n  var fmt = function (ms) { var s = ms / 1000; return s.toFixed(1) + 's'; };\n  var stop = function () {\n    if (!on) return;\n    on = false;\n    clearInterval(timer);\n    btn.classList.remove('on', 'cancel');\n    btn.lastChild.textContent = '按住说话';\n    var ms = performance.now() - t0;\n    if (note) note.textContent = cancelled ? '已取消' : '录了 ' + fmt(ms);\n  };\n  btn.addEventListener('pointerdown', function (e) {\n    e.preventDefault();\n    on = true; cancelled = false; t0 = performance.now(); startY = e.clientY;\n    btn.classList.add('on');\n    btn.lastChild.textContent = '松手结束';\n    btn.setPointerCapture(e.pointerId);\n    timer = setInterval(function () { if (note) note.textContent = fmt(performance.now() - t0) + ' · 上滑取消'; }, 100);\n  });\n  btn.addEventListener('pointermove', function (e) {\n    if (!on) return;\n    var up = startY - e.clientY;\n    cancelled = up > 60;\n    btn.classList.toggle('cancel', cancelled);\n    if (note) note.textContent = cancelled ? '松手取消' : fmt(performance.now() - t0) + ' · 上滑取消';\n  });\n  btn.addEventListener('pointerup', stop);\n  btn.addEventListener('pointercancel', stop);\n}",
+  "motion": "物理",
+  "tags": [
+    "按住",
+    "录音",
+    "取消",
+    "手势"
+  ],
+  "source": "v4"
+}

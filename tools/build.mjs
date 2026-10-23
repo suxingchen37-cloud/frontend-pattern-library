@@ -502,6 +502,7 @@ function indexJson(assets, tokensVersion, cats, counts) {
   L.push('{');
   L.push('  "schema": ' + SCHEMA_VERSION + ',');
   L.push('  "tokensVersion": ' + JSON.stringify(tokensVersion) + ',');
+  L.push('  "tokensCss": "tokens.css",');
   L.push('  "count": ' + assets.length + ',');
   if (cats.length === 0) {
     L.push('  "categories": [],');
@@ -677,6 +678,8 @@ function buildProducts(ctx) {
   const { tk, assets, cats, counts, dataRoot } = ctx;
   const products = new Map();
   products.set('agent/index.json', indexJson(assets, tk.version, cats, counts));
+  // 变量契约：单条 blocks/*.css 直接拿出来也能跑（不依赖预览页注入的 :root）
+  products.set('agent/tokens.css', tokenVarBlock(tk) + NL);
   for (const a of assets) {
     products.set('agent/blocks/' + a.id + '.html', oneText(a.body));
     products.set('agent/blocks/' + a.id + '.css', oneText(a.css));

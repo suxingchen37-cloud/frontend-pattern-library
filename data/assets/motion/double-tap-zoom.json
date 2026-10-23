@@ -1,0 +1,18 @@
+{
+  "id": "double-tap-zoom",
+  "cat": "手势",
+  "t": "双击放大",
+  "en": "double tap zoom",
+  "d": "双击从点中的位置放大，不是从中心：手指点哪儿，哪儿就该留在原地，从中心放大会把想看的那块推出屏幕。两次点击间隔 300ms 内才算双击；第二次点击后再放大，避免单击时的闪动。",
+  "body": "<div class=\"d-dz2\" data-stage><div class=\"d-dz2-inner\" data-inner><span>把手指点在字上双击</span><b>放大看细节</b><em>1×</em></div><p class=\"d-dz2-hint\">双击放大 · 再双击还原</p></div>",
+  "css": ".d-dz2{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;touch-action:manipulation;cursor:zoom-in}\n.d-dz2-inner{position:absolute;left:14px;top:28px;right:14px;display:flex;flex-direction:column;gap:4px;transform-origin:0 0;transition:transform 260ms var(--ease-physical)}\n.d-dz2-inner span{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint)}\n.d-dz2-inner b{font-size:21px;letter-spacing:-.01em}\n.d-dz2-inner em{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:6px}\n.d-dz2-hint{position:absolute;left:14px;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var stage = root.querySelector('[data-stage]');\n  var inner = root.querySelector('[data-inner]');\n  var label = inner && inner.querySelector('em');\n  if (!stage || !inner) return;\n  var on = false, last = 0;\n  stage.addEventListener('pointerup', function (e) {\n    var now = Date.now();\n    if (now - last > 320) { last = now; return; }\n    last = 0;\n    var r = stage.getBoundingClientRect();\n    var x = e.clientX - r.left, y = e.clientY - r.top;\n    on = !on;\n    inner.style.transformOrigin = on ? x + 'px ' + y + 'px' : '0 0';\n    inner.style.transform = on ? 'scale(2.2)' : 'none';\n    if (label) label.textContent = on ? '2.2×' : '1×';\n    stage.style.cursor = on ? 'zoom-out' : 'zoom-in';\n  });\n}",
+  "motion": "物理",
+  "tags": [
+    "双击",
+    "缩放",
+    "图片",
+    "手势"
+  ],
+  "source": "v4"
+}

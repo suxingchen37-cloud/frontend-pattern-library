@@ -5,7 +5,7 @@
 .d-lt-stage.d-lt-on .d-lt-card:before{opacity:.18}
 .d-lt-stage.d-lt-on .d-lt-card:after{opacity:.5}
 .d-lt-k{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}
-.d-lt-card b{display:block;margin-top:2px;font-size:17px;font-weight:650;letter-spacing:-.01em}
+.d-lt-card b{display:block;margin-top:2px;font-size:15px;font-weight:650;letter-spacing:-.01em}
 .d-lt-meta{display:block;margin-top:2px;font-size:11px;color:var(--muted)}
-.d-lt-note{position:absolute;bottom:8px;margin:0;font-size:10px;color:var(--faint)}
+.d-lt-note{position:absolute;bottom:8px;margin:0;font-size:9px;color:var(--faint)}
 @media (prefers-reduced-motion:reduce){.d-lt-card:before,.d-lt-card:after{transition:none}}

@@ -1,0 +1,18 @@
+{
+  "id": "long-press-copy",
+  "cat": "手势",
+  "t": "长按复制",
+  "en": "long press copy",
+  "d": "长按 480ms 弹出菜单，比系统的 500ms 略短，是因为网页里常有人按得轻。菜单出现在按下的位置上方，放不下就翻到下方——位置不对，人第一反应是「没反应」。复制后菜单不立刻消失，改成显示「已复制」，因为消失得太快会让人不确定到底成没成。",
+  "body": "<div class=\"d-lc2\" data-zone><p class=\"d-lc2-text\" data-text>时码 14:22:07，机位 B，缺 38 秒。</p><div class=\"d-lc2-menu\" data-menu hidden><button type=\"button\" data-copy>复制这句</button><button type=\"button\" data-cancel>取消</button></div><p class=\"d-lc2-note\">长按上面这句话</p></div>",
+  "css": ".d-lc2{position:relative;display:flex;flex-direction:column;justify-content:center;width:100%;max-width:340px;height:170px;padding:0 16px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-lc2-text{margin:0;font-size:13px;line-height:1.9;user-select:none;-webkit-user-select:none}\n.d-lc2-menu{position:absolute;display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:6px;background:var(--ink);box-shadow:0 12px 24px -8px #20241e26;z-index:3}\n.d-lc2-menu button{padding:4px 10px;border:0;border-radius:6px;background:transparent;color:var(--paper);font:inherit;font-size:11px;cursor:pointer}\n.d-lc2-menu button:hover{background:color-mix(in srgb,var(--paper) 14%,transparent)}\n.d-lc2-note{position:absolute;bottom:8px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var zone = root.querySelector('[data-zone]');\n  var text = root.querySelector('[data-text]');\n  var menu = root.querySelector('[data-menu]');\n  if (!zone || !text || !menu) return;\n  var timer = 0;\n  var hide = function () { menu.hidden = true; };\n  var open = function (x, y) {\n    menu.hidden = false;\n    var r = zone.getBoundingClientRect();\n    var mw = menu.offsetWidth, mh = menu.offsetHeight;\n    var left = Math.max(6, Math.min(r.width - mw - 6, x - r.left - mw / 2));\n    var top = y - r.top - mh - 8;\n    if (top < 4) top = y - r.top + 18;\n    menu.style.left = left.toFixed(0) + 'px';\n    menu.style.top = top.toFixed(0) + 'px';\n  };\n  var start = function (e) { timer = setTimeout(function () { open(e.clientX, e.clientY); }, 480); };\n  var cancel = function () { clearTimeout(timer); };\n  text.addEventListener('pointerdown', start);\n  text.addEventListener('pointerup', cancel);\n  text.addEventListener('pointermove', cancel);\n  text.addEventListener('pointercancel', cancel);\n  var copy = menu.querySelector('[data-copy]');\n  if (copy) copy.addEventListener('click', function () { var old = copy.textContent; copy.textContent = '已复制'; setTimeout(function () { copy.textContent = old; hide(); }, 700); });\n  var cancelBtn = menu.querySelector('[data-cancel]');\n  if (cancelBtn) cancelBtn.addEventListener('click', hide);\n  zone.addEventListener('click', function (e) { if (menu.hidden) return; if (!menu.contains(e.target)) hide(); });\n}",
+  "motion": "物理",
+  "tags": [
+    "长按",
+    "复制",
+    "菜单",
+    "手势"
+  ],
+  "source": "v4"
+}

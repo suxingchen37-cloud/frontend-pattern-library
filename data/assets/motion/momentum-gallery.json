@@ -1,0 +1,18 @@
+{
+  "id": "momentum-gallery",
+  "cat": "手势",
+  "t": "惯性相册",
+  "en": "momentum gallery",
+  "d": "松手后按最后一段速度继续滑，摩擦每帧 0.94：手指快划时能连翻三四张，慢拖则停在原地。停下来的位置吸附到最近的整张，因为半张卡停在中间既不能看也不能点。单张宽度取容器 78%，露出下一张的一角，人才知道后面还有。",
+  "body": "<div class=\"d-mg\" data-gallery><div class=\"d-mg-track\" data-track><div class=\"d-mg-card\"><b>01</b><span>开场</span></div><div class=\"d-mg-card\"><b>02</b><span>推门</span></div><div class=\"d-mg-card\"><b>03</b><span>停顿</span></div><div class=\"d-mg-card\"><b>04</b><span>反打</span></div><div class=\"d-mg-card\"><b>05</b><span>收</span></div></div><p class=\"d-mg-note\">快速横滑 · 会自己滑一会儿</p></div>",
+  "css": ".d-mg{position:relative;width:100%;max-width:340px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:12px 0 0}\n.d-mg-track{display:flex;gap:8px;padding:0 12px;will-change:transform;touch-action:pan-y;cursor:grab}\n.d-mg-card{flex:0 0 78%;height:110px;display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}\n.d-mg-card b{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint);font-weight:400}\n.d-mg-card span{font-size:13px}\n.d-mg-note{margin:8px 0 10px;text-align:center;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var box = root.querySelector('[data-gallery]');\n  var track = root.querySelector('[data-track]');\n  if (!box || !track) return;\n  var x = 0, v = 0, startX = 0, lastX = 0, lastT = 0, drag = false, raf = 0;\n  var minX = function () { return Math.min(0, box.clientWidth - track.scrollWidth - 12); };\n  var apply = function () { track.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)'; };\n  var snap = function () {\n    var card = track.querySelector('.d-mg-card');\n    if (!card) return;\n    var w = card.offsetWidth + 8;\n    var i = Math.round(-x / w);\n    var target = Math.max(minX(), Math.min(0, -i * w));\n    x = target; apply();\n  };\n  var tick = function () {\n    if (drag) return;\n    x += v; v *= .94;\n    if (x > 0) { x = 0; v = 0; }\n    if (x < minX()) { x = minX(); v = 0; }\n    apply();\n    if (Math.abs(v) > .3) raf = requestAnimationFrame(tick);\n    else { snap(); v = 0; }\n  };\n  track.addEventListener('pointerdown', function (e) { drag = true; startX = e.clientX; lastX = e.clientX; lastT = Date.now(); v = 0; cancelAnimationFrame(raf); track.setPointerCapture(e.pointerId); });\n  track.addEventListener('pointermove', function (e) {\n    if (!drag) return;\n    var now = Date.now();\n    x += e.clientX - lastX;\n    v = (e.clientX - lastX) / Math.max(1, now - lastT) * 16;\n    lastX = e.clientX; lastT = now;\n    if (x > 0) x *= .35;\n    if (x < minX()) x = minX() + (x - minX()) * .35;\n    apply();\n  });\n  var end = function () { if (!drag) return; drag = false; raf = requestAnimationFrame(tick); };\n  track.addEventListener('pointerup', end);\n  track.addEventListener('pointercancel', end);\n  apply();\n}",
+  "motion": "物理",
+  "tags": [
+    "惯性",
+    "相册",
+    "吸附",
+    "手势"
+  ],
+  "source": "v4"
+}

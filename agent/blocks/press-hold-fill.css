@@ -1,0 +1,8 @@
+.d-ph{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:340px}
+.d-ph-btn{position:relative;display:grid;place-items:center;width:132px;height:132px;border:0;background:none;font:inherit;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.d-ph-btn svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.d-ph-track{fill:none;stroke:var(--line);stroke-width:3}
+.d-ph-fill{fill:none;stroke:var(--ink-vermilion);stroke-width:3;stroke-linecap:round;stroke-dasharray:0 999;transition:stroke-dasharray 60ms linear}
+.d-ph-btn span{font-size:12px;max-width:80px;text-align:center}
+.d-ph-note{margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+.d-ph-btn:focus-visible{outline:1px solid var(--ink);outline-offset:4px}

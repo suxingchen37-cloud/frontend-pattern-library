@@ -1,0 +1,18 @@
+{
+  "id": "drag-sheet-snap",
+  "cat": "手势",
+  "t": "抽屉分档",
+  "en": "drag sheet snap",
+  "d": "抽屉只停三档：露头、半屏、全屏。档位固定，是因为自由高度会让每次打开都要重新找位置；松手后按「离哪档近 + 甩的方向」决定落到哪，甩得够快时方向比距离更重要。拖到最上面再往上不再动，但会有 24px 的阻尼，告诉你到头了。",
+  "body": "<div class=\"d-ds2\" data-wrap><button type=\"button\" class=\"d-ds2-open\" data-open>打开抽屉</button><div class=\"d-ds2-sheet\" data-sheet><span class=\"d-ds2-grip\"></span><b>这一场的信息</b><p>机位 B，50mm，14:22:07 打板。缺 38 秒，已标在素材页。</p><em data-state>peek</em></div></div>",
+  "css": ".d-ds2{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-ds2-open{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-ds2-sheet{position:absolute;left:0;right:0;bottom:0;height:150px;padding:8px 14px 14px;border-top:1px solid var(--line);border-radius:10px 10px 0 0;background:var(--bg);transform:translateY(102px);transition:transform 280ms var(--ease-physical);touch-action:none;cursor:grab;will-change:transform}\n.d-ds2-grip{display:block;width:34px;height:4px;border-radius:999px;background:var(--line);margin:0 auto 8px}\n.d-ds2-sheet b{font-size:12px}\n.d-ds2-sheet p{margin:2px 0 0;font-size:11px;color:var(--muted)}\n.d-ds2-sheet em{position:absolute;right:14px;bottom:10px;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var sheet = root.querySelector('[data-sheet]');\n  var open = root.querySelector('[data-open]');\n  var state = root.querySelector('[data-state]');\n  if (!sheet || !open) return;\n  var H = 150, peaks = [102, 52, 0], idx = 0;\n  var startY = 0, startT = 0, base = 102, y = 102, dragging = false;\n  var apply = function (v, anim) { y = v; sheet.style.transition = anim ? 'transform 280ms cubic-bezier(.34,1.56,.64,1)' : 'none'; sheet.style.transform = 'translateY(' + v + 'px)'; if (state) state.textContent = v === peaks[0] ? 'peek' : v === peaks[1] ? 'half' : 'full'; };\n  var nearest = function (v) { var best = 0; peaks.forEach(function (p, i) { if (Math.abs(p - v) < Math.abs(peaks[best] - v)) best = i; }); return best; };\n  sheet.addEventListener('pointerdown', function (e) { dragging = true; startY = e.clientY; startT = Date.now(); base = y; sheet.setPointerCapture(e.pointerId); });\n  sheet.addEventListener('pointermove', function (e) {\n    if (!dragging) return;\n    var d = e.clientY - startY;\n    var v = base + d;\n    if (v < 0) v = v * .25;\n    if (v > peaks[0]) v = peaks[0] + (v - peaks[0]) * .3;\n    apply(v, false);\n  });\n  var end = function () { if (!dragging) return; dragging = false; var v = (y - base) / Math.max(1, Date.now() - startT); var i = nearest(y); if (Math.abs(v) > .5) i = Math.max(0, Math.min(2, i + (v > 0 ? 1 : -1))); idx = i; apply(peaks[idx], true); };\n  sheet.addEventListener('pointerup', end);\n  sheet.addEventListener('pointercancel', end);\n  open.addEventListener('click', function () { idx = Math.min(2, idx + 1); apply(peaks[idx], true); });\n  apply(102, false);\n}",
+  "motion": "物理",
+  "tags": [
+    "抽屉",
+    "分档",
+    "拖拽",
+    "手势"
+  ],
+  "source": "v4"
+}

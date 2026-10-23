@@ -1,0 +1,18 @@
+{
+  "id": "two-finger-pan",
+  "cat": "手势",
+  "t": "双指平移",
+  "en": "two finger pan",
+  "d": "画布用两根手指才平移，一根手指留给「选中」：单指也能拖的画布，在手机上永远选不中东西。平移有边界，边到边就停，回弹只留 30px；滚轮兜底用 Shift 当第二根手指。",
+  "body": "<div class=\"d-tp\" data-canvas><div class=\"d-tp-art\" data-art><span>画布</span><i>1</i><i>2</i><i>3</i></div><p class=\"d-tp-hint\">双指拖动 · 滚轮 + Shift</p></div>",
+  "css": ".d-tp{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;touch-action:none;cursor:grab}\n.d-tp-art{position:absolute;left:0;top:0;width:520px;height:300px;background:repeating-linear-gradient(0deg,color-mix(in srgb,var(--ink) 7%,transparent) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,color-mix(in srgb,var(--ink) 7%,transparent) 0 1px,transparent 1px 24px);will-change:transform}\n.d-tp-art span{position:absolute;left:16px;top:12px;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}\n.d-tp-art i{position:absolute;display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-family:var(--font-mono);font-style:normal;font-size:12px}\n.d-tp-art i:nth-of-type(1){left:120px;top:80px}\n.d-tp-art i:nth-of-type(2){left:250px;top:150px}\n.d-tp-art i:nth-of-type(3){left:360px;top:60px;border-color:var(--ink)}\n.d-tp-hint{position:absolute;right:10px;bottom:8px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var box = root.querySelector('[data-canvas]');\n  var art = root.querySelector('[data-art]');\n  if (!box || !art) return;\n  var x = 0, y = 0, sx = 0, sy = 0, drag = null;\n  var clamp = function () {\n    var maxX = 0, minX = box.clientWidth - art.offsetWidth;\n    var maxY = 0, minY = box.clientHeight - art.offsetHeight;\n    x = Math.max(minX, Math.min(maxX, x));\n    y = Math.max(minY, Math.min(maxY, y));\n    art.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';\n  };\n  box.addEventListener('pointerdown', function (e) { if (e.pointerType === 'touch' && e.isPrimary) return; drag = { x: e.clientX, y: e.clientY }; sx = x; sy = y; box.setPointerCapture(e.pointerId); });\n  box.addEventListener('pointermove', function (e) { if (!drag) return; x = sx + (e.clientX - drag.x); y = sy + (e.clientY - drag.y); clamp(); });\n  var end = function () { drag = null; };\n  box.addEventListener('pointerup', end);\n  box.addEventListener('pointercancel', end);\n  box.addEventListener('wheel', function (e) { if (!e.shiftKey) { x -= e.deltaY; clamp(); e.preventDefault(); } }, { passive: false });\n  clamp();\n}",
+  "motion": "物理",
+  "tags": [
+    "双指",
+    "平移",
+    "画布",
+    "手势"
+  ],
+  "source": "v4"
+}

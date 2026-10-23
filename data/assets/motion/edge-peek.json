@@ -1,0 +1,18 @@
+{
+  "id": "edge-peek",
+  "cat": "手势",
+  "t": "边缘窥视",
+  "en": "edge peek",
+  "d": "从屏幕左缘往里拉会露出上一页的一角，松手弹回；拉过 40% 才真的返回。只露出一角、不整页跟手，是为了让人随时能放弃——整页跟手时，手一抖就回不去了。右缘不做，避免和系统手势打架。",
+  "body": "<div class=\"d-ep\" data-peek><div class=\"d-ep-page\"><b>当前页</b><span>场记本 · 第 12 天</span></div><div class=\"d-ep-under\" data-under><b>上一页</b><span>场记本 · 第 11 天</span></div><div class=\"d-ep-edge\" data-edge></div><p class=\"d-ep-hint\">从左边缘往里拉</p></div>",
+  "css": ".d-ep{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;touch-action:pan-y}\n.d-ep-page{position:relative;z-index:2;height:100%;padding:16px;background:var(--paper);border-right:1px solid var(--line);will-change:transform;transition:transform 260ms var(--ease-physical)}\n.d-ep-page b,.d-ep-under b{display:block;font-size:13px}\n.d-ep-page span,.d-ep-under span{font-size:11px;color:var(--muted)}\n.d-ep-under{position:absolute;inset:0;padding:16px;background:var(--bg);z-index:1}\n.d-ep-edge{position:absolute;left:0;top:0;bottom:0;width:26px;z-index:3;cursor:ew-resize}\n.d-ep-hint{position:absolute;right:10px;bottom:8px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint);z-index:4}",
+  "init": "root => {\n  var box = root.querySelector('[data-peek]');\n  var page = box && box.querySelector('.d-ep-page');\n  var edge = box && box.querySelector('[data-edge]');\n  if (!box || !page || !edge) return;\n  var startX = 0, dx = 0, drag = false, w = 0;\n  edge.addEventListener('pointerdown', function (e) { drag = true; startX = e.clientX; dx = 0; w = box.clientWidth; page.style.transition = 'none'; edge.setPointerCapture(e.pointerId); });\n  edge.addEventListener('pointermove', function (e) { if (!drag) return; dx = Math.max(0, Math.min(w, e.clientX - startX)); page.style.transform = 'translateX(' + dx.toFixed(1) + 'px)'; });\n  var end = function () { if (!drag) return; drag = false; page.style.transition = 'transform 260ms cubic-bezier(.34,1.56,.64,1)'; page.style.transform = dx > w * .4 ? 'translateX(' + w + 'px)' : 'none'; setTimeout(function () { page.style.transition = 'none'; page.style.transform = 'none'; void page.offsetWidth; page.style.transition = 'transform 260ms cubic-bezier(.34,1.56,.64,1)'; }, 300); };\n  edge.addEventListener('pointerup', end);\n  edge.addEventListener('pointercancel', end);\n}",
+  "motion": "物理",
+  "tags": [
+    "边缘",
+    "返回",
+    "窥视",
+    "手势"
+  ],
+  "source": "v4"
+}

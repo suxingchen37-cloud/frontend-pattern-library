@@ -1,0 +1,18 @@
+{
+  "id": "shake-undo",
+  "cat": "手势",
+  "t": "摇一摇撤销",
+  "en": "shake to undo",
+  "d": "手机上摇一摇是少数不需要看屏幕的手势：删除后想撤销，手已经在抖了。判定看两次加速度的间隔（180ms 内反向），不动手机永远不会触发。桌面没有加速度计，所以下面永远放一个普通按钮兜底——不能只有一种触发方式。",
+  "body": "<div class=\"d-su\" data-box><div class=\"d-su-toast\" data-toast>已删除 1 条场记</div><button type=\"button\" class=\"d-su-btn\" data-shake>模拟摇一下</button><button type=\"button\" class=\"d-su-undo\" data-undo hidden>撤销</button><p class=\"d-su-note\" data-note>摇晃手机，或点上面的按钮</p></div>",
+  "css": ".d-su{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-su-toast{padding:6px 12px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:11px;opacity:0;transform:translateY(-6px);transition:opacity 180ms var(--ease),transform 180ms var(--ease)}\n.d-su-toast.on{opacity:1;transform:none}\n.d-su-btn,.d-su-undo{padding:5px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-su-undo{border-color:var(--ink-vermilion);color:var(--ink-vermilion)}\n.d-su-note{position:absolute;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var toast = root.querySelector('[data-toast]');\n  var btn = root.querySelector('[data-shake]');\n  var undo = root.querySelector('[data-undo]');\n  var note = root.querySelector('[data-note]');\n  if (!toast || !btn) return;\n  var last = 0, lastDir = 0, armed = false, timer = 0;\n  var fire = function () {\n    if (armed) return;\n    armed = true;\n    toast.classList.add('on');\n    if (undo) undo.hidden = false;\n    if (note) note.textContent = '抖了一下 · 5 秒内可撤销';\n    clearTimeout(timer);\n    timer = setTimeout(function () { armed = false; toast.classList.remove('on'); if (undo) undo.hidden = true; if (note) note.textContent = '摇晃手机，或点上面的按钮'; }, 5000);\n  };\n  btn.addEventListener('click', fire);\n  if (undo) undo.addEventListener('click', function () { armed = false; clearTimeout(timer); toast.classList.remove('on'); undo.hidden = true; if (note) note.textContent = '已撤销'; });\n  var onMotion = function (e) {\n    var a = e.accelerationIncludingGravity || e.acceleration;\n    if (!a) return;\n    var m = Math.abs(a.x || 0) + Math.abs(a.y || 0) + Math.abs(a.z || 0);\n    if (m < 28) return;\n    var now = Date.now();\n    var dir = (a.x || 0) > 0 ? 1 : -1;\n    if (now - last < 180 && dir !== lastDir) fire();\n    last = now; lastDir = dir;\n  };\n  if (window.DeviceMotionEvent) addEventListener('devicemotion', onMotion);\n}",
+  "motion": "物理",
+  "tags": [
+    "摇一摇",
+    "撤销",
+    "兜底",
+    "手势"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,6 @@
+.d-sd{position:relative;width:100%;max-width:340px;padding:8px 0}
+.d-sd-card{position:relative;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);touch-action:pan-y;cursor:grab;will-change:transform;transition:transform 220ms var(--ease-physical),opacity 220ms var(--ease)}
+.d-sd-card b{font-size:13px}
+.d-sd-card span{font-size:11px;color:var(--muted)}
+.d-sd-card em{font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+.d-sd-note{margin:10px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint);cursor:pointer}

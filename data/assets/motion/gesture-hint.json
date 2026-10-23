@@ -1,0 +1,18 @@
+{
+  "id": "gesture-hint",
+  "cat": "手势",
+  "t": "手势引导",
+  "en": "gesture hint",
+  "d": "提示只在第一次出现，滑一次就消失：每次都出现会挡住内容，而不出现人就永远不知道可以滑。提示是一根手指加一条轨迹，动两秒停住，不循环——循环的提示会变成背景噪音。底下留一个「再看一次」，是给快速划过去的人。",
+  "body": "<div class=\"d-gh\" data-box><div class=\"d-gh-card\"><b>这一屏可以左右滑</b><span>切到上一条 / 下一条</span></div><div class=\"d-gh-hand\" data-hand><i></i></div><p class=\"d-gh-note\"><button type=\"button\" data-again>再看一次</button></p></div>",
+  "css": ".d-gh{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-gh-card{display:flex;flex-direction:column;gap:2px;padding:18px 20px;border:1px dashed var(--line);border-radius:10px;text-align:center}\n.d-gh-card b{font-size:13px}\n.d-gh-card span{font-size:11px;color:var(--muted)}\n.d-gh-hand{position:absolute;left:50%;bottom:44px;display:flex;align-items:center;gap:2px;opacity:0;transition:opacity 200ms var(--ease)}\n.d-gh-hand i{display:block;width:14px;height:14px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 6px color-mix(in srgb,var(--ink) 12%,transparent)}\n.d-gh-hand:after{content:\"\";display:block;width:46px;height:1px;background:var(--ink);opacity:.35}\n.d-gh-hand.on{opacity:1;animation:d-gesture-hint-sweep 1.8s var(--ease) 2 both}\n@keyframes d-gesture-hint-sweep{0%{transform:translateX(-46px)}55%{transform:translateX(46px)}100%{transform:translateX(-46px)}}\n.d-gh-note{position:absolute;bottom:8px;margin:0}\n.d-gh-note button{border:0;background:none;color:var(--faint);font:inherit;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;cursor:pointer;text-decoration:underline}",
+  "init": "root => {\n  var hand = root.querySelector('[data-hand]');\n  var again = root.querySelector('[data-again]');\n  if (!hand) return;\n  var play = function () { hand.classList.remove('on'); void hand.offsetWidth; hand.classList.add('on'); };\n  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) play();\n  if (again) again.addEventListener('click', play);\n  hand.addEventListener('animationend', function () { hand.classList.remove('on'); });\n}",
+  "motion": "物理",
+  "tags": [
+    "引导",
+    "提示",
+    "首次",
+    "手势"
+  ],
+  "source": "v4"
+}

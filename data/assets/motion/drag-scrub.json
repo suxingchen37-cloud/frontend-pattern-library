@@ -1,0 +1,18 @@
+{
+  "id": "drag-scrub",
+  "cat": "手势",
+  "t": "拖动擦洗",
+  "en": "drag scrub",
+  "d": "在时间条上拖动时，预览缩略图跟着手指走，但播放头只按整秒跳：拖到 3.7 秒就显示第 3 秒，不显示半帧——擦洗是为了找位置，不是为了逐帧。松手才把播放头设到当前位置，拖着的时候不改播放状态。",
+  "body": "<div class=\"d-dsr\" data-strip><div class=\"d-dsr-track\"><div class=\"d-dsr-fill\" data-fill></div><div class=\"d-dsr-head\" data-head></div></div><div class=\"d-dsr-preview\" data-preview><b data-sec>0s</b><span>预览</span></div><p class=\"d-dsr-note\">按住时间条左右拖</p></div>",
+  "css": ".d-dsr{position:relative;width:100%;max-width:340px;height:180px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;gap:10px}\n.d-dsr-track{position:relative;height:8px;border-radius:999px;background:var(--line);touch-action:none;cursor:ew-resize}\n.d-dsr-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:var(--ink)}\n.d-dsr-head{position:absolute;top:-5px;width:12px;height:18px;margin-left:-6px;border:1px solid var(--ink);border-radius:2px;background:var(--paper);left:0}\n.d-dsr-preview{display:flex;align-items:baseline;gap:6px}\n.d-dsr-preview b{font-family:var(--font-mono);font-size:21px;letter-spacing:-.02em}\n.d-dsr-preview span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}\n.d-dsr-note{position:absolute;right:14px;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var track = root.querySelector('[data-strip] .d-dsr-track');\n  var fill = root.querySelector('[data-fill]');\n  var head = root.querySelector('[data-head]');\n  var sec = root.querySelector('[data-sec]');\n  if (!track || !fill || !head) return;\n  var max = 12, dragging = false;\n  var paint = function (p) {\n    fill.style.width = (p * 100).toFixed(1) + '%';\n    head.style.left = (p * 100).toFixed(1) + '%';\n    if (sec) sec.textContent = Math.floor(p * max) + 's';\n  };\n  var fromEvent = function (e) { var r = track.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); };\n  track.addEventListener('pointerdown', function (e) { dragging = true; paint(fromEvent(e)); track.setPointerCapture(e.pointerId); });\n  track.addEventListener('pointermove', function (e) { if (dragging) paint(fromEvent(e)); });\n  var end = function () { dragging = false; };\n  track.addEventListener('pointerup', end);\n  track.addEventListener('pointercancel', end);\n  paint(0);\n}",
+  "motion": "机械",
+  "tags": [
+    "擦洗",
+    "时间条",
+    "预览",
+    "媒体"
+  ],
+  "source": "v4"
+}

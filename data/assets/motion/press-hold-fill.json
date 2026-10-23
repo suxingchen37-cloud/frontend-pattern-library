@@ -1,0 +1,18 @@
+{
+  "id": "press-hold-fill",
+  "cat": "手势",
+  "t": "按住确认",
+  "en": "press and hold",
+  "d": "长按 900ms 填满才生效：短到 500ms 会误触，长到 1.5 秒手会酸。填充用环而不是进度条，因为手指正压着按钮中间，环形能在不移动视线的前提下被余光看到。中途松手立刻退回，没有半途生效这回事。",
+  "body": "<div class=\"d-ph\"><button type=\"button\" class=\"d-ph-btn\" data-hold><svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"d-ph-track\" cx=\"32\" cy=\"32\" r=\"28\"></circle><circle class=\"d-ph-fill\" cx=\"32\" cy=\"32\" r=\"28\"></circle></svg><span>按住 0.9 秒清空</span></button><p class=\"d-ph-note\" data-note>松手即取消</p></div>",
+  "css": ".d-ph{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%;max-width:340px}\n.d-ph-btn{position:relative;display:grid;place-items:center;width:132px;height:132px;border:0;background:none;font:inherit;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}\n.d-ph-btn svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}\n.d-ph-track{fill:none;stroke:var(--line);stroke-width:3}\n.d-ph-fill{fill:none;stroke:var(--ink-vermilion);stroke-width:3;stroke-linecap:round;stroke-dasharray:0 999;transition:stroke-dasharray 60ms linear}\n.d-ph-btn span{font-size:12px;max-width:80px;text-align:center}\n.d-ph-note{margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}\n.d-ph-btn:focus-visible{outline:1px solid var(--ink);outline-offset:4px}",
+  "init": "root => {\n  var btn = root.querySelector('[data-hold]');\n  var ring = btn && btn.querySelector('.d-ph-fill');\n  var note = root.querySelector('[data-note]');\n  if (!btn || !ring) return;\n  var C = 2 * Math.PI * 28, raf = 0, t0 = 0, done = false;\n  var stop = function () { cancelAnimationFrame(raf); ring.style.strokeDasharray = '0 ' + C; };\n  var tick = function () {\n    var p = Math.min(1, (performance.now() - t0) / 900);\n    ring.style.strokeDasharray = (C * p).toFixed(1) + ' ' + C;\n    if (p >= 1) { done = true; if (note) note.textContent = '已清空 · 再按住可撤销'; btn.querySelector('span').textContent = '已清空'; return; }\n    raf = requestAnimationFrame(tick);\n  };\n  btn.addEventListener('pointerdown', function (e) { e.preventDefault(); if (done) return; t0 = performance.now(); if (note) note.textContent = '继续按住…'; btn.setPointerCapture(e.pointerId); cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); });\n  btn.addEventListener('pointerup', function () { if (done) { done = false; btn.querySelector('span').textContent = '按住 0.9 秒清空'; if (note) note.textContent = '松手即取消'; } stop(); });\n  btn.addEventListener('pointercancel', stop);\n}",
+  "motion": "物理",
+  "tags": [
+    "长按",
+    "确认",
+    "环形",
+    "手势"
+  ],
+  "source": "v4"
+}

@@ -74,11 +74,13 @@ h1{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.05;lett
 </header>
 <nav>
   <button data-tab="home" data-on>总览</button>
-  <button data-tab="motion">动效与交互 224</button>
+  <button data-tab="motion">动效与交互 244</button>
   <button data-tab="system">设计系统</button>
   <button data-tab="content">内容呈现</button>
   <button data-tab="site">整站实战</button>
   <button data-tab="depth">纵深示范</button>
+  <button data-tab="landing">产品站</button>
+  <button data-tab="dashboard">工作台</button>
   <span class="sp"></span>
   <code>统一配色，明暗两套</code>
 </nav>
@@ -102,6 +104,18 @@ h1{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.05;lett
           <span class="num">7</span>
           <span class="note">把分层视差、滚动立起、等距图层、立体图表、标签球、悬浮影子拼成一页，看纵深真的用在站点里是什么样。</span>
         </button>
+        <button class="row" data-tab="landing">
+          <span class="idx">06</span>
+          <span class="ttl">产品落地页：场记 SLATE</span>
+          <span class="num">12</span>
+          <span class="note">一整套卖点与价格：首屏打板卡、三件能力、现场流程、两档价格、四个问题。纯静态、无表单提交。</span>
+        </button>
+        <button class="row" data-tab="dashboard">
+          <span class="idx">07</span>
+          <span class="ttl">数据工作台：拍摄日报</span>
+          <span class="num">6</span>
+          <span class="note">侧栏、指标、柱状图、可筛选可排序的场次表、详情抽屉、空筛选态。数据写在前端，不接接口。</span>
+        </button>
         <button class="row" data-tab="system">
           <span class="idx">02</span>
           <span class="ttl">设计系统</span>
@@ -122,7 +136,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.05;lett
         </button>
       </div>
       <footer class="colophon">
-        <p>224 个可交互效果、26 个分类：入场、加载、微交互、光标、滚动、过渡、拖拽、布局、数据、图表、反馈、排印、无障碍、表单、导航、浮层、列表、手势、内容、长文、表格、状态页、媒体、SVG 与路径、3D 与透视、滚动驱动。</p>
+        <p>244 个可交互效果、26 个分类：入场、加载、微交互、光标、滚动、过渡、拖拽、布局、数据、图表、反馈、排印、无障碍、表单、导航、浮层、列表、手势、内容、长文、表格、状态页、媒体、SVG 与路径、3D 与透视、滚动驱动。</p>
         <p class="sig">每一条都能点、能复制；挑中的可以拿去任何项目用。右上角可在纸色与夜间之间切换。
           给 AI 的对照页：<a href="ai-tells.html">AI 默认写法与本库的改法</a>。</p>
       </footer>
@@ -133,7 +147,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.05;lett
 <script>
 const frame = document.getElementById('frame');
 const home = document.getElementById('home');
-const SRC = { motion: 'motion-lab.html', system: 'design-system.html#design', content: 'design-system.html#content', site: 'site/index.html', depth: 'depth.html' };
+const SRC = { motion: 'motion-lab.html', system: 'design-system.html#design', content: 'design-system.html#content', site: 'site/index.html', depth: 'depth.html', landing: 'landing.html', dashboard: 'dashboard.html' };
 function themeNow() { return document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'paper'; }
 function go(tab, demo) {
   document.querySelectorAll('nav button[data-tab]').forEach(b => b.toggleAttribute('data-on', b.dataset.tab === tab));

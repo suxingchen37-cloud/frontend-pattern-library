@@ -1,0 +1,7 @@
+.d-dh{display:flex;flex-direction:column;width:100%;max-width:340px;height:200px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-dh-top{flex:1;min-height:0;padding:14px;display:flex;flex-direction:column;gap:2px;background:var(--bg)}
+.d-dh-top b,.d-dh-bottom b{font-size:12px}
+.d-dh-top span,.d-dh-bottom span{font-size:11px;color:var(--muted)}
+.d-dh-handle{display:grid;place-items:center;height:14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);cursor:ns-resize;touch-action:none}
+.d-dh-handle i{width:34px;height:3px;border-radius:999px;background:var(--line)}
+.d-dh-bottom{height:96px;padding:14px;display:flex;flex-direction:column;gap:2px;background:var(--paper)}

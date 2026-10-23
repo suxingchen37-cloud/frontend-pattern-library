@@ -1,0 +1,18 @@
+{
+  "id": "swipe-actions-row",
+  "cat": "手势",
+  "t": "左滑操作",
+  "en": "swipe actions",
+  "d": "左滑露出两个动作，宽度固定 136px：动作宽度随内容变，滑开的位置就每次不一样。滑开一半松手会回弹到关闭，滑过 60% 才停住——一半停住最难受，两个动作都露不全。右边的动作用油墨色，左边的删除用朱色，颜色只标危险。",
+  "body": "<div class=\"d-sa\" data-row><div class=\"d-sa-actions\"><button type=\"button\" class=\"d-sa-mark\">标记</button><button type=\"button\" class=\"d-sa-del\">删除</button></div><div class=\"d-sa-face\" data-face><b>场次 03 · 条 02</b><span>机位 B · 14:22:07</span></div></div>",
+  "css": ".d-sa{position:relative;width:100%;max-width:340px;height:70px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;touch-action:pan-y}\n.d-sa-actions{position:absolute;right:0;top:0;bottom:0;display:flex}\n.d-sa-actions button{width:68px;border:0;font:inherit;font-size:11px;cursor:pointer}\n.d-sa-mark{background:var(--ink);color:var(--paper)}\n.d-sa-del{background:var(--ink-vermilion);color:var(--paper)}\n.d-sa-face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:0 14px;background:var(--paper);will-change:transform;transition:transform 240ms var(--ease-physical)}\n.d-sa-face b{font-size:12px}\n.d-sa-face span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  var row = root.querySelector('[data-row]');\n  var face = root.querySelector('[data-face]');\n  if (!row || !face) return;\n  var W = 136, startX = 0, dx = 0, drag = false, open = false;\n  var set = function (v, anim) { face.style.transition = anim ? 'transform 240ms cubic-bezier(.34,1.56,.64,1)' : 'none'; face.style.transform = 'translateX(' + v + 'px)'; };\n  face.addEventListener('pointerdown', function (e) { drag = true; startX = e.clientX; dx = 0; open = face.style.transform === 'translateX(' + (-W) + 'px)'; face.setPointerCapture(e.pointerId); });\n  face.addEventListener('pointermove', function (e) {\n    if (!drag) return;\n    dx = e.clientX - startX;\n    var base = open ? -W : 0;\n    var v = Math.max(-W, Math.min(0, base + dx));\n    set(v, false);\n  });\n  var end = function () { if (!drag) return; drag = false; var base = open ? -W : 0; var cur = Math.max(-W, Math.min(0, base + dx)); set(cur < -W * .6 ? -W : 0, true); open = cur < -W * .6; };\n  face.addEventListener('pointerup', end);\n  face.addEventListener('pointercancel', end);\n}",
+  "motion": "物理",
+  "tags": [
+    "左滑",
+    "操作",
+    "列表",
+    "手势"
+  ],
+  "source": "v4"
+}

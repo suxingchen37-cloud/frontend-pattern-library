@@ -7,17 +7,17 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-shared-element-se-detail{padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
 .d-shared-element-se-detail h4{margin:0 0 4px;font-size:13px;view-transition-name:se-card}
 .d-shared-element-se-detail p{margin:0 0 8px;font-size:11px;color:var(--muted)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'morph-button',cat:"过渡",t:"容器变形",en:"morph button → input",d:"按钮被点后原地变成输入框；宽度、圆角、内边距一起过渡，不是闪现。",body:`
   <div class="d-morph"><input class="d-morph-button-morph-input" placeholder="输入任务名，回车确认"><button class="d-btn d-btn-primary d-morph-button-morph-btn">＋ 新建任务</button></div>`,css:`.d-morph{position:relative;width:220px;height:36px}
-.d-morph .d-morph-button-morph-input,.d-morph .d-morph-button-morph-btn{position:absolute;inset:0;width:100%;height:36px;font:inherit;font-size:11px;border-radius:10px;transition:opacity .28s var(--var(--ease)),transform .28s var(--var(--ease))}
+.d-morph .d-morph-button-morph-input,.d-morph .d-morph-button-morph-btn{position:absolute;inset:0;width:100%;height:36px;font:inherit;font-size:11px;border-radius:10px;transition:opacity .28s var(--ease),transform .28s var(--ease)}
 .d-morph .d-morph-button-morph-input{padding:0 10px;border:1px solid var(--line);background:var(--paper);color:inherit;opacity:0;transform:scaleX(.6);transform-origin:left}
 .d-morph[data-open] .d-morph-button-morph-input{opacity:1;transform:none}
 .d-morph[data-open] .d-morph-button-morph-btn{opacity:0;transform:scaleX(.6);pointer-events:none}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -28,7 +28,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-chor p{margin:4px 0 10px;font-size:11px;color:var(--muted)}
 .d-chor b{animation-delay:0ms}.d-chor p{animation-delay:60ms}.d-chor button{animation-delay:120ms}
 @keyframes d-choreography-chor-in{to{opacity:1;transform:none}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -38,7 +38,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-ee i.leaving{animation:d-enter-exit-ee-out .2s var(--ease) forwards}
 @keyframes d-enter-exit-ee-in{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
 @keyframes d-enter-exit-ee-out{to{opacity:0;transform:translateX(12px) scale(.96)}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease-spring)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease-spring),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -57,7 +57,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-snap i{flex:0 0 78%;height:70px;scroll-snap-align:center;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);font-style:normal;font-size:11px;color:var(--muted)}`},
 {id:'pull-refresh',cat:"手势",t:"下拉刷新",en:"pull to refresh",d:"下拉出现进度弧，松手回弹；移动端高频。",body:`
   <div class="d-pull"><i class="d-pull-refresh-spin"></i><div class="d-pull-refresh-list">↓ 往下拖</div></div>`,css:`.d-pull{position:relative;width:200px;height:100px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
-.d-pull .d-pull-refresh-list{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;color:var(--faint);transition:transform 180ms var(--var(--ease-spring))}
+.d-pull .d-pull-refresh-list{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;color:var(--faint);transition:transform 180ms var(--ease-spring)}
 .d-pull .d-pull-refresh-spin{position:absolute;left:50%;top:6px;width:16px;height:16px;margin-left:-8px;border:2px solid var(--line);border-top-color:var(--ink);border-radius:999px;opacity:0;transform:rotate(0)}
 .d-pull[data-pull] .d-pull-refresh-spin{opacity:1}
 .d-pull.loading .d-pull-refresh-spin{animation:d-pull-refresh-spin2 .8s linear infinite}
@@ -71,7 +71,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-flipnum i{width:26px;height:36px;display:grid;place-items:center;border-radius:6px;background:var(--paper);border:1px solid var(--line);font-style:normal;font-size:15px;font-weight:650;overflow:hidden}
 .d-flipnum i.flip{animation:d-flip-number-kf .42s var(--ease)}
 @keyframes d-flip-number-kf{0%{transform:rotateX(0)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -88,12 +88,12 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-four .d-four-states-box[data-st=success]{color:#3f6b2a}
 @keyframes d-four-states-fade{from{opacity:.4}to{opacity:1}}
 .d-four-states-rows{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'theme-crossfade',cat:"过渡",t:"主题过渡",en:"theme crossfade",d:"换深浅色时整页平滑过渡；用 View Transitions + 一次性覆盖。",body:`<button class="d-btn" data-theme-fade>切一次主题</button>`,css:`
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -104,7 +104,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 `},
 {id:'sidebar-collapse',cat:"布局",t:"侧栏折叠",en:"collapsible sidebar",d:"图标条 ↔ 文字栏，宽度过渡 + 文字淡出；折叠后仍能点。",body:`
   <div class="d-sb" data-open><div class="d-sidebar-collapse-rail2"><button data-sb>☰</button><span>对</span><span>伙</span><span>记</span></div><div class="d-sidebar-collapse-panel2">标签栏<br><small>文字在这里淡出</small></div></div>`,css:`.d-sb{display:flex;height:100px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
-.d-sb .d-sidebar-collapse-rail2{width:48px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 0;background:color-mix(in srgb,var(--ink) 6%,transparent);font-size:11px;color:var(--muted);transition:width 280ms var(--var(--ease))}
+.d-sb .d-sidebar-collapse-rail2{width:48px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px 0;background:color-mix(in srgb,var(--ink) 6%,transparent);font-size:11px;color:var(--muted);transition:width 280ms var(--ease)}
 .d-sb .d-sidebar-collapse-panel2{flex:1;min-width:0;padding:8px 10px;font-size:11px;color:var(--muted);opacity:1;transition:opacity 180ms}
 .d-sb:not([data-open]) .d-sidebar-collapse-panel2{opacity:0}
 .d-sb .d-sidebar-collapse-rail2 button{border:0;background:transparent;cursor:pointer;font:inherit;color:inherit}`},
@@ -132,11 +132,11 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-tree .d-file-tree-leaf.d-file-tree-sel{color:var(--ink);background:color-mix(in srgb,var(--lime) 35%,transparent);border-radius:6px}`},
 {id:'multi-step',cat:"表单",t:"多步表单",en:"multi-step form",d:"步骤间横向滑动，校验不过不放行；比一长条输入友好。",body:`
   <div class="d-ms2"><div class="d-multi-step-strip"><div class="d-multi-step-pane d-multi-step-on">第一步：名字<input class="d-multi-step-ms-input" placeholder="必填"></div><div class="d-multi-step-pane">第二步：说明<input class="d-multi-step-ms-input" placeholder="可留空"></div></div><div class="d-multi-step-nav2"><button class="d-btn" data-msback disabled>上一步</button><button class="d-btn d-btn-primary" data-msnext>下一步</button></div></div>`,css:`.d-ms2{width:220px;overflow:hidden}
-.d-ms2 .d-multi-step-strip{display:flex;transition:transform 280ms var(--var(--ease))}
+.d-ms2 .d-multi-step-strip{display:flex;transition:transform 280ms var(--ease)}
 .d-ms2 .d-multi-step-pane{flex:0 0 100%;font-size:11px;color:var(--muted)}
 .d-ms2 .d-multi-step-ms-input{display:block;width:100%;margin-top:6px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;font:inherit;font-size:11px;outline:none}
 .d-ms2 .d-multi-step-nav2{display:flex;gap:6px;margin-top:8px}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -159,11 +159,11 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 {id:'row-expand',cat:"列表",t:"行内展开",en:"inline row expand",d:"点行在原地展开详情，不跳页；列表浏览不打断。",body:`
   <div class="d-rex"><button class="d-row-expand-row2" data-rex>项目讨论组 <span>▾</span></button><div class="d-row-expand-detail2">成员：4 人<br>最近更新：今天 · 3 次</div></div>`,css:`.d-rex{width:230px;font-size:11px}
 .d-rex .d-row-expand-row2{width:100%;display:flex;justify-content:space-between;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font:inherit;font-size:11px;cursor:pointer;color:inherit}
-.d-rex .d-row-expand-detail2{max-height:0;overflow:hidden;font-size:11px;color:var(--muted);line-height:1.8;transition:max-height 280ms var(--var(--ease))}
+.d-rex .d-row-expand-detail2{max-height:0;overflow:hidden;font-size:11px;color:var(--muted);line-height:1.8;transition:max-height 280ms var(--ease)}
 .d-rex[data-open] .d-row-expand-detail2{max-height:80px;padding-top:6px}`},
 {id:'fab',cat:"导航",t:"悬浮操作钮",en:"floating action button",d:"主操作悬浮在右下，点开扇出次操作；移动端高频。",body:`
   <div class="d-fab"><div class="d-fab-acts" hidden><button>新建任务</button><button>邀请成员</button></div><button class="d-fab-fab" data-fab>＋</button></div>`,css:`.d-fab{position:relative;width:180px;height:120px}
-.d-fab .d-fab-fab{position:absolute;right:8px;bottom:8px;width:40px;height:40px;border-radius:999px;border:0;background:var(--ink);color:var(--paper);font-size:15px;cursor:pointer;box-shadow:0 8px 20px #20241e26;transition:transform 180ms var(--var(--ease))}
+.d-fab .d-fab-fab{position:absolute;right:8px;bottom:8px;width:40px;height:40px;border-radius:999px;border:0;background:var(--ink);color:var(--paper);font-size:15px;cursor:pointer;box-shadow:0 8px 20px #20241e26;transition:transform 180ms var(--ease)}
 .d-fab[data-open] .d-fab-fab{transform:rotate(45deg)}
 .d-fab .d-fab-acts{position:absolute;right:10px;bottom:56px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
 .d-fab .d-fab-acts button{font:inherit;font-size:11px;padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--paper);cursor:pointer;color:inherit}`},
@@ -171,7 +171,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-ss b{display:block;font-size:9px;letter-spacing:.08em;color:var(--faint);margin:6px 0 3px}
 .d-ss p{margin:0 0 3px;color:var(--muted)}
 .d-ss kbd{font:10.5px ui-monospace,Consolas,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:2px;padding:0 5px}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -180,7 +180,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-ea svg{width:80px;height:54px}
 .d-ea b{display:block;font-size:13px;margin:2px 0}
 .d-ea p{margin:0 0 10px;font-size:11px;color:var(--muted)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}

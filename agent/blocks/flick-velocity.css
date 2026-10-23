@@ -1,0 +1,6 @@
+.d-fv{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--paper);touch-action:none;overflow:hidden}
+.d-fv-chip{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:12px;will-change:transform;transition:transform 260ms var(--ease-physical)}
+.d-fv-meter{display:block;width:140px;height:3px;border-radius:999px;background:var(--line);overflow:hidden}
+.d-fv-meter i{display:block;height:100%;width:0;background:var(--ink);transition:width 80ms linear}
+.d-fv em{font-style:normal;font-family:var(--font-mono);font-size:10px;color:var(--faint)}
+.d-fv b{position:absolute;bottom:10px;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--muted);font-weight:400}

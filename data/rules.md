@@ -89,12 +89,24 @@ C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长�
 
 
 ## 取料路径
-- agent/index.json：整个库的索引，一行一条 item；files 里的路径相对 agent/，形如 blocks/<id>.css。
+- agent/index.json：整个库的索引；`count` 是当前条数。files 里的路径相对 agent/，形如 blocks/<id>.css。
+- **agent/tokens.css：变量契约**。先把它内联进页面，再放单条 blocks 的 css——否则 `var(--ink)` / `var(--ease)` 全是空值。里面已含 `:root` 与夜间 `[data-theme="night"]` 两套。
+- data/tokens.json：数字的原始表（拼在同一个基址后面）。注意里面有些值是**片段**（例如 `border` 是 `1px solid var(--line)` 整条可用；但个别字段只是颜色/长度片段，别整段当 CSS 声明用）。
 - agent/blocks/<id>.html：body 原文，直接放进你的容器；外层自己加作用域（例如 #c-<id>）。
 - agent/blocks/<id>.css：css 原文，不带 <style>；粘进 <style> 前先加前缀作用域。
 - agent/blocks/<id>.js：init 源码，形如 window.INITS["<id>"] = root => {...}；先 <script src> 再 window.INITS["<id>"](root)，root 传承载 body 的元素。
 - agent/preview/<id>.html：单条独立页，:root 变量已注入，双击即看，不引用任何外部资源。
 - llms.txt 与 agent/** 都是 node tools/build.mjs 的产物：改数据文件后重跑，别手改产物（--check 会报）。
+
+## 资产代码与本文冲突时
+
+老批次（144 条）有历史包袱：个别资产的 css/js 里会出现本文黑名单里的写法（行内样式、软阴影、`#0002` 之类）。
+**裁决：本文 > 资产代码。** 抄资产时按本文改，不要“因为库里这么写所以我就这么写”。
+
+## 多段页面（不止一屏）
+
+「一屏 2–3 条」是指**每个段落**，不是整页。定价页可以这样分配：
+价格段（入场 + 切换）→ FAQ 段（手风琴）→ 订阅段（行内校验）。每段 ≤3 条，整页别超过 6 条。
 
 ## 组装法（挑 2–3 条，只留一处破格）
 1. 数量：一屏 2–3 条，常见组合是「一条入场 + 一条反馈」，要强调时再加一条排印；超过 3 条叫堆料。

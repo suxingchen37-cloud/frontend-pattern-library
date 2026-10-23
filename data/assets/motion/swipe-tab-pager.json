@@ -1,0 +1,18 @@
+{
+  "id": "swipe-tab-pager",
+  "cat": "手势",
+  "t": "横滑切页",
+  "en": "swipe tab pager",
+  "d": "翻页用「三分之一屏」做阈值，不是整屏：手腕一抖就换页在手机上很烦，走满三分之一才认。页与页之间不留空隙，手指到哪儿内容到哪儿，松手再补完剩下的一段——中间加过渡会让人觉得页面在打滑。",
+  "body": "<div class=\"d-sp3\" data-pager><div class=\"d-sp3-dots\"><i class=\"d-sp3-on\"></i><i></i><i></i></div><div class=\"d-sp3-view\"><div class=\"d-sp3-track\" data-track><section><b>第一页</b><span>今天拍了 12 条，缺 1 条。</span></section><section><b>第二页</b><span>B 机位补了两条反打。</span></section><section><b>第三页</b><span>收工 22:40，比计划晚 40 分。</span></section></div></div></div>",
+  "css": ".d-sp3{width:100%;max-width:340px}\n.d-sp3-dots{display:flex;gap:5px;justify-content:center;margin-bottom:6px}\n.d-sp3-dots i{width:5px;height:5px;border-radius:50%;background:var(--line);transition:width 180ms var(--ease),background-color 180ms var(--ease)}\n.d-sp3-dots i.d-sp3-on{width:16px;border-radius:999px;background:var(--ink)}\n.d-sp3-view{overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--paper);touch-action:pan-y}\n.d-sp3-track{display:flex;width:300%;transition:transform 260ms var(--ease-physical);will-change:transform}\n.d-sp3-track section{width:calc(100% / 3);padding:18px 16px;display:flex;flex-direction:column;gap:4px}\n.d-sp3-track b{font-size:13px}\n.d-sp3-track span{font-size:11px;color:var(--muted)}",
+  "init": "root => {\n  var box = root.querySelector('[data-pager]');\n  var view = box && box.querySelector('.d-sp3-view');\n  var track = box && box.querySelector('[data-track]');\n  var dots = box ? [].slice.call(box.querySelectorAll('.d-sp3-dots i')) : [];\n  if (!view || !track) return;\n  var idx = 0, startX = 0, startY = 0, dx = 0, dragging = false, w = 0;\n  var set = function (i, anim) { idx = Math.max(0, Math.min(2, i)); track.style.transition = anim ? 'transform 260ms cubic-bezier(.34,1.56,.64,1)' : 'none'; track.style.transform = 'translateX(' + (-idx * 100 / 3) + '%)'; dots.forEach(function (d, k) { d.classList.toggle('d-sp3-on', k === idx); }); };\n  view.addEventListener('pointerdown', function (e) { dragging = true; startX = e.clientX; startY = e.clientY; dx = 0; w = view.clientWidth; track.style.transition = 'none'; view.setPointerCapture(e.pointerId); });\n  view.addEventListener('pointermove', function (e) {\n    if (!dragging) return;\n    dx = e.clientX - startX;\n    var dy = e.clientY - startY;\n    if (Math.abs(dy) > Math.abs(dx) + 6) return;\n    track.style.transform = 'translateX(calc(' + (-idx * 100 / 3) + '% + ' + dx.toFixed(1) + 'px))';\n  });\n  var end = function () { if (!dragging) return; dragging = false; set(Math.abs(dx) > w / 3 ? idx + (dx < 0 ? 1 : -1) : idx, true); };\n  view.addEventListener('pointerup', end);\n  view.addEventListener('pointercancel', end);\n  set(0, false);\n}",
+  "motion": "物理",
+  "tags": [
+    "滑动",
+    "分页",
+    "标签",
+    "手势"
+  ],
+  "source": "v4"
+}

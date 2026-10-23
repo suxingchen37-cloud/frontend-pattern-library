@@ -1,0 +1,18 @@
+{
+  "id": "drag-to-close",
+  "cat": "手势",
+  "t": "下拉关闭",
+  "en": "drag to close",
+  "d": "弹层随手指往下走，背景同步变淡，松手时超过 1/4 高度才关：只有跟手的位移才让人相信「这是可以被推走的」。关的速度比开的快（180ms 对 280ms）——撤销总是应该比进入干脆。",
+  "body": "<div class=\"d-dc\" data-box><button type=\"button\" class=\"d-dc-open\" data-open>打开卡片</button><div class=\"d-dc-scrim\" data-scrim></div><div class=\"d-dc-sheet\" data-sheet><span class=\"d-dc-grip\"></span><b>补充说明</b><p>往下拖可以关掉这张卡片。</p></div></div>",
+  "css": ".d-dc{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-dc-open{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-dc-scrim{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;transition:opacity 180ms var(--ease)}\n.d-dc-sheet{position:absolute;left:0;right:0;bottom:0;padding:8px 16px 16px;border-radius:10px 10px 0 0;background:var(--bg);border-top:1px solid var(--line);transform:translateY(105%);transition:transform 280ms var(--ease-physical);touch-action:none;cursor:grab}\n.d-dc-sheet.on{transform:none}\n.d-dc-grip{display:block;width:34px;height:4px;margin:0 auto 8px;border-radius:999px;background:var(--line)}\n.d-dc-sheet b{font-size:13px}\n.d-dc-sheet p{margin:2px 0 0;font-size:11px;color:var(--muted)}",
+  "init": "root => {\n  var sheet = root.querySelector('[data-sheet]');\n  var scrim = root.querySelector('[data-scrim]');\n  var open = root.querySelector('[data-open]');\n  if (!sheet || !scrim || !open) return;\n  var startY = 0, dy = 0, drag = false, H = 0;\n  var setOpen = function (v) { sheet.style.transition = 'transform 280ms cubic-bezier(.34,1.56,.64,1)'; sheet.classList.toggle('on', v); scrim.style.opacity = v ? '.18' : '0'; };\n  open.addEventListener('click', function () { setOpen(true); });\n  sheet.addEventListener('pointerdown', function (e) { drag = true; startY = e.clientY; dy = 0; H = sheet.offsetHeight; sheet.style.transition = 'none'; sheet.setPointerCapture(e.pointerId); });\n  sheet.addEventListener('pointermove', function (e) {\n    if (!drag) return;\n    dy = Math.max(0, e.clientY - startY);\n    sheet.style.transform = 'translateY(' + dy.toFixed(1) + 'px)';\n    scrim.style.opacity = String(Math.max(0, .18 * (1 - dy / H)));\n  });\n  var end = function () {\n    if (!drag) return;\n    drag = false;\n    sheet.style.transition = 'transform 180ms cubic-bezier(.2,.75,.25,1)';\n    if (dy > H * .25) { sheet.style.transform = 'translateY(105%)'; sheet.classList.remove('on'); scrim.style.opacity = '0'; }\n    else { sheet.style.transform = ''; scrim.style.opacity = '.18'; setTimeout(function () { sheet.style.transition = 'transform 280ms cubic-bezier(.34,1.56,.64,1)'; }, 200); }\n  };\n  sheet.addEventListener('pointerup', end);\n  sheet.addEventListener('pointercancel', end);\n}",
+  "motion": "物理",
+  "tags": [
+    "下拉",
+    "关闭",
+    "弹层",
+    "手势"
+  ],
+  "source": "v4"
+}

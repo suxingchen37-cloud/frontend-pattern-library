@@ -1,0 +1,8 @@
+.d-sa{position:relative;width:100%;max-width:340px;height:70px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;touch-action:pan-y}
+.d-sa-actions{position:absolute;right:0;top:0;bottom:0;display:flex}
+.d-sa-actions button{width:68px;border:0;font:inherit;font-size:11px;cursor:pointer}
+.d-sa-mark{background:var(--ink);color:var(--paper)}
+.d-sa-del{background:var(--ink-vermilion);color:var(--paper)}
+.d-sa-face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:0 14px;background:var(--paper);will-change:transform;transition:transform 240ms var(--ease-physical)}
+.d-sa-face b{font-size:12px}
+.d-sa-face span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

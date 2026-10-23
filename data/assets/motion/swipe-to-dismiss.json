@@ -1,0 +1,18 @@
+{
+  "id": "swipe-to-dismiss",
+  "cat": "手势",
+  "t": "侧滑关闭",
+  "en": "swipe to dismiss",
+  "d": "滑过 96px 或松手时速度超过 0.5px/ms 才算关掉，两个条件缺一个就弹回去：只看距离会把「手抖一下」当成关闭，只看速度会把慢慢推到底的动作忽略。位移跟手但压到 0.55 倍，手感是「拉着有阻力」，不是图片在飘。",
+  "body": "<div class=\"d-sd\"><div class=\"d-sd-card\" data-card><b>今晚 8 点</b><span>样片放到共享盘了，记得看第 3 场。</span><em>左滑或右滑</em></div><p class=\"d-sd-note\">滑掉就没了 · 再点一下这里重置</p></div>",
+  "css": ".d-sd{position:relative;width:100%;max-width:340px;padding:8px 0}\n.d-sd-card{position:relative;display:flex;flex-direction:column;gap:2px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);touch-action:pan-y;cursor:grab;will-change:transform;transition:transform 220ms var(--ease-physical),opacity 220ms var(--ease)}\n.d-sd-card b{font-size:13px}\n.d-sd-card span{font-size:11px;color:var(--muted)}\n.d-sd-card em{font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}\n.d-sd-note{margin:10px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint);cursor:pointer}",
+  "init": "root => {\n  var card = root.querySelector('[data-card]');\n  var note = root.querySelector('.d-sd-note');\n  if (!card || !note) return;\n  var startX = 0, startT = 0, dx = 0, dragging = false;\n  var reset = function () { card.style.transition = 'transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 220ms cubic-bezier(.2,.75,.25,1)'; card.style.transform = ''; card.style.opacity = '1'; };\n  card.addEventListener('pointerdown', function (e) { dragging = true; startX = e.clientX; startT = Date.now(); dx = 0; card.style.transition = 'none'; card.setPointerCapture(e.pointerId); });\n  card.addEventListener('pointermove', function (e) {\n    if (!dragging) return;\n    dx = e.clientX - startX;\n    card.style.transform = 'translateX(' + (dx * .55).toFixed(1) + 'px)';\n    card.style.opacity = String(Math.max(.35, 1 - Math.abs(dx) / 420));\n  });\n  var end = function () {\n    if (!dragging) return;\n    dragging = false;\n    var v = Math.abs(dx) / Math.max(1, Date.now() - startT);\n    if (Math.abs(dx) > 96 || v > .5) { card.style.transform = 'translateX(' + (dx > 0 ? 420 : -420) + 'px)'; card.style.opacity = '0'; }\n    else reset();\n  };\n  card.addEventListener('pointerup', end);\n  card.addEventListener('pointercancel', end);\n  note.addEventListener('click', function () { card.style.transition = 'none'; card.style.transform = ''; card.style.opacity = '1'; void card.offsetWidth; reset(); });\n}",
+  "motion": "物理",
+  "tags": [
+    "滑动",
+    "关闭",
+    "通知",
+    "手势"
+  ],
+  "source": "v4"
+}

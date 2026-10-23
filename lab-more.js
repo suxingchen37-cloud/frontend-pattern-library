@@ -4,7 +4,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 {id:'float-label',cat:"表单",t:"浮动标签",en:"floating label",d:"聚焦或有内容时标签缩小上浮，省一行高度、又不会丢失上下文。",body:`
   <label class="d-fl"><input type="text" placeholder=" "><span>项目名称</span></label>`,css:`.d-fl{position:relative;display:block;width:200px}
 .d-fl input{width:100%;padding:16px 12px 8px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:13px;outline:none}
-.d-fl span{position:absolute;left:12px;top:13px;font-size:11px;color:var(--faint);pointer-events:none;transition:top 180ms var(--var(--ease)),font-size 180ms var(--var(--ease)),color 180ms var(--var(--ease))}
+.d-fl span{position:absolute;left:12px;top:13px;font-size:11px;color:var(--faint);pointer-events:none;transition:top 180ms var(--ease),font-size 180ms var(--ease),color 180ms var(--ease)}
 .d-fl input:focus{border-color:var(--ink)}
 .d-fl input:focus+span,.d-fl input:not(:placeholder-shown)+span{top:5px;font-size:9px;color:var(--muted)}`},
 {id:'otp',cat:"表单",t:"验证码分格",en:"OTP input",d:"4–6 格自动跳位，退格回退；粘贴整串能自动分配。",body:`<div class="d-otp"><input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1"></div>`,css:`.d-otp{display:flex;gap:8px}
@@ -16,7 +16,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-tags .d-tag-input-chip i{font-style:normal;cursor:pointer;opacity:.6}`},
 {id:'segmented',cat:"表单",t:"分段选择",en:"segmented control",d:"2–4 个互斥选项，滑块跟随；比 radio 更省地方。",body:`<div class="d-seg" data-v="0"><i class="d-segmented-pill"></i><button>全部</button><button>进行中</button><button>已完成</button></div>`,css:`.d-seg{position:relative;display:inline-flex;padding:3px;border-radius:10px;background:color-mix(in srgb,var(--ink) 7%,transparent)}
 .d-seg button{position:relative;z-index:1;border:0;background:transparent;color:var(--ink);font:inherit;font-size:11px;padding:6px 12px;cursor:pointer}
-.d-seg .d-segmented-pill{position:absolute;top:3px;left:3px;height:calc(100% - 6px);border-radius:10px;background:var(--paper);box-shadow:0 1px 3px #0002;transition:left 280ms var(--var(--ease)),width 280ms var(--var(--ease))}`},
+.d-seg .d-segmented-pill{position:absolute;top:3px;left:3px;height:calc(100% - 6px);border-radius:10px;background:var(--paper);box-shadow:0 1px 3px #0002;transition:left 280ms var(--ease),width 280ms var(--ease)}`},
 {id:'strength',cat:"表单",t:"密码强度",en:"password strength",d:"边输边告诉用户差在哪；比事后报错体验好。",body:`<input class="d-pw" type="password" placeholder="输入密码"><div class="d-bars3"><i></i><i></i><i></i></div><span class="d-hint" data-hint></span>`,css:`.d-pw{width:200px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:11px;outline:none}
 .d-bars3{display:flex;gap:5px;width:200px;margin-top:8px}
 .d-bars3 i{height:4px;flex:1;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,transparent);transition:background 180ms}
@@ -35,7 +35,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 {id:'tabs-pill',cat:"导航",t:"滑动页签",en:"sliding tabs",d:"选中态是一块跟着走的底；比换色更有\"位置感\"。",body:`<div class="d-tabs" data-v="0"><i class="d-tabs-pill-pill"></i><button>概览</button><button>成员</button><button>设置</button></div>`,css:`.d-tabs{position:relative;display:flex;gap:2px;border-bottom:1px solid var(--line);padding:0 4px}
 .d-tabs button{position:relative;z-index:1;border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;padding:9px 12px;cursor:pointer}
 .d-tabs button.on{color:var(--ink)}
-.d-tabs .d-tabs-pill-pill{position:absolute;bottom:-1px;height:2px;background:var(--ink);transition:left 280ms var(--var(--ease)),width 280ms var(--var(--ease))}`},
+.d-tabs .d-tabs-pill-pill{position:absolute;bottom:-1px;height:2px;background:var(--ink);transition:left 280ms var(--ease),width 280ms var(--ease)}`},
 {id:'breadcrumb',cat:"导航",t:"面包屑折叠",en:"collapsed breadcrumb",d:"层级深时把中间收成「…」，悬停展开；标题栏里最常用。",body:`<div class="d-crumb"><b>工作台</b><span>/</span><span class="d-breadcrumb-more" hidden>… 中间两级</span><span>/</span><b>协作者</b></div>`,css:`.d-crumb{display:flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)}
 .d-crumb b{color:var(--ink);font-weight:600}
 .d-crumb .d-breadcrumb-more{color:var(--faint);font-size:11px}`},
@@ -44,7 +44,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-pal .d-palette-list{margin-top:6px;display:flex;flex-direction:column}
 .d-pal .d-palette-list span{padding:6px 8px;border-radius:6px;font-size:11px;color:var(--muted)}
 .d-pal .d-palette-list span.sel{background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--ink)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -57,7 +57,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-step i.d-stepper-now{border-color:var(--ink);color:var(--ink);background:var(--lime)}
 .d-step i.done{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .d-step em{width:26px;height:1px;background:var(--line)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -65,14 +65,14 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-menu span{display:block;padding:6px 9px;border-radius:6px;font-size:11px;cursor:pointer}
 .d-menu span:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
 .d-menu .d-dropdown-danger{color:#a4442c}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'popover',cat:"浮层",t:"气泡浮层",en:"popover",d:"带小箭头、指哪说哪；比 tooltip 能装更多内容。",body:`<button class="d-btn" data-pop2>显示说明</button><div class="d-pop" hidden><b>本季度目标</b><p class="d-note">月底前上线新版首页。</p></div>`,css:`.d-pop{position:absolute;top:46px;left:10px;width:190px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;box-shadow:0 14px 30px #20241e1f;font-size:11px;z-index:6}
 .d-pop:before{content:"";position:absolute;top:-5px;left:18px;width:8px;height:8px;background:var(--paper);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
 .d-pop .d-note{margin:2px 0 0;font-size:11px;color:var(--muted)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -86,7 +86,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-sheet .d-sheet-grip{display:block;width:34px;height:4px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);margin:0 auto 10px}
 @keyframes d-sheet-up{from{transform:translateY(100%)}to{transform:none}}
 .d-sheet .d-note{font-size:11px;color:var(--muted);margin:6px 0 0}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -94,12 +94,12 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-cf input{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:11px;outline:none;margin-bottom:8px}
 .d-cf .d-btn[disabled]{opacity:.45;cursor:not-allowed}
 .d-cf .d-note{margin:0 0 8px;font-size:11px;color:var(--muted)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'swipe-delete',cat:"列表",t:"左滑删除",en:"swipe to delete",d:"移动端列表的高频手势；要有\"再滑一下\"的阈值，不能一碰就删。",body:`<div class="d-swipe"><div class="d-swipe-delete-row"><span>项目讨论组</span><em>左滑我</em></div><button class="d-swipe-delete-del">删除</button></div>`,css:`.d-swipe{position:relative;width:230px;overflow:hidden;border-radius:10px}
-.d-swipe .d-swipe-delete-row{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:11px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;transition:transform 180ms var(--var(--ease-spring));cursor:grab}
+.d-swipe .d-swipe-delete-row{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:11px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;transition:transform 180ms var(--ease-spring);cursor:grab}
 .d-swipe .d-swipe-delete-row em{font-style:normal;font-size:9px;color:var(--faint)}
 .d-swipe .d-swipe-delete-del{position:absolute;right:0;top:0;bottom:0;width:64px;border:0;background:#c4553a;color:#fff;font-size:11px;cursor:pointer}`},
 {id:'drag-reorder',cat:"列表",t:"拖拽排序",en:"drag reorder",d:"按住拖动换顺序；任务卡、看板列必备。",body:`<div class="d-dl"><div draggable="true">① 收集</div><div draggable="true">② 整理</div><div draggable="true">③ 上线</div></div>`,css:`.d-dl{width:220px;display:flex;flex-direction:column;gap:6px}
@@ -148,7 +148,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-win svg{width:44px;height:44px}
 .d-win path{fill:none;stroke:var(--lime);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30;animation:d-success-draw .5s var(--ease) forwards}
 @keyframes d-success-draw{to{stroke-dashoffset:0}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -156,7 +156,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 {id:'error-retry',cat:"反馈",t:"错误卡 + 重试",en:"error state with retry",d:"失败要给出\"为什么 + 怎么办\"；只写\"出错了\"等于没说。",body:`<div class="d-err"><b>连不上服务端</b><p>接口 502，网关没有响应。</p><button class="d-btn" data-retry>重试</button></div>`,css:`.d-err{width:220px;padding:12px;border:1px solid #e4c3b8;border-radius:10px;background:#fdf3ef}
 .d-err b{font-size:11px;color:#7a2b18}
 .d-err p{margin:3px 0 9px;font-size:11px;color:#a4442c;line-height:1.7}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `}

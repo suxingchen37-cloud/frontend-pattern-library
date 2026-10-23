@@ -1,0 +1,8 @@
+.d-pm{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;touch-action:none;cursor:grab}
+.d-pm-layer{position:absolute;inset:0;transform-origin:0 0;will-change:transform}
+.d-pm-layer span{position:absolute;left:14px;top:12px;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}
+.d-pm-block{position:absolute;border:1px solid var(--ink);border-radius:2px;background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
+.d-pm-b1{left:40px;top:52px;width:90px;height:54px}
+.d-pm-b2{left:150px;top:92px;width:70px;height:64px}
+.d-pm-b3{left:238px;top:40px;width:56px;height:88px;background:color-mix(in srgb,var(--ink-vermilion) 18%,var(--paper));border-color:var(--ink-vermilion)}
+.d-pm-layer em{position:absolute;right:10px;bottom:8px;font-style:normal;font-family:var(--font-mono);font-size:9px;color:var(--faint)}

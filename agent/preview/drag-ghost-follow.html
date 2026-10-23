@@ -69,8 +69,8 @@
   --shadow-divider:0 1px 0 var(--line);
   --shadow-press:inset 0 1px 0 #fff5;
   --shadow-overlay:0 12px 24px -8px #20241e26;
-  --border-default:1px var(--line);
-  --border-strong:1px var(--ink);
+  --border-default:1px solid var(--line);
+  --border-strong:1px solid var(--ink);
   /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
   --sans:var(--font-sans);
   --serif:var(--font-serif);
@@ -113,7 +113,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 .d-ghost-slot{position:relative;width:120px;height:80px}
 .d-ghost-frame{position:absolute;inset:0;border:1px dashed var(--line);border-radius:10px}
 .d-ghost-card,.d-ghost-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:8px 10px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
-.d-ghost-card{box-shadow:0 1px 0 var(--line);cursor:grab;touch-action:none;user-select:none;transition:opacity .18s linear}
+.d-ghost-card{box-shadow:0 1px 0 var(--line);cursor:grab;touch-action:none;user-select:none;transition:opacity  180ms linear}
 .d-ghost-copy{border-color:var(--ink);box-shadow:0 12px 24px -8px #20241e26;opacity:0;pointer-events:none;will-change:transform}
 .d-ghost[data-drag="1"] .d-ghost-card{opacity:.28;border-style:dashed;cursor:grabbing}
 .d-ghost-card b,.d-ghost-copy b{font-size:13px;font-weight:650}

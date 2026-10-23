@@ -1,0 +1,18 @@
+{
+  "id": "flick-velocity",
+  "cat": "手势",
+  "t": "轻扫判定",
+  "en": "flick velocity",
+  "d": "快速轻扫（超过 0.6px/ms）即使只走 40px 也触发，慢慢推到底反而不触发：手势里速度比距离更接近意图。阈值用「每毫秒像素」而不是总行程，因为总行程会被按住不动的时间稀释。界面上把当前速度直接写出来，是为了让人看见判定依据。",
+  "body": "<div class=\"d-fv\" data-zone><div class=\"d-fv-chip\" data-chip>向上轻扫</div><span class=\"d-fv-meter\"><i data-bar></i></span><em data-vel>0.0 px/ms</em><b data-log>还没扫</b></div>",
+  "css": ".d-fv{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;max-width:340px;height:180px;border:1px solid var(--line);border-radius:10px;background:var(--paper);touch-action:none;overflow:hidden}\n.d-fv-chip{padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:12px;will-change:transform;transition:transform 260ms var(--ease-physical)}\n.d-fv-meter{display:block;width:140px;height:3px;border-radius:999px;background:var(--line);overflow:hidden}\n.d-fv-meter i{display:block;height:100%;width:0;background:var(--ink);transition:width 80ms linear}\n.d-fv em{font-style:normal;font-family:var(--font-mono);font-size:10px;color:var(--faint)}\n.d-fv b{position:absolute;bottom:10px;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--muted);font-weight:400}",
+  "init": "root => {\n  var zone = root.querySelector('[data-zone]');\n  var chip = root.querySelector('[data-chip]');\n  var bar = root.querySelector('[data-bar]');\n  var vel = root.querySelector('[data-vel]');\n  var log = root.querySelector('[data-log]');\n  if (!zone || !chip) return;\n  var sy = 0, st = 0, dy = 0, dragging = false;\n  var reset = function () { chip.style.transform = 'none'; if (bar) bar.style.width = '0'; };\n  zone.addEventListener('pointerdown', function (e) { dragging = true; sy = e.clientY; st = Date.now(); dy = 0; chip.style.transition = 'none'; zone.setPointerCapture(e.pointerId); });\n  zone.addEventListener('pointermove', function (e) {\n    if (!dragging) return;\n    dy = Math.min(0, e.clientY - sy);\n    chip.style.transform = 'translateY(' + dy.toFixed(1) + 'px)';\n    var v = Math.abs(dy) / Math.max(1, Date.now() - st);\n    if (bar) bar.style.width = Math.min(100, v / .6 * 100) + '%';\n    if (vel) vel.textContent = v.toFixed(2) + ' px/ms';\n  });\n  var end = function () {\n    if (!dragging) return;\n    dragging = false;\n    var v = Math.abs(dy) / Math.max(1, Date.now() - st);\n    chip.style.transition = 'transform 260ms cubic-bezier(.34,1.56,.64,1)';\n    if (v > .6) { if (log) log.textContent = '触发 · ' + v.toFixed(2) + ' px/ms'; chip.style.transform = 'translateY(-120px)'; setTimeout(function () { chip.style.transition = 'none'; reset(); void chip.offsetWidth; chip.style.transition = 'transform 260ms cubic-bezier(.34,1.56,.64,1)'; }, 420); }\n    else { if (log) log.textContent = '没到阈值 · 只走了 ' + Math.round(Math.abs(dy)) + 'px'; reset(); }\n  };\n  zone.addEventListener('pointerup', end);\n  zone.addEventListener('pointercancel', end);\n}",
+  "motion": "物理",
+  "tags": [
+    "轻扫",
+    "速度",
+    "阈值",
+    "手势"
+  ],
+  "source": "v4"
+}

@@ -178,7 +178,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 `},
 {id:'zoom-view',cat:"媒体",t:"缩放与拖看",en:"zoom & pan",d:"点倍率放大，按住拖动看细节；比直接打开原图更适合核对画面。",body:`<div class="d-zv3"><div class="d-zoom-view-zvstage3" data-zstage><div class="d-zoom-view-zvart3" data-zvart></div></div><div class="d-zoom-view-zvbtns3"><button type="button" data-zoom3="1" class="d-zoom-view-on">1×</button><button type="button" data-zoom3="2">2×</button><button type="button" data-zoom3="3">3×</button></div></div>`,css:`.d-zv3{width:240px}
 .d-zoom-view-zvstage3{height:110px;overflow:hidden;border:1px solid var(--line);border-radius:6px;position:relative;cursor:grab;background:var(--bg)}
-.d-zoom-view-zvart3{position:absolute;inset:0;background:repeating-linear-gradient(45deg,var(--lime) 0 12px,var(--paper) 12px 24px);transition:transform 180ms var(--var(--ease-spring))}
+.d-zoom-view-zvart3{position:absolute;inset:0;background:repeating-linear-gradient(45deg,var(--lime) 0 12px,var(--paper) 12px 24px);transition:transform 180ms var(--ease-spring)}
 .d-zoom-view-zvbtns3{display:flex;gap:4px;margin-top:6px}
 .d-zoom-view-zvbtns3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}
 .d-zoom-view-zvbtns3 button.d-zoom-view-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}`},
@@ -240,7 +240,7 @@ window.DEMOS_EXTRA = (window.DEMOS_EXTRA || []).concat([
 .d-mega-menu-mmpanel3 a{display:block;font-size:9px;color:var(--muted);padding:2px 0}
 .d-mega-menu-mmpanel3 a:hover{color:var(--ink)}`},
 {id:'hide-header',cat:"导航",t:"滚动隐藏顶栏",en:"hide on scroll",d:"往下读时收起顶栏，往上滑再出来；给正文让位置，但不拿走导航。",body:`<div class="d-hh3"><div class="d-hide-header-hhbar3" data-hhbar>顶栏 · 缓坡</div><div class="d-hide-header-hhscroll3" data-hhscroll><p>往下滚，顶栏会收起。</p><p>往上滚，它再出来。</p><p>这样读长文时，屏幕能多一点。</p><p>但导航没有消失。</p><p>只是暂时让开。</p><p>继续往下。</p><p>再往下。</p><p>试试往回滚一点。</p></div></div>`,css:`.d-hh3{width:230px;height:124px;border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative;background:var(--paper)}
-.d-hide-header-hhbar3{height:26px;display:flex;align-items:center;padding:0 9px;background:var(--ink);color:var(--paper);font:9px var(--mono);letter-spacing:.06em;transition:transform 180ms var(--var(--ease))}
+.d-hide-header-hhbar3{height:26px;display:flex;align-items:center;padding:0 9px;background:var(--ink);color:var(--paper);font:9px var(--mono);letter-spacing:.06em;transition:transform 180ms var(--ease)}
 .d-hide-header-hhbar3.up{transform:translateY(-100%)}
 .d-hide-header-hhscroll3{height:98px;overflow:auto;padding:7px 10px;font-size:9px;line-height:1.8;color:var(--muted)}
 .d-hide-header-hhscroll3 p{margin:0 0 5px}`},

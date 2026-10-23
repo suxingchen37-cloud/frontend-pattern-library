@@ -1,0 +1,8 @@
+.d-dsr{position:relative;width:100%;max-width:340px;height:180px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;gap:10px}
+.d-dsr-track{position:relative;height:8px;border-radius:999px;background:var(--line);touch-action:none;cursor:ew-resize}
+.d-dsr-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:var(--ink)}
+.d-dsr-head{position:absolute;top:-5px;width:12px;height:18px;margin-left:-6px;border:1px solid var(--ink);border-radius:2px;background:var(--paper);left:0}
+.d-dsr-preview{display:flex;align-items:baseline;gap:6px}
+.d-dsr-preview b{font-family:var(--font-mono);font-size:21px;letter-spacing:-.02em}
+.d-dsr-preview span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+.d-dsr-note{position:absolute;right:14px;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

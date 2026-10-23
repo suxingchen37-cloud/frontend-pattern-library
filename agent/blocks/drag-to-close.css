@@ -1,0 +1,8 @@
+.d-dc{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-dc-open{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.d-dc-scrim{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none;transition:opacity 180ms var(--ease)}
+.d-dc-sheet{position:absolute;left:0;right:0;bottom:0;padding:8px 16px 16px;border-radius:10px 10px 0 0;background:var(--bg);border-top:1px solid var(--line);transform:translateY(105%);transition:transform 280ms var(--ease-physical);touch-action:none;cursor:grab}
+.d-dc-sheet.on{transform:none}
+.d-dc-grip{display:block;width:34px;height:4px;margin:0 auto 8px;border-radius:999px;background:var(--line)}
+.d-dc-sheet b{font-size:13px}
+.d-dc-sheet p{margin:2px 0 0;font-size:11px;color:var(--muted)}

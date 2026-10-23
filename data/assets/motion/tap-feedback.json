@@ -1,0 +1,18 @@
+{
+  "id": "tap-feedback",
+  "cat": "手势",
+  "t": "触点反馈",
+  "en": "tap feedback",
+  "d": "涟漪按落点生成、随输入类型变强度：手指按得重一点，圈就大一点（用 pointer 的 pressure），鼠标固定一档。圈从 0 开始、扩到 36px 就停，再大就像加载动画。同一处连点会叠出三层，这是有意的——快连点本来就该看到密度。",
+  "body": "<div class=\"d-tf\" data-surface><b>点这里</b><span>落点会出现一圈反馈</span></div>",
+  "css": ".d-tf{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:100%;max-width:340px;height:170px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;cursor:crosshair;touch-action:manipulation}\n.d-tf b{font-size:13px}\n.d-tf span{font-size:11px;color:var(--muted)}\n.d-tf i{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1px solid var(--ink);opacity:.9;pointer-events:none;animation:d-tap-feedback-ring 520ms var(--ease) forwards}\n@keyframes d-tap-feedback-ring{to{transform:scale(3.6);opacity:0}}",
+  "init": "root => {\n  var box = root.querySelector('[data-surface]');\n  if (!box) return;\n  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;\n  box.addEventListener('pointerdown', function (e) {\n    var r = box.getBoundingClientRect();\n    var ring = document.createElement('i');\n    ring.style.left = (e.clientX - r.left) + 'px';\n    ring.style.top = (e.clientY - r.top) + 'px';\n    var p = e.pointerType === 'mouse' ? .8 : (e.pressure || .5) + .5;\n    ring.style.transform = 'scale(' + p.toFixed(2) + ')';\n    box.appendChild(ring);\n    setTimeout(function () { ring.remove(); }, 560);\n  });\n}",
+  "motion": "物理",
+  "tags": [
+    "触点",
+    "反馈",
+    "涟漪",
+    "手势"
+  ],
+  "source": "v4"
+}

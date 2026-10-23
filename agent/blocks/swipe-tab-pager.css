@@ -1,0 +1,9 @@
+.d-sp3{width:100%;max-width:340px}
+.d-sp3-dots{display:flex;gap:5px;justify-content:center;margin-bottom:6px}
+.d-sp3-dots i{width:5px;height:5px;border-radius:50%;background:var(--line);transition:width 180ms var(--ease),background-color 180ms var(--ease)}
+.d-sp3-dots i.d-sp3-on{width:16px;border-radius:999px;background:var(--ink)}
+.d-sp3-view{overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--paper);touch-action:pan-y}
+.d-sp3-track{display:flex;width:300%;transition:transform 260ms var(--ease-physical);will-change:transform}
+.d-sp3-track section{width:calc(100% / 3);padding:18px 16px;display:flex;flex-direction:column;gap:4px}
+.d-sp3-track b{font-size:13px}
+.d-sp3-track span{font-size:11px;color:var(--muted)}

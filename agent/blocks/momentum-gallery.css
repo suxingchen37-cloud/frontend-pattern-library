@@ -1,0 +1,6 @@
+.d-mg{position:relative;width:100%;max-width:340px;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:12px 0 0}
+.d-mg-track{display:flex;gap:8px;padding:0 12px;will-change:transform;touch-action:pan-y;cursor:grab}
+.d-mg-card{flex:0 0 78%;height:110px;display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.d-mg-card b{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint);font-weight:400}
+.d-mg-card span{font-size:13px}
+.d-mg-note{margin:8px 0 10px;text-align:center;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

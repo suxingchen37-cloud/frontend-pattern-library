@@ -1,0 +1,7 @@
+.d-ds2{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-ds2-open{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.d-ds2-sheet{position:absolute;left:0;right:0;bottom:0;height:150px;padding:8px 14px 14px;border-top:1px solid var(--line);border-radius:10px 10px 0 0;background:var(--bg);transform:translateY(102px);transition:transform 280ms var(--ease-physical);touch-action:none;cursor:grab;will-change:transform}
+.d-ds2-grip{display:block;width:34px;height:4px;border-radius:999px;background:var(--line);margin:0 auto 8px}
+.d-ds2-sheet b{font-size:12px}
+.d-ds2-sheet p{margin:2px 0 0;font-size:11px;color:var(--muted)}
+.d-ds2-sheet em{position:absolute;right:14px;bottom:10px;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

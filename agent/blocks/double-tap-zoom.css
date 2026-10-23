@@ -1,0 +1,6 @@
+.d-dz2{position:relative;width:100%;max-width:340px;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;touch-action:manipulation;cursor:zoom-in}
+.d-dz2-inner{position:absolute;left:14px;top:28px;right:14px;display:flex;flex-direction:column;gap:4px;transform-origin:0 0;transition:transform 260ms var(--ease-physical)}
+.d-dz2-inner span{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint)}
+.d-dz2-inner b{font-size:21px;letter-spacing:-.01em}
+.d-dz2-inner em{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:6px}
+.d-dz2-hint{position:absolute;left:14px;bottom:10px;margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
