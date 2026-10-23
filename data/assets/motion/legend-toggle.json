@@ -1,0 +1,18 @@
+{
+  "id": "legend-toggle",
+  "cat": "图表",
+  "t": "图例联动",
+  "en": "legend toggle",
+  "d": "点图例关掉一条线，纵轴不跟着缩：一缩，剩下的线立刻被拉高，看起来像涨了，其实是删了数据。关掉的那条在图例上留一道删除线，随时能点回来——图例既是开关，也是当前状态的记录。",
+  "body": "<div class=\"d-lt2\"><div class=\"d-lt2-legend\"><button type=\"button\" data-k=\"0\" aria-pressed=\"true\"><i></i>访问</button><button type=\"button\" data-k=\"1\" aria-pressed=\"true\"><i></i>注册</button><button type=\"button\" data-k=\"2\" aria-pressed=\"true\"><i></i>付费</button></div><svg class=\"d-lt2-svg\" viewBox=\"0 0 320 170\" role=\"img\" aria-label=\"三条趋势线的图例开关\"></svg></div>",
+  "css": ".d-lt2{width:100%;max-width:340px}\n.d-lt2-legend{display:flex;gap:8px;margin-bottom:4px}\n.d-lt2-legend button{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;cursor:pointer}\n.d-lt2-legend button[aria-pressed=\"false\"]{color:var(--faint);text-decoration:line-through}\n.d-lt2-legend i{width:10px;height:2px;display:block;background:var(--ink)}\n.d-lt2-legend button:nth-child(2) i{background:var(--ink-vermilion)}\n.d-lt2-legend button:nth-child(3) i{background:var(--ink-indigo)}\n.d-lt2-svg{display:block;width:100%;height:auto;overflow:visible}\n.d-lt2-axis{stroke:var(--line);stroke-width:1}\n.d-lt2-line{fill:none;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round;transition:opacity 180ms var(--ease-print)}\n.d-lt2-s0{stroke:var(--ink)}\n.d-lt2-s1{stroke:var(--ink-vermilion)}\n.d-lt2-s2{stroke:var(--ink-indigo)}\n.d-lt2-off{opacity:.12}",
+  "init": "root => {\n  const svg = root.querySelector('.d-lt2-svg');\n  const btns = [...root.querySelectorAll('[data-k]')];\n  if (!svg || !btns.length) return;\n  const series = [[30, 38, 35, 48, 44, 57, 62], [12, 15, 14, 19, 22, 21, 26], [4, 5, 7, 6, 9, 11, 13]];\n  const W = 320, H = 170, L = 26, R = 8, T = 14, B = 26;\n  const n = series[0].length, max = 70;\n  const x = i => L + i * (W - L - R) / (n - 1);\n  const y = v => T + (H - T - B) * (1 - v / max);\n  const NS = 'http://www.w3.org/2000/svg';\n  const mk = (tag, attrs) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); return el; };\n  for (let g = 0; g <= 3; g++) svg.appendChild(mk('line', { class: 'd-lt2-axis', x1: L, y1: T + (H - T - B) * g / 3, x2: W - R, y2: T + (H - T - B) * g / 3 }));\n  const paths = series.map((s, si) => {\n    const d = s.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(v).toFixed(1)).join(' ');\n    const p = mk('path', { class: 'd-lt2-line d-lt2-s' + si, d: d });\n    svg.appendChild(p);\n    return p;\n  });\n  btns.forEach(b => {\n    b.onclick = () => {\n      const on = b.getAttribute('aria-pressed') === 'true';\n      b.setAttribute('aria-pressed', on ? 'false' : 'true');\n      paths[Number(b.dataset.k)].classList.toggle('d-lt2-off', on);\n    };\n  });\n}",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "图例",
+    "开关",
+    "趋势",
+    "图表"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "donut-progress",
+  "cat": "图表",
+  "t": "环形进度",
+  "en": "donut progress",
+  "d": "环只画一个数：68% 这种单一指标适合环，是因为环天然对应「一圈里占了多少」。多指标别用多个环并排，人比不出两个环的面积差；换成条形更准。缺口从 12 点方向开始，顺时针走，跟表盘一致。",
+  "body": "<div class=\"d-dp2\"><svg class=\"d-dp2-svg\" viewBox=\"0 0 120 120\" role=\"img\" aria-label=\"完成度 68% 的环形进度\"><circle class=\"d-dp2-bg\" cx=\"60\" cy=\"60\" r=\"46\"></circle><circle class=\"d-dp2-fg\" cx=\"60\" cy=\"60\" r=\"46\"></circle><text class=\"d-dp2-num\" x=\"60\" y=\"62\" text-anchor=\"middle\">68%</text><text class=\"d-dp2-cap\" x=\"60\" y=\"78\" text-anchor=\"middle\">本月完成</text></svg><p class=\"d-dp2-note\">环只给一个数</p></div>",
+  "css": ".d-dp2{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:340px}\n.d-dp2-svg{display:block;width:132px;height:132px}\n.d-dp2-bg{fill:none;stroke:var(--line);stroke-width:8}\n.d-dp2-fg{fill:none;stroke:var(--ink);stroke-width:8;stroke-linecap:round;transform:rotate(-90deg);transform-origin:60px 60px;stroke-dasharray:0 1000;transition:stroke-dasharray 620ms var(--ease-print)}\n.d-dp2-num{fill:var(--ink);font-size:21px;font-weight:650;letter-spacing:-.02em}\n.d-dp2-cap{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.08em}\n.d-dp2-note{margin:0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  const fg = root.querySelector('.d-dp2-fg');\n  if (!fg) return;\n  const pct = 68, r = 46, C = 2 * Math.PI * r;\n  const set = () => { fg.setAttribute('stroke-dasharray', (C * pct / 100).toFixed(1) + ' ' + C.toFixed(1)); };\n  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { set(); return; }\n  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { set(); io.disconnect(); } }), { threshold: .4 });\n  io.observe(root.querySelector('.d-dp2-svg') || fg);\n}",
+  "motion": "机械",
+  "tags": [
+    "环",
+    "进度",
+    "单指标",
+    "图表"
+  ],
+  "source": "v4"
+}

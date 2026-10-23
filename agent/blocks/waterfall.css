@@ -1,0 +1,10 @@
+.d-wf{width:100%;max-width:340px}
+.d-wf-svg{display:block;width:100%;height:auto;overflow:visible}
+.d-wf-axis{stroke:var(--line);stroke-width:1}
+.d-wf-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.06em}
+.d-wf-bar{fill:var(--ink)}
+.d-wf-up{fill:var(--ink-vermilion)}
+.d-wf-down{fill:color-mix(in srgb,var(--ink) 30%,var(--paper))}
+.d-wf-link{stroke:var(--line);stroke-width:1;stroke-dasharray:2 2}
+.d-wf-val{fill:var(--ink);font-family:var(--font-mono);font-size:7px}
+.d-wf-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

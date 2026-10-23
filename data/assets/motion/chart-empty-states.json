@@ -1,0 +1,18 @@
+{
+  "id": "chart-empty-states",
+  "cat": "图表",
+  "t": "图表三态",
+  "en": "chart empty states",
+  "d": "没有数据、正在加载、取数失败，是三种完全不同的处境，不能都用一句「暂无数据」。加载态给骨架轮廓，位置和真图一样，出来时不跳；失败态必须给重试和一句人话原因；空态告诉人下一步做什么，不是只说「空」。",
+  "body": "<div class=\"d-ce\"><div class=\"d-ce-tabs\" role=\"tablist\" aria-label=\"图表状态切换\"><button type=\"button\" role=\"tab\" aria-selected=\"true\" data-s=\"empty\">无数据</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" data-s=\"loading\">加载中</button><button type=\"button\" role=\"tab\" aria-selected=\"false\" data-s=\"error\">出错</button></div><div class=\"d-ce-body\" data-body></div></div>",
+  "css": ".d-ce{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-ce-tabs{display:flex;gap:2px;padding:6px 8px;border-bottom:1px solid var(--line)}\n.d-ce-tabs button{padding:4px 10px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:11px;cursor:pointer}\n.d-ce-tabs button[aria-selected=\"true\"]{border-color:var(--line);background:var(--bg);color:var(--ink)}\n.d-ce-body{display:grid;place-items:center;height:140px;padding:14px;text-align:center}\n.d-ce-t{font-size:12px;color:var(--ink);margin:0 0 2px}\n.d-ce-p{font-size:11px;color:var(--muted);margin:0;max-width:26ch}\n.d-ce-btn{margin-top:10px;padding:5px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-ce-sk{width:100%;height:96px;display:flex;align-items:flex-end;gap:6px}\n.d-ce-sk i{flex:1;border-radius:2px 2px 0 0;background:color-mix(in srgb,var(--ink) 10%,var(--paper));animation:d-chart-empty-states-pulse 900ms var(--ease-print) infinite alternate}\n.d-ce-sk i:nth-child(2n){animation-delay:120ms}\n@keyframes d-chart-empty-states-pulse{from{opacity:.55}to{opacity:1}}",
+  "init": "root => {\n  const body = root.querySelector('[data-body]');\n  const tabs = [...root.querySelectorAll('[data-s]')];\n  if (!body || !tabs.length) return;\n  const line = (cls, text) => { const el = document.createElement('p'); el.className = cls; el.textContent = text; return el; };\n  const box = (title, note, retry) => {\n    const wrap = document.createElement('div');\n    wrap.appendChild(line('d-ce-t', title));\n    wrap.appendChild(line('d-ce-p', note));\n    if (retry) { const b = document.createElement('button'); b.type = 'button'; b.className = 'd-ce-btn'; b.textContent = '重试'; wrap.appendChild(b); }\n    return wrap;\n  };\n  const render = k => {\n    body.textContent = '';\n    if (k === 'loading') {\n      const sk = document.createElement('div');\n      sk.className = 'd-ce-sk';\n      [38, 64, 47, 82, 56, 71].forEach(h => { const i = document.createElement('i'); i.style.height = h + '%'; sk.appendChild(i); });\n      body.appendChild(sk);\n    } else if (k === 'error') {\n      body.appendChild(box('取数没成功', '接口 8 秒没回应，已停止等待。', true));\n    } else {\n      body.appendChild(box('这段时间没有记录', '换个时间范围，或者等明天第一批数据进来。', false));\n    }\n    tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.s === k ? 'true' : 'false'));\n  };\n  tabs.forEach(t => { t.onclick = () => render(t.dataset.s); });\n  render('empty');\n}",
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "空态",
+    "加载",
+    "错误",
+    "图表"
+  ]
+}

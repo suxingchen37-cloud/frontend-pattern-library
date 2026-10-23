@@ -1,0 +1,11 @@
+.d-sl{width:100%;max-width:340px}
+.d-sl-svg{display:block;width:100%;height:auto;overflow:visible}
+.d-sl-line{stroke-width:1.5;stroke-linecap:round}
+.d-sl-up{stroke:var(--ink)}
+.d-sl-down{stroke:var(--ink-vermilion)}
+.d-sl-dot{fill:var(--paper);stroke-width:1.5}
+.d-sl-up.d-sl-dot{stroke:var(--ink)}
+.d-sl-down.d-sl-dot{stroke:var(--ink-vermilion)}
+.d-sl-name{fill:var(--ink);font-size:8px}
+.d-sl-val{fill:var(--faint);font-family:var(--font-mono);font-size:7px}
+.d-sl-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

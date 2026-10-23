@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小多图 · chart-small-multiples · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px var(--line);
+  --border-strong:1px var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-sm3{width:100%;max-width:340px}
+.d-sm3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.d-sm3 figure{margin:0;padding:6px 6px 4px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.d-sm3 svg{display:block;width:100%;height:34px;overflow:visible}
+.d-sm3 figcaption{margin-top:2px;font-family:var(--font-mono);font-size:8px;letter-spacing:.06em;color:var(--faint)}
+.d-sm3-line{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.d-sm3-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>chart-small-multiples</code>
+  <b>小多图</b>
+  <span>small multiples</span>
+  <span>分类 图表</span>
+  <span>运动 无动效</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<div class="d-sm3"><div class="d-sm3-grid"><figure><svg data-v="12,15,14,18,17,21"></svg><figcaption>华东</figcaption></figure><figure><svg data-v="22,20,21,19,18,19"></svg><figcaption>华北</figcaption></figure><figure><svg data-v="8,11,10,13,16,19"></svg><figcaption>华南</figcaption></figure><figure><svg data-v="14,13,15,14,16,15"></svg><figcaption>西南</figcaption></figure><figure><svg data-v="6,7,9,8,11,12"></svg><figcaption>西北</figcaption></figure><figure><svg data-v="18,21,20,24,23,26"></svg><figcaption>海外</figcaption></figure></div><p class="d-sm3-note">同一纵轴 · 六个切片</p></div>
+</div>
+<p class="pv-note">同一个指标切成六组并排，共用一条纵轴：各自缩放会让六张小图看起来一样高，那就什么都比不出来了。小图不画轴、不画网格，只在左下角留一个组名——它们是同一张图的六个切片，不是六张图。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "chart-small-multiples";
+  window.INITS = window.INITS || {};
+  window.INITS["chart-small-multiples"] = (root => {
+  const NS = 'http://www.w3.org/2000/svg';
+  const groups = [...root.querySelectorAll('.d-sm3 svg')];
+  const all = groups.map(g => (g.dataset.v || '').split(',').map(Number));
+  const flat = all.flat();
+  const min = Math.min.apply(null, flat), max = Math.max.apply(null, flat);
+  const span = max - min || 1;
+  groups.forEach((svg, gi) => {
+    const vals = all[gi];
+    svg.setAttribute('viewBox', '0 0 100 34');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    const d = vals.map((v, i) => (i ? 'L' : 'M') + (i * 100 / (vals.length - 1)).toFixed(1) + ' ' + (31 - (v - min) / span * 27).toFixed(1)).join(' ');
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('class', 'd-sm3-line');
+    p.setAttribute('d', d);
+    svg.appendChild(p);
+  });
+});
+  window.INITS["chart-small-multiples"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

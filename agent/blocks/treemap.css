@@ -1,0 +1,6 @@
+.d-tm{width:100%;max-width:340px}
+.d-tm-svg{display:block;width:100%;height:auto}
+.d-tm-cell{stroke:var(--paper);stroke-width:2}
+.d-tm-text{fill:var(--paper);font-size:9px;font-weight:600}
+.d-tm-val{fill:var(--paper);font-family:var(--font-mono);font-size:7px;opacity:.8}
+.d-tm-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

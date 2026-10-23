@@ -1,0 +1,18 @@
+{
+  "id": "radar-chart",
+  "cat": "图表",
+  "t": "雷达图",
+  "en": "radar chart",
+  "d": "只放两组、五个维度：再多几条线就互相盖住，读不出谁是谁。轴从中心 0 起，别为了让形状变好看把最小值抬高——那会把「全都不行」画成一个饱满的多边形。两组用实线和虚线，不靠颜色区分：复印和色盲都不受影响。",
+  "body": "<div class=\"d-rd\"><svg class=\"d-rd-svg\" viewBox=\"0 0 240 200\" role=\"img\" aria-label=\"五维能力雷达图，两条对比\"></svg><p class=\"d-rd-note\">实线今年 · 虚线去年</p></div>",
+  "css": ".d-rd{display:flex;flex-direction:column;align-items:center;width:100%;max-width:340px}\n.d-rd-svg{display:block;width:216px;height:180px;overflow:visible}\n.d-rd-grid{fill:none;stroke:var(--line);stroke-width:1}\n.d-rd-spoke{stroke:var(--line);stroke-width:1}\n.d-rd-lab{fill:var(--faint);font-family:var(--font-mono);font-size:7px}\n.d-rd-a{fill:color-mix(in srgb,var(--ink) 14%,transparent);stroke:var(--ink);stroke-width:1.5}\n.d-rd-b{fill:none;stroke:var(--ink-vermilion);stroke-width:1.25;stroke-dasharray:3 3}\n.d-rd-note{margin:2px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  const svg = root.querySelector('.d-rd-svg');\n  if (!svg) return;\n  const axes = ['稳定', '速度', '成本', '覆盖', '维护'];\n  const cur = [.82, .64, .58, .9, .72];\n  const prev = [.62, .7, .66, .54, .6];\n  const cx = 120, cy = 96, R = 62;\n  const NS = 'http://www.w3.org/2000/svg';\n  const mk = (tag, attrs) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); return el; };\n  const pt = (i, k) => { const a = -Math.PI / 2 + i * 2 * Math.PI / axes.length; return [cx + Math.cos(a) * R * k, cy + Math.sin(a) * R * k]; };\n  [1, .66, .33].forEach(k => {\n    const d = axes.map((_, i) => { const p = pt(i, k); return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + ' Z';\n    svg.appendChild(mk('path', { class: 'd-rd-grid', d: d }));\n  });\n  axes.forEach((name, i) => {\n    const p = pt(i, 1);\n    svg.appendChild(mk('line', { class: 'd-rd-spoke', x1: cx, y1: cy, x2: p[0].toFixed(1), y2: p[1].toFixed(1) }));\n    const lp = pt(i, 1.16);\n    const t = mk('text', { class: 'd-rd-lab', x: lp[0].toFixed(1), y: lp[1].toFixed(1), 'text-anchor': 'middle', 'dominant-baseline': 'middle' });\n    t.textContent = name;\n    svg.appendChild(t);\n  });\n  const poly = (vals, cls) => {\n    const d = vals.map((v, i) => { const p = pt(i, v); return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ') + ' Z';\n    svg.appendChild(mk('path', { class: cls, d: d }));\n  };\n  poly(prev, 'd-rd-b');\n  poly(cur, 'd-rd-a');\n}",
+  "source": "v4",
+  "motion": "无动效",
+  "tags": [
+    "雷达",
+    "多维",
+    "对比",
+    "图表"
+  ]
+}

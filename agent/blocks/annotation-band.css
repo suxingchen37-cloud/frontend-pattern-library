@@ -1,0 +1,9 @@
+.d-ab{width:100%;max-width:340px}
+.d-ab-svg{display:block;width:100%;height:auto;overflow:visible}
+.d-ab-axis{stroke:var(--line);stroke-width:1}
+.d-ab-band{fill:color-mix(in srgb,var(--ink) 9%,var(--paper))}
+.d-ab-line{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.d-ab-mark{stroke:var(--ink-vermilion);stroke-width:1;stroke-dasharray:2 3}
+.d-ab-tag{fill:var(--ink-vermilion);font-family:var(--font-mono);font-size:7px;letter-spacing:.04em}
+.d-ab-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px}
+.d-ab-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}

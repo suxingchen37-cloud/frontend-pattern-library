@@ -1,0 +1,18 @@
+{
+  "id": "slope-chart",
+  "cat": "图表",
+  "t": "斜率图",
+  "en": "slope chart",
+  "d": "只看两个时间点之间的变化，不画中间过程：斜率图回答的是「谁上去了、谁掉下来了」，不是「怎么变的」。交叉的线最显眼，所以顺序按终点排、不按起点排，一眼就能看出谁反超。两条线就够了，三条以上开始乱；真要三组，换成分组柱。",
+  "body": "<div class=\"d-sl\"><svg class=\"d-sl-svg\" viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"去年与今年的排名变化斜率图\"></svg><p class=\"d-sl-note\">去年 → 今年 · 交叉的是反超</p></div>",
+  "css": ".d-sl{width:100%;max-width:340px}\n.d-sl-svg{display:block;width:100%;height:auto;overflow:visible}\n.d-sl-line{stroke-width:1.5;stroke-linecap:round}\n.d-sl-up{stroke:var(--ink)}\n.d-sl-down{stroke:var(--ink-vermilion)}\n.d-sl-dot{fill:var(--paper);stroke-width:1.5}\n.d-sl-up.d-sl-dot{stroke:var(--ink)}\n.d-sl-down.d-sl-dot{stroke:var(--ink-vermilion)}\n.d-sl-name{fill:var(--ink);font-size:8px}\n.d-sl-val{fill:var(--faint);font-family:var(--font-mono);font-size:7px}\n.d-sl-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}",
+  "init": "root => {\n  const svg = root.querySelector('.d-sl-svg');\n  if (!svg) return;\n  const rows = [['响应', 62, 74], ['稳定', 71, 68], ['成本', 44, 58], ['覆盖', 80, 76], ['维护', 55, 61]];\n  const W = 320, H = 180, LX = 96, RX = 236;\n  const vals = rows.flatMap(r => [r[1], r[2]]);\n  const min = Math.min.apply(null, vals) - 6, max = Math.max.apply(null, vals) + 6;\n  const y = v => 26 + (H - 52) * (1 - (v - min) / (max - min));\n  const NS = 'http://www.w3.org/2000/svg';\n  const mk = (tag, attrs) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); return el; };\n  svg.appendChild(mk('line', { class: 'd-sl-axis', x1: LX, y1: 20, x2: LX, y2: H - 20, stroke: 'var(--line)' }));\n  svg.appendChild(mk('line', { class: 'd-sl-axis', x1: RX, y1: 20, x2: RX, y2: H - 20, stroke: 'var(--line)' }));\n  ['去年', '今年'].forEach((t, i) => { const el = mk('text', { class: 'd-sl-label', x: i ? RX : LX, y: 14, 'text-anchor': 'middle' }); el.textContent = t; svg.appendChild(el); });\n  rows.forEach(r => {\n    const [name, a, b] = r;\n    const up = b >= a;\n    const cls = up ? 'd-sl-up' : 'd-sl-down';\n    svg.appendChild(mk('line', { class: 'd-sl-line ' + cls, x1: LX + 4, y1: y(a).toFixed(1), x2: RX - 4, y2: y(b).toFixed(1) }));\n    [[LX, a], [RX, b]].forEach(p => {\n      svg.appendChild(mk('circle', { class: 'd-sl-dot ' + cls, cx: p[0], cy: y(p[1]).toFixed(1), r: 3 }));\n    });\n    const l = mk('text', { class: 'd-sl-name', x: LX - 10, y: y(a) + 3, 'text-anchor': 'end' });\n    l.textContent = name; svg.appendChild(l);\n    const v = mk('text', { class: 'd-sl-val', x: RX + 8, y: y(b) + 3 });\n    v.textContent = String(b); svg.appendChild(v);\n  });\n}",
+  "source": "v4",
+  "motion": "无动效",
+  "tags": [
+    "斜率",
+    "变化",
+    "反超",
+    "图表"
+  ]
+}

@@ -1,0 +1,8 @@
+.d-sp2{width:100%;max-width:340px}
+.d-sp2-svg{display:block;width:100%;height:auto;overflow:visible}
+.d-sp2-axis{stroke:var(--line);stroke-width:1}
+.d-sp2-label{fill:var(--faint);font-family:var(--font-mono);font-size:7px;letter-spacing:.06em}
+.d-sp2-dot{fill:var(--ink);opacity:.55}
+.d-sp2-out{fill:var(--ink-vermilion);opacity:1}
+.d-sp2-tag{fill:var(--ink-vermilion);font-family:var(--font-mono);font-size:7px;letter-spacing:.04em}
+.d-sp2-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
