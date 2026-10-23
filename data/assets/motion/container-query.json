@@ -5,7 +5,7 @@
   "en": "container query",
   "d": "组件跟着「自己所在栏宽」变形，而不是跟着窗口。",
   "body": "<div class=\"d-cq\"><div class=\"d-container-query-cardd\"><b>自适应卡</b><span>我会跟着所在容器变窄而换行</span></div></div>",
-  "css": ".d-cq{container-type:inline-size;width:100%;resize:horizontal;overflow:auto;border:1px dashed var(--line);border-radius:10px;padding:10px}\n.d-cq .d-container-query-cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:12px}\n@container (max-width:180px){.d-cq .d-container-query-cardd{flex-direction:column;align-items:flex-start}}",
+  "css": ".d-cq{container-type:inline-size;width:100%;resize:horizontal;overflow:auto;border:1px dashed var(--line);border-radius:10px;padding:10px}\n.d-cq .d-container-query-cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:11px}\n@container (max-width:180px){.d-cq .d-container-query-cardd{flex-direction:column;align-items:flex-start}}",
   "init": null,
   "source": "inline",
   "motion": "无动效"

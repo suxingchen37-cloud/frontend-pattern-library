@@ -5,7 +5,7 @@
   "en": "password strength",
   "d": "边输边告诉用户差在哪；比事后报错体验好。",
   "body": "<input class=\"d-pw\" type=\"password\" placeholder=\"输入密码\"><div class=\"d-bars3\"><i></i><i></i><i></i></div><span class=\"d-hint\" data-hint></span>",
-  "css": ".d-pw{width:200px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:12px;outline:none}\n.d-bars3{display:flex;gap:5px;width:200px;margin-top:8px}\n.d-bars3 i{height:4px;flex:1;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,transparent);transition:background .2s}\n.d-hint{font-size:11px;color:var(--faint)}\n",
+  "css": ".d-pw{width:200px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:11px;outline:none}\n.d-bars3{display:flex;gap:5px;width:200px;margin-top:8px}\n.d-bars3 i{height:4px;flex:1;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,transparent);transition:background 180ms}\n.d-hint{font-size:11px;color:var(--faint)}\n",
   "init": "root => {\n    const inp = root.querySelector('.d-pw'), bars = [...root.querySelectorAll('.d-bars3 i')], hint = root.querySelector('[data-hint]');\n    inp.addEventListener('input', () => {\n      const v = inp.value; let s = 0;\n      if (v.length >= 8) s++; if (/[A-Z]/.test(v) && /[a-z]/.test(v)) s++; if (/\\d/.test(v) || /[^\\w]/.test(v)) s++;\n      const tones = ['#c4553a', '#d6a94a', '#5c8a3a'];\n      bars.forEach((b, i) => b.style.background = i < s ? tones[s - 1] : 'color-mix(in srgb,var(--ink) 12%,transparent)');\n      hint.textContent = v ? ['太弱', '一般', '够用', '很强'][s] || '很强' : '';\n    });\n  }",
   "source": "lab-more",
   "motion": "机械"

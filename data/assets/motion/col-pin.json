@@ -5,7 +5,7 @@
   "en": "pinned column",
   "d": "横向滚动时把首列钉住；表格宽过屏幕，读者仍然知道自己在看谁。",
   "body": "<div class=\"d-cp3\" tabindex=\"0\" aria-label=\"横向滚动的表格\"><table><thead><tr><th>文章</th><th>日期</th><th>栏目</th><th>阅读</th><th>期数</th></tr></thead><tbody><tr><td>招牌</td><td>10.12</td><td>街道</td><td>12 分钟</td><td>07</td></tr><tr><td>价签</td><td>10.12</td><td>物件</td><td>6 分钟</td><td>07</td></tr><tr><td>椅子</td><td>10.12</td><td>手艺</td><td>8 分钟</td><td>07</td></tr></tbody></table></div>",
-  "css": ".d-cp3{width:260px;overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}\n.d-cp3 table{min-width:380px;border-collapse:collapse;font-size:10.5px}\n.d-cp3 th,.d-cp3 td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--muted)}\n.d-cp3 th{font:9px var(--mono);color:var(--faint);background:var(--bg)}\n.d-cp3 th:first-child,.d-cp3 td:first-child{position:sticky;left:0;background:var(--paper);z-index:1;box-shadow:1px 0 0 var(--line)}\n.d-cp3 th:first-child{background:var(--bg)}",
+  "css": ".d-cp3{width:260px;overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}\n.d-cp3 table{min-width:380px;border-collapse:collapse;font-size:11px}\n.d-cp3 th,.d-cp3 td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--muted)}\n.d-cp3 th{font:9px var(--mono);color:var(--faint);background:var(--bg)}\n.d-cp3 th:first-child,.d-cp3 td:first-child{position:sticky;left:0;background:var(--paper);z-index:1;box-shadow:1px 0 0 var(--line)}\n.d-cp3 th:first-child{background:var(--bg)}",
   "init": null,
   "source": "lab-extra3",
   "motion": "无动效"

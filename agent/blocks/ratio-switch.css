@@ -1,6 +1,6 @@
 .d-rsz3{width:200px}
-.d-ratio-switch-rzbox3{aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;background:repeating-linear-gradient(90deg,var(--bg) 0 18px,var(--paper) 18px 36px);display:grid;place-items:center;transition:aspect-ratio .2s}
+.d-ratio-switch-rzbox3{aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;background:repeating-linear-gradient(90deg,var(--bg) 0 18px,var(--paper) 18px 36px);display:grid;place-items:center;transition:aspect-ratio 180ms}
 .d-ratio-switch-rzbox3 span{font:9px var(--mono);color:var(--faint);background:var(--paper);padding:1px 5px;border-radius:2px}
 .d-ratio-switch-rzbtns3{display:flex;gap:4px;margin-top:6px}
-.d-ratio-switch-rzbtns3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}
+.d-ratio-switch-rzbtns3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}
 .d-ratio-switch-rzbtns3 button.d-ratio-switch-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}

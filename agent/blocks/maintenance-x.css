@@ -1,6 +1,6 @@
 .d-mt3{width:220px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--paper)}
-.d-mt3 b{font-size:12px}
-.d-mt3 p{margin:4px 0 9px;font-size:10px;color:var(--muted)}
+.d-mt3 b{font-size:11px}
+.d-mt3 p{margin:4px 0 9px;font-size:9px;color:var(--muted)}
 .d-maintenance-x-mtprog3{height:4px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:9px}
-.d-maintenance-x-mtprog3 i{display:block;height:100%;width:0;background:var(--ink);transition:width .3s linear}
-.d-mt3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 9px;cursor:pointer}
+.d-maintenance-x-mtprog3 i{display:block;height:100%;width:0;background:var(--ink);transition:width 280ms linear}
+.d-mt3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 9px;cursor:pointer}

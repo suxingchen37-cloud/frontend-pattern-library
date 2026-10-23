@@ -5,7 +5,7 @@
   "en": "clip reveal",
   "d": "用 clip-path 从上往下「掀开」，适合标题与大幅图片。",
   "body": "<div class=\"d-mask-reveal-kf\">把想法，变成能用的界面。</div>",
-  "css": ".d-mask-reveal-kf{font-size:20px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}\n@keyframes d-mask-reveal-kf{to{clip-path:inset(0 0 0 0)}}",
+  "css": ".d-mask-reveal-kf{font-size:21px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}\n@keyframes d-mask-reveal-kf{to{clip-path:inset(0 0 0 0)}}",
   "init": null,
   "source": "inline",
   "motion": "印刷"

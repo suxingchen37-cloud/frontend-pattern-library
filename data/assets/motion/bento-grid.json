@@ -5,7 +5,7 @@
   "en": "bento grid",
   "d": "大小不一的格子拼成一屏；重点用面积表达，不用再加一个“重点”标签。",
   "body": "<div class=\"d-bg3\"><div class=\"d-bento-grid-bgbig3\"><b>本期封面</b><span>慢一点，才看得见</span></div><div><b>6 篇</b><span>文章</span></div><div><b>4 个</b><span>栏目</span></div><div class=\"d-bento-grid-bgwide3\"><b>10.12</b><span>出刊</span></div></div>",
-  "css": ".d-bg3{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:60px 60px 44px;gap:5px;width:250px}\n.d-bg3>div{border:1px solid var(--line);border-radius:6px;padding:7px 8px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;transition:background .15s}\n.d-bg3>div:hover{background:var(--bg)}\n.d-bg3 b{font-size:11px}\n.d-bg3 span{font:8.5px var(--mono);color:var(--faint)}\n.d-bento-grid-bgbig3{grid-row:1/3;background:var(--lime-soft);border-color:var(--ink)}\n.d-bento-grid-bgbig3 b{font-family:var(--serif);font-size:15px}\n.d-bento-grid-bgwide3{grid-column:1/3;flex-direction:row;justify-content:space-between;align-items:center}",
+  "css": ".d-bg3{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:60px 60px 44px;gap:5px;width:250px}\n.d-bg3>div{border:1px solid var(--line);border-radius:6px;padding:7px 8px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;transition:background 120ms}\n.d-bg3>div:hover{background:var(--bg)}\n.d-bg3 b{font-size:11px}\n.d-bg3 span{font:8.5px var(--mono);color:var(--faint)}\n.d-bento-grid-bgbig3{grid-row:1/3;background:var(--lime-soft);border-color:var(--ink)}\n.d-bento-grid-bgbig3 b{font-family:var(--serif);font-size:15px}\n.d-bento-grid-bgwide3{grid-column:1/3;flex-direction:row;justify-content:space-between;align-items:center}",
   "init": null,
   "source": "lab-extra3",
   "motion": "印刷"

@@ -1,7 +1,7 @@
 .d-dt3{width:230px}
 .d-density-toggle-dtbtns3{display:flex;gap:4px;margin-bottom:6px}
-.d-density-toggle-dtbtns3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:2px;padding:2px 7px;cursor:pointer}
+.d-density-toggle-dtbtns3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:2px;padding:2px 7px;cursor:pointer}
 .d-density-toggle-dtbtns3 button.d-density-toggle-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .d-dt3 table{width:100%;border-collapse:collapse;font-size:11px}
 .d-dt3 td{padding:9px 8px;border-bottom:1px solid var(--line);color:var(--muted)}
-.d-dt3 table.compact td{padding:4px 8px;font-size:10px}
+.d-dt3 table.compact td{padding:4px 8px;font-size:9px}

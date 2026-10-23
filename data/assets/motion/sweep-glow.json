@@ -5,7 +5,7 @@
   "en": "border sweep",
   "d": "AI 生成中/保存中的轻提示；一圈光沿着边框走，不闪屏。",
   "body": "<div class=\"d-glow\">正在生成…</div>",
-  "css": ".d-glow{position:relative;padding:14px 18px;border-radius:10px;background:var(--paper);font-size:12px;color:var(--muted);overflow:hidden}\n.d-glow:before{content:\"\";position:absolute;inset:0;border-radius:10px;padding:1px;background:linear-gradient(90deg,transparent,var(--lime),transparent);background-size:200% 100%;animation:d-sweep-glow-sweep2 1.8s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}\n@keyframes d-sweep-glow-sweep2{to{background-position:-200% 0}}",
+  "css": ".d-glow{position:relative;padding:14px 18px;border-radius:10px;background:var(--paper);font-size:11px;color:var(--muted);overflow:hidden}\n.d-glow:before{content:\"\";position:absolute;inset:0;border-radius:10px;padding:1px;background:linear-gradient(90deg,transparent,var(--lime),transparent);background-size:200% 100%;animation:d-sweep-glow-sweep2 1.8s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}\n@keyframes d-sweep-glow-sweep2{to{background-position:-200% 0}}",
   "init": null,
   "source": "lab-extra2",
   "motion": "机械"

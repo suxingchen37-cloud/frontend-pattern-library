@@ -5,7 +5,7 @@
   "en": "variable font weight",
   "d": "悬停时字重变粗；需要可变字体，没有就退化成颜色变化。",
   "body": "<div class=\"d-vf\">悬停我</div>",
-  "css": ".d-vf{font-size:20px;font-weight:400;font-variation-settings:\"wght\" 400;transition:font-variation-settings .3s var(--ease),letter-spacing .3s var(--ease)}\n.d-vf:hover{font-variation-settings:\"wght\" 750;letter-spacing:-.02em}",
+  "css": ".d-vf{font-size:21px;font-weight:400;font-variation-settings:\"wght\" 400;transition:font-variation-settings 280ms var(--ease),letter-spacing 280ms var(--ease)}\n.d-vf:hover{font-variation-settings:\"wght\" 750;letter-spacing:-.02em}",
   "init": null,
   "source": "inline",
   "motion": "印刷"

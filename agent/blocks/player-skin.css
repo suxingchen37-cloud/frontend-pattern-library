@@ -3,7 +3,7 @@
 .d-player-skin-plstage3:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 22px,#ffffff0d 22px 23px)}
 .d-player-skin-plmark3{position:relative;color:var(--lime);font:10px var(--mono);letter-spacing:.14em}
 .d-player-skin-plctrl3{display:flex;align-items:center;gap:8px;padding:7px 9px}
-.d-player-skin-plctrl3 button{width:22px;height:22px;border:1px solid var(--line);border-radius:50%;background:var(--paper);font-size:8px;cursor:pointer}
+.d-player-skin-plctrl3 button{width:22px;height:22px;border:1px solid var(--line);border-radius:50%;background:var(--paper);font-size:9px;cursor:pointer}
 .d-player-skin-pltrack3{flex:1;height:3px;background:var(--line);border-radius:999px;overflow:hidden}
 .d-player-skin-pltrack3 i{display:block;height:100%;width:0;background:var(--ink)}
 .d-player-skin-plctrl3 time{font:8.5px var(--mono);color:var(--faint);white-space:nowrap}

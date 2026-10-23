@@ -5,7 +5,7 @@
   "en": "currency input",
   "d": "输入时自动加千分位；存的是数字，显示的是人能一眼读懂的金额。",
   "body": "<label class=\"d-cu3\"><span>金额</span><div class=\"d-currency-input-cuwrap3\"><i>¥</i><input data-cu3 inputmode=\"numeric\" placeholder=\"0\" aria-label=\"金额\"></div></label>",
-  "css": ".d-cu3{width:200px;font-size:10px;color:var(--faint);display:grid;gap:4px}\n.d-currency-input-cuwrap3{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px 9px}\n.d-currency-input-cuwrap3:focus-within{border-color:var(--ink)}\n.d-currency-input-cuwrap3 i{font-style:normal;font:11px var(--mono);color:var(--faint)}\n.d-currency-input-cuwrap3 input{border:0;background:transparent;outline:none;font-size:13px;width:100%;font-family:var(--mono)}",
+  "css": ".d-cu3{width:200px;font-size:9px;color:var(--faint);display:grid;gap:4px}\n.d-currency-input-cuwrap3{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px 9px}\n.d-currency-input-cuwrap3:focus-within{border-color:var(--ink)}\n.d-currency-input-cuwrap3 i{font-style:normal;font:11px var(--mono);color:var(--faint)}\n.d-currency-input-cuwrap3 input{border:0;background:transparent;outline:none;font-size:13px;width:100%;font-family:var(--mono)}",
   "init": "root => {\n    const input = root.querySelector('[data-cu3]');\n    input.addEventListener('input', () => {\n      const digits = input.value.replace(/[^\\d]/g, '').slice(0, 9);\n      input.value = digits ? Number(digits).toLocaleString('en-US') : '';\n    });\n  }",
   "source": "lab-extra3",
   "motion": "无动效"

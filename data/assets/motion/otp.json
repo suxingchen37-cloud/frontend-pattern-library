@@ -5,7 +5,7 @@
   "en": "OTP input",
   "d": "4–6 格自动跳位，退格回退；粘贴整串能自动分配。",
   "body": "<div class=\"d-otp\"><input maxlength=\"1\"><input maxlength=\"1\"><input maxlength=\"1\"><input maxlength=\"1\"></div>",
-  "css": ".d-otp{display:flex;gap:8px}\n.d-otp input{width:38px;height:44px;text-align:center;font-size:17px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;outline:none}\n.d-otp input:focus{border-color:var(--ink)}",
+  "css": ".d-otp{display:flex;gap:8px}\n.d-otp input{width:38px;height:44px;text-align:center;font-size:15px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;outline:none}\n.d-otp input:focus{border-color:var(--ink)}",
   "init": "root => {\n    const inputs = [...root.querySelectorAll('input')];\n    inputs.forEach((inp, i) => {\n      inp.addEventListener('input', () => { inp.value = inp.value.replace(/\\D/g, '').slice(0, 1); if (inp.value && inputs[i + 1]) inputs[i + 1].focus(); });\n      inp.addEventListener('keydown', e => { if (e.key === 'Backspace' && !inp.value && inputs[i - 1]) inputs[i - 1].focus(); });\n      inp.addEventListener('paste', e => { const t = (e.clipboardData?.getData('text') || '').replace(/\\D/g, ''); if (t) { e.preventDefault(); inputs.forEach((x, k) => x.value = t[k] || ''); inputs[Math.min(t.length, inputs.length - 1)].focus(); } });\n    });\n  }",
   "source": "lab-more",
   "motion": "无动效"

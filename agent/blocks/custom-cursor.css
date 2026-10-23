@@ -1,2 +1,2 @@
 .d-cur{position:relative;width:220px;height:90px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
-.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width .15s,height .15s}
+.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width 120ms,height 120ms}

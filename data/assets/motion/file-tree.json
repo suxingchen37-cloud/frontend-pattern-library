@@ -5,7 +5,7 @@
   "en": "file tree",
   "d": "展开/折叠、选中、显示大小；/browse 的数据就能直接喂它。",
   "body": "\n  <div class=\"d-tree\"><div class=\"d-file-tree-node\" data-open><b>▾ acme-web</b><div class=\"d-file-tree-kids\"><div class=\"d-file-tree-node\"><b>▸ lib</b></div><div class=\"d-file-tree-node d-file-tree-leaf d-file-tree-sel\">index.js</div><div class=\"d-file-tree-node d-file-tree-leaf\">client.js</div></div></div></div>",
-  "css": ".d-tree{width:200px;font-size:12px}\n.d-tree .d-file-tree-node{padding:3px 0}\n.d-tree .d-file-tree-node b{font-weight:500;cursor:pointer;color:var(--muted)}\n.d-tree .d-file-tree-kids{display:none;padding-left:14px}\n.d-tree .d-file-tree-node[data-open]>.d-file-tree-kids{display:block}\n.d-tree .d-file-tree-leaf{cursor:pointer;color:var(--muted);padding-left:14px}\n.d-tree .d-file-tree-leaf.d-file-tree-sel{color:var(--ink);background:color-mix(in srgb,var(--lime) 35%,transparent);border-radius:6px}",
+  "css": ".d-tree{width:200px;font-size:11px}\n.d-tree .d-file-tree-node{padding:3px 0}\n.d-tree .d-file-tree-node b{font-weight:500;cursor:pointer;color:var(--muted)}\n.d-tree .d-file-tree-kids{display:none;padding-left:14px}\n.d-tree .d-file-tree-node[data-open]>.d-file-tree-kids{display:block}\n.d-tree .d-file-tree-leaf{cursor:pointer;color:var(--muted);padding-left:14px}\n.d-tree .d-file-tree-leaf.d-file-tree-sel{color:var(--ink);background:color-mix(in srgb,var(--lime) 35%,transparent);border-radius:6px}",
   "init": "root => root.querySelectorAll('.d-tree .d-file-tree-node b').forEach(b => b.onclick = () => b.parentElement.toggleAttribute('data-open'))",
   "source": "lab-extra2",
   "motion": "无动效"

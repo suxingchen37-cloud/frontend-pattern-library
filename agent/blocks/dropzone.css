@@ -1,3 +1,3 @@
-.d-drop{display:grid;place-items:center;width:220px;height:74px;border:1.5px dashed var(--line);border-radius:10px;font-size:11.5px;color:var(--muted);transition:border-color .16s,background-color .16s,color .16s}
+.d-drop{display:grid;place-items:center;width:220px;height:74px;border:1.5px dashed var(--line);border-radius:10px;font-size:11px;color:var(--muted);transition:border-color 180ms,background-color 180ms,color 180ms}
 .d-drop.over{border-color:var(--ink);background:color-mix(in srgb,var(--lime) 22%,transparent);color:var(--ink)}
 .d-hint{font-size:11px;color:var(--faint)}

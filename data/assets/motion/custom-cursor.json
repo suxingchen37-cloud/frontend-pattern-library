@@ -5,7 +5,7 @@
   "en": "custom cursor",
   "d": "一个跟随的小圆点，按下时变大；页面内才生效。",
   "body": "<div class=\"d-cur\">在这块里移动</div>",
-  "css": ".d-cur{position:relative;width:220px;height:90px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}\n.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width .15s,height .15s}",
+  "css": ".d-cur{position:relative;width:220px;height:90px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}\n.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width 120ms,height 120ms}",
   "init": "root => {\n    const z = root.querySelector('.d-cur'), dot = document.createElement('span'); dot.className = 'dot'; dot.style.opacity = 0; z.appendChild(dot);\n    z.addEventListener('pointermove', e => { const r = z.getBoundingClientRect(); dot.style.opacity = 1; dot.style.left = (e.clientX - r.left) + 'px'; dot.style.top = (e.clientY - r.top) + 'px'; });\n    z.addEventListener('pointerleave', () => dot.style.opacity = 0);\n    z.addEventListener('pointerdown', () => { dot.style.width = dot.style.height = '22px'; });\n    z.addEventListener('pointerup', () => { dot.style.width = dot.style.height = '12px'; });\n  }",
   "source": "inline",
   "motion": "物理"

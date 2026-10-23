@@ -1,2 +1,2 @@
-.d-vf{font-size:20px;font-weight:400;font-variation-settings:"wght" 400;transition:font-variation-settings .3s var(--ease),letter-spacing .3s var(--ease)}
+.d-vf{font-size:21px;font-weight:400;font-variation-settings:"wght" 400;transition:font-variation-settings 280ms var(--ease),letter-spacing 280ms var(--ease)}
 .d-vf:hover{font-variation-settings:"wght" 750;letter-spacing:-.02em}

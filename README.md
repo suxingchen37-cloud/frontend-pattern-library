@@ -32,7 +32,8 @@ data/categories.json           分类登记
 data/schema.md                 字段契约与机器校验规则
         │
         ├─ node tools/build.mjs  → agent/（索引 + 单条 blocks + 单条预览）+ llms.txt
-        └─ node tools/site.mjs   → lab-extra4.js + 给 index.html / motion-lab.html 打补丁
+        ├─ node tools/site.mjs   → lab-extra4.js + 给 index.html / motion-lab.html 打补丁（source=v4/v5）
+        └─ node tools/emit.mjs   → 反向生成：老 144 条的 motion-lab 内联数组 + lab-more/extra2/extra3
 ```
 
 ## 改完数据必须跑这三条
@@ -82,7 +83,7 @@ agent/preview/<id>.html  单条独立预览页，加 ?theme=night 看夜间
 | 路径 | 说明 |
 |---|---|
 | `data/` | **唯一真相**，手改这里 |
-| `tools/` | 生成器与自检（build / site / verify / extract / annotate-motion） |
+| `tools/` | 生成器与自检（build / site / emit / verify / extract / annotate-motion） |
 | `agent/` | AI 取料产物，当前入库（文件数随资产增加，可由 build 重建） |
 | `llms.txt` | AI 入口（生成物） |
 | `lab-extra4.js` | 新资产挂载（生成物） |

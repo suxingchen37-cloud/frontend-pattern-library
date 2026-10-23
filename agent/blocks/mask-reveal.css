@@ -1,2 +1,2 @@
-.d-mask-reveal-kf{font-size:20px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}
+.d-mask-reveal-kf{font-size:21px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}
 @keyframes d-mask-reveal-kf{to{clip-path:inset(0 0 0 0)}}

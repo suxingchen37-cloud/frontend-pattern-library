@@ -1,4 +1,4 @@
-.d-tree{width:200px;font-size:12px}
+.d-tree{width:200px;font-size:11px}
 .d-tree .d-file-tree-node{padding:3px 0}
 .d-tree .d-file-tree-node b{font-weight:500;cursor:pointer;color:var(--muted)}
 .d-tree .d-file-tree-kids{display:none;padding-left:14px}

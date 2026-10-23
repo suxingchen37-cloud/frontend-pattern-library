@@ -5,7 +5,7 @@
   "en": "star rating",
   "d": "悬停预览、点击定值；常用于反馈与质量打分。",
   "body": "<div class=\"d-rate\"><button>★</button><button>★</button><button>★</button><button>★</button><button>★</button></div><span class=\"d-hint\" data-score>未评</span>",
-  "css": ".d-rate{display:flex;gap:2px}\n.d-rate button{border:0;background:transparent;font-size:22px;line-height:1;color:color-mix(in srgb,var(--ink) 18%,transparent);cursor:pointer;transition:transform .12s,color .12s}\n.d-rate button.on{color:#f2c14e}\n.d-rate button:hover{transform:scale(1.12)}\n.d-hint{font-size:11px;color:var(--faint)}\n",
+  "css": ".d-rate{display:flex;gap:2px}\n.d-rate button{border:0;background:transparent;font-size:21px;line-height:1;color:color-mix(in srgb,var(--ink) 18%,transparent);cursor:pointer;transition:transform .12s,color .12s}\n.d-rate button.on{color:#f2c14e}\n.d-rate button:hover{transform:scale(1.12)}\n.d-hint{font-size:11px;color:var(--faint)}\n",
   "init": "root => {\n    const btns = [...root.querySelectorAll('.d-rate button')], out = root.querySelector('[data-score]');\n    const paint = n => btns.forEach((b, i) => b.classList.toggle('on', i < n));\n    btns.forEach((b, i) => { b.onmouseenter = () => paint(i + 1); b.onmouseleave = () => paint(+root.dataset.v || 0); b.onclick = () => { root.dataset.v = i + 1; paint(i + 1); out.textContent = (i + 1) + ' 星'; }; });\n  }",
   "source": "lab-more",
   "motion": "物理"

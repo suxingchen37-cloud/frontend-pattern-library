@@ -1,5 +1,5 @@
 .d-hh3{width:230px;height:124px;border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative;background:var(--paper)}
-.d-hide-header-hhbar3{height:26px;display:flex;align-items:center;padding:0 9px;background:var(--ink);color:var(--paper);font:9px var(--mono);letter-spacing:.06em;transition:transform .22s var(--ease)}
+.d-hide-header-hhbar3{height:26px;display:flex;align-items:center;padding:0 9px;background:var(--ink);color:var(--paper);font:9px var(--mono);letter-spacing:.06em;transition:transform 180ms var(--ease)}
 .d-hide-header-hhbar3.up{transform:translateY(-100%)}
-.d-hide-header-hhscroll3{height:98px;overflow:auto;padding:7px 10px;font-size:10px;line-height:1.8;color:var(--muted)}
+.d-hide-header-hhscroll3{height:98px;overflow:auto;padding:7px 10px;font-size:9px;line-height:1.8;color:var(--muted)}
 .d-hide-header-hhscroll3 p{margin:0 0 5px}

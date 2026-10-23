@@ -5,7 +5,7 @@
   "en": "drag reorder",
   "d": "按住拖动换顺序；任务卡、看板列必备。",
   "body": "<div class=\"d-dl\"><div draggable=\"true\">① 收集</div><div draggable=\"true\">② 整理</div><div draggable=\"true\">③ 上线</div></div>",
-  "css": ".d-dl{width:220px;display:flex;flex-direction:column;gap:6px}\n.d-dl div{padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:12px;cursor:grab}\n.d-dl div.dragging{opacity:.4}",
+  "css": ".d-dl{width:220px;display:flex;flex-direction:column;gap:6px}\n.d-dl div{padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:11px;cursor:grab}\n.d-dl div.dragging{opacity:.4}",
   "init": "root => {\n    const list = root.querySelector('.d-dl'); let dragging = null;\n    list.querySelectorAll('div').forEach(el => {\n      el.addEventListener('dragstart', () => { dragging = el; el.classList.add('dragging'); });\n      el.addEventListener('dragend', () => { el.classList.remove('dragging'); dragging = null; });\n      el.addEventListener('dragover', e => { e.preventDefault(); if (!dragging || dragging === el) return; const r = el.getBoundingClientRect(); list.insertBefore(dragging, (e.clientY - r.top) > r.height / 2 ? el.nextSibling : el); });\n    });\n  }",
   "source": "lab-more",
   "motion": "无动效"

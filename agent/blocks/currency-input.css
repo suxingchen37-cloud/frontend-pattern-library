@@ -1,4 +1,4 @@
-.d-cu3{width:200px;font-size:10px;color:var(--faint);display:grid;gap:4px}
+.d-cu3{width:200px;font-size:9px;color:var(--faint);display:grid;gap:4px}
 .d-currency-input-cuwrap3{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px 9px}
 .d-currency-input-cuwrap3:focus-within{border-color:var(--ink)}
 .d-currency-input-cuwrap3 i{font-style:normal;font:11px var(--mono);color:var(--faint)}

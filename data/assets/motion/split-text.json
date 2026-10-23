@@ -5,7 +5,7 @@
   "en": "split text",
   "d": "标题逐字浮起；只给首屏主标题用，正文别做。",
   "body": "<div class=\"d-splittext\">把想法变成界面</div>",
-  "css": ".d-splittext{font-size:22px;font-weight:750;letter-spacing:-.03em}\n.d-splittext span{display:inline-block;opacity:0;transform:translateY(.5em);animation:d-char .5s var(--ease) forwards}",
+  "css": ".d-splittext{font-size:21px;font-weight:750;letter-spacing:-.03em}\n.d-splittext span{display:inline-block;opacity:0;transform:translateY(.5em);animation:d-char .5s var(--ease) forwards}",
   "init": "root => {\n    const el = root.querySelector('.d-splittext');\n    if (!el.dataset.done) { el.dataset.done = '1'; el.innerHTML = [...el.textContent].map((c, i) => `<span style=\"animation-delay:${i * 28}ms\">${c === ' ' ? '&nbsp;' : c}</span>`).join(''); }\n  }",
   "source": "inline",
   "motion": "印刷"

@@ -5,7 +5,7 @@
   "en": "sidenote",
   "d": "正文提到一个数字，旁边给一条不打断阅读的边注；手机上收进正文。",
   "body": "<div class=\"d-sn3\"><p>老周说，字高 <button type=\"button\" class=\"d-sidenote-x-snmark3\" data-sn3>38 厘米</button> 是他量出来的，不是算出来的。</p><aside class=\"d-sidenote-x-snbox3\" data-snbox hidden>字高 38cm，是站在街对面能看清笔画的最小值；字距留 4cm，远看才不糊。</aside></div>",
-  "css": ".d-sn3{width:270px;font-size:12px;line-height:1.9;position:relative}\n.d-sn3 p{margin:0}\n.d-sidenote-x-snmark3{border:0;border-bottom:1px dashed var(--ink);background:var(--lime-soft);color:var(--ink);font:inherit;cursor:pointer;padding:0 2px}\n.d-sidenote-x-snbox3{margin-top:8px;border-top:1px solid var(--line);padding-top:7px;font-size:10.5px;line-height:1.7;color:var(--muted)}",
+  "css": ".d-sn3{width:270px;font-size:11px;line-height:1.9;position:relative}\n.d-sn3 p{margin:0}\n.d-sidenote-x-snmark3{border:0;border-bottom:1px dashed var(--ink);background:var(--lime-soft);color:var(--ink);font:inherit;cursor:pointer;padding:0 2px}\n.d-sidenote-x-snbox3{margin-top:8px;border-top:1px solid var(--line);padding-top:7px;font-size:11px;line-height:1.7;color:var(--muted)}",
   "init": "root => {\n    const btn = root.querySelector('[data-sn3]'), box = root.querySelector('[data-snbox]');\n    btn.onclick = () => { box.hidden = !box.hidden; };\n  }",
   "source": "lab-extra3",
   "motion": "无动效"

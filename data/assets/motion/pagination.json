@@ -5,7 +5,7 @@
   "en": "pagination",
   "d": "列表很长时的兜底；首末页与当前页永远可见。",
   "body": "<div class=\"d-page\"><button>‹</button><button class=\"d-pagination-on\">1</button><button>2</button><button>3</button><span>…</span><button>12</button><button>›</button></div>",
-  "css": ".d-page{display:flex;gap:4px;align-items:center}\n.d-page button{min-width:28px;height:28px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:11.5px;cursor:pointer}\n.d-page button.d-pagination-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}\n.d-page span{color:var(--faint);font-size:11px}",
+  "css": ".d-page{display:flex;gap:4px;align-items:center}\n.d-page button{min-width:28px;height:28px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:11px;cursor:pointer}\n.d-page button.d-pagination-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}\n.d-page span{color:var(--faint);font-size:11px}",
   "init": "root => {\n    const btns = [...root.querySelectorAll('.d-page button')];\n    btns.forEach(b => b.onclick = () => { if (/^\\d+$/.test(b.textContent)) { btns.forEach(x => x.classList.toggle('d-pagination-on', x === b)); } });\n  }",
   "source": "lab-more",
   "motion": "无动效"

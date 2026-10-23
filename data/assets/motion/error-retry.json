@@ -5,7 +5,7 @@
   "en": "error state with retry",
   "d": "失败要给出\"为什么 + 怎么办\"；只写\"出错了\"等于没说。",
   "body": "<div class=\"d-err\"><b>连不上服务端</b><p>接口 502，网关没有响应。</p><button class=\"d-btn\" data-retry>重试</button></div>",
-  "css": ".d-err{width:220px;padding:12px;border:1px solid #e4c3b8;border-radius:10px;background:#fdf3ef}\n.d-err b{font-size:12px;color:#7a2b18}\n.d-err p{margin:3px 0 9px;font-size:10.5px;color:#a4442c;line-height:1.7}\n.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}\n.d-btn:hover{box-shadow:0 6px 18px #20241e14}\n.d-btn:active{transform:scale(.97)}\n",
+  "css": ".d-err{width:220px;padding:12px;border:1px solid #e4c3b8;border-radius:10px;background:#fdf3ef}\n.d-err b{font-size:11px;color:#7a2b18}\n.d-err p{margin:3px 0 9px;font-size:11px;color:#a4442c;line-height:1.7}\n.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--ease),background-color 180ms,color 180ms,border-color 180ms}\n.d-btn:hover{box-shadow:0 6px 18px #20241e14}\n.d-btn:active{transform:scale(.97)}\n",
   "init": "root => {\n    const btn = root.querySelector('[data-retry]');\n    btn.onclick = () => { btn.textContent = '重试中…'; setTimeout(() => btn.textContent = '还是不通 · 重试', 900); };\n  }",
   "source": "lab-more",
   "motion": "印刷"

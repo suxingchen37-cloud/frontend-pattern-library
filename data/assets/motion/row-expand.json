@@ -5,7 +5,7 @@
   "en": "inline row expand",
   "d": "点行在原地展开详情，不跳页；列表浏览不打断。",
   "body": "\n  <div class=\"d-rex\"><button class=\"d-row-expand-row2\" data-rex>项目讨论组 <span>▾</span></button><div class=\"d-row-expand-detail2\">成员：4 人<br>最近更新：今天 · 3 次</div></div>",
-  "css": ".d-rex{width:230px;font-size:12px}\n.d-rex .d-row-expand-row2{width:100%;display:flex;justify-content:space-between;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font:inherit;font-size:12px;cursor:pointer;color:inherit}\n.d-rex .d-row-expand-detail2{max-height:0;overflow:hidden;font-size:11px;color:var(--muted);line-height:1.8;transition:max-height .26s var(--ease)}\n.d-rex[data-open] .d-row-expand-detail2{max-height:80px;padding-top:6px}",
+  "css": ".d-rex{width:230px;font-size:11px}\n.d-rex .d-row-expand-row2{width:100%;display:flex;justify-content:space-between;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font:inherit;font-size:11px;cursor:pointer;color:inherit}\n.d-rex .d-row-expand-detail2{max-height:0;overflow:hidden;font-size:11px;color:var(--muted);line-height:1.8;transition:max-height 280ms var(--ease)}\n.d-rex[data-open] .d-row-expand-detail2{max-height:80px;padding-top:6px}",
   "init": "root => root.querySelector('[data-rex]').onclick = e => e.currentTarget.parentElement.toggleAttribute('data-open')",
   "source": "lab-extra2",
   "motion": "印刷"

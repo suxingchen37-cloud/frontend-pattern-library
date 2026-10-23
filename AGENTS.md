@@ -21,6 +21,7 @@
 | `llms.txt` 正文源 | `data/rules.md` | 改文案只改这里，不动代码 |
 | 站点合成器 | `tools/site.mjs` | 改后必须重跑 |
 | AI 产物生成器 | `tools/build.mjs` | 改后必须重跑 |
+| 老批次反向生成器 | `tools/emit.mjs` | 把 JSON 写回 motion-lab 内联数组与 lab-more/extra2/extra3 |
 | 一致性自检 | `tools/verify.mjs` | 只读 |
 | 站点补丁产物 | `lab-extra4.js`、`index.html`、`motion-lab.html` | 生成物，勿手改 |
 | AI 取料产物 | `agent/`、`llms.txt` | 生成物，**当前入库**，勿手改 |
@@ -28,14 +29,14 @@
 ## 改完数据必须跑这三条
 
 ```
-node tools/build.mjs && node tools/site.mjs && node tools/verify.mjs
+node tools/build.mjs && node tools/site.mjs && node tools/emit.mjs && node tools/verify.mjs
 ```
 
 三条都退出 0 才算改完。因为 `agent/` 现在入库，改完还要把再生后的 `agent/` 一起提交——
 否则线上（jsDelivr / raw）取到的是旧产物。只确认漂移：
 
 ```
-node tools/build.mjs --check && node tools/site.mjs --check
+node tools/build.mjs --check && node tools/site.mjs --check && node tools/emit.mjs --check
 ```
 
 ## 协作约定（多 agent / 多人同时在场时）
@@ -56,6 +57,16 @@ node tools/build.mjs --check && node tools/site.mjs --check
 - raw 兜底：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常超时）
 
 卡片的增减、计数、分类列表全部由数据推导，不需要手改任何 HTML。
+
+## emit.mjs 的用途
+
+老 144 条资产同时存在于两处：`data/assets/motion/*.json`（真相）与站点里的
+`motion-lab.html` 内联数组 / `lab-more.js` / `lab-extra2.js` / `lab-extra3.js`（人看的页面）。
+`tools/emit.mjs` 负责把前者写回后者（含 `data/order.json` 的排序）。
+
+- `node tools/emit.mjs --check`：只比对，不写盘
+- `node tools/emit.mjs`：重写那 4 个源文件 + 回读核对
+- **跑过 emit 之后不要再跑 extract**，除非你确定要丢弃 JSON 里的 motion/tags 元数据
 
 ## 改 llms.txt 的正文
 

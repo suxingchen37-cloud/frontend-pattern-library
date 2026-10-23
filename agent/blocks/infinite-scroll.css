@@ -1,3 +1,3 @@
-.d-inf{width:200px;height:110px;overflow:auto;border:1px solid var(--line);border-radius:10px;font-size:11.5px}
+.d-inf{width:200px;height:110px;overflow:auto;border:1px solid var(--line);border-radius:10px;font-size:11px}
 .d-inf .d-infinite-scroll-items div{padding:7px 10px;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--muted)}
-.d-inf .d-infinite-scroll-sentinel{padding:8px;text-align:center;font-size:10.5px;color:var(--faint)}
+.d-inf .d-infinite-scroll-sentinel{padding:8px;text-align:center;font-size:11px;color:var(--faint)}

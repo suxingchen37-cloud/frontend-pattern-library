@@ -1,2 +1,2 @@
-.d-splittext{font-size:22px;font-weight:750;letter-spacing:-.03em}
+.d-splittext{font-size:21px;font-weight:750;letter-spacing:-.03em}
 .d-splittext span{display:inline-block;opacity:0;transform:translateY(.5em);animation:d-char .5s var(--ease) forwards}

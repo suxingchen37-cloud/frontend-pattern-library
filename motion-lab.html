@@ -223,63 +223,63 @@ const DEMOS = [
 .d-chip{width:120px;height:12px;border-radius:6px;background:color-mix(in srgb,var(--ink) 18%,transparent);opacity:0;animation:d-fade-stagger-in .45s var(--ease) forwards}
 .d-chip:nth-child(1){animation-delay:0ms}.d-chip:nth-child(2){animation-delay:40ms}.d-chip:nth-child(3){animation-delay:80ms}.d-chip:nth-child(4){animation-delay:120ms}
 @keyframes d-fade-stagger-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'pop-spring',cat:"入场",t:"弹簧弹出",en:"spring pop",d:"弹出确认、新建成功这类「有物理感」的时刻；别用在长列表上。",body:`<button class="d-btn d-btn-primary" data-pop>点我弹一个</button><span class="d-badge" data-badge hidden>已保存</span>`,css:`.d-badge{padding:4px 10px;border-radius:999px;background:var(--lime);color:#1e2a12;font-size:11px}
 .d-badge.on{animation:d-pop-spring-kf .42s var(--ease-spring)}
 @keyframes d-pop-spring-kf{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease-spring)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 `},
 {id:'blur-in',cat:"入场",t:"模糊聚焦",en:"blur-in",d:"内容从模糊到清晰，适合弹窗、图片、AI 生成结果。",body:`<div class="d-blur-in-kf">聚焦的那一刻</div><button class="d-btn" data-replay>重播</button>`,css:`.d-blur-in-kf{font-size:15px;padding:14px 18px;border-radius:10px;background:var(--paper);border:1px solid var(--line);animation:d-blur-in-kf .5s var(--ease) forwards}
 @keyframes d-blur-in-kf{from{filter:blur(10px);opacity:0}to{filter:blur(0);opacity:1}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
-{id:'mask-reveal',cat:"入场",t:"遮罩揭示",en:"clip reveal",d:"用 clip-path 从上往下「掀开」，适合标题与大幅图片。",body:`<div class="d-mask-reveal-kf">把想法，变成能用的界面。</div>`,css:`.d-mask-reveal-kf{font-size:20px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}
+{id:'mask-reveal',cat:"入场",t:"遮罩揭示",en:"clip reveal",d:"用 clip-path 从上往下「掀开」，适合标题与大幅图片。",body:`<div class="d-mask-reveal-kf">把想法，变成能用的界面。</div>`,css:`.d-mask-reveal-kf{font-size:21px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}
 @keyframes d-mask-reveal-kf{to{clip-path:inset(0 0 0 0)}}`},
 {id:'skeleton',cat:"加载",t:"骨架到内容",en:"skeleton → content",d:"先给形状再给内容，比转圈更稳；加载超过 300ms 才出现。",body:`<div class="d-sk"><i></i><i></i><i></i></div><button class="d-btn" data-swap>载入完成</button>`,css:`.d-sk{width:180px;display:flex;flex-direction:column;gap:8px}
 .d-sk i{height:12px;border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 8%,transparent),color-mix(in srgb,var(--ink) 16%,transparent),color-mix(in srgb,var(--ink) 8%,transparent));background-size:200% 100%;animation:d-skeleton-shim 1.2s linear infinite}
 .d-sk i:nth-child(2){width:80%}.d-sk i:nth-child(3){width:60%}
 @keyframes d-skeleton-shim{to{background-position:-200% 0}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--linear),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'ripple',cat:"微交互",t:"水波按压",en:"ripple",d:"点击处扩散一圈，给「按到了」最直接的反馈。",body:`<button class="d-btn d-btn-primary d-rip">点我</button>`,css:`.d-rip{position:relative;overflow:hidden}
 .d-rip .d-ripple-wave{position:absolute;border-radius:999px;background:#ffffff55;transform:scale(0);animation:d-ripple-wave .6s var(--ease);pointer-events:none}
 @keyframes d-ripple-wave{to{transform:scale(4);opacity:0}}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 `},
-{id:'toggle-spring',cat:"微交互",t:"弹簧开关",en:"spring switch",d:"开关的滑块带一点过冲，比线性更「活」。",body:`<button class="d-sw" role="switch" aria-checked="false"><i></i></button>`,css:`.d-sw{width:46px;height:26px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 10%,transparent);position:relative;cursor:pointer;transition:background .2s}
-.d-sw i{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:999px;background:var(--paper);box-shadow:0 1px 3px #0002;transition:transform .34s var(--ease-spring)}
+{id:'toggle-spring',cat:"微交互",t:"弹簧开关",en:"spring switch",d:"开关的滑块带一点过冲，比线性更「活」。",body:`<button class="d-sw" role="switch" aria-checked="false"><i></i></button>`,css:`.d-sw{width:46px;height:26px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 10%,transparent);position:relative;cursor:pointer;transition:background 180ms}
+.d-sw i{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:999px;background:var(--paper);box-shadow:0 1px 3px #0002;transition:transform 280ms var(--var(--ease-spring)-spring)}
 .d-sw[aria-checked=true]{background:var(--lime)}
 .d-sw[aria-checked=true] i{transform:translateX(20px)}`},
-{id:'copy-check',cat:"微交互",t:"复制变对勾",en:"copy → check morph",d:"复制类按钮把图标原地换成对勾，2 秒后复原；别弹 toast 打断。",body:`<button class="d-btn d-copy"><span class="d-ico">⧉</span><span class="d-lbl">复制</span></button>`,css:`.d-copy .d-ico,.d-copy .d-lbl{display:inline-block;transition:transform .2s var(--ease),opacity .2s}
+{id:'copy-check',cat:"微交互",t:"复制变对勾",en:"copy → check morph",d:"复制类按钮把图标原地换成对勾，2 秒后复原；别弹 toast 打断。",body:`<button class="d-btn d-copy"><span class="d-ico">⧉</span><span class="d-lbl">复制</span></button>`,css:`.d-copy .d-ico,.d-copy .d-lbl{display:inline-block;transition:transform 180ms var(--var(--ease)),opacity 180ms}
 .d-copy.done{background:var(--lime);border-color:#b9d94d;color:#1e2a12}
 .d-copy.done .d-ico{transform:scale(1.2)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'magnetic',cat:"光标",t:"磁吸按钮",en:"magnetic button",d:"指针靠近时按钮轻微跟随，离开回弹；只给一个主按钮用。",body:`<div class="d-mag-wrap"><button class="d-btn d-btn-primary d-mag">靠近我</button></div>`,css:`.d-mag-wrap{padding:26px}
-.d-mag{transition:transform .18s var(--ease-out,var(--ease));will-change:transform}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-mag{transition:transform .18s var(--var(--ease),var(--var(--ease)));will-change:transform}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 .d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 `},
-{id:'press-depth',cat:"微交互",t:"按压下沉",en:"press depth",d:"按下时缩小 + 阴影收起，模拟真实按键。",body:`<button class="d-btn d-depth">按住看</button>`,css:`.d-depth{box-shadow:0 4px 0 color-mix(in srgb,var(--ink) 22%,transparent);transition:transform .08s,box-shadow .08s}
+{id:'press-depth',cat:"微交互",t:"按压下沉",en:"press depth",d:"按下时缩小 + 阴影收起，模拟真实按键。",body:`<button class="d-btn d-depth">按住看</button>`,css:`.d-depth{box-shadow:0 4px 0 color-mix(in srgb,var(--ink) 22%,transparent);transition:transform 120ms,box-shadow 120ms}
 .d-depth:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 22%,transparent)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -287,34 +287,34 @@ const DEMOS = [
 .d-dot{width:10px;height:10px;border-radius:999px;background:var(--lime)}
 .d-tip{position:absolute;transform:translate(10px,-50%);padding:4px 8px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:11px;pointer-events:none}`},
 {id:'reveal-scroll',cat:"滚动",t:"滚动揭示",en:"IntersectionObserver reveal",d:"进入视口才出现；首屏以下的内容不要做，容易被误认为加载失败。",body:`<div class="d-scrollbox"><div class="d-rev">滚到这里我出现 1</div><div class="d-rev">滚到这里我出现 2</div><div class="d-rev">滚到这里我出现 3</div></div>`,css:`.d-scrollbox{height:120px;width:100%;overflow:auto;display:flex;flex-direction:column;gap:80px;padding:20px 8px}
-.d-rev{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.d-rev{opacity:0;transform:translateY(16px);transition:opacity 280ms var(--var(--ease)),transform 280ms var(--var(--ease))}
 .d-rev.on{opacity:1;transform:none}`},
 {id:'progress-scroll',cat:"滚动",t:"滚动进度条",en:"scroll progress",d:"阅读进度；用 CSS 滚动驱动动画，不跑 JS。",body:`<div class="d-scrollbox d-prog"><div class="d-bar"></div><p class="d-fill">滚动这个框看顶部进度…</p></div>`,css:`.d-prog{position:relative}
 .d-prog .d-bar{position:sticky;top:0;left:0;height:3px;background:var(--lime);width:100%;transform-origin:0 50%;animation:d-grow linear;animation-timeline:scroll(nearest)}
 .d-prog .d-fill{height:400px;margin:0;font-size:11px;color:var(--faint)}`},
 {id:'parallax',cat:"滚动",t:"视差分层",en:"parallax layers",d:"前景动得多、背景动得少；只做 2–3 层，多了会晕。",body:`<div class="d-par"><i class="d-parallax-l1"></i><i class="d-parallax-l2"></i><i class="d-parallax-l3"></i></div><span class="d-hint">在上面左右移动鼠标</span>`,css:`.d-par{position:relative;width:220px;height:90px;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .d-par i{position:absolute;border-radius:999px}
-.d-par .d-parallax-l1{inset:18px;background:var(--mint);opacity:.5;transition:transform .2s}
-.d-par .d-parallax-l2{inset:30px;background:var(--lav);opacity:.6;transition:transform .2s}
-.d-par .d-parallax-l3{inset:44px;background:var(--ink);opacity:.8;transition:transform .2s}
+.d-par .d-parallax-l1{inset:18px;background:var(--mint);opacity:.5;transition:transform 180ms}
+.d-par .d-parallax-l2{inset:30px;background:var(--lav);opacity:.6;transition:transform 180ms}
+.d-par .d-parallax-l3{inset:44px;background:var(--ink);opacity:.8;transition:transform 180ms}
 .d-hint{font-size:11px;color:var(--faint)}
 `},
 {id:'view-transition',cat:"过渡",t:"视图过渡",en:"View Transitions API",d:"页面/列表切换的整块过渡；支持的浏览器自动生效，不支持就直接切。",body:`<div class="d-vt"><div class="d-view-transition-pane d-view-transition-a">列表</div><button class="d-btn" data-vt>切到详情</button></div>`,css:`.d-vt{display:flex;align-items:center;gap:14px}
-.d-vt .d-view-transition-pane{width:120px;height:70px;border-radius:10px;display:grid;place-items:center;font-size:12px;background:var(--paper);border:1px solid var(--line);view-transition-name:d-view}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-vt .d-view-transition-pane{width:120px;height:70px;border-radius:10px;display:grid;place-items:center;font-size:11px;background:var(--paper);border:1px solid var(--line);view-transition-name:d-view}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'flip-list',cat:"过渡",t:"列表重排",en:"FLIP reorder",d:"排序/筛选时元素交换位置而不是瞬间跳变；用 transform 记首末位。",body:`<div class="d-flip"><i>1</i><i>2</i><i>3</i><i>4</i></div><button class="d-btn" data-shuffle>打乱</button>`,css:`.d-flip{display:flex;gap:8px}
-.d-flip i{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);transition:transform .35s var(--ease)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-flip i{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);transition:transform 280ms var(--var(--ease))}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'custom-cursor',cat:"光标",t:"自定义光标",en:"custom cursor",d:"一个跟随的小圆点，按下时变大；页面内才生效。",body:`<div class="d-cur">在这块里移动</div>`,css:`.d-cur{position:relative;width:220px;height:90px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
-.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width .15s,height .15s}`},
-{id:'tilt',cat:"光标",t:"3D 倾斜卡",en:"pointer tilt",d:"卡片随指针轻微倾斜；角度控制在 6° 内，否则廉价。",body:`<div class="d-tilt"><b>悬停倾斜</b><span>6° 以内</span></div>`,css:`.d-tilt{width:160px;height:90px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform .18s var(--ease);will-change:transform;box-shadow:0 8px 24px #20241e10}
-.d-tilt span{font-size:10.5px;color:var(--faint)}`},
+.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width 120ms,height 120ms}`},
+{id:'tilt',cat:"光标",t:"3D 倾斜卡",en:"pointer tilt",d:"卡片随指针轻微倾斜；角度控制在 6° 内，否则廉价。",body:`<div class="d-tilt"><b>悬停倾斜</b><span>6° 以内</span></div>`,css:`.d-tilt{width:160px;height:90px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform .18s var(--var(--ease));will-change:transform;box-shadow:0 8px 24px #20241e10}
+.d-tilt span{font-size:11px;color:var(--faint)}`},
 {id:'drag-scroll',cat:"拖拽",t:"拖拽滚动",en:"drag to scroll",d:"横向列表按住拖动；触屏天然支持，桌面补这一段。",body:`<div class="d-drag"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i></div>`,css:`.d-drag{display:flex;gap:10px;width:100%;overflow:auto;cursor:grab;scrollbar-width:none;padding:4px}
 .d-drag i{flex:0 0 90px;height:70px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line)}`},
 {id:'progress-ring',cat:"加载",t:"环形进度",en:"progress ring",d:"未知时长用无限转；已知进度用 determinate。",body:`<div class="d-progress-ring-kf"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle class="d-progress-ring-v" cx="20" cy="20" r="16"/></svg></div>`,css:`.d-progress-ring-kf svg{width:56px;height:56px;transform:rotate(-90deg)}
@@ -326,18 +326,18 @@ const DEMOS = [
 .d-typing i:nth-child(2){animation-delay:.15s}.d-typing i:nth-child(3){animation-delay:.3s}
 @keyframes d-typing-blink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}`},
 {id:'optimistic',cat:"加载",t:"乐观上屏",en:"optimistic send",d:"按下发送立刻出现半透明消息，失败再标红；这是聊天里最重要的一个感。",body:`<div class="d-opt"><div class="d-optimistic-m d-optimistic-mine">这条已经在屏幕上<em>发送中…</em></div></div><button class="d-btn" data-opt>模拟发送</button>`,css:`.d-opt{display:flex;flex-direction:column;gap:6px;width:100%}
-.d-opt .d-optimistic-m{align-self:flex-end;padding:8px 12px;border-radius:10px;background:#dce8c8;color:#141a10;font-size:12px;display:flex;gap:8px;align-items:center;transition:opacity .3s}
-.d-opt .d-optimistic-m em{font-style:normal;font-size:10px;color:#5d6f49}
+.d-opt .d-optimistic-m{align-self:flex-end;padding:8px 12px;border-radius:10px;background:#dce8c8;color:#141a10;font-size:11px;display:flex;gap:8px;align-items:center;transition:opacity 280ms}
+.d-opt .d-optimistic-m em{font-style:normal;font-size:9px;color:#5d6f49}
 .d-opt .d-optimistic-m.fail{background:#ffe1da;color:#7a2b18}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
 {id:'accordion',cat:"布局",t:"手风琴展开",en:"accordion",d:"高度自动过渡（用 grid-template-rows 0fr→1fr，不需要知道内容高度）。",body:`<div class="d-acc"><button class="d-btn" data-acc>展开详情</button><div class="d-accordion-body"><div class="d-accordion-inner">这里是一段很长的详情内容，展开时高度平滑过渡，不需要测量 scrollHeight。</div></div></div>`,css:`.d-acc{width:100%}
-.d-acc .d-accordion-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
+.d-acc .d-accordion-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 280ms var(--var(--ease))}
 .d-acc[data-open] .d-accordion-body{grid-template-rows:1fr}
-.d-acc .d-accordion-inner{overflow:hidden;font-size:12px;color:var(--muted);padding-top:8px}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-acc .d-accordion-inner{overflow:hidden;font-size:11px;color:var(--muted);padding-top:8px}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -346,10 +346,10 @@ const DEMOS = [
 .d-split .d-splitter-r{flex:1;display:grid;place-items:center;font-size:11px;color:var(--muted)}
 .d-split .d-splitter-g{width:5px;cursor:col-resize;background:var(--line)}`},
 {id:'container-query',cat:"布局",t:"容器查询",en:"container query",d:"组件跟着「自己所在栏宽」变形，而不是跟着窗口。",body:`<div class="d-cq"><div class="d-container-query-cardd"><b>自适应卡</b><span>我会跟着所在容器变窄而换行</span></div></div>`,css:`.d-cq{container-type:inline-size;width:100%;resize:horizontal;overflow:auto;border:1px dashed var(--line);border-radius:10px;padding:10px}
-.d-cq .d-container-query-cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:12px}
+.d-cq .d-container-query-cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:11px}
 @container (max-width:180px){.d-cq .d-container-query-cardd{flex-direction:column;align-items:flex-start}}`},
-{id:'count-up',cat:"数据",t:"数字滚动",en:"count-up",d:"金额、计数变化时滚一下；时长 500–900ms，别超过 1s。",body:`<b class="d-num">0</b><button class="d-btn" data-count>再来一次</button>`,css:`.d-num{font-size:26px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+{id:'count-up',cat:"数据",t:"数字滚动",en:"count-up",d:"金额、计数变化时滚一下；时长 500–900ms，别超过 1s。",body:`<b class="d-num">0</b><button class="d-btn" data-count>再来一次</button>`,css:`.d-num{font-size:21px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--linear),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
@@ -359,22 +359,22 @@ const DEMOS = [
 @keyframes d-bars-grow-bar{to{height:var(--v)}}`},
 {id:'toast-stack',cat:"反馈",t:"堆叠提示",en:"toast stack",d:"多条提示向上叠、自动消失、悬停暂停。",body:`<button class="d-btn" data-toast>来一条提示</button><div class="d-toasts"></div>`,css:`.d-toasts{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
 .d-toast{padding:7px 12px;border-radius:10px;background:var(--ink);color:var(--paper);font-size:11px;animation:d-toast-in .28s var(--ease)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
-{id:'badge-pop',cat:"反馈",t:"角标跳动",en:"badge pop",d:"未读/待办数字变化时弹一下，提醒但不打断。",body:`<div class="d-badge2">收件箱 <b>3</b></div><button class="d-btn" data-badge2>+1</button>`,css:`.d-badge2{display:flex;align-items:center;gap:8px;font-size:12px}
-.d-badge2 b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--coral);color:#fff;font-size:10.5px}
+{id:'badge-pop',cat:"反馈",t:"角标跳动",en:"badge pop",d:"未读/待办数字变化时弹一下，提醒但不打断。",body:`<div class="d-badge2">收件箱 <b>3</b></div><button class="d-btn" data-badge2>+1</button>`,css:`.d-badge2{display:flex;align-items:center;gap:8px;font-size:11px}
+.d-badge2 b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--coral);color:#fff;font-size:11px}
 .d-badge2 b.on{animation:d-pop .42s var(--ease-spring)}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease-spring)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},
-{id:'split-text',cat:"排印",t:"逐字揭示",en:"split text",d:"标题逐字浮起；只给首屏主标题用，正文别做。",body:`<div class="d-splittext">把想法变成界面</div>`,css:`.d-splittext{font-size:22px;font-weight:750;letter-spacing:-.03em}
+{id:'split-text',cat:"排印",t:"逐字揭示",en:"split text",d:"标题逐字浮起；只给首屏主标题用，正文别做。",body:`<div class="d-splittext">把想法变成界面</div>`,css:`.d-splittext{font-size:21px;font-weight:750;letter-spacing:-.03em}
 .d-splittext span{display:inline-block;opacity:0;transform:translateY(.5em);animation:d-char .5s var(--ease) forwards}`},
-{id:'gradient-sweep',cat:"排印",t:"渐变扫光",en:"gradient sweep",d:"标题上一道光扫过；只在「生成完成」时放一次，常驻会廉价。",body:`<div class="d-grad">已完成</div>`,css:`.d-grad{font-size:20px;font-weight:750;background:linear-gradient(90deg,var(--ink) 30%,var(--faint) 50%,var(--ink) 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:d-gradient-sweep-kf 2.4s var(--ease) infinite}
+{id:'gradient-sweep',cat:"排印",t:"渐变扫光",en:"gradient sweep",d:"标题上一道光扫过；只在「生成完成」时放一次，常驻会廉价。",body:`<div class="d-grad">已完成</div>`,css:`.d-grad{font-size:21px;font-weight:750;background:linear-gradient(90deg,var(--ink) 30%,var(--faint) 50%,var(--ink) 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:d-gradient-sweep-kf 2.4s var(--ease) infinite}
 @keyframes d-gradient-sweep-kf{from{background-position:200% 0}to{background-position:-200% 0}}`},
-{id:'variable-weight',cat:"排印",t:"字重呼吸",en:"variable font weight",d:"悬停时字重变粗；需要可变字体，没有就退化成颜色变化。",body:`<div class="d-vf">悬停我</div>`,css:`.d-vf{font-size:20px;font-weight:400;font-variation-settings:"wght" 400;transition:font-variation-settings .3s var(--ease),letter-spacing .3s var(--ease)}
+{id:'variable-weight',cat:"排印",t:"字重呼吸",en:"variable font weight",d:"悬停时字重变粗；需要可变字体，没有就退化成颜色变化。",body:`<div class="d-vf">悬停我</div>`,css:`.d-vf{font-size:21px;font-weight:400;font-variation-settings:"wght" 400;transition:font-variation-settings 280ms var(--var(--ease)),letter-spacing 280ms var(--var(--ease))}
 .d-vf:hover{font-variation-settings:"wght" 750;letter-spacing:-.02em}`},
 {id:'reduced-motion',cat:"无障碍",t:"尊重减少动效",en:"prefers-reduced-motion",d:"系统开启「减少动态效果」时，动画时长归零但状态仍变化。这是硬要求。",body:`<div class="d-rm">我会动</div><span class="d-hint" data-rmnote></span>`,css:`.d-rm{width:40px;height:40px;border-radius:10px;background:var(--lime);animation:d-reduced-motion-spin 2s var(--ease) infinite}
 @keyframes d-reduced-motion-spin{50%{transform:rotate(180deg) scale(.9)}100%{transform:rotate(360deg)}}
@@ -382,7 +382,7 @@ const DEMOS = [
 .d-hint{font-size:11px;color:var(--faint)}
 `},
 {id:'focus-ring',cat:"无障碍",t:"焦点环",en:"focus-visible",d:"键盘 Tab 才有环、鼠标点没有；环要 2px 且与背景有对比。",body:`<button class="d-btn d-focus">按 Tab 到我</button><button class="d-btn">再按一次 Tab</button>`,css:`.d-focus:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform 180ms var(--var(--ease)),background-color 180ms,color 180ms,border-color 180ms}
 .d-btn:hover{box-shadow:0 6px 18px #20241e14}
 .d-btn:active{transform:scale(.97)}
 `},

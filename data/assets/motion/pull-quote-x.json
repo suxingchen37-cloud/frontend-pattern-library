@@ -5,7 +5,7 @@
   "en": "pull quote",
   "d": "把一句重要的话从正文里拎出来，左边一条线，读者会自然停一下。",
   "body": "<figure class=\"d-pq3\"><blockquote>慢一点，才看得见。</blockquote><figcaption>—— 编辑室，第 07 期</figcaption></figure>",
-  "css": ".d-pq3{margin:0;max-width:280px;border-left:2px solid var(--ink);padding:2px 0 2px 16px}\n.d-pq3 blockquote{margin:0;font-family:var(--serif);font-size:19px;line-height:1.7}\n.d-pq3 figcaption{margin-top:6px;font:10px var(--mono);color:var(--faint)}",
+  "css": ".d-pq3{margin:0;max-width:280px;border-left:2px solid var(--ink);padding:2px 0 2px 16px}\n.d-pq3 blockquote{margin:0;font-family:var(--serif);font-size:21px;line-height:1.7}\n.d-pq3 figcaption{margin-top:6px;font:10px var(--mono);color:var(--faint)}",
   "init": null,
   "source": "lab-extra3",
   "motion": "无动效"

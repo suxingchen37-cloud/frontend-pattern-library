@@ -5,7 +5,7 @@
   "en": "infinite scroll",
   "d": "底部哨兵进入视口就加载下一批；带\"正在加载\"细行，不要只有转圈。",
   "body": "\n  <div class=\"d-inf\"><div class=\"d-infinite-scroll-items\"><div>第 1 条</div><div>第 2 条</div><div>第 3 条</div><div>第 4 条</div><div>第 5 条</div><div>第 6 条</div></div><div class=\"d-infinite-scroll-sentinel\">滚到底自动加载</div></div>",
-  "css": ".d-inf{width:200px;height:110px;overflow:auto;border:1px solid var(--line);border-radius:10px;font-size:11.5px}\n.d-inf .d-infinite-scroll-items div{padding:7px 10px;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--muted)}\n.d-inf .d-infinite-scroll-sentinel{padding:8px;text-align:center;font-size:10.5px;color:var(--faint)}",
+  "css": ".d-inf{width:200px;height:110px;overflow:auto;border:1px solid var(--line);border-radius:10px;font-size:11px}\n.d-inf .d-infinite-scroll-items div{padding:7px 10px;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--muted)}\n.d-inf .d-infinite-scroll-sentinel{padding:8px;text-align:center;font-size:11px;color:var(--faint)}",
   "init": "root => {\n    const box = root.querySelector('.d-inf'), items = box.querySelector('.d-infinite-scroll-items'), sent = box.querySelector('.d-infinite-scroll-sentinel');\n    let n = items.children.length, busy = false;\n    box.addEventListener('scroll', () => {\n      if (busy || box.scrollTop + box.clientHeight < box.scrollHeight - 30) return;\n      busy = true; sent.textContent = '正在加载…';\n      setTimeout(() => { for (let k = 0; k < 3; k++) { n++; const d = document.createElement('div'); d.textContent = '第 ' + n + ' 条'; items.appendChild(d); } sent.textContent = '滚到底自动加载'; busy = false; }, 700);\n    });\n  }",
   "source": "lab-extra2",
   "motion": "机械"

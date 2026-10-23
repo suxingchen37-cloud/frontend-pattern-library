@@ -6,4 +6,4 @@
 .d-audio-wave-wave3.on i:nth-child(4n){animation-duration:.94s}
 @keyframes d-audio-wave-kf{from{transform:scaleY(.45)}to{transform:scaleY(1.4)}}
 @media(prefers-reduced-motion:reduce){.d-audio-wave-wave3.on i{animation:none}}
-.d-aw3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 10px;cursor:pointer}
+.d-aw3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 10px;cursor:pointer}
