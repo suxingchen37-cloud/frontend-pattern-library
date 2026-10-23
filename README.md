@@ -54,6 +54,14 @@ node tools/build.mjs --check && node tools/site.mjs --check
 > `agent/` 入库是「还没有 Pages 时的取料方案」。等 GitHub Actions 部署跑通，
 > 可以把它移出仓库、改由 CI 在发布前构建，届时 `.gitignore` 加回 `agent/` 即可。
 
+## 本库不预设风格
+
+**资产是材料，不是风格。** `llms.txt` 只规定质量底线（禁 AI 味、参数自洽、必须破一处），
+风格由使用方每次自定：六个色位、两个字族、材质与圆角取向、运动性格。
+
+资产 css 用变量（`var(--ink)`、`var(--ease)`），换风格＝换一张变量表，资产代码不动。
+`agent/tokens.css` 里那套值是**中性占位**（只为预览能渲染），不是推荐风格。
+
 ## 给人
 
 - 左栏分类筛选、搜索、密度切换、夜间主题

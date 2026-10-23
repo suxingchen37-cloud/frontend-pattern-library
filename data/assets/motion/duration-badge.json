@@ -1,0 +1,18 @@
+{
+  "id": "duration-badge",
+  "cat": "媒体",
+  "t": "时长角标",
+  "en": "duration badge",
+  "d": "时长放右下角、压在画面上，用半透明底：放画外面会被当成标题的一部分。已看过的再加一条进度条贴在底部，比角标更省地方。角标不随悬停消失，信息一直在那里。",
+  "body": "<div class=\"d-db\" data-box><div class=\"d-db-card\"><div class=\"d-db-art\"><b>第 3 场</b></div><span class=\"d-db-badge\">00:42</span><i class=\"d-db-prog\" style=\"--p:63%\"></i></div><div class=\"d-db-card\"><div class=\"d-db-art\"><b>第 4 场</b></div><span class=\"d-db-badge\">01:18</span></div></div>",
+  "css": ".d-db{display:flex;gap:10px;width:100%;max-width:340px}\n.d-db-card{position:relative;flex:1;height:110px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-db-art{position:absolute;inset:0;display:flex;align-items:flex-end;padding:8px;background:color-mix(in srgb,var(--ink) 64%,var(--paper));color:var(--paper)}\n.d-db-art b{font-size:12px}\n.d-db-badge{position:absolute;right:6px;bottom:6px;padding:1px 6px;border-radius:2px;background:color-mix(in srgb,var(--ink) 78%,transparent);color:var(--paper);font-family:var(--font-mono);font-size:9px;letter-spacing:.04em}\n.d-db-prog{position:absolute;left:0;bottom:0;height:2px;width:var(--p);background:var(--ink-vermilion)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "时长",
+    "角标",
+    "进度",
+    "媒体"
+  ],
+  "source": "v4"
+}

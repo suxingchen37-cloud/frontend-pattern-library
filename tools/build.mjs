@@ -168,6 +168,8 @@ function radiusValues(tk) {
 
 /** 预览页的 :root 变量块：只从 tokens.json 取值，一个数字都不手抄。 */
 function tokenVarBlock(tk) {
+  // 这套值是**中性占位**：只为让预览页/单条资产能渲染，不是推荐风格。
+  // 正式项目请整段替换成自己的六色位与字体（见 llms.txt「风格：本库不预设」）。
   const L = [];
   const put = (name, value, note) => {
     if (value === null || value === undefined) return;
@@ -663,6 +665,7 @@ function llmsTxt(tk, assets, cats, counts, dataRoot) {
     durationPolicy: tk.duration.policy,
     durAmbient: String(tk.duration.ambient),
     retiredLav: ('palette.retired' in tk ? String(tk.palette.retired.lav).split(' ')[0] : '#c4b6ff'),
+    varList: [...new Set([...tokenVarBlock(tk).matchAll(/(--[a-z0-9-]+)\s*:/g)].map((m) => m[1]))].join(' · '),
     bannedWords: BANNED_WORDS.join(' / ')
   };
 

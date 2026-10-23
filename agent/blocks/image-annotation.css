@@ -1,0 +1,6 @@
+.d-ia{margin:0;max-width:340px}
+.d-ia-art{position:relative;height:150px;border:1px solid var(--line);border-radius:6px;background:repeating-linear-gradient(45deg,var(--paper) 0 10px,color-mix(in srgb,var(--ink) 4%,var(--paper)) 10px 20px)}
+.d-ia-dot{position:absolute;left:var(--x);top:var(--y);width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:9px;box-shadow:0 0 0 3px var(--paper)}
+.d-ia figcaption{margin-top:8px;display:grid;gap:3px}
+.d-ia figcaption p{margin:0;display:flex;gap:8px;font-size:11px;line-height:1.7;color:var(--muted)}
+.d-ia figcaption b{font-family:var(--font-mono);font-size:9px;color:var(--ink);font-weight:400;padding-top:2px}

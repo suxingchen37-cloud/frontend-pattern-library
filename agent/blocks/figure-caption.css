@@ -1,0 +1,5 @@
+.d-fc{margin:0;max-width:340px}
+.d-fc-art{position:relative;height:120px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(120deg,var(--paper),color-mix(in srgb,var(--ink) 12%,var(--paper)))}
+.d-fc-art span{position:absolute;left:10px;bottom:8px;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--muted)}
+.d-fc figcaption{display:flex;gap:8px;margin-top:8px;font-size:11px;line-height:1.7;color:var(--muted)}
+.d-fc figcaption b{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint);font-weight:400;white-space:nowrap;padding-top:2px}

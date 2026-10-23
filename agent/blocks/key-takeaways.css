@@ -1,0 +1,5 @@
+.d-kt{max-width:340px;padding:14px 16px;border-left:2px solid var(--ink);background:var(--paper)}
+.d-kt b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;color:var(--faint);font-weight:400;margin-bottom:6px}
+.d-kt ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.d-kt li{position:relative;padding-left:14px;font-size:13px;line-height:1.6}
+.d-kt li:before{content:"";position:absolute;left:0;top:10px;width:5px;height:1px;background:var(--ink)}

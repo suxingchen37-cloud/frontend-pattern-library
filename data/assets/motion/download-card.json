@@ -1,0 +1,17 @@
+{
+  "id": "download-card",
+  "cat": "内容",
+  "t": "文件下载卡",
+  "en": "download card",
+  "d": "文件卡写清三件事：文件名、格式与大小、拿来干嘛。只写「下载」的卡片，用户得点开才知道是不是自己要的。格式和大小放在同一行等宽字，是为了对齐着扫。下载中改成进度与取消，不让按钮一直转圈。",
+  "body": "<div class=\"d-dl\"><div class=\"d-dl-row\"><b>灯光清单.pdf</b><span>PDF · 240 KB · 打印用 A3</span></div><button type=\"button\" class=\"d-dl-btn\" data-dl>下载</button></div>",
+  "css": ".d-dl{display:flex;align-items:center;gap:12px;max-width:340px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}\n.d-dl-row{min-width:0;flex:1}\n.d-dl-row b{display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}\n.d-dl-row span{display:block;margin-top:1px;font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}\n.d-dl-btn{flex:0 0 auto;min-width:76px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-dl-btn.busy{color:var(--muted)}",
+  "init": "root => {\n  var btn = root.querySelector('[data-dl]');\n  if (!btn) return;\n  var p = 0, timer = 0;\n  btn.addEventListener('click', function () {\n    if (btn.classList.contains('busy')) { clearInterval(timer); btn.classList.remove('busy'); btn.textContent = '下载'; return; }\n    btn.classList.add('busy'); p = 0;\n    timer = setInterval(function () { p += 20; btn.textContent = p + '%'; if (p >= 100) { clearInterval(timer); btn.textContent = '已下载'; setTimeout(function () { btn.classList.remove('busy'); btn.textContent = '再下一次'; }, 900); } }, 220);\n  });\n}",
+  "motion": "机械",
+  "tags": [
+    "下载",
+    "文件",
+    "内容"
+  ],
+  "source": "v4"
+}

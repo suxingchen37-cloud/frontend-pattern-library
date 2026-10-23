@@ -1,0 +1,8 @@
+.d-qp{margin:0;max-width:340px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.d-qp blockquote{margin:0;font-family:var(--font-serif);font-size:21px;line-height:1.6;letter-spacing:-.01em}
+.d-qp blockquote:before{content:"「";color:var(--faint)}
+.d-qp blockquote:after{content:"」";color:var(--faint)}
+.d-qp figcaption{display:flex;align-items:center;gap:8px;margin-top:10px}
+.d-qp-ava{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-serif);font-size:11px}
+.d-qp figcaption b{display:block;font-size:11px}
+.d-qp figcaption em{display:block;font-style:normal;font-family:var(--font-mono);font-size:9px;color:var(--faint)}

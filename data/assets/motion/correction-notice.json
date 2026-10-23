@@ -1,0 +1,18 @@
+{
+  "id": "correction-notice",
+  "cat": "内容",
+  "t": "更正声明",
+  "en": "correction notice",
+  "d": "更正放在正文最上方、用一条竖线标出、写清哪里错了、改成什么、什么时候改的：把更正藏到文末，等于等读者发现。竖线用警示色，正文仍用正常色——错的是事实，不是整篇文章。不写「感谢指正」这类客套，一句足够。",
+  "body": "<div class=\"d-cr\"><b>10 月 2 日更正</b><p>原文写「三千开尔文」，实际是三千五百；第二段的实测数据同时更新。原文保留删除线，可对照。</p><p class=\"d-cr-old\"><del>三千开尔文</del> → <ins>三千五百开尔文</ins></p></div>",
+  "css": ".d-cr{max-width:340px;padding:10px 0 10px 12px;border-left:2px solid var(--warn)}\n.d-cr b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--warn);font-weight:400}\n.d-cr p{margin:4px 0 0;font-size:11px;line-height:1.8;color:var(--muted)}\n.d-cr-old{font-family:var(--font-mono);font-size:10px}\n.d-cr-old del{color:var(--faint)}\n.d-cr-old ins{text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "更正",
+    "声明",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,8 @@
+.d-tb{max-width:340px;padding-left:4px}
+.d-tb ol{list-style:none;margin:0;padding:0 0 0 18px;border-left:1px solid var(--line)}
+.d-tb li{position:relative;padding:0 0 14px 10px}
+.d-tb li:last-child{padding-bottom:0}
+.d-tb li:before{content:"";position:absolute;left:-23px;top:6px;width:7px;height:7px;border-radius:50%;background:var(--bg);border:1px solid var(--ink)}
+.d-tb b{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--faint);font-weight:400}
+.d-tb span{display:block;font-size:13px;margin-top:1px}
+.d-tb p{margin:1px 0 0;font-size:11px;line-height:1.7;color:var(--muted)}

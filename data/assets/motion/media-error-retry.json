@@ -1,0 +1,18 @@
+{
+  "id": "media-error-retry",
+  "cat": "媒体",
+  "t": "媒体加载失败",
+  "en": "media error retry",
+  "d": "失败时保留播放器外框和时长，只在画面位置写原因：整块换成一个错误页，用户会以为跳走了。原因写人话（「文件在，但解不开」而不是 error code），下面给重试和「换个清晰度」两条路，因为失败常常只是这一档码率的问题。",
+  "body": "<div class=\"d-mer\" data-box><div class=\"d-mer-frame\"><div class=\"d-mer-ok\" data-ok><span>画面正常</span></div><div class=\"d-mer-err\" data-err hidden><b>这段解不开</b><p>文件在，但编码不支持。</p><div class=\"d-mer-acts\"><button type=\"button\" data-retry>重试</button><button type=\"button\" data-alt>换清晰度</button></div></div></div><div class=\"d-mer-bar\"><span>00:42</span><button type=\"button\" data-break>模拟失败</button></div></div>",
+  "css": ".d-mer{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-mer-frame{position:relative;height:130px}\n.d-mer-ok{position:absolute;inset:0;display:flex;align-items:flex-end;padding:10px;background:color-mix(in srgb,var(--ink) 68%,var(--paper));color:var(--paper)}\n.d-mer-ok span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;opacity:.85}\n.d-mer-err{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--bg);text-align:center}\n.d-mer-err b{font-size:13px}\n.d-mer-err p{margin:0;font-size:11px;color:var(--muted)}\n.d-mer-acts{display:flex;gap:6px;margin-top:6px}\n.d-mer-acts button{padding:3px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}\n.d-mer-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;border-top:1px solid var(--line)}\n.d-mer-bar span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n.d-mer-bar button{padding:2px 10px;border:0;background:none;color:var(--faint);font:inherit;font-size:10px;cursor:pointer;text-decoration:underline}",
+  "init": "root => {\n  var ok = root.querySelector('[data-ok]');\n  var err = root.querySelector('[data-err]');\n  var brk = root.querySelector('[data-break]');\n  var retry = root.querySelector('[data-retry]');\n  var alt = root.querySelector('[data-alt]');\n  if (!ok || !err) return;\n  var show = function (bad) { ok.hidden = bad; err.hidden = !bad; };\n  if (brk) brk.addEventListener('click', function () { show(true); });\n  if (retry) retry.addEventListener('click', function () { err.querySelector('p').textContent = '正在重连…'; setTimeout(function () { show(false); err.querySelector('p').textContent = '文件在，但编码不支持。'; }, 900); });\n  if (alt) alt.addEventListener('click', function () { err.querySelector('p').textContent = '已切到 720p，正在重新加载…'; setTimeout(function () { show(false); }, 900); });\n}",
+  "motion": "机械",
+  "tags": [
+    "失败",
+    "重试",
+    "媒体",
+    "状态"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "endnote-list",
+  "cat": "内容",
+  "t": "文末注释",
+  "en": "endnotes",
+  "d": "注释统一放文末、正文里只留上标数字：脚注浮层适合网页，但打印出来会散架。注释编号和正文用同一套等宽数字，扫的时候能对上。每条注释带一个「回到正文」的锚点，不加也能用，加了更像书。",
+  "body": "<div class=\"d-en\"><p class=\"d-en-body\">显色指数低于八十时，红色会明显发灰<sup><a href=\"#\" class=\"d-en-ref\" data-n=\"1\">1</a></sup>，这一点在布料上最明显<sup><a href=\"#\" class=\"d-en-ref\" data-n=\"2\">2</a></sup>。</p><ol class=\"d-en-list\"><li id=\"d-en-1\"><b>1</b><span>《照明设计手册》第三版，第 42 页。</span></li><li id=\"d-en-2\"><b>2</b><span>2026 年 3 月实测，同色布在两种灯下的照片对比。</span></li></ol></div>",
+  "css": ".d-en{max-width:340px;padding:12px}\n.d-en-body{margin:0 0 10px;font-size:13px;line-height:1.9}\n.d-en-body sup a{font-family:var(--font-mono);font-size:9px;color:var(--ink-vermilion);text-decoration:none;padding:0 1px}\n.d-en-list{margin:0;padding:10px 0 0;border-top:1px solid var(--line);list-style:none;display:grid;gap:5px}\n.d-en-list li{display:flex;gap:8px;font-size:11px;line-height:1.7;color:var(--muted)}\n.d-en-list b{font-family:var(--font-mono);font-size:9px;color:var(--faint);font-weight:400;padding-top:2px}",
+  "init": "root => {\n  [].slice.call(root.querySelectorAll('[data-n]')).forEach(function (a) {\n    a.addEventListener('click', function (e) {\n      e.preventDefault();\n      var t = root.querySelector('#d-en-' + a.dataset.n);\n      if (t) { t.scrollIntoView({ block: 'nearest' }); t.style.background = 'color-mix(in srgb,var(--marker-hi) 30%,transparent)'; setTimeout(function () { t.style.background = ''; }, 900); }\n    });\n  });\n}",
+  "motion": "无动效",
+  "tags": [
+    "注释",
+    "脚注",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

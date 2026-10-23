@@ -1,0 +1,5 @@
+.d-sn{max-width:340px;padding:12px 14px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.d-sn>span{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint)}
+.d-sn-row{display:flex;justify-content:space-between;gap:10px;margin-top:8px}
+.d-sn-row a{font-size:12px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+.d-sn-row a:hover{border-bottom-color:var(--ink)}

@@ -1,0 +1,6 @@
+.d-cr{max-width:340px;padding:10px 0 10px 12px;border-left:2px solid var(--warn)}
+.d-cr b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--warn);font-weight:400}
+.d-cr p{margin:4px 0 0;font-size:11px;line-height:1.8;color:var(--muted)}
+.d-cr-old{font-family:var(--font-mono);font-size:10px}
+.d-cr-old del{color:var(--faint)}
+.d-cr-old ins{text-decoration:none;color:var(--ink);border-bottom:1px solid var(--ink)}

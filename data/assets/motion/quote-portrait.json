@@ -1,0 +1,18 @@
+{
+  "id": "quote-portrait",
+  "cat": "内容",
+  "t": "带头像引语",
+  "en": "quote with portrait",
+  "d": "引语配头像时，头像放在引语下方而不是上方：先读话，再确认是谁说的。加粗引号用文字标点而不是图形，这样缩放时不会错位。引语太长就截断，一句半以内最像人说的话。",
+  "body": "<figure class=\"d-qp\"><blockquote>灯不用亮，够用就行。</blockquote><figcaption><span class=\"d-qp-ava\">周</span><div><b>周迟</b><em>灯光师 · 九年</em></div></figcaption></figure>",
+  "css": ".d-qp{margin:0;max-width:340px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}\n.d-qp blockquote{margin:0;font-family:var(--font-serif);font-size:21px;line-height:1.6;letter-spacing:-.01em}\n.d-qp blockquote:before{content:\"「\";color:var(--faint)}\n.d-qp blockquote:after{content:\"」\";color:var(--faint)}\n.d-qp figcaption{display:flex;align-items:center;gap:8px;margin-top:10px}\n.d-qp-ava{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-serif);font-size:11px}\n.d-qp figcaption b{display:block;font-size:11px}\n.d-qp figcaption em{display:block;font-style:normal;font-family:var(--font-mono);font-size:9px;color:var(--faint)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "引语",
+    "头像",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

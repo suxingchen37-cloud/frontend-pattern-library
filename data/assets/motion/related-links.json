@@ -1,0 +1,18 @@
+{
+  "id": "related-links",
+  "cat": "内容",
+  "t": "相关阅读",
+  "en": "related links",
+  "d": "相关阅读给三条、每条带一句为什么相关：只给标题等于让人猜。三条以内是有理由的——再多，读者会认为这是推荐位而不是延伸阅读。链接文字用标题本身，不写「点击阅读」。",
+  "body": "<div class=\"d-rl\"><b>接着读</b><ol><li><span>《白天也需要开灯的房间》</span><em>讲的是同一个房间，但换了南窗。</em></li><li><span>《三千五百开尔文的来历》</span><em>为什么这个数字反复出现在灯具上。</em></li><li><span>《一张白纸测显色》</span><em>三分钟能做完的土办法。</em></li></ol></div>",
+  "css": ".d-rl{max-width:340px;padding-top:12px;border-top:1px solid var(--line)}\n.d-rl>b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;color:var(--faint);font-weight:400;margin-bottom:6px}\n.d-rl ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:r}\n.d-rl li{position:relative;padding-left:18px}\n.d-rl li:before{counter-increment:r;content:counter(r);position:absolute;left:0;top:1px;font-family:var(--font-mono);font-size:9px;color:var(--faint)}\n.d-rl li span{display:block;font-size:12px;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;cursor:pointer}\n.d-rl li em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:1px}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "相关",
+    "阅读",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "series-nav",
+  "cat": "内容",
+  "t": "系列导航",
+  "en": "series nav",
+  "d": "系列文章在文末给出上一篇和下一篇，标明第几篇共几篇：只给标题，读者不知道自己在哪儿。当前篇不用高亮列表，只写「第 3 篇 / 共 6 篇」，一行就够。链接方向用文字「上一篇」，不用箭头。",
+  "body": "<div class=\"d-sn\"><span>这是「光与房间」的第 3 篇，共 6 篇</span><div class=\"d-sn-row\"><a href=\"#\">上一篇：窗的朝向</a><a href=\"#\">下一篇：阴影的形状</a></div></div>",
+  "css": ".d-sn{max-width:340px;padding:12px 14px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}\n.d-sn>span{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint)}\n.d-sn-row{display:flex;justify-content:space-between;gap:10px;margin-top:8px}\n.d-sn-row a{font-size:12px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}\n.d-sn-row a:hover{border-bottom-color:var(--ink)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "系列",
+    "导航",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "poster-hover-preview",
+  "cat": "媒体",
+  "t": "海报悬停预览",
+  "en": "poster hover preview",
+  "d": "悬停 400ms 后才开始预览，鼠标只是划过去不会播：一划过就动的卡片会让人不敢移动鼠标。预览只放 3 秒，且不循环——循环预览会让人误以为这本来就是一段动图。移开立刻回到海报，不给残留。",
+  "body": "<div class=\"d-pp2\" data-box><div class=\"d-pp2-card\" data-card><div class=\"d-pp2-poster\"><b>第 3 场</b><span>00:42</span></div><div class=\"d-pp2-live\"><i></i><em>预览 3s</em></div></div><p class=\"d-pp2-note\">悬停看 3 秒预览</p></div>",
+  "css": ".d-pp2{width:100%;max-width:340px}\n.d-pp2-card{position:relative;height:150px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden;cursor:pointer}\n.d-pp2-poster{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:10px;background:linear-gradient(150deg,color-mix(in srgb,var(--ink) 70%,var(--paper)),color-mix(in srgb,var(--ink) 45%,var(--paper)));color:var(--paper);transition:opacity 200ms var(--ease)}\n.d-pp2-poster b{font-size:13px}\n.d-pp2-poster span{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;opacity:.85}\n.d-pp2-live{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;background:color-mix(in srgb,var(--ink) 82%,var(--paper));color:var(--paper);opacity:0;transition:opacity 200ms var(--ease);pointer-events:none}\n.d-pp2-card.on .d-pp2-live{opacity:1}\n.d-pp2-live i{width:6px;height:6px;border-radius:50%;background:var(--marker-hi);animation:d-poster-hover-preview-blink 1s steps(2) infinite}\n.d-pp2-live em{font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em}\n.d-pp2-note{margin:6px 0 0;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}\n@keyframes d-poster-hover-preview-blink{50%{opacity:.3}}",
+  "init": "root => {\n  var card = root.querySelector('[data-card]');\n  if (!card) return;\n  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;\n  var timer = 0;\n  card.addEventListener('pointerenter', function () { timer = setTimeout(function () { card.classList.add('on'); timer = setTimeout(function () { card.classList.remove('on'); }, 3000); }, 400); });\n  card.addEventListener('pointerleave', function () { clearTimeout(timer); card.classList.remove('on'); });\n}",
+  "motion": "物理",
+  "tags": [
+    "悬停",
+    "预览",
+    "海报",
+    "媒体"
+  ],
+  "source": "v4"
+}

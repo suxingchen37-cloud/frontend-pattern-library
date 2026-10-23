@@ -1,0 +1,6 @@
+.d-ci{max-width:340px}
+.d-ci table{width:100%;border-collapse:collapse;font-size:11px}
+.d-ci th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--ink);font-weight:600;font-size:11px}
+.d-ci td{padding:5px 8px;border-bottom:1px solid var(--line);color:var(--muted)}
+.d-ci td:first-child{color:var(--ink);width:56px}
+.d-ci-hi td{background:color-mix(in srgb,var(--marker-hi) 22%,transparent);color:var(--ink)}

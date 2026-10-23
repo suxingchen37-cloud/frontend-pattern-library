@@ -1,0 +1,6 @@
+.d-it{max-width:340px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.d-it>b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--faint);font-weight:400;margin-bottom:6px}
+.d-it ol{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.d-it a{display:block;padding:2px 0;color:var(--muted);text-decoration:none;font-size:12px;border-left:2px solid transparent;padding-left:8px}
+.d-it a.d-it-on{color:var(--ink);border-left-color:var(--ink)}
+.d-it a:hover{color:var(--ink)}

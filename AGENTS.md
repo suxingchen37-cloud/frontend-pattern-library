@@ -48,6 +48,12 @@ node tools/build.mjs --check && node tools/site.mjs --check && node tools/emit.m
 5. 临时脚本用 `tools/_` 前缀，别混进提交。
 6. 提交说明写清「改了什么、为什么」；用 `git log` 能看懂才能回退。
 
+## 风格口径（重要）
+
+本库**不预设视觉风格**：`data/rules.md` 只定质量底线（禁 AI 味、参数自洽、必须破一处、自检）。
+消费方每次自定六色位 + 两个字族 + 取向 + 运动性格；资产用变量，换风格只换变量表。
+`agent/tokens.css` 的当前值仅是**中性占位**（供预览渲染），不要当成推荐配色。
+
 ## 站点与取料
 
 - 本地站点：`http://127.0.0.1:8801/?tab=motion`

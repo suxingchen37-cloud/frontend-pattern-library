@@ -1,0 +1,6 @@
+.d-dl{display:flex;align-items:center;gap:12px;max-width:340px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.d-dl-row{min-width:0;flex:1}
+.d-dl-row b{display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d-dl-row span{display:block;margin-top:1px;font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}
+.d-dl-btn{flex:0 0 auto;min-width:76px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.d-dl-btn.busy{color:var(--muted)}

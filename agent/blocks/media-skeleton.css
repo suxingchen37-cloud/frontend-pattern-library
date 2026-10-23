@@ -1,0 +1,14 @@
+.d-msk{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-msk-frame{position:relative;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:10px;background:color-mix(in srgb,var(--ink) 8%,var(--paper));overflow:hidden}
+.d-msk-bones{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 18px}
+.d-msk-bones i{display:block;height:8px;border-radius:2px;background:color-mix(in srgb,var(--ink) 12%,var(--paper));animation:d-media-skeleton-breathe 1.2s var(--ease) infinite alternate}
+.d-msk-bones i:nth-child(2){width:70%;animation-delay:120ms}
+.d-msk-bones i:nth-child(3){width:44%;animation-delay:240ms}
+.d-msk-frame span{position:relative;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--faint);opacity:0;transition:opacity 200ms var(--ease)}
+.d-msk-frame.slow span{opacity:1}
+.d-msk-frame.done .d-msk-bones{display:none}
+.d-msk-frame.done{background:color-mix(in srgb,var(--ink) 62%,var(--paper));color:var(--paper)}
+.d-msk-bar{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;border-top:1px solid var(--line)}
+.d-msk-bar button{padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}
+.d-msk-bar span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}
+@keyframes d-media-skeleton-breathe{from{opacity:.5}to{opacity:1}}

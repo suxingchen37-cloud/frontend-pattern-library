@@ -1,0 +1,18 @@
+{
+  "id": "pull-stat",
+  "cat": "内容",
+  "t": "数字引述",
+  "en": "pull stat",
+  "d": "正文里的一个数字放大到 56px、单独占一行，旁边必须跟一句来源：没有来源的大数字，读者只会记住数不信。数字不加粗、不用油墨填满——它已经够大了，再上色就变成广告。",
+  "body": "<div class=\"d-ps2\"><b>40<span>分钟</span></b><p>一天里，只有四十分钟桌角是亮的。</p><em>来源：2026 年 3 月，三个晴天的实测。</em></div>",
+  "css": ".d-ps2{max-width:340px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}\n.d-ps2 b{display:block;font-family:var(--font-mono);font-size:56px;line-height:1;letter-spacing:-.04em;font-weight:500}\n.d-ps2 b span{font-size:21px;letter-spacing:0;margin-left:2px;color:var(--muted)}\n.d-ps2 p{margin:8px 0 0;font-family:var(--font-serif);font-size:15px;line-height:1.7;max-width:24ch}\n.d-ps2 em{display:block;margin-top:6px;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "数字",
+    "引述",
+    "长文",
+    "内容"
+  ],
+  "source": "v4"
+}

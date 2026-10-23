@@ -1,0 +1,6 @@
+.d-cc{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-cc-frame{position:relative;display:flex;align-items:flex-end;height:120px;padding:12px;background:linear-gradient(160deg,color-mix(in srgb,var(--ink) 78%,var(--paper)),color-mix(in srgb,var(--ink) 52%,var(--paper)))}
+.d-cc-line{margin:0;font-size:13px;line-height:1.6;color:var(--paper);min-height:2.2em}
+.d-cc-foot{display:flex;justify-content:space-between;align-items:center;padding:6px 12px}
+.d-cc-foot span{font-family:var(--font-mono);font-size:9px;color:var(--faint)}
+.d-cc-foot button{padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}

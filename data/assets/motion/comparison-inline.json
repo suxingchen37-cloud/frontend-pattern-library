@@ -1,0 +1,18 @@
+{
+  "id": "comparison-inline",
+  "cat": "内容",
+  "t": "正文内对比",
+  "en": "inline comparison",
+  "d": "正文里的对比用两列小表，不用卡片：卡片会把两样东西推得很远，而对比需要眼睛来回扫。差异项加一行底色标记，不加红绿——红绿在纸色上对比不足。表头只有两列，第三列会开始像决策表。",
+  "body": "<div class=\"d-ci\"><table><thead><tr><th></th><th>卤素</th><th>LED</th></tr></thead><tbody><tr><td>色温</td><td>三千</td><td>可调</td></tr><tr class=\"d-ci-hi\"><td>显色</td><td>近满分</td><td>九十二</td></tr><tr><td>发热</td><td>烫手</td><td>微温</td></tr><tr><td>寿命</td><td>两千小时</td><td>两万五千</td></tr></tbody></table></div>",
+  "css": ".d-ci{max-width:340px}\n.d-ci table{width:100%;border-collapse:collapse;font-size:11px}\n.d-ci th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--ink);font-weight:600;font-size:11px}\n.d-ci td{padding:5px 8px;border-bottom:1px solid var(--line);color:var(--muted)}\n.d-ci td:first-child{color:var(--ink);width:56px}\n.d-ci-hi td{background:color-mix(in srgb,var(--marker-hi) 22%,transparent);color:var(--ink)}",
+  "init": null,
+  "motion": "无动效",
+  "tags": [
+    "对比",
+    "表格",
+    "正文",
+    "内容"
+  ],
+  "source": "v4"
+}

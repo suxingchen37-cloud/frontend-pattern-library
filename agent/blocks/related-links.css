@@ -1,0 +1,7 @@
+.d-rl{max-width:340px;padding-top:12px;border-top:1px solid var(--line)}
+.d-rl>b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;color:var(--faint);font-weight:400;margin-bottom:6px}
+.d-rl ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:r}
+.d-rl li{position:relative;padding-left:18px}
+.d-rl li:before{counter-increment:r;content:counter(r);position:absolute;left:0;top:1px;font-family:var(--font-mono);font-size:9px;color:var(--faint)}
+.d-rl li span{display:block;font-size:12px;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;cursor:pointer}
+.d-rl li em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:1px}
