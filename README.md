@@ -1,6 +1,6 @@
 # 前端模式库
 
-一个给人和 AI 共用的前端资产库：**184 条可交互动效与 UI 模式**，25 个分类。
+一个给人和 AI 共用的前端资产库：**224 条可交互动效与 UI 模式**，26 个分类（含 18 条纯代码图表与 17 条 3D 纵深）。
 人在这里挑，AI 在这里取料；两边读的是同一份数据。
 
 在浏览器打开：`http://127.0.0.1:8801/?tab=motion`
@@ -17,13 +17,14 @@ data/rules.md                  给 AI 的口味底线（占位符渲染进 llms.
 data/categories.json           分类登记
         │
         ├─ node tools/build.mjs  → agent/（AI 取料：索引 + 单条 blocks + 单条预览）+ llms.txt
-        └─ node tools/site.mjs   → lab-extra4.js + 给 index.html / motion-lab.html 打补丁
+        ├─ node tools/site.mjs   → lab-extra4.js + 给 index.html / motion-lab.html 打补丁（source=v4）
+        └─ node tools/emit.mjs   → 老 144 条：motion-lab.html 内联数组 + lab-more/extra2/extra3
 ```
 
 ## 改完数据必须跑这三条
 
 ```bash
-node tools/build.mjs && node tools/site.mjs && node tools/verify.mjs
+node tools/build.mjs && node tools/site.mjs && node tools/emit.mjs && node tools/verify.mjs
 ```
 
 三条都退出 0 才算改完。只想确认有没有漂移：
