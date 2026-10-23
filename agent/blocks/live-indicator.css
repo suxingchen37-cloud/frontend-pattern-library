@@ -1,0 +1,12 @@
+.d-li{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-li-frame{position:relative;height:110px;overflow:hidden;background:color-mix(in srgb,var(--ink) 70%,var(--paper))}
+.d-li-scan{position:absolute;left:0;right:0;height:36px;top:-36px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--paper) 16%,transparent),transparent);animation:d-live-indicator-scan 3.6s linear infinite}
+.d-li-frame em{position:absolute;right:10px;bottom:8px;font-style:normal;font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;color:var(--paper);opacity:.85}
+.d-li-bar{display:flex;align-items:center;gap:8px;padding:8px 12px}
+.d-li-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-vermilion);animation:d-live-indicator-blink 1.4s steps(2) infinite}
+.d-li-bar.paused .d-li-dot{animation:none;background:var(--faint)}
+.d-li-bar.paused .d-li-scan{animation:none;opacity:0}
+.d-li-bar b{font-size:11px;font-weight:400}
+.d-li-bar button{margin-left:auto;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:10px;cursor:pointer}
+@keyframes d-live-indicator-blink{50%{opacity:.25}}
+@keyframes d-live-indicator-scan{from{top:-36px}to{top:110px}}

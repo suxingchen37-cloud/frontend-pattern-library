@@ -62,31 +62,22 @@
 - 禁用词：{{bannedWords}} —— 说明字段 d 要讲理由，不能喊口号。
 
 ## 起步配方（照这个改，不要从零发明）
-A｜落地页：fade-stagger（入场，错峰 40ms）+ tabs-pill（导航）+ toast-stack（反馈）。结构：标题区 → 3 张卡 → 表单；破格放在标题字号。
-B｜数据页：count-up + bars-grow + page-404。结构：4 个指标 → 1 张图 → 空态；破格放在一个指标的数字字号。
-C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长文、行宽 ≤ 68ch、不用卡片包内容。
-用法：查 agent/index.json 拿 id → 取 blocks 的 html/css → 换成本项目变量 → 按配方顺序拼 → 补一处破格。
+
+- A 落地页：fade-stagger + tabs-pill + toast-stack。结构：标题区 → 3 张卡 → 表单；破格放标题字号。
+- B 数据页：count-up + bars-grow + page-404。结构：4 个指标 → 1 张图 → 空态；破格放数字字号。
+- C 文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长文、行宽 ≤68ch、不用卡片包内容。
+- 用法：查 index 拿 id → 取 blocks 的 html/css → 换成变量 → 按顺序拼 → 补一处破格。
 
 ## 交付形状（回答里必须有这四段）
-1. 用了哪几条资产（写 id）。
-2. 破了哪一条规则、为什么（一句话）。
-3. 这一页独有的细节是什么（换个页面不会有的那种）。
-4. 自检哪几条没过（全过就写「全过」）。
 
-## 直接从 GitHub 取料（没有 Pages 时用这个）
+1. 用了哪几条资产（写 id）。2. 破了哪条规则、为什么。3. 这一页独有的细节是什么。4. 自检哪几条没过（全过写「全过」）。
 
-两种基址，按可用性挑一个（国内网络优先 jsDelivr）：
+## 直接从 GitHub 取料
 
-- **jsDelivr（推荐，实测可用）**：`https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`
-- raw.githubusercontent.com：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常被墙或超时）
-
-取料路径（把基址拼在前面）：
-- 索引：`agent/index.json`
-- 单条：`agent/blocks/<id>.html`（同目录 `.css`；有交互再加 `.js`）
-- 说明：`llms.txt`
-
-注意：jsDelivr 有缓存（约 12 小时），刚推上去的内容可能延迟出现；需要立刻拿到最新版时用 raw 或加 `?v=<时间戳>`。
-
+- 基址二选一：jsDelivr `https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`（推荐）
+  或 raw `https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常超时）
+- 拼在基址后：`llms.txt`、`agent/index.json`、`agent/tokens.css`、`agent/blocks/<id>.html|.css|.js`、`agent/preview/<id>.html`、`data/tokens.json`
+- jsDelivr 有约 12 小时缓存；要最新版加 `?v=<时间戳>`
 
 ## 取料路径
 - agent/index.json：整个库的索引；`count` 是当前条数。files 里的路径相对 agent/，形如 blocks/<id>.css。
@@ -100,13 +91,11 @@ C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长�
 
 ## 资产代码与本文冲突时
 
-老批次（144 条）有历史包袱：个别资产的 css/js 里会出现本文黑名单里的写法（行内样式、软阴影、`#0002` 之类）。
-**裁决：本文 > 资产代码。** 抄资产时按本文改，不要“因为库里这么写所以我就这么写”。
+老批次有历史包袱：个别资产里会出现本文黑名单的写法。**裁决：本文 > 资产代码**，照抄时按本文改。
 
 ## 多段页面（不止一屏）
 
-「一屏 2–3 条」是指**每个段落**，不是整页。定价页可以这样分配：
-价格段（入场 + 切换）→ FAQ 段（手风琴）→ 订阅段（行内校验）。每段 ≤3 条，整页别超过 6 条。
+「一屏 2–3 条」指每个段落，不是整页：价格段（入场 + 切换）→ FAQ（手风琴）→ 订阅（行内校验），每段 ≤3 条、整页 ≤6 条。
 
 ## 组装法（挑 2–3 条，只留一处破格）
 1. 数量：一屏 2–3 条，常见组合是「一条入场 + 一条反馈」，要强调时再加一条排印；超过 3 条叫堆料。
@@ -116,13 +105,11 @@ C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长�
 5. 落地：抄 blocks 的 body 与 css → 换成本项目变量 → 用 preview 对照 → 补 focus-visible 与 prefers-reduced-motion。
 
 ## 交付前自检
-- [ ] 所有数值都命中上面的表：字号、间距、圆角、时长，没有一个表外值。
-- [ ] 一屏油墨 ≤ 2 种；标记笔 ≤ 3 处，且没有当背景用。
-- [ ] 圆角按层级取（{{radiusList}}），没有整页同值。
-- [ ] 动效时长 ≤ {{durAmbient}}ms；超过的写了理由。
+
+- [ ] 字号/间距/圆角/时长全在表内，没有一个表外值。
+- [ ] 一屏油墨 ≤2 种；标记笔 ≤3 处且没当背景用。
+- [ ] 圆角按层级取，没有整页同值。
 - [ ] 黑名单逐条 grep 过，一条都没有。
-- [ ] 破格只有一处，且交付说明写了破坏哪条、为什么。
-- [ ] 逐处问过：这处换成普通模板会不会更好？会就删。
-- [ ] 夜间主题下看过一遍（preview 加 ?theme=night），对比度没崩。
-- [ ] focus 可见，prefers-reduced-motion 有兜底。
+- [ ] 破格只有一处，且在说明里写了破坏了哪条。
+- [ ] 夜间看过一遍；focus 可见；reduced-motion 有兜底。
 - [ ] 说明文字讲的是理由，没有禁用词。

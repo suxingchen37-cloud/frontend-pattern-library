@@ -8,7 +8,7 @@
 本库的 data/ 与产物（agent/**、llms.txt）不要动，它们由脚本生成。
 
 ## 现在有什么
-- 资产 244 条，分类 26 个，令牌表 v1.0.0；逐条清单只在 agent/index.json 里，这里不重复。
+- 资产 254 条，分类 26 个，令牌表 v1.0.0；逐条清单只在 agent/index.json 里，这里不重复。
 - 分类顺序（index.json 按它排，再按 id 字典序）：入场 → 加载 → 微交互 → 光标 → 滚动 → 过渡 → 拖拽 → 布局 → 数据 → 图表 → 反馈 → 排印 → 无障碍 → 表单 → 导航 → 浮层 → 列表 → 手势 → 内容 → 长文 → 表格 → 状态页 → 媒体 → SVG 与路径 → 3D 与透视 → 滚动驱动。
 - 每条都带 d（为什么这样做）；motion 四值：机械 / 物理 / 印刷 / 无动效。「无动效」只说明这条现在不含动画，不限制你给它加——要加就从前三族里挑一族加。
 
@@ -59,39 +59,40 @@
 - 禁用词：赋能 / 一键 / 无缝 / 极致 / 沉浸 / 丝滑 / 焕新 —— 说明字段 d 要讲理由，不能喊口号。
 
 ## 起步配方（照这个改，不要从零发明）
-A｜落地页：fade-stagger（入场，错峰 40ms）+ tabs-pill（导航）+ toast-stack（反馈）。结构：标题区 → 3 张卡 → 表单；破格放在标题字号。
-B｜数据页：count-up + bars-grow + page-404。结构：4 个指标 → 1 张图 → 空态；破格放在一个指标的数字字号。
-C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长文、行宽 ≤ 68ch、不用卡片包内容。
-用法：查 agent/index.json 拿 id → 取 blocks 的 html/css → 换成本项目变量 → 按配方顺序拼 → 补一处破格。
+
+- A 落地页：fade-stagger + tabs-pill + toast-stack。结构：标题区 → 3 张卡 → 表单；破格放标题字号。
+- B 数据页：count-up + bars-grow + page-404。结构：4 个指标 → 1 张图 → 空态；破格放数字字号。
+- C 文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长文、行宽 ≤68ch、不用卡片包内容。
+- 用法：查 index 拿 id → 取 blocks 的 html/css → 换成变量 → 按顺序拼 → 补一处破格。
 
 ## 交付形状（回答里必须有这四段）
-1. 用了哪几条资产（写 id）。
-2. 破了哪一条规则、为什么（一句话）。
-3. 这一页独有的细节是什么（换个页面不会有的那种）。
-4. 自检哪几条没过（全过就写「全过」）。
 
-## 直接从 GitHub 取料（没有 Pages 时用这个）
+1. 用了哪几条资产（写 id）。2. 破了哪条规则、为什么。3. 这一页独有的细节是什么。4. 自检哪几条没过（全过写「全过」）。
 
-两种基址，按可用性挑一个（国内网络优先 jsDelivr）：
+## 直接从 GitHub 取料
 
-- **jsDelivr（推荐，实测可用）**：`https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`
-- raw.githubusercontent.com：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常被墙或超时）
-
-取料路径（把基址拼在前面）：
-- 索引：`agent/index.json`
-- 单条：`agent/blocks/<id>.html`（同目录 `.css`；有交互再加 `.js`）
-- 说明：`llms.txt`
-
-注意：jsDelivr 有缓存（约 12 小时），刚推上去的内容可能延迟出现；需要立刻拿到最新版时用 raw 或加 `?v=<时间戳>`。
-
+- 基址二选一：jsDelivr `https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`（推荐）
+  或 raw `https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常超时）
+- 拼在基址后：`llms.txt`、`agent/index.json`、`agent/tokens.css`、`agent/blocks/<id>.html|.css|.js`、`agent/preview/<id>.html`、`data/tokens.json`
+- jsDelivr 有约 12 小时缓存；要最新版加 `?v=<时间戳>`
 
 ## 取料路径
-- agent/index.json：整个库的索引，一行一条 item；files 里的路径相对 agent/，形如 blocks/<id>.css。
+- agent/index.json：整个库的索引；`count` 是当前条数。files 里的路径相对 agent/，形如 blocks/<id>.css。
+- **agent/tokens.css：变量契约**。先把它内联进页面，再放单条 blocks 的 css——否则 `var(--ink)` / `var(--ease)` 全是空值。里面已含 `:root` 与夜间 `[data-theme="night"]` 两套。
+- data/tokens.json：数字的原始表（拼在同一个基址后面）。注意里面有些值是**片段**（例如 `border` 是 `1px solid var(--line)` 整条可用；但个别字段只是颜色/长度片段，别整段当 CSS 声明用）。
 - agent/blocks/<id>.html：body 原文，直接放进你的容器；外层自己加作用域（例如 #c-<id>）。
 - agent/blocks/<id>.css：css 原文，不带 <style>；粘进 <style> 前先加前缀作用域。
 - agent/blocks/<id>.js：init 源码，形如 window.INITS["<id>"] = root => {...}；先 <script src> 再 window.INITS["<id>"](root)，root 传承载 body 的元素。
 - agent/preview/<id>.html：单条独立页，:root 变量已注入，双击即看，不引用任何外部资源。
 - llms.txt 与 agent/** 都是 node tools/build.mjs 的产物：改数据文件后重跑，别手改产物（--check 会报）。
+
+## 资产代码与本文冲突时
+
+老批次有历史包袱：个别资产里会出现本文黑名单的写法。**裁决：本文 > 资产代码**，照抄时按本文改。
+
+## 多段页面（不止一屏）
+
+「一屏 2–3 条」指每个段落，不是整页：价格段（入场 + 切换）→ FAQ（手风琴）→ 订阅（行内校验），每段 ≤3 条、整页 ≤6 条。
 
 ## 组装法（挑 2–3 条，只留一处破格）
 1. 数量：一屏 2–3 条，常见组合是「一条入场 + 一条反馈」，要强调时再加一条排印；超过 3 条叫堆料。
@@ -101,13 +102,11 @@ C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长�
 5. 落地：抄 blocks 的 body 与 css → 换成本项目变量 → 用 preview 对照 → 补 focus-visible 与 prefers-reduced-motion。
 
 ## 交付前自检
-- [ ] 所有数值都命中上面的表：字号、间距、圆角、时长，没有一个表外值。
-- [ ] 一屏油墨 ≤ 2 种；标记笔 ≤ 3 处，且没有当背景用。
-- [ ] 圆角按层级取（table 0、tag 2、control 6、card 10、pill 999），没有整页同值。
-- [ ] 动效时长 ≤ 900ms；超过的写了理由。
+
+- [ ] 字号/间距/圆角/时长全在表内，没有一个表外值。
+- [ ] 一屏油墨 ≤2 种；标记笔 ≤3 处且没当背景用。
+- [ ] 圆角按层级取，没有整页同值。
 - [ ] 黑名单逐条 grep 过，一条都没有。
-- [ ] 破格只有一处，且交付说明写了破坏哪条、为什么。
-- [ ] 逐处问过：这处换成普通模板会不会更好？会就删。
-- [ ] 夜间主题下看过一遍（preview 加 ?theme=night），对比度没崩。
-- [ ] focus 可见，prefers-reduced-motion 有兜底。
+- [ ] 破格只有一处，且在说明里写了破坏了哪条。
+- [ ] 夜间看过一遍；focus 可见；reduced-motion 有兜底。
 - [ ] 说明文字讲的是理由，没有禁用词。

@@ -1,0 +1,7 @@
+.d-sub{width:100%;max-width:340px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-sub-frame{position:relative;height:120px;background:linear-gradient(160deg,color-mix(in srgb,var(--ink) 78%,var(--paper)),color-mix(in srgb,var(--ink) 50%,var(--paper)))}
+.d-sub-line{position:absolute;left:12px;right:12px;bottom:12px;margin:0;padding:4px 8px;background:color-mix(in srgb,var(--ink) 78%,transparent);color:var(--paper);font-size:11px;line-height:1.6;border-radius:2px;transition:opacity 160ms var(--ease)}
+.d-sub-line.off{opacity:0}
+.d-sub-bar{display:flex;gap:6px;padding:8px 12px}
+.d-sub-bar button{padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.d-sub-bar button[aria-pressed="false"]{color:var(--faint)}
