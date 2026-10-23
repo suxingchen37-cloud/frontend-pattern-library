@@ -1,0 +1,18 @@
+{
+  "id": "svg-dash-progress",
+  "cat": "SVG 与路径",
+  "t": "圆环路径进度",
+  "en": "dash progress",
+  "d": "环和数字共用同一个 requestAnimationFrame 时钟，才不会出现环走到 78%、数字还停在 65% 的错位；周长用 getTotalLength() 现算而不是写死 126，换成椭圆或非圆路径也不用手改数字。",
+  "body": "<div class=\"d-dp\"><div class=\"d-dp-ring\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-valuenow=\"0\"><svg class=\"d-dp-art\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle class=\"d-dp-track\" cx=\"24\" cy=\"24\" r=\"20\"/><circle class=\"d-dp-bar\" cx=\"24\" cy=\"24\" r=\"20\"/></svg><b class=\"d-dp-num\">0%</b></div><button class=\"d-dp-btn\" type=\"button\">重跑</button></div>",
+  "css": ".d-dp{display:flex;align-items:center;gap:16px}\n.d-dp-ring{position:relative;display:grid;place-items:center;width:72px;height:72px}\n.d-dp-art{position:absolute;inset:0;width:72px;height:72px;transform:rotate(-90deg)}\n.d-dp-track,.d-dp-bar{fill:none;stroke-width:1}\n.d-dp-track{stroke:var(--line)}\n.d-dp-bar{stroke:#2b4b8f;stroke-dasharray:126;stroke-dashoffset:126}\n.d-dp-num{font-family:var(--font-mono);font-size:var(--fs-13);font-variant-numeric:tabular-nums;min-width:34px;text-align:center;color:var(--ink)}\n.d-dp-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}\n.d-dp-btn:hover{border-color:var(--ink);color:var(--ink)}\n.d-dp-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n    const ring = root.querySelector('.d-dp-ring'), bar = ring.querySelector('.d-dp-bar'), num = ring.querySelector('.d-dp-num');\n    const btn = root.querySelector('.d-dp-btn');\n    const L = bar.getTotalLength();\n    bar.style.strokeDasharray = L + ' ' + L;\n    const DUR = 900;\n    const tick = now => {\n      if (!ring._t0) ring._t0 = now;\n      const p = Math.min(1, (now - ring._t0) / DUR);\n      bar.style.strokeDashoffset = String(L * (1 - p));\n      const v = Math.round(p * 100);\n      num.textContent = v + '%';\n      ring.setAttribute('aria-valuenow', String(v));\n      if (p < 1) ring._raf = requestAnimationFrame(tick);\n    };\n    const run = () => { cancelAnimationFrame(ring._raf); ring._t0 = 0; ring._raf = requestAnimationFrame(tick); };\n    btn.onclick = run;\n    run();\n  }",
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "进度",
+    "圆环",
+    "描边",
+    "数字"
+  ]
+}

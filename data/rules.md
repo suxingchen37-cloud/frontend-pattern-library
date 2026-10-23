@@ -1,0 +1,101 @@
+# 前端模式库 · 给 AI 的取料入口
+
+先读 agent/index.json 的 items：一行一条，字段 id / cat / t / en / d / motion / tags / hasInit / files。
+再按 files 取原文：blocks/<id>.html 是 body、blocks/<id>.css 是 css、blocks/<id>.js 是 init（hasInit 为 true 才有）。
+最后开 preview/<id>.html 看一眼（加 ?theme=night 看夜间）。看完再动手，别凭记忆拼。
+
+这个库是**取材源，不是待改的工程**：抄走的代码归你，怎么组合、改参数、加库里没有的新效果，都随你；
+本库的 data/ 与产物（agent/**、llms.txt）不要动，它们由脚本生成。
+
+## 现在有什么
+- 资产 {{assetCount}} 条，分类 {{catCount}} 个，令牌表 v{{tokensVersion}}；逐条清单只在 agent/index.json 里，这里不重复。
+- 分类顺序（index.json 按它排，再按 id 字典序）：{{catList}}。
+- 每条都带 d（为什么这样做）；motion 四值：机械 / 物理 / 印刷 / 无动效。「无动效」只说明这条现在不含动画，不限制你给它加——要加就从前三族里挑一族加。
+{{#emptyAssets}}
+- 目前一条资产都没有：data/assets/motion/ 是空的，先按 data/schema.md 写一条，再跑 node tools/build.mjs。
+{{/emptyAssets}}
+
+## 优先级规则（冲突时从上往下让）
+1. 本文的数字与黑名单 > 单条资产的写法 > 你自己的习惯。
+2. data/tokens.json 是唯一数字来源；本文与它不一致时以 tokens.json 为准，并当作 bug 报出来。
+3. 资产 css 可以整段抄，但抄来的写死值必须换成 tokens 里的值或 :root 变量。
+4. 视觉层级：留白 > 描边 > 阴影 > 颜色；同一屏油墨不超过两种。
+5. 拿不准就少做：少一条动效，好过多一条错的。
+
+## 五条公理
+1. 一屏只讲一件事：同一件事不要用两种动效重复讲，两条动效抢注意力等于没有动效。
+2. 时长由距离和面积决定，不由喜好决定：小位移用 feedback，大位移用 move，整块揭示用 reveal。
+3. 颜色是稀缺资源：油墨只用来标状态，不是用来装饰；标记笔只在需要「此刻看这里」时出现。
+4. 圆角是层级信号：桌面 0、标签 2、控件 6、卡片 10、胶囊 999，按层级取，禁止整页同值。
+5. 必须破一处，且必须写明破坏了哪条：破格不是装饰，是判断力；交付时写一句「破坏 X 条，因为 Y」，没有这句等于没做。
+
+## 写死数字（全部来自 data/tokens.json v1.0.0，不许自己发明）
+- 字号：{{fsList}} px；表外字号（14px、20px、18px 之类）一律不用。
+- 行高：body {{lhBody}}、note {{lhNote}}、display {{lhDisplay}}；字距：display {{trDisplay}}、body {{trBody}}、等宽小标签 {{trMono}}。
+- 间距：{{spList}} px；{{spacePolicy}}。
+- 圆角：{{radiusList}} px；{{radiusPolicy}}。
+- 时长：{{durList}}；{{durationPolicy}}。
+- 曲线：{{easeList}}。
+- 纸与夜：纸面 {{paperBg}} / 面板 {{paperPanel}}；夜间 {{nightBg}} / {{nightPanel}}。
+- 墨：主 {{inkMain}}、次 {{inkMuted}}、弱 {{inkFaint}}、描边 {{inkLine}}；夜间 {{inkNightMain}} / {{inkNightMuted}} / {{inkNightFaint}} / {{inkNightLine}}。
+- 油墨：{{inkList}}；{{inkPolicy}}。
+- 标记笔：{{markerHi}}；{{markerPolicy}}。
+- 状态色：{{statusList}}；只标成功/警示，不作装饰色。
+- 阴影只有三档：{{shadowList}}；{{shadowPolicy}}。
+- 描边只有两档：{{borderList}}；{{borderPolicy}}。
+
+## 黑名单（写了就是错；每条后面是原因和替代写法）
+- transition:all —— 会把无关属性一起动画，掉帧头号来源。改用：只列真会变的属性，如 transition:transform 180ms cubic-bezier(.34,1.56,.64,1)。
+- 只写一个时长的 transition（transition:.3s）—— 同样中招，等价于 all。
+- cubic-bezier(.4,0,.2,1) —— Material 默认曲线，全站一个样。改用：按动作性质取机械/物理/印刷三套之一。
+- rgba(0,0,0,…) 阴影 —— 纯黑发脏。改用：三档阴影（divider / press / overlay）或 ink 色带透明度。
+- box-shadow:0 4px 12px rgba(0,0,0,.08) —— AI 卡片的统一皮。改用：1px 硬边 + 压痕。
+- backdrop-filter —— 老设备掉帧，还把背景糊成一片。改用：实色面板 + 1px 描边。
+- 紫色系 hex（含退役的 {{retiredLav}}）—— 已从 tokens 退役。改用：墨 + 一种油墨。
+- 2px 及以上描边表强调 —— 会糊字。改用：留白或换墨。
+- 行内 style 写样式属性（height/color/margin…）、全局选择器 —— 作用域全丢。改用：本条 d- 前缀 class；只有逐元素的数据（波形高度、热力深浅）允许写成行内 `--自定义属性`。
+- css 里手写 #c- / #pv- 前缀 —— 会套两层。改用：交给渲染层。
+- @keyframes 不带 d-<id>- 前缀 —— 多条同屏互相覆盖。改用：d-<id>-<用途>。
+- 装饰性渐变当背景、玻璃拟态、发光边框 —— 2021 模板遗产。改用：色块 + 硬边。
+- 每个 section 都是「英文眉标 + 大标题 + 副标题」三段式 —— 改用具体层级手段：数字、留白、一条线。
+- 用中点拼元信息（A · B · C）、按钮文案加箭头 —— 改成自然短句或分行，动词本身够用。
+- 禁用词：{{bannedWords}} —— 说明字段 d 要讲理由，不能喊口号。
+
+## 起步配方（照这个改，不要从零发明）
+A｜落地页：fade-stagger（入场，错峰 40ms）+ tabs-pill（导航）+ toast-stack（反馈）。结构：标题区 → 3 张卡 → 表单；破格放在标题字号。
+B｜数据页：count-up + bars-grow + page-404。结构：4 个指标 → 1 张图 → 空态；破格放在一个指标的数字字号。
+C｜文档页：drop-cap + read-progress-x + footnote-pop。结构：单栏长文、行宽 ≤ 68ch、不用卡片包内容。
+用法：查 agent/index.json 拿 id → 取 blocks 的 html/css → 换成本项目变量 → 按配方顺序拼 → 补一处破格。
+
+## 交付形状（回答里必须有这四段）
+1. 用了哪几条资产（写 id）。
+2. 破了哪一条规则、为什么（一句话）。
+3. 这一页独有的细节是什么（换个页面不会有的那种）。
+4. 自检哪几条没过（全过就写「全过」）。
+
+## 取料路径
+- agent/index.json：整个库的索引，一行一条 item；files 里的路径相对 agent/，形如 blocks/<id>.css。
+- agent/blocks/<id>.html：body 原文，直接放进你的容器；外层自己加作用域（例如 #c-<id>）。
+- agent/blocks/<id>.css：css 原文，不带 <style>；粘进 <style> 前先加前缀作用域。
+- agent/blocks/<id>.js：init 源码，形如 window.INITS["<id>"] = root => {...}；先 <script src> 再 window.INITS["<id>"](root)，root 传承载 body 的元素。
+- agent/preview/<id>.html：单条独立页，:root 变量已注入，双击即看，不引用任何外部资源。
+- llms.txt 与 agent/** 都是 node tools/build.mjs 的产物：改数据文件后重跑，别手改产物（--check 会报）。
+
+## 组装法（挑 2–3 条，只留一处破格）
+1. 数量：一屏 2–3 条，常见组合是「一条入场 + 一条反馈」，要强调时再加一条排印；超过 3 条叫堆料。
+2. 同族才叠加：motion 相同（机械/物理/印刷）才放在同一段交互里，混用会让节奏打架；标「无动效」的样板本身不占节奏，你要加就挑一族加上去。
+3. 一处破格：整页只允许一处偏离 tokens，通常是把关键数字的字号或圆角放大一档；破格处写注释说明理由。
+4. 顺序：布局 → 入场 → 反馈 → 空态/错误态；先有结构，再挂动效，别拿动效遮结构。
+5. 落地：抄 blocks 的 body 与 css → 换成本项目变量 → 用 preview 对照 → 补 focus-visible 与 prefers-reduced-motion。
+
+## 交付前自检
+- [ ] 所有数值都命中上面的表：字号、间距、圆角、时长，没有一个表外值。
+- [ ] 一屏油墨 ≤ 2 种；标记笔 ≤ 3 处，且没有当背景用。
+- [ ] 圆角按层级取（{{radiusList}}），没有整页同值。
+- [ ] 动效时长 ≤ {{durAmbient}}ms；超过的写了理由。
+- [ ] 黑名单逐条 grep 过，一条都没有。
+- [ ] 破格只有一处，且交付说明写了破坏哪条、为什么。
+- [ ] 逐处问过：这处换成普通模板会不会更好？会就删。
+- [ ] 夜间主题下看过一遍（preview 加 ?theme=night），对比度没崩。
+- [ ] focus 可见，prefers-reduced-motion 有兜底。
+- [ ] 说明文字讲的是理由，没有禁用词。

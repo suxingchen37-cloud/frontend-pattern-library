@@ -1,0 +1,6 @@
+.d-rz3{width:260px;table-layout:fixed;border-collapse:collapse;font-size:10.5px}
+.d-rz3 th{position:relative;text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);font:9px var(--mono);color:var(--faint);overflow:hidden}
+.d-rz3 td{padding:6px 9px;border-bottom:1px solid var(--line);color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.d-col-resize-rz3{position:absolute;right:-3px;top:0;bottom:0;width:7px;cursor:col-resize}
+.d-col-resize-rz3:hover{background:var(--line)}
+.d-col-resize-rzhint3{margin:6px 0 0;font:9px var(--mono);color:var(--faint)}

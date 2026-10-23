@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>尊重减少动效 · reduced-motion · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px var(--line);
+  --border-strong:1px var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-rm{width:40px;height:40px;border-radius:10px;background:var(--lime);animation:d-reduced-motion-spin 2s var(--ease) infinite}
+@keyframes d-reduced-motion-spin{50%{transform:rotate(180deg) scale(.9)}100%{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.d-rm{animation:none}}
+.d-hint{font-size:11px;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>reduced-motion</code>
+  <b>尊重减少动效</b>
+  <span>prefers-reduced-motion</span>
+  <span>分类 无障碍</span>
+  <span>运动 印刷</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<div class="d-rm">我会动</div><span class="d-hint" data-rmnote></span>
+</div>
+<p class="pv-note">系统开启「减少动态效果」时，动画时长归零但状态仍变化。这是硬要求。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "reduced-motion";
+  window.INITS = window.INITS || {};
+  window.INITS["reduced-motion"] = (root => {
+    const note = root.querySelector('[data-rmnote]');
+    const mq = matchMedia('(prefers-reduced-motion: reduce)');
+    const set = () => note.textContent = mq.matches ? '系统：已开启「减少动态效果」→ 动画关闭' : '系统：未开启 → 动画运行';
+    set(); mq.addEventListener?.('change', set);
+  });
+  window.INITS["reduced-motion"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

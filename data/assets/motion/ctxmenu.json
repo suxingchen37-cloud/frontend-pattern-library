@@ -1,0 +1,12 @@
+{
+  "id": "ctxmenu",
+  "cat": "浮层",
+  "t": "右键菜单",
+  "en": "context menu",
+  "d": "对着对象右键，动作就有上下文；桌面端高频。",
+  "body": "<div class=\"d-ctxzone\">在这块里点右键</div><div class=\"d-ctx\" hidden><span>重命名</span><span>移到…</span><span class=\"d-ctxmenu-danger\">删除</span></div>",
+  "css": ".d-ctxzone{width:200px;height:70px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center;font-size:11.5px;color:var(--faint)}\n.d-ctx{position:absolute;min-width:120px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 30px #20241e1f;padding:5px;z-index:7}\n.d-ctx span{display:block;padding:6px 9px;border-radius:6px;font-size:11.5px;cursor:pointer}\n.d-ctx .d-ctxmenu-danger{color:#a4442c}",
+  "init": "root => {\n    const zone = root.querySelector('.d-ctxzone'), menu = root.querySelector('.d-ctx');\n    zone.oncontextmenu = e => { e.preventDefault(); const r = zone.getBoundingClientRect(); menu.hidden = false; menu.style.left = (e.clientX - r.left) + 'px'; menu.style.top = (e.clientY - r.top) + 'px'; };\n    document.addEventListener('click', () => menu.hidden = true);\n  }",
+  "source": "lab-more",
+  "motion": "无动效"
+}

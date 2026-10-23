@@ -1,0 +1,12 @@
+{
+  "id": "autosave-x",
+  "cat": "反馈",
+  "t": "自动保存状态",
+  "en": "autosave",
+  "d": "写完停一下就保存，状态从“未保存”变成“已保存”；不用一个保存按钮。",
+  "body": "<textarea class=\"d-as3\" data-as3 placeholder=\"随手写一点…\"></textarea><div class=\"d-autosave-x-asstatus3\" data-asstatus>未保存</div>",
+  "css": ".d-as3{width:240px;height:64px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:11px;line-height:1.7;resize:none;outline:none}\n.d-as3:focus{border-color:var(--ink)}\n.d-autosave-x-asstatus3{font:9px var(--mono);color:var(--faint);margin-top:4px}",
+  "init": "root => {\n    const ta = root.querySelector('[data-as3]'), status = root.querySelector('[data-asstatus]');\n    let timer = null;\n    ta.addEventListener('input', () => {\n      status.textContent = '未保存';\n      clearTimeout(timer);\n      timer = setTimeout(() => {\n        status.textContent = '保存中…';\n        timer = setTimeout(() => {\n          if (!root.isConnected) return;\n          const d = new Date();\n          status.textContent = '已保存 · ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');\n        }, 650);\n      }, 500);\n    });\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

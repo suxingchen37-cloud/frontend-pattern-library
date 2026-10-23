@@ -1,0 +1,9 @@
+.d-ss3{width:240px}
+.d-step-status-sssteps3{display:flex;gap:4px;margin-bottom:7px}
+.d-step-status-sssteps3 span{flex:1;font-size:8.5px;text-align:center;padding:4px 2px;border:1px solid var(--line);border-radius:2px;color:var(--faint)}
+.d-step-status-sssteps3 span.d-step-status-live3{border-color:var(--ink);color:var(--ink);background:var(--lime-soft)}
+.d-step-status-sssteps3 span.d-step-status-done3{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.d-step-status-sssteps3 span.err3{border-color:var(--coral);color:var(--warn);background:color-mix(in srgb,var(--coral) 10%,transparent)}
+.d-step-status-ssmsg3{margin:0 0 7px;font:9.5px var(--mono);color:var(--muted)}
+.d-step-status-ssacts3{display:flex;gap:4px}
+.d-step-status-ssacts3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}

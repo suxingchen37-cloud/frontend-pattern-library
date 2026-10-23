@@ -1,0 +1,18 @@
+{
+  "id": "transition-wipe-diagonal",
+  "cat": "过渡",
+  "t": "斜切擦除",
+  "en": "diagonal wipe",
+  "d": "边界斜 20%（顶边比底边多走 20% 宽），斜边一有角度，眼睛先看到「被刮开」而不是「淡入」；新内容同时从 -10px 推到 0，才像被带过来。整版靛蓝是本批两处破格之一——擦除的边只有色差才看得见。",
+  "body": "<div class=\"d-wipe\" tabindex=\"0\" role=\"group\" aria-label=\"斜切擦除，回车重播\"><div class=\"d-wipe-a\"><span class=\"d-wipe-k\">旧版</span><span class=\"d-wipe-l\">排字顺序</span></div><div class=\"d-wipe-b\"><span class=\"d-wipe-k\">新版</span><span class=\"d-wipe-l\">阅读顺序</span></div></div>",
+  "css": ".d-wipe{position:relative;width:296px;max-width:100%;height:132px;overflow:hidden;border:1px solid var(--line);border-radius:10px;font-family:var(--sans);outline:none;cursor:pointer}\n.d-wipe:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n.d-wipe-a,.d-wipe-b{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;padding:var(--sp-12)}\n.d-wipe-a{background:var(--paper);color:var(--muted)}\n.d-wipe-b{background:#2b4b8f;color:var(--paper);clip-path:polygon(0 0,0 0,0 100%,0 100%)}\n.d-wipe-k{font-family:var(--mono);font-size:var(--fs-9);letter-spacing:.08em;opacity:.75}\n.d-wipe-l{font-size:var(--fs-21);font-weight:600;letter-spacing:-.02em}\n.d-wipe.is-on .d-wipe-b{animation:d-transition-wipe-diagonal-in 280ms cubic-bezier(.2,.75,.25,1) forwards}\n.d-wipe.is-on .d-wipe-b .d-wipe-l{animation:d-transition-wipe-diagonal-text 280ms cubic-bezier(.2,.75,.25,1) forwards}\n.d-wipe.is-out .d-wipe-b{animation:d-transition-wipe-diagonal-out 280ms cubic-bezier(.2,.75,.25,1) forwards}\n@keyframes d-transition-wipe-diagonal-in{from{clip-path:polygon(0 0,0 0,0 100%,0 100%)}to{clip-path:polygon(0 0,128% 0,108% 100%,0 100%)}}\n@keyframes d-transition-wipe-diagonal-out{from{clip-path:polygon(0 0,128% 0,108% 100%,0 100%)}to{clip-path:polygon(0 0,0 0,0 100%,0 100%)}}\n@keyframes d-transition-wipe-diagonal-text{from{transform:translateX(-10px)}to{transform:translateX(0)}}",
+  "init": "root => {\n  const box = root.querySelector('.d-wipe');\n  if (!box || box.dataset.dwd) return;\n  box.dataset.dwd = '1';\n  const on = () => {\n    clearTimeout(box._dwT);\n    box.classList.remove('is-out');\n    box.classList.add('is-on');\n  };\n  const off = () => {\n    clearTimeout(box._dwT);\n    box.classList.add('is-out');\n    box._dwT = setTimeout(() => {\n      box.classList.remove('is-on');\n      box.classList.remove('is-out');\n    }, 280);\n  };\n  box._dwT = setTimeout(on, 280);\n  box.addEventListener('click', () => { if (box.classList.contains('is-on')) off(); else on(); });\n  box.addEventListener('keydown', e => {\n    if (e.key === 'Enter' || e.key === ' ') {\n      e.preventDefault();\n      if (box.classList.contains('is-on')) off(); else on();\n    }\n  });\n}",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "过渡",
+    "擦除",
+    "对角线",
+    "换版"
+  ]
+}

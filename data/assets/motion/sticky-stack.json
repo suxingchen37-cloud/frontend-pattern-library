@@ -1,0 +1,12 @@
+{
+  "id": "sticky-stack",
+  "cat": "滚动",
+  "t": "粘性堆叠",
+  "en": "sticky stack",
+  "d": "卡片一张张叠上来（sticky + top 递增），列表有层级感。",
+  "body": "\n  <div class=\"d-stack2\"><div>卡 1</div><div>卡 2</div><div>卡 3</div></div>",
+  "css": ".d-stack2{height:130px;overflow:auto;display:flex;flex-direction:column;gap:50px;padding:4px}\n.d-stack2 div{position:sticky;top:4px;padding:14px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-size:12px;box-shadow:0 6px 16px #20241e10}\n.d-stack2 div:nth-child(2){top:14px}.d-stack2 div:nth-child(3){top:24px}",
+  "init": null,
+  "source": "lab-extra2",
+  "motion": "无动效"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "magnetic",
+  "cat": "光标",
+  "t": "磁吸按钮",
+  "en": "magnetic button",
+  "d": "指针靠近时按钮轻微跟随，离开回弹；只给一个主按钮用。",
+  "body": "<div class=\"d-mag-wrap\"><button class=\"d-btn d-btn-primary d-mag\">靠近我</button></div>",
+  "css": ".d-mag-wrap{padding:26px}\n.d-mag{transition:transform .18s var(--ease-out,var(--ease));will-change:transform}\n.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}\n.d-btn:hover{box-shadow:0 6px 18px #20241e14}\n.d-btn:active{transform:scale(.97)}\n.d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}\n",
+  "init": "root => {\n    const b = root.querySelector('.d-mag');\n    root.addEventListener('pointermove', e => {\n      const r = b.getBoundingClientRect();\n      const dx = Math.max(-14, Math.min(14, (e.clientX - (r.left + r.width / 2)) * .18));\n      const dy = Math.max(-14, Math.min(14, (e.clientY - (r.top + r.height / 2)) * .18));\n      b.style.transform = `translate(${dx}px,${dy}px)`;\n    });\n    root.addEventListener('pointerleave', () => b.style.transform = '');\n  }",
+  "source": "inline",
+  "motion": "印刷"
+}

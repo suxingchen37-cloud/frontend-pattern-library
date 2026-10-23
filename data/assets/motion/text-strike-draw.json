@@ -1,0 +1,18 @@
+{
+  "id": "text-strike-draw",
+  "cat": "排印",
+  "t": "删除线手绘",
+  "en": "strike draw",
+  "d": "线用 scaleX 从 0 拉到 1（不写 width，避免每帧重排把字挤动），两端各探出 2px、落在字高中线偏下 1px——手划删除线不会正好停在笔画边缘。",
+  "body": "<div class=\"d-strike-draw\" tabindex=\"0\" role=\"group\" aria-label=\"删除线手绘，回车重画\"><span class=\"d-sd-old\">原价 128</span><span class=\"d-sd-new\">现价 96</span></div>",
+  "css": ".d-strike-draw{display:inline-flex;flex-direction:column;gap:2px;font-family:var(--sans);outline:none;cursor:pointer}\n.d-strike-draw .d-sd-old{position:relative;display:inline-block;font-size:var(--fs-21);font-weight:600;letter-spacing:-.01em;color:var(--muted)}\n.d-strike-draw .d-sd-old::after{content:\"\";position:absolute;left:-2px;right:-2px;top:calc(50% + 1px);height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left center;animation:d-text-strike-draw-line 280ms cubic-bezier(.2,.75,.25,1) 120ms both}\n.d-strike-draw .d-sd-new{font-size:var(--fs-13);color:var(--ink);opacity:0;animation:d-text-strike-draw-new 120ms linear 280ms both}\n.d-strike-draw.is-reset .d-sd-old::after,.d-strike-draw.is-reset .d-sd-new{animation:none}\n.d-strike-draw:focus-visible{outline:1px solid var(--ink);outline-offset:6px}\n@keyframes d-text-strike-draw-line{to{transform:scaleX(1)}}\n@keyframes d-text-strike-draw-new{to{opacity:1}}",
+  "init": "root => {\n  const box = root.querySelector('.d-strike-draw');\n  if (!box || box.dataset.dsd) return;\n  box.dataset.dsd = '1';\n  const play = () => { box.classList.add('is-reset'); void box.offsetWidth; box.classList.remove('is-reset'); };\n  box.addEventListener('pointerdown', play);\n  box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });\n}",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "排印",
+    "删除线",
+    "手绘",
+    "价格"
+  ]
+}

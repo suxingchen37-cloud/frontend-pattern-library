@@ -1,0 +1,12 @@
+{
+  "id": "drop-target",
+  "cat": "手势",
+  "t": "拖到目标区",
+  "en": "drop target",
+  "d": "拖卡进某一列时，目标列高亮并出现占位影子。",
+  "body": "\n  <div class=\"d-dz\"><button class=\"d-drop-target-dz-card\" draggable=\"true\">任务卡</button><div class=\"d-drop-target-dz-col\">拖进这里</div></div>",
+  "css": ".d-dz{display:flex;gap:12px;align-items:center}\n.d-drop-target-dz-card{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font:inherit;font-size:12px;cursor:grab}\n.d-drop-target-dz-col{width:110px;height:70px;border:1.5px dashed var(--line);border-radius:10px;display:grid;place-items:center;font-size:11px;color:var(--faint);transition:border-color .16s,background-color .16s,color .16s}\n.d-drop-target-dz-col.over{border-color:var(--ink);background:color-mix(in srgb,var(--lime) 20%,transparent);color:var(--ink)}",
+  "init": "root => {\n    const col = root.querySelector('.d-drop-target-dz-col'), card = root.querySelector('.d-drop-target-dz-card');\n    card.addEventListener('dragend', () => col.classList.remove('over'));\n    col.addEventListener('dragover', e => { e.preventDefault(); col.classList.add('over'); });\n    col.addEventListener('dragleave', () => col.classList.remove('over'));\n    col.addEventListener('drop', e => { e.preventDefault(); col.classList.remove('over'); col.textContent = '已放入 1 张'; });\n  }",
+  "source": "lab-extra2",
+  "motion": "物理"
+}

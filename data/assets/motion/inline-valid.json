@@ -1,0 +1,12 @@
+{
+  "id": "inline-valid",
+  "cat": "反馈",
+  "t": "行内校验",
+  "en": "inline validation",
+  "d": "边填边提示，错误贴在字段上；不要等提交才报。",
+  "body": "<label class=\"d-iv\"><input placeholder=\"邮箱\"><span data-msg></span></label>",
+  "css": ".d-iv{display:flex;flex-direction:column;gap:4px;width:200px}\n.d-iv input{padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:12px;outline:none}\n.d-iv input.bad{border-color:#c4553a}\n.d-iv span{font-size:10.5px;color:#a4442c;min-height:14px}",
+  "init": "root => {\n    const inp = root.querySelector('.d-iv input'), msg = root.querySelector('[data-msg]');\n    inp.oninput = () => { const bad = inp.value && !/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(inp.value); inp.classList.toggle('bad', !!bad); msg.textContent = bad ? '缺一个正确的邮箱格式' : ''; };\n  }",
+  "source": "lab-more",
+  "motion": "无动效"
+}

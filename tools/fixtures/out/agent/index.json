@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "tokensVersion": "1.0.0",
+  "count": 2,
+  "categories": [
+    { "name": "入场", "count": 1 },
+    { "name": "加载", "count": 0 },
+    { "name": "微交互", "count": 1 },
+    { "name": "光标", "count": 0 },
+    { "name": "滚动", "count": 0 },
+    { "name": "过渡", "count": 0 },
+    { "name": "拖拽", "count": 0 },
+    { "name": "布局", "count": 0 },
+    { "name": "数据", "count": 0 },
+    { "name": "反馈", "count": 0 },
+    { "name": "排印", "count": 0 },
+    { "name": "无障碍", "count": 0 },
+    { "name": "表单", "count": 0 },
+    { "name": "导航", "count": 0 },
+    { "name": "浮层", "count": 0 },
+    { "name": "列表", "count": 0 },
+    { "name": "手势", "count": 0 },
+    { "name": "内容", "count": 0 },
+    { "name": "长文", "count": 0 },
+    { "name": "表格", "count": 0 },
+    { "name": "状态页", "count": 0 },
+    { "name": "媒体", "count": 0 }
+  ],
+  "items": [
+    {"id":"fx-fade-stagger","cat":"入场","t":"错峰淡入","en":"staggered fade-up","d":"每项延迟 40ms：低于 30ms 人看不出顺序，高于 60ms 会显得慢。","motion":"印刷","tags":["入场","列表","延迟"],"hasInit":true,"files":{"html":"blocks/fx-fade-stagger.html","css":"blocks/fx-fade-stagger.css","js":"blocks/fx-fade-stagger.js"}},
+    {"id":"fx-press-feedback","cat":"微交互","t":"按压回弹","en":"press feedback","d":"按下缩到 97%、松手 120ms 回位：低于 97% 像抖动，慢于 120ms 会觉得迟钝。","motion":"物理","tags":["按钮","按压"],"hasInit":false,"files":{"html":"blocks/fx-press-feedback.html","css":"blocks/fx-press-feedback.css"}}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "char-count",
+  "cat": "表单",
+  "t": "字数统计",
+  "en": "character count",
+  "d": "写的时候就知道还剩多少；接近上限再提醒，不要一开始就红。",
+  "body": "<textarea class=\"d-cc3\" data-cc3 maxlength=\"60\" placeholder=\"写一句本期推荐…\"></textarea><div class=\"d-char-count-ccount3\"><span data-ccn3>0</span>/60 <em data-ccwarn3 hidden>快满了</em></div>",
+  "css": ".d-cc3{width:250px;height:64px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:11px;line-height:1.7;resize:none;outline:none}\n.d-cc3:focus{border-color:var(--ink)}\n.d-char-count-ccount3{font:9px var(--mono);color:var(--faint);margin-top:4px}\n.d-char-count-ccount3 em{font-style:normal;color:var(--warn);margin-left:6px}",
+  "init": "root => {\n    const ta = root.querySelector('[data-cc3]'), n = root.querySelector('[data-ccn3]'), warn = root.querySelector('[data-ccwarn3]');\n    const sync = () => { n.textContent = ta.value.length; warn.hidden = ta.value.length <= 50; };\n    ta.addEventListener('input', sync); sync();\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

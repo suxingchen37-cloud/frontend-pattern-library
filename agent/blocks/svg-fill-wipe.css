@@ -1,0 +1,12 @@
+.d-fw{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:220px}
+.d-fw-art{display:block;width:220px;height:120px;overflow:visible}
+.d-fw-mask{mask-type:alpha}
+.d-fw-blade{fill:var(--paper);transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}
+.d-fw-ink{fill:#c2402a}
+.d-fw-ring{fill:none;stroke:var(--ink);stroke-width:1}
+.d-fw-line{fill:none;stroke:var(--ink);stroke-width:1}
+.d-fw.is-wipe .d-fw-blade{animation:d-svg-fill-wipe-blade 900ms cubic-bezier(.2,.75,.25,1) both}
+@keyframes d-svg-fill-wipe-blade{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.d-fw-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}
+.d-fw-btn:hover{border-color:var(--ink);color:var(--ink)}
+.d-fw-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

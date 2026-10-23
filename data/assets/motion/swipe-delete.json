@@ -1,0 +1,12 @@
+{
+  "id": "swipe-delete",
+  "cat": "列表",
+  "t": "左滑删除",
+  "en": "swipe to delete",
+  "d": "移动端列表的高频手势；要有\"再滑一下\"的阈值，不能一碰就删。",
+  "body": "<div class=\"d-swipe\"><div class=\"d-swipe-delete-row\"><span>项目讨论组</span><em>左滑我</em></div><button class=\"d-swipe-delete-del\">删除</button></div>",
+  "css": ".d-swipe{position:relative;width:230px;overflow:hidden;border-radius:10px}\n.d-swipe .d-swipe-delete-row{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:11px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;transition:transform .22s var(--ease);cursor:grab}\n.d-swipe .d-swipe-delete-row em{font-style:normal;font-size:10px;color:var(--faint)}\n.d-swipe .d-swipe-delete-del{position:absolute;right:0;top:0;bottom:0;width:64px;border:0;background:#c4553a;color:#fff;font-size:11px;cursor:pointer}",
+  "init": "root => {\n    const row = root.querySelector('.d-swipe .d-swipe-delete-row'); let x0 = 0, dx = 0, open = false;\n    row.addEventListener('pointerdown', e => { x0 = e.clientX; row.style.transition = 'none'; });\n    row.addEventListener('pointermove', e => { if (!x0) return; dx = Math.min(0, Math.max(-70, e.clientX - x0 + (open ? -64 : 0))); row.style.transform = `translateX(${dx}px)`; });\n    row.addEventListener('pointerup', () => { open = dx < -40; row.style.transition = ''; row.style.transform = `translateX(${open ? -64 : 0}px)`; x0 = 0; dx = 0; });\n  }",
+  "source": "lab-more",
+  "motion": "物理"
+}

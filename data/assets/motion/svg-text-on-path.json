@@ -1,0 +1,18 @@
+{
+  "id": "svg-text-on-path",
+  "cat": "SVG 与路径",
+  "t": "文字沿弧线",
+  "en": "text on path",
+  "d": "startOffset 50% 配 text-anchor middle，字串的中点才落在弧顶；中文字面比西文高，dominant-baseline 设 middle 才能让弧线从字腰穿过去，不然整行会漂在弧线上方一截。21px 是本条唯一的大字号，因为弧形排字本来就该占版面。",
+  "body": "<div class=\"d-tp\"><svg class=\"d-tp-art\" viewBox=\"0 0 260 118\" aria-hidden=\"true\"><defs><path id=\"d-svg-text-on-path-arc\" d=\"M22 106Q130 8 238 106\"/></defs><use class=\"d-tp-guide\" href=\"#d-svg-text-on-path-arc\"/><text class=\"d-tp-txt\"><textPath class=\"d-tp-run\" href=\"#d-svg-text-on-path-arc\" startOffset=\"50%\" text-anchor=\"middle\">铅字排在弧上</textPath></text></svg><button class=\"d-tp-btn\" type=\"button\" aria-pressed=\"false\">显示参考线</button></div>",
+  "css": ".d-tp{display:flex;flex-direction:column;align-items:flex-start;gap:8px}\n.d-tp-art{display:block;width:260px;height:118px;overflow:visible}\n.d-tp-guide{fill:none;stroke:var(--faint);stroke-width:1;stroke-dasharray:2 4;opacity:0;transition:opacity 280ms cubic-bezier(.2,.75,.25,1)}\n.d-tp.is-guide .d-tp-guide{opacity:1}\n.d-tp-txt{fill:var(--ink);font-family:var(--font-sans);font-size:21px;font-weight:600;letter-spacing:.06em;dominant-baseline:middle}\n.d-tp-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}\n.d-tp-btn:hover{border-color:var(--ink);color:var(--ink)}\n.d-tp-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n    const box = root.querySelector('.d-tp'), btn = box.querySelector('.d-tp-btn');\n    btn.onclick = () => {\n      const on = box.classList.toggle('is-guide');\n      btn.textContent = on ? '收起参考线' : '显示参考线';\n      btn.setAttribute('aria-pressed', String(on));\n    };\n  }",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "排印",
+    "文字",
+    "弧线",
+    "路径"
+  ]
+}

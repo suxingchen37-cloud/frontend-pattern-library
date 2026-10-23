@@ -1,0 +1,18 @@
+{
+  "id": "text-scramble",
+  "cat": "排印",
+  "t": "乱码解码",
+  "en": "scramble",
+  "d": "乱码每 120ms 定住一位，未定的位换成同宽等宽字符，因为等宽决定换值时整行不抖；定型从左往右，读者才有「这句到底要说哪个字」的预期。",
+  "body": "<div class=\"d-scramble\" tabindex=\"0\" role=\"group\" aria-label=\"乱码解码，回车重播\"><span class=\"d-sc-text\">正在生成页面</span><i class=\"d-sc-caret\" aria-hidden=\"true\"></i></div>",
+  "css": ".d-scramble{display:inline-flex;align-items:center;gap:2px;font-family:var(--mono);font-size:var(--fs-21);line-height:1;letter-spacing:.08em;color:var(--ink);outline:none;cursor:pointer}\n.d-scramble .d-sc-ch{font-variant-numeric:tabular-nums}\n.d-scramble .d-sc-ch:not(.is-fixed){color:var(--faint)}\n.d-scramble .d-sc-caret{display:inline-block;width:1px;height:var(--fs-21);background:var(--ink);animation:d-text-scramble-blink 900ms steps(6) infinite}\n.d-scramble:focus-visible{outline:1px solid var(--ink);outline-offset:6px}\n@keyframes d-text-scramble-blink{50%{opacity:0}}",
+  "init": "root => {\n  const box = root.querySelector('.d-scramble');\n  if (!box || box.dataset.dsc) return;\n  box.dataset.dsc = '1';\n  const out = box.querySelector('.d-sc-text');\n  const pool = '0123456789ABCDEF#%&+*=<>/';\n  const text = '正在生成页面';\n  const play = () => {\n    clearInterval(box._dscT);\n    let step = 0;\n    const paint = () => {\n      let html = '';\n      for (let i = 0; i < text.length; i++) {\n        const ch = i < step ? text[i] : pool[Math.floor(Math.random() * pool.length)];\n        html += '<span class=\"d-sc-ch' + (i < step ? ' is-fixed' : '') + '\">' + ch + '</span>';\n      }\n      out.innerHTML = html;\n    };\n    paint();\n    box._dscT = setInterval(() => {\n      step += 1;\n      paint();\n      if (step >= text.length) { clearInterval(box._dscT); box._dscT = 0; }\n    }, 120);\n  };\n  play();\n  box.addEventListener('pointerdown', play);\n  box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });\n}",
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "排印",
+    "乱码",
+    "生成中",
+    "字符"
+  ]
+}

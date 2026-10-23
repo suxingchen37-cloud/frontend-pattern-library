@@ -1,0 +1,4 @@
+.d-rex{width:230px;font-size:12px}
+.d-rex .d-row-expand-row2{width:100%;display:flex;justify-content:space-between;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font:inherit;font-size:12px;cursor:pointer;color:inherit}
+.d-rex .d-row-expand-detail2{max-height:0;overflow:hidden;font-size:11px;color:var(--muted);line-height:1.8;transition:max-height .26s var(--ease)}
+.d-rex[data-open] .d-row-expand-detail2{max-height:80px;padding-top:6px}

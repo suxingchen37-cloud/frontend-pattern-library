@@ -1,0 +1,12 @@
+{
+  "id": "motion-scale",
+  "cat": "无障碍",
+  "t": "动效强度档",
+  "en": "motion scale",
+  "d": "关 / 克制 / 标准 三档，用户自己选；比\"全有或全无\"好。",
+  "body": "<input type=\"range\" min=\"0\" max=\"2\" step=\"1\" value=\"2\" class=\"d-scale\"><span class=\"d-hint\" data-scalenote>标准</span><div class=\"d-scaledot\"></div>",
+  "css": ".d-scale{width:120px}\n.d-scaledot{width:26px;height:26px;border-radius:10px;background:var(--lime);animation:d-motion-scale-hop 1.2s var(--ease) infinite}\n@keyframes d-motion-scale-hop{50%{transform:translateY(-8px)}}\n.d-hint{font-size:11px;color:var(--faint)}\n",
+  "init": "root => {\n    const r = root.querySelector('.d-scale'), dot = root.querySelector('.d-scaledot'), note = root.querySelector('[data-scalenote]');\n    const names = ['关', '克制', '标准'];\n    const apply = () => { const v = +r.value; note.textContent = names[v]; dot.style.animation = v === 0 ? 'none' : v === 1 ? 'd-motion-scale-hop 2.4s var(--ease) infinite' : ''; };\n    r.oninput = apply; apply();\n  }",
+  "source": "lab-extra2",
+  "motion": "印刷"
+}

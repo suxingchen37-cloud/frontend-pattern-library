@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>边界提示 · drag-threshold-hint · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px var(--line);
+  --border-strong:1px var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-bound{position:relative;width:300px;height:150px;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink)}
+.d-bound-box{position:relative;width:280px;height:120px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden}
+.d-bound-arrow{position:absolute;width:6px;height:6px;border-top:1px solid var(--ink);border-right:1px solid var(--ink);opacity:0;transition:opacity .12s linear}
+.d-bound-arrow[data-side="l"]{left:4px;top:50%;margin-top:-3px;transform:rotate(-135deg)}
+.d-bound-arrow[data-side="r"]{right:4px;top:50%;margin-top:-3px;transform:rotate(45deg)}
+.d-bound-arrow[data-side="t"]{top:4px;left:50%;margin-left:-3px;transform:rotate(-45deg)}
+.d-bound-arrow[data-side="b"]{bottom:4px;left:50%;margin-left:-3px;transform:rotate(135deg)}
+.d-bound-box[data-push="l"] .d-bound-arrow[data-side="l"],.d-bound-box[data-push="r"] .d-bound-arrow[data-side="r"],.d-bound-box[data-push="t"] .d-bound-arrow[data-side="t"],.d-bound-box[data-push="b"] .d-bound-arrow[data-side="b"]{opacity:1}
+.d-bound-knob{position:absolute;left:8px;top:8px;width:88px;height:56px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--ink);border-radius:6px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);cursor:grab;touch-action:none;user-select:none;will-change:transform}
+.d-bound-knob[data-drag]{cursor:grabbing;box-shadow:0 12px 24px -8px #20241e26}
+.d-bound-knob:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-bound-hint{margin:0;font-family:var(--mono);font-size:9px;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>drag-threshold-hint</code>
+  <b>边界提示</b>
+  <span>drag threshold</span>
+  <span>分类 拖拽</span>
+  <span>运动 物理</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<div class="d-bound" role="group" aria-label="拖到边界出现方向提示">
+  <div class="d-bound-box">
+    <i class="d-bound-arrow" data-side="l" aria-hidden="true"></i>
+    <i class="d-bound-arrow" data-side="r" aria-hidden="true"></i>
+    <i class="d-bound-arrow" data-side="t" aria-hidden="true"></i>
+    <i class="d-bound-arrow" data-side="b" aria-hidden="true"></i>
+    <div class="d-bound-knob" tabindex="0" role="button" aria-label="拖动方块到边界，或用方向键"><span>拖到边上</span></div>
+  </div>
+  <p class="d-bound-hint">越界位移按 0.18 折算</p>
+</div>
+</div>
+<p class="pv-note">越界后位移按 0.18 折算，是要把「拖不动」做成「拖得动但明显费劲」：折算到 0 就像卡死，到 0.3 又像还能拖出去。箭头要等你推过 6px 才亮——短促的抖手不该惊动提示，那 6px 就是「手抖」和「想出去」的分界。松手 280ms 弹回，比 180ms 多留一点被拉回去的感觉。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "drag-threshold-hint";
+  window.INITS = window.INITS || {};
+  window.INITS["drag-threshold-hint"] = (root => {
+  const box = root.querySelector('.d-bound');
+  if (!box || box.dataset.ready) return;
+  box.dataset.ready = '1';
+  const frame = box.querySelector('.d-bound-box');
+  const knob = box.querySelector('.d-bound-knob');
+  const hint = box.querySelector('.d-bound-hint');
+  const NAME = { l: '左', r: '右', t: '上', b: '下' };
+  const PAD = 8;
+  const W = knob.offsetWidth, H = knob.offsetHeight;
+  const MAX_X = frame.clientWidth - PAD * 2 - W;
+  const MAX_Y = frame.clientHeight - PAD * 2 - H;
+  const IDLE = '越界位移按 0.18 折算';
+  let x = MAX_X / 2, y = MAX_Y / 2, drag = null;
+
+  function draw(animate) {
+    knob.style.transition = animate ? 'transform .28s cubic-bezier(.34,1.56,.64,1)' : 'none';
+    knob.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+  }
+  function down(e) {
+    if (drag) return;
+    e.preventDefault();
+    knob.focus({ preventScroll: true });
+    knob.setPointerCapture(e.pointerId);
+    knob.dataset.drag = '1';
+    drag = { x0: e.clientX - x, y0: e.clientY - y };
+  }
+  function move(e) {
+    if (!drag) return;
+    let nx = e.clientX - drag.x0, ny = e.clientY - drag.y0;
+    const push = { l: 0, r: 0, t: 0, b: 0 };
+    if (nx < 0) { push.l = Math.min(1, -nx / 44); nx = nx * .18; }
+    else if (nx > MAX_X) { push.r = Math.min(1, (nx - MAX_X) / 44); nx = MAX_X + (nx - MAX_X) * .18; }
+    if (ny < 0) { push.t = Math.min(1, -ny / 44); ny = ny * .18; }
+    else if (ny > MAX_Y) { push.b = Math.min(1, (ny - MAX_Y) / 44); ny = MAX_Y + (ny - MAX_Y) * .18; }
+    x = nx; y = ny;
+    draw(false);
+    const side = Object.keys(push).sort((a, b) => push[b] - push[a])[0];
+    if (push[side] > 0) {
+      frame.dataset.push = side;
+      hint.textContent = '顶住「' + NAME[side] + '」边 · 位移按 0.18 折算';
+    } else {
+      delete frame.dataset.push;
+      hint.textContent = IDLE;
+    }
+  }
+  function up() {
+    if (!drag) return;
+    drag = null;
+    delete knob.dataset.drag;
+    x = Math.max(0, Math.min(MAX_X, x));
+    y = Math.max(0, Math.min(MAX_Y, y));
+    draw(true);
+    delete frame.dataset.push;
+    hint.textContent = IDLE;
+  }
+  function key(e) {
+    const mv = { ArrowLeft: [-12, 0], ArrowRight: [12, 0], ArrowUp: [0, -12], ArrowDown: [0, 12] }[e.key];
+    if (!mv) return;
+    e.preventDefault();
+    const side = mv[0] < 0 && x <= 0 ? 'l' : mv[0] > 0 && x >= MAX_X ? 'r' : mv[1] < 0 && y <= 0 ? 't' : mv[1] > 0 && y >= MAX_Y ? 'b' : '';
+    x = Math.max(0, Math.min(MAX_X, x + mv[0]));
+    y = Math.max(0, Math.min(MAX_Y, y + mv[1]));
+    draw(true);
+    if (!side) return;
+    frame.dataset.push = side;
+    hint.textContent = '到「' + NAME[side] + '」边 · 再推就是阻力';
+    clearTimeout(box._pushT);
+    box._pushT = setTimeout(() => { delete frame.dataset.push; hint.textContent = IDLE; }, 900);
+  }
+
+  knob.addEventListener('pointerdown', down);
+  knob.addEventListener('pointermove', move);
+  knob.addEventListener('pointerup', up);
+  knob.addEventListener('pointercancel', up);
+  knob.addEventListener('keydown', key);
+  draw(false);
+});
+  window.INITS["drag-threshold-hint"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

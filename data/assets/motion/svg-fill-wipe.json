@@ -1,0 +1,18 @@
+{
+  "id": "svg-fill-wipe",
+  "cat": "SVG 与路径",
+  "t": "填充扫过",
+  "en": "fill wipe",
+  "d": "用一张会长高的白板当遮罩，而不是给 fill 做透明度过渡——fill 淡入一定会出现中间灰调，而刮墨落纸是硬边；板子以底边为原点，墨就从下往上被刮过去，露出边上那圈 1px 的印版线。",
+  "body": "<div class=\"d-fw\"><svg class=\"d-fw-art\" viewBox=\"0 0 220 120\" aria-hidden=\"true\"><defs><mask class=\"d-fw-mask\" id=\"d-svg-fill-wipe-m\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"220\" height=\"120\"><rect class=\"d-fw-blade\" x=\"22\" y=\"28\" width=\"176\" height=\"64\"/></mask></defs><path class=\"d-fw-ink\" d=\"M22 28H198V92H22Z\" mask=\"url(#d-svg-fill-wipe-m)\"/><circle class=\"d-fw-ring\" cx=\"198\" cy=\"28\" r=\"22\"/><path class=\"d-fw-line\" d=\"M22 28H198V92H22Z\"/></svg><button class=\"d-fw-btn\" type=\"button\">再刮一次</button></div>",
+  "css": ".d-fw{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:220px}\n.d-fw-art{display:block;width:220px;height:120px;overflow:visible}\n.d-fw-mask{mask-type:alpha}\n.d-fw-blade{fill:var(--paper);transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}\n.d-fw-ink{fill:#c2402a}\n.d-fw-ring{fill:none;stroke:var(--ink);stroke-width:1}\n.d-fw-line{fill:none;stroke:var(--ink);stroke-width:1}\n.d-fw.is-wipe .d-fw-blade{animation:d-svg-fill-wipe-blade 900ms cubic-bezier(.2,.75,.25,1) both}\n@keyframes d-svg-fill-wipe-blade{from{transform:scaleY(0)}to{transform:scaleY(1)}}\n.d-fw-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}\n.d-fw-btn:hover{border-color:var(--ink);color:var(--ink)}\n.d-fw-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n    const box = root.querySelector('.d-fw'), btn = box.querySelector('.d-fw-btn');\n    const run = () => { box.classList.remove('is-wipe'); void box.offsetWidth; box.classList.add('is-wipe'); };\n    btn.onclick = run;\n    run();\n  }",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "填充",
+    "遮罩",
+    "印刷",
+    "揭示"
+  ]
+}

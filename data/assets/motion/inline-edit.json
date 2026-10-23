@@ -1,0 +1,12 @@
+{
+  "id": "inline-edit",
+  "cat": "表格",
+  "t": "行内编辑",
+  "en": "inline edit",
+  "d": "点单元格直接改，回车保存；比开一个弹窗快，也比弹窗不容易迷路。",
+  "body": "<table class=\"d-ie3\"><tbody><tr><td data-edit3=\"招牌\">红烧牛肉面</td><td>¥18</td></tr><tr><td data-edit3=\"价签\">手写价签</td><td>¥6</td></tr><tr><td data-edit3=\"椅子\">旧木椅</td><td>¥120</td></tr></tbody></table><p class=\"d-inline-edit-iehint3\">点第一列改名字，回车保存</p>",
+  "css": ".d-ie3{width:240px;border-collapse:collapse;font-size:11px}\n.d-ie3 td{padding:6px 8px;border-bottom:1px solid var(--line);color:var(--muted)}\n.d-ie3 td[data-edit3]{color:var(--ink);cursor:text}\n.d-ie3 td[data-edit3]:hover{background:var(--bg)}\n.d-ie3 input{width:100%;border:1px solid var(--ink);border-radius:2px;background:var(--paper);font:inherit;padding:2px 4px;outline:none}\n.d-inline-edit-iehint3{margin:6px 0 0;font:9px var(--mono);color:var(--faint)}",
+  "init": "root => {\n    root.querySelectorAll('[data-edit3]').forEach((td) => td.onclick = () => {\n      if (td.querySelector('input')) return;\n      const old = td.textContent;\n      const inp = root.ownerDocument.createElement('input');\n      inp.value = old; td.textContent = ''; td.appendChild(inp); inp.focus(); inp.select();\n      const save = () => { td.textContent = inp.value.trim() || old; };\n      inp.addEventListener('keydown', (e) => { if (e.key === 'Enter') { save(); } if (e.key === 'Escape') { td.textContent = old; } });\n      inp.addEventListener('blur', save);\n    });\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

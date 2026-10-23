@@ -1,0 +1,18 @@
+{
+  "id": "caption-zoom",
+  "cat": "内容",
+  "t": "图注联动",
+  "en": "caption link",
+  "d": "图注列锁死 120px、不随字数伸缩，换行时右边缘不动，图注才不会把版面顶来顶去；上移只给 2px 配物理曲线的过冲，多 1px 像在跳，少 1px 看不出和热点是一对。热点用 --x/--y 百分比定位，换一张图不必重算坐标，这套联动才能直接搬走。",
+  "body": "<div class=\"d-cz\"><div class=\"d-cz-plate\"><i class=\"d-cz-rule d-cz-rule-a\"></i><i class=\"d-cz-rule d-cz-rule-b\"></i><i class=\"d-cz-rule d-cz-rule-c\"></i><button class=\"d-cz-dot\" type=\"button\" style=\"--x:16%;--y:18%\" aria-label=\"热点 1：招牌底板\"></button><button class=\"d-cz-dot\" type=\"button\" style=\"--x:62%;--y:40%\" aria-label=\"热点 2：字高\"></button><button class=\"d-cz-dot\" type=\"button\" style=\"--x:32%;--y:68%\" aria-label=\"热点 3：字距\"></button></div><ul class=\"d-cz-list\"><li class=\"d-cz-cap\">底板 1.2×0.6m</li><li class=\"d-cz-cap\">字高 38cm 可辨</li><li class=\"d-cz-cap\">字距 4cm 不糊</li></ul></div>",
+  "css": ".d-cz{display:flex;gap:12px;width:300px;max-width:100%;font-family:var(--sans)}\n.d-cz-plate{position:relative;flex:0 0 156px;width:156px;height:118px;border:1px solid var(--line);border-radius:2px;background:var(--bg);overflow:hidden}\n.d-cz-rule{position:absolute;background:var(--line)}\n.d-cz-rule-a{left:0;right:0;top:38px;height:1px}\n.d-cz-rule-b{left:0;right:0;top:82px;height:1px}\n.d-cz-rule-c{top:0;bottom:0;left:96px;width:1px}\n.d-cz-dot{position:absolute;left:var(--x);top:var(--y);width:12px;height:12px;padding:0;border:1px solid var(--ink);border-radius:50%;background:var(--paper);cursor:pointer;transform:scale(1);transition:background-color 120ms linear,transform 180ms cubic-bezier(.34,1.56,.64,1)}\n.d-cz-dot.is-on{background:#c2402a;transform:scale(1.2)}\n.d-cz-dot:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n.d-cz-list{flex:0 0 120px;width:120px;margin:0;padding:2px 0 0;list-style:none;display:flex;flex-direction:column;gap:7px}\n.d-cz-cap{display:block;font-size:10.5px;line-height:1.5;color:var(--faint);transform:translateY(0);transition:color 180ms cubic-bezier(.34,1.56,.64,1),transform 180ms cubic-bezier(.34,1.56,.64,1)}\n.d-cz-cap.is-hot{color:var(--ink);transform:translateY(-2px)}",
+  "init": "root => {\n  const box = root.querySelector('.d-cz');\n  if (!box || box.dataset.cz) return;\n  box.dataset.cz = '1';\n  const dots = Array.from(box.querySelectorAll('.d-cz-dot'));\n  const caps = Array.from(box.querySelectorAll('.d-cz-cap'));\n  const on = i => {\n    dots.forEach((d, k) => d.classList.toggle('is-on', k === i));\n    caps.forEach((c, k) => c.classList.toggle('is-hot', k === i));\n  };\n  const off = () => {\n    dots.forEach(d => d.classList.remove('is-on'));\n    caps.forEach(c => c.classList.remove('is-hot'));\n  };\n  dots.forEach((d, i) => {\n    d.addEventListener('pointerenter', () => on(i));\n    d.addEventListener('focus', () => on(i));\n    d.addEventListener('blur', off);\n    d.addEventListener('click', () => on(i));\n  });\n  box.addEventListener('pointerleave', off);\n}",
+  "source": "v5",
+  "motion": "物理",
+  "tags": [
+    "图注",
+    "热点",
+    "联动",
+    "悬停"
+  ]
+}

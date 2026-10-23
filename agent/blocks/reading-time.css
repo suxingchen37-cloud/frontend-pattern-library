@@ -1,0 +1,4 @@
+.d-rt3{width:260px;height:72px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);resize:none;font-size:11px;line-height:1.7;outline:none}
+.d-rt3:focus{border-color:var(--ink)}
+.d-reading-time-rtout3{font:10px var(--mono);color:var(--faint);letter-spacing:.04em}
+.d-reading-time-rtout3 b{color:var(--ink);font-weight:600}

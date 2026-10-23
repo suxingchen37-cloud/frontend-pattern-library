@@ -1,0 +1,12 @@
+{
+  "id": "tooltip-follow",
+  "cat": "光标",
+  "t": "跟随提示",
+  "en": "cursor-follow tooltip",
+  "d": "提示跟着指针走，比固定在元素上更少遮挡。",
+  "body": "<div class=\"d-tipzone\"><span class=\"d-dot\"></span><span class=\"d-tip\" hidden>这是提示</span></div>",
+  "css": ".d-tipzone{position:relative;width:200px;height:90px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center}\n.d-dot{width:10px;height:10px;border-radius:999px;background:var(--lime)}\n.d-tip{position:absolute;transform:translate(10px,-50%);padding:4px 8px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:11px;pointer-events:none}",
+  "init": "root => {\n    const tip = root.querySelector('.d-tip'), zone = root.querySelector('.d-tipzone');\n    zone.addEventListener('pointermove', e => {\n      const r = zone.getBoundingClientRect(); tip.hidden = false;\n      tip.style.left = (e.clientX - r.left) + 'px'; tip.style.top = (e.clientY - r.top) + 'px';\n    });\n    zone.addEventListener('pointerleave', () => tip.hidden = true);\n  }",
+  "source": "inline",
+  "motion": "无动效"
+}

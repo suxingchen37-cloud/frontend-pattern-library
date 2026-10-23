@@ -1,0 +1,18 @@
+{
+  "id": "ribbon-note",
+  "cat": "内容",
+  "t": "旁注便签",
+  "en": "ribbon note",
+  "d": "便签歪 1.5° 是「贴上去而不是插进去」的最小可见角度，再多就像坏了；1px 硬边不改成软阴影，便签才留在纸面上而不浮起来。展开只放 54px、用 280ms 印刷曲线，因为旁注的职责是补一句话，写长就成了第二篇正文。",
+  "body": "<div class=\"d-rn\"><p class=\"d-rn-text\">正文往左让出一列，右边贴一张便签。<b>注释不打断句子</b>，读者愿意才展开。</p><aside class=\"d-rn-note\"><i class=\"d-rn-tab\"></i><button class=\"d-rn-btn\" type=\"button\" aria-expanded=\"false\">旁注 03 · 展开</button><div class=\"d-rn-more\"><p class=\"d-rn-ctx\">边注写短些：三行以内，读不完就不算旁注。</p></div></aside></div>",
+  "css": ".d-rn{position:relative;width:300px;max-width:100%;height:150px;padding-top:4px;font-family:var(--sans)}\n.d-rn-text{width:158px;margin:0;font-size:11px;line-height:1.75;color:var(--muted)}\n.d-rn-text b{font-weight:650;color:var(--ink)}\n.d-rn-note{position:absolute;top:10px;right:2px;width:114px;padding:7px 9px 8px;border:1px solid var(--ink);border-radius:2px;background:var(--paper);transform:rotate(-1.5deg);box-shadow:0 1px 0 var(--line)}\n.d-rn-tab{display:block;height:1px;margin-bottom:6px;background:#e8c34a}\n.d-rn-btn{width:100%;padding:2px 0;border:0;border-bottom:1px solid var(--line);background:transparent;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--ink);text-align:left;cursor:pointer}\n.d-rn-btn:focus-visible{outline:1px solid var(--ink);outline-offset:1px}\n.d-rn-more{max-height:0;overflow:hidden;transition:max-height 280ms cubic-bezier(.2,.75,.25,1)}\n.d-rn-ctx{margin:0;padding-top:5px;font-size:10px;line-height:1.6;color:var(--muted)}\n.d-rn.is-open .d-rn-more{max-height:58px}",
+  "init": "root => {\n  const box = root.querySelector('.d-rn');\n  if (!box || box.dataset.rn) return;\n  box.dataset.rn = '1';\n  const btn = box.querySelector('.d-rn-btn');\n  const toggle = () => {\n    const open = !box.classList.contains('is-open');\n    box.classList.toggle('is-open', open);\n    btn.setAttribute('aria-expanded', String(open));\n    btn.textContent = open ? '旁注 03 · 收起' : '旁注 03 · 展开';\n  };\n  btn.addEventListener('click', toggle);\n}",
+  "source": "v5",
+  "motion": "印刷",
+  "tags": [
+    "旁注",
+    "便签",
+    "旋转",
+    "展开"
+  ]
+}

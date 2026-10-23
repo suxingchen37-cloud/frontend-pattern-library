@@ -1,0 +1,18 @@
+{
+  "id": "scroll-counters",
+  "cat": "滚动驱动",
+  "t": "滚动计数",
+  "en": "scroll counters",
+  "d": "数字不做补间，而是用 scroll-timeline 把 0 到目标值切成 6 格（steps(6)），126 / 18 / 96 除得尽，所以每格分别是 21 / 3 / 16，读数永远落在整数上——仪器式的计数不该出现小数抖动。记忆点：往下滚，三个数字像计数器一样一格一格跳。",
+  "body": "<div class=\"d-sc\" role=\"group\" aria-label=\"滚动计数：向下滚动，三个数字从 0 走到目标值\"><div class=\"d-sc-scroll\" tabindex=\"0\"><div class=\"d-sc-head\"><div class=\"d-sc-cell\"><span class=\"d-sc-num d-sc-n1\"></span><span class=\"d-sc-k\">印张</span></div><div class=\"d-sc-cell\"><span class=\"d-sc-num d-sc-n2\"></span><span class=\"d-sc-k\">校次</span></div><div class=\"d-sc-cell\"><span class=\"d-sc-num d-sc-n3\"></span><span class=\"d-sc-k\">成品率</span></div></div><p class=\"d-sc-p\">第一版上机，墨辊先空转两圈，让油墨在辊面上匀开。</p><p class=\"d-sc-p\">样张从收纸台取下来，对着色标看三块油墨的深浅。</p><p class=\"d-sc-p\">压力调小半格，网点就不再往纸里陷。</p><p class=\"d-sc-p\">把样张折一道，看折缝处的墨色有没有匀。</p><p class=\"d-sc-p\">换第二版之前，先洗掉墨辊上的旧色，免得串色。</p><p class=\"d-sc-p\">刀口的毛边用指尖抹过，摸得出来就该磨刀了。</p><p class=\"d-sc-p\">成品按印次编号，签样一起装进牛皮纸袋。</p><p class=\"d-sc-p\">这一卷的账记完了，数字停在最后一次校色的位置。</p></div></div>",
+  "css": ".d-sc{box-sizing:border-box;width:300px;max-width:100%;height:150px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}\n.d-sc-scroll{box-sizing:border-box;height:100%;overflow-y:auto;scrollbar-width:none;padding:0 12px 12px}\n.d-sc-scroll::-webkit-scrollbar{width:0;height:0}\n.d-sc-head{position:sticky;top:0;display:flex;gap:8px;padding:12px 0 8px;background:var(--bg);border-bottom:1px solid var(--line)}\n.d-sc-cell{flex:1;display:flex;flex-direction:column;gap:2px}\n.d-sc-num{font-family:var(--font-mono);font-size:var(--fs-21);font-weight:650;line-height:var(--lh-display);color:var(--ink);font-variant-numeric:tabular-nums}\n.d-sc-k{font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);color:var(--faint)}\n.d-sc-p{margin:12px 0 0;font-size:var(--fs-11);line-height:var(--lh-note);color:var(--muted)}\n@property --d-sc-n1{syntax:\"<integer>\";inherits:false;initial-value:0}\n@property --d-sc-n2{syntax:\"<integer>\";inherits:false;initial-value:0}\n@property --d-sc-n3{syntax:\"<integer>\";inherits:false;initial-value:0}\n.d-sc-n1{--d-sc-n1:0;counter-reset:d-sc-c1 var(--d-sc-n1);animation:d-scroll-counters-one steps(6) both;animation-timeline:scroll(nearest)}\n.d-sc-n2{--d-sc-n2:0;counter-reset:d-sc-c2 var(--d-sc-n2);animation:d-scroll-counters-two steps(6) both;animation-timeline:scroll(nearest)}\n.d-sc-n3{--d-sc-n3:0;counter-reset:d-sc-c3 var(--d-sc-n3);animation:d-scroll-counters-three steps(6) both;animation-timeline:scroll(nearest)}\n.d-sc-n1::before{content:counter(d-sc-c1)}\n.d-sc-n2::before{content:counter(d-sc-c2)}\n.d-sc-n3::before{content:counter(d-sc-c3) \"%\"}\n.d-sc-scroll:focus-visible{outline:1px solid var(--ink);outline-offset:-3px}\n@keyframes d-scroll-counters-one{from{--d-sc-n1:0}to{--d-sc-n1:126}}\n@keyframes d-scroll-counters-two{from{--d-sc-n2:0}to{--d-sc-n2:18}}\n@keyframes d-scroll-counters-three{from{--d-sc-n3:0}to{--d-sc-n3:96}}",
+  "init": null,
+  "source": "v5",
+  "motion": "机械",
+  "tags": [
+    "计数",
+    "滚动",
+    "数字",
+    "仪表"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "splitter",
+  "cat": "布局",
+  "t": "可拖分栏",
+  "en": "resizable splitter",
+  "d": "两栏之间拖宽窄，双击复位；编辑器/对话列表常用。",
+  "body": "<div class=\"d-split\"><div class=\"d-splitter-l\">列表</div><div class=\"d-splitter-g\"></div><div class=\"d-splitter-r\">内容</div></div>",
+  "css": ".d-split{display:flex;width:100%;height:80px;border:1px solid var(--line);border-radius:10px;overflow:hidden}\n.d-split .d-splitter-l{width:38%;display:grid;place-items:center;font-size:11px;color:var(--muted);background:color-mix(in srgb,var(--ink) 5%,transparent)}\n.d-split .d-splitter-r{flex:1;display:grid;place-items:center;font-size:11px;color:var(--muted)}\n.d-split .d-splitter-g{width:5px;cursor:col-resize;background:var(--line)}",
+  "init": "root => {\n    const g = root.querySelector('.d-split .d-splitter-g'), l = root.querySelector('.d-split .d-splitter-l'), box = root.querySelector('.d-split');\n    let down = false;\n    g.addEventListener('pointerdown', () => down = true);\n    window.addEventListener('pointerup', () => down = false);\n    window.addEventListener('pointermove', e => {\n      if (!down) return; const r = box.getBoundingClientRect();\n      const pct = Math.max(18, Math.min(82, ((e.clientX - r.left) / r.width) * 100));\n      l.style.width = pct + '%';\n    });\n    g.addEventListener('dblclick', () => l.style.width = '38%');\n  }",
+  "source": "inline",
+  "motion": "无动效"
+}

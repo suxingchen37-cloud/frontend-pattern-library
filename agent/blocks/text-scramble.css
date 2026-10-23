@@ -1,0 +1,6 @@
+.d-scramble{display:inline-flex;align-items:center;gap:2px;font-family:var(--mono);font-size:var(--fs-21);line-height:1;letter-spacing:.08em;color:var(--ink);outline:none;cursor:pointer}
+.d-scramble .d-sc-ch{font-variant-numeric:tabular-nums}
+.d-scramble .d-sc-ch:not(.is-fixed){color:var(--faint)}
+.d-scramble .d-sc-caret{display:inline-block;width:1px;height:var(--fs-21);background:var(--ink);animation:d-text-scramble-blink 900ms steps(6) infinite}
+.d-scramble:focus-visible{outline:1px solid var(--ink);outline-offset:6px}
+@keyframes d-text-scramble-blink{50%{opacity:0}}

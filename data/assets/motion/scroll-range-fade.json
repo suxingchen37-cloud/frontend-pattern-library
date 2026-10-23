@@ -1,0 +1,18 @@
+{
+  "id": "scroll-range-fade",
+  "cat": "滚动驱动",
+  "t": "区间淡出",
+  "en": "range fade",
+  "d": "把退场钉在 cover 55%–95%：卡片在视口里全墨走完大半段，贴上沿才淡到只剩轮廓——淡出绑在「已经在离场」的那一段，读者一进来不会先看到一张半透明的卡。用 animation-range 而不是手算 top<40%，换字号、换行高都不用重算数值。",
+  "body": "<div class=\"d-rg\" tabindex=\"0\" aria-label=\"区间淡出：卡片在指定滚动区间里退场\"><div class=\"d-rg-body\"><p class=\"d-rg-h\">区间淡出</p><p class=\"d-rg-p\">上面这一段是垫高用的：先让卡片在视口里正常出现，往下滚才看它贴上沿退场；没有这段，卡片一进来就已经在半透明里，看不出「开始退场」那一下。</p><div class=\"d-rg-card\"><p class=\"d-rg-t\">cover 55% → 95%</p><p class=\"d-rg-k\">animation-range: cover 55% / cover 95%</p></div><p class=\"d-rg-p\">这一段同样是垫高，好让卡片能贴着上沿走完整个区间。滚到底部时它只剩一圈轮廓和 15% 的墨；往回滚，它会一路还原，不需要点任何按钮，这也是交给滚动位置而不是脚本的原因。</p></div></div>",
+  "css": ".d-rg{box-sizing:border-box;width:300px;max-width:100%;height:150px;overflow-x:hidden;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg)}\n.d-rg-body{padding:12px}\n.d-rg-h{margin:0 0 4px;font-size:15px;color:var(--ink)}\n.d-rg-p{margin:0 0 12px;font-size:11px;line-height:1.6;color:var(--muted)}\n.d-rg-card{margin:0 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);box-shadow:inset 0 1px 0 #fff5;animation:d-scroll-range-fade-out cubic-bezier(.2,.75,.25,1) both;animation-timeline:view();animation-range:cover 55% cover 95%}\n.d-rg-t{margin:0;font-size:13px;color:var(--ink)}\n.d-rg-k{margin:2px 0 0;font-family:var(--font-mono);font-size:11px;color:var(--faint)}\n.d-rg:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n@keyframes d-scroll-range-fade-out{from{opacity:1;transform:translateY(0)}to{opacity:.15;transform:translateY(-8px)}}",
+  "init": null,
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "滚动",
+    "区间",
+    "淡出",
+    "印刷"
+  ]
+}

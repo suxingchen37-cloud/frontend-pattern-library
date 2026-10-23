@@ -1,0 +1,12 @@
+{
+  "id": "gauge",
+  "cat": "数据",
+  "t": "半圆仪表",
+  "en": "gauge",
+  "d": "范围型指标（完成度/健康度）比柱状更直观。",
+  "body": "<svg class=\"d-gauge\" viewBox=\"0 0 100 56\"><path d=\"M10 50a40 40 0 0 1 80 0\" class=\"d-gauge-track\"/><path d=\"M10 50a40 40 0 0 1 80 0\" class=\"d-gauge-val\"/></svg>",
+  "css": ".d-gauge{width:120px}\n.d-gauge path{fill:none;stroke-width:9;stroke-linecap:round}\n.d-gauge .d-gauge-track{stroke:color-mix(in srgb,var(--ink) 10%,transparent)}\n.d-gauge .d-gauge-val{stroke:var(--lime);stroke-dasharray:126;stroke-dashoffset:38}",
+  "init": null,
+  "source": "lab-more",
+  "motion": "无动效"
+}

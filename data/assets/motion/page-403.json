@@ -1,0 +1,12 @@
+{
+  "id": "page-403",
+  "cat": "状态页",
+  "t": "无权限页",
+  "en": "403 page",
+  "d": "说清楚为什么打不开、谁能开；给一个申请入口，而不是一句“禁止访问”。",
+  "body": "<div class=\"d-p403\"><span class=\"d-page-403-lock3\" aria-hidden=\"true\"></span><b>没有权限</b><p>这个房间只对项目成员开放。</p><button type=\"button\" data-req3>申请权限</button><em data-reqmsg3></em></div>",
+  "css": ".d-p403{width:240px;text-align:center;padding:8px}\n.d-page-403-lock3{display:block;width:26px;height:19px;border:2px solid var(--ink);border-radius:2px;margin:0 auto 10px;position:relative}\n.d-page-403-lock3:before{content:\"\";position:absolute;left:5px;top:-11px;width:12px;height:12px;border:2px solid var(--ink);border-bottom:0;border-radius:10px 10px 0 0}\n.d-p403 b{font-size:13px}\n.d-p403 p{margin:4px 0 10px;font-size:10.5px;color:var(--muted)}\n.d-p403 button{font-size:10px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 11px;cursor:pointer}\n.d-p403 em{display:block;margin-top:7px;font:9px var(--mono);color:var(--faint);font-style:normal}",
+  "init": "root => root.querySelector('[data-req3]').onclick = (e) => {\n    e.target.disabled = true; e.target.textContent = '申请已发出';\n    root.querySelector('[data-reqmsg3]').textContent = '等管理员批准后，入口会自动出现。';\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

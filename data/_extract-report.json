@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "generatedBy": "tools/extract.mjs",
+  "note": "本文件是抽取报告，不是资产；data/ 下下划线开头的文件在 build 时应跳过。",
+  "total": 144,
+  "bySource": {
+    "inline": 35,
+    "lab-more": 31,
+    "lab-extra2": 28,
+    "lab-extra3": 50
+  },
+  "byCat": {
+    "入场": 6,
+    "加载": 7,
+    "微交互": 4,
+    "光标": 4,
+    "滚动": 6,
+    "过渡": 5,
+    "拖拽": 1,
+    "布局": 6,
+    "数据": 8,
+    "反馈": 10,
+    "排印": 3,
+    "无障碍": 4,
+    "表单": 14,
+    "导航": 11,
+    "浮层": 5,
+    "列表": 10,
+    "手势": 3,
+    "内容": 3,
+    "长文": 10,
+    "表格": 8,
+    "状态页": 8,
+    "媒体": 8
+  },
+  "duplicateIds": [],
+  "initCount": 111,
+  "initsDeclared": {
+    "inline": 24,
+    "lab-more": 21,
+    "lab-extra2": 22,
+    "lab-extra3": 44
+  },
+  "orphanInits": [],
+  "missingFields": [
+    {
+      "id": "theme-crossfade",
+      "issue": "字段 css 为空"
+    }
+  ],
+  "skipped": {
+    "rule": "data/assets/motion 下文件名以 _ 开头的 *.json 不是资产（构建期临时/说明文件），build 与校验时必须跳过。",
+    "inMotionDir": []
+  },
+  "staleFiles": [],
+  "sources": [
+    {
+      "source": "inline",
+      "file": "motion-lab.html",
+      "bytes": 60608,
+      "bom": false,
+      "demos": 35,
+      "inits": 24,
+      "region": [
+        14889,
+        31799
+      ],
+      "shape": "DEMOS[35] / INITS{24}"
+    },
+    {
+      "source": "lab-more",
+      "file": "lab-more.js",
+      "bytes": 30405,
+      "bom": false,
+      "demos": 31,
+      "inits": 21,
+      "region": [
+        135,
+        18942
+      ],
+      "shape": "DEMOS_EXTRA[31] / INITS_EXTRA{21}"
+    },
+    {
+      "source": "lab-extra2",
+      "file": "lab-extra2.js",
+      "bytes": 32633,
+      "bom": false,
+      "demos": 28,
+      "inits": 22,
+      "region": [
+        174,
+        20819
+      ],
+      "shape": "DEMOS_EXTRA[28] / INITS_EXTRA{22}"
+    },
+    {
+      "source": "lab-extra3",
+      "file": "lab-extra3.js",
+      "bytes": 73484,
+      "bom": false,
+      "demos": 50,
+      "inits": 44,
+      "region": [
+        153,
+        44269
+      ],
+      "shape": "DEMOS_EXTRA[50] / INITS_EXTRA{44}"
+    }
+  ]
+}

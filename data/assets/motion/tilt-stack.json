@@ -1,0 +1,18 @@
+{
+  "id": "tilt-stack",
+  "cat": "3D 与透视",
+  "t": "倾斜叠层",
+  "en": "tilt stack",
+  "d": "三张卡只错 8px 与 16px，再大就会被读成三张独立的卡，而不是一叠；指针移动时整叠只偏 8°（纵轴 6°），超过这个角度卡面文字开始难读。最上层抬 4px 是为了让「手正按着一叠纸」这件事有落点。记忆点：纸叠被指尖压得一歪，上面那张先翘起来。",
+  "body": "<div class=\"d-ts\" tabindex=\"0\" role=\"group\" aria-label=\"倾斜叠层：指针移动时整叠倾斜，最上层抬起 4px\"><div class=\"d-ts-deck\"><div class=\"d-ts-card\"></div><div class=\"d-ts-card\"></div><div class=\"d-ts-card\"><span class=\"d-ts-k\">01 打样</span><span class=\"d-ts-n\">叠层页</span></div></div></div>",
+  "css": ".d-ts{box-sizing:border-box;width:236px;max-width:100%;height:150px;display:grid;place-items:center;perspective:700px;outline:none}\n.d-ts-deck{--rx:0deg;--ry:0deg;position:relative;width:196px;height:92px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform 180ms cubic-bezier(.34,1.56,.64,1);will-change:transform}\n.d-ts-card{position:absolute;inset:0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);transition:transform 280ms cubic-bezier(.34,1.56,.64,1),opacity 180ms cubic-bezier(.34,1.56,.64,1)}\n.d-ts-card:nth-child(1){transform:translateY(16px) translateZ(-28px);opacity:.55}\n.d-ts-card:nth-child(2){transform:translateY(8px) translateZ(-14px);opacity:.75}\n.d-ts-card:nth-child(3){transform:translateY(0) translateZ(0)}\n.d-ts:hover .d-ts-card:nth-child(3),.d-ts:focus-visible .d-ts-card:nth-child(3){transform:translateY(-4px) translateZ(0)}\n.d-ts-k{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);color:var(--faint)}\n.d-ts-n{font-size:var(--fs-15);font-weight:650;line-height:var(--lh-display);letter-spacing:var(--tracking-display);color:var(--ink)}\n.d-ts:focus-visible{outline:1px solid var(--ink);outline-offset:6px}",
+  "init": "root => {\n  const deck = root.querySelector('.d-ts-deck');\n  if (!deck || deck.dataset.ts) return;\n  deck.dataset.ts = '1';\n  const move = e => {\n    const r = deck.getBoundingClientRect();\n    if (!r.width || !r.height) return;\n    const x = (e.clientX - r.left) / r.width - .5;\n    const y = (e.clientY - r.top) / r.height - .5;\n    deck.style.setProperty('--ry', (x * 8).toFixed(2) + 'deg');\n    deck.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');\n  };\n  const rest = () => { deck.style.removeProperty('--rx'); deck.style.removeProperty('--ry'); };\n  deck.addEventListener('pointermove', move);\n  deck.addEventListener('pointerleave', rest);\n  deck.addEventListener('pointercancel', rest);\n}",
+  "source": "v5",
+  "motion": "物理",
+  "tags": [
+    "3D",
+    "叠层",
+    "指针",
+    "透视"
+  ]
+}

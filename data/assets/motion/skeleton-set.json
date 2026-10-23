@@ -1,0 +1,12 @@
+{
+  "id": "skeleton-set",
+  "cat": "加载",
+  "t": "骨架三种",
+  "en": "skeleton variants",
+  "d": "列表 / 卡片 / 对话三种骨架，和真实内容同形状。",
+  "body": "\n  <div class=\"d-sk3\"><div class=\"d-skeleton-set-k-list\"><i></i><i></i><i></i></div><div class=\"d-skeleton-set-k-card\"><i class=\"d-skeleton-set-big\"></i><i></i><i class=\"d-skeleton-set-short\"></i></div><div class=\"d-skeleton-set-k-chat\"><i></i><i class=\"d-skeleton-set-me\"></i><i></i></div></div>",
+  "css": ".d-sk3{display:flex;gap:10px;flex-wrap:wrap}\n.d-sk3>div{display:flex;flex-direction:column;gap:6px;width:86px;padding:8px;border:1px solid var(--line);border-radius:10px}\n.d-sk3 i{height:8px;border-radius:2px;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 7%,transparent),color-mix(in srgb,var(--ink) 15%,transparent),color-mix(in srgb,var(--ink) 7%,transparent));background-size:200% 100%;animation:d-skeleton-set-shim2 1.2s linear infinite}\n.d-sk3 .d-skeleton-set-k-card .d-skeleton-set-big{height:26px}\n.d-sk3 .d-skeleton-set-k-card .d-skeleton-set-short{width:60%}\n.d-sk3 .d-skeleton-set-k-chat i{height:14px;width:70%}\n.d-sk3 .d-skeleton-set-k-chat .d-skeleton-set-me{align-self:flex-end;background:color-mix(in srgb,var(--lime) 50%,transparent)}\n@keyframes d-skeleton-set-shim2{to{background-position:-200% 0}}",
+  "init": null,
+  "source": "lab-extra2",
+  "motion": "机械"
+}

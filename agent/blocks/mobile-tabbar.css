@@ -1,0 +1,5 @@
+.d-mb3{width:178px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper);box-shadow:0 8px 20px #20241e12}
+.d-mobile-tabbar-mbscreen3{height:100px;display:grid;place-items:center;font-family:var(--serif);font-size:17px;background:var(--bg)}
+.d-mobile-tabbar-mbtabs3{display:flex;border-top:1px solid var(--line)}
+.d-mobile-tabbar-mbtabs3 button{flex:1;border:0;background:transparent;font-size:8.5px;color:var(--faint);padding:6px 0;cursor:pointer}
+.d-mobile-tabbar-mbtabs3 button.d-mobile-tabbar-on{color:var(--ink);font-weight:600}

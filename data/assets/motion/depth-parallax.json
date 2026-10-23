@@ -1,0 +1,18 @@
+{
+  "id": "depth-parallax",
+  "cat": "3D 与透视",
+  "t": "分层视差",
+  "en": "depth parallax",
+  "d": "三层靠 translateZ 分景深，不手算每层位移：场景绕 Y 轴转 11° 时，近层在屏幕上走过的像素自然多于远层，跟真实透视一致。11° / 9° 是上限，再转背板边缘就会露出空边；方向键一次 3°，和鼠标手感同档。",
+  "body": "<div class=\"d-dp\" tabindex=\"0\" role=\"group\" aria-label=\"分层视差：鼠标移动或方向键转动景深\"><div class=\"d-dp-scene\"><span class=\"d-dp-plane d-dp-back\"></span><span class=\"d-dp-plane d-dp-mid\"><span class=\"d-dp-k\">景深三层</span></span><span class=\"d-dp-plane d-dp-front\"><span class=\"d-dp-v\">+60</span></span></div></div>",
+  "css": ".d-dp{box-sizing:border-box;width:300px;max-width:100%;height:150px;border:1px solid var(--line);border-radius:10px;background:var(--bg);perspective:560px;overflow:hidden}\n.d-dp-scene{position:relative;width:100%;height:100%;transform-style:preserve-3d;will-change:transform}\n.d-dp-plane{position:absolute;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border-radius:6px}\n.d-dp-back{left:16px;top:16px;right:16px;bottom:16px;border:1px solid var(--line);background:var(--paper);transform:translateZ(-120px)}\n.d-dp-mid{left:64px;top:40px;width:172px;height:70px;border:1px solid var(--faint);background:var(--bg);transform:translateZ(-30px)}\n.d-dp-front{left:112px;top:56px;width:76px;height:38px;background:var(--ink);color:var(--bg);transform:translateZ(60px)}\n.d-dp-k{font-size:11px;letter-spacing:.08em;color:var(--muted)}\n.d-dp-v{font-family:var(--font-mono);font-size:11px}\n.d-dp:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n  const box = root.querySelector('.d-dp');\n  if (!box) return;\n  const scene = box.querySelector('.d-dp-scene');\n  let kx = 0, ky = 0;\n  const apply = () => { scene.style.transform = 'rotateX(' + ky.toFixed(2) + 'deg) rotateY(' + kx.toFixed(2) + 'deg)'; };\n  box.onpointermove = e => {\n    const r = box.getBoundingClientRect();\n    kx = ((e.clientX - r.left) / r.width - .5) * 22;\n    ky = -((e.clientY - r.top) / r.height - .5) * 18;\n    scene.style.transition = 'none';\n    apply();\n  };\n  box.onpointerleave = () => {\n    kx = 0; ky = 0;\n    scene.style.transition = 'transform 280ms cubic-bezier(.34,1.56,.64,1)';\n    apply();\n  };\n  const step = { ArrowLeft: [-3, 0], ArrowRight: [3, 0], ArrowUp: [0, -3], ArrowDown: [0, 3] };\n  box.onkeydown = e => {\n    const s = step[e.key];\n    if (!s) return;\n    e.preventDefault();\n    kx = Math.max(-11, Math.min(11, kx + s[0]));\n    ky = Math.max(-9, Math.min(9, ky + s[1]));\n    scene.style.transition = 'transform 280ms cubic-bezier(.34,1.56,.64,1)';\n    apply();\n  };\n}",
+  "source": "v4",
+  "motion": "物理",
+  "tags": [
+    "视差",
+    "景深",
+    "指针",
+    "立体"
+  ]
+}

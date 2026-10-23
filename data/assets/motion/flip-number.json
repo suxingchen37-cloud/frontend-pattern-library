@@ -1,0 +1,12 @@
+{
+  "id": "flip-number",
+  "cat": "数据",
+  "t": "数字翻牌",
+  "en": "flip number",
+  "d": "数字变化时上下翻，而不是整体替换；计数、时钟有\"机械感\"。",
+  "body": "<div class=\"d-flipnum\"><i>0</i><i>8</i><i>4</i></div><button class=\"d-btn\" data-flipn>+1</button>",
+  "css": ".d-flipnum{display:flex;gap:4px;font-variant-numeric:tabular-nums}\n.d-flipnum i{width:26px;height:36px;display:grid;place-items:center;border-radius:6px;background:var(--paper);border:1px solid var(--line);font-style:normal;font-size:18px;font-weight:650;overflow:hidden}\n.d-flipnum i.flip{animation:d-flip-number-kf .42s var(--ease)}\n@keyframes d-flip-number-kf{0%{transform:rotateX(0)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}\n.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}\n.d-btn:hover{box-shadow:0 6px 18px #20241e14}\n.d-btn:active{transform:scale(.97)}\n",
+  "init": "root => {\n    const digits = [...root.querySelectorAll('.d-flipnum i')];\n    root.querySelector('[data-flipn]').onclick = () => {\n      const n = String((Number(digits.map(d => d.textContent).join('')) + 1) % 1000).padStart(3, '0');\n      digits.forEach((d, i) => { if (d.textContent !== n[i]) { d.textContent = n[i]; d.classList.remove('flip'); void d.offsetWidth; d.classList.add('flip'); } });\n    };\n  }",
+  "source": "lab-extra2",
+  "motion": "印刷"
+}

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>有机形变 · svg-blob-morph · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px var(--line);
+  --border-strong:1px var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-bm{display:flex;align-items:center;gap:16px}
+.d-bm-art{width:120px;height:120px}
+.d-bm-shape{fill:#c2402a;stroke:var(--ink);stroke-width:1}
+.d-bm-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}
+.d-bm-btn:hover{border-color:var(--ink);color:var(--ink)}
+.d-bm-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>svg-blob-morph</code>
+  <b>有机形变</b>
+  <span>blob morph</span>
+  <span>分类 SVG 与路径</span>
+  <span>运动 物理</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<div class="d-bm"><svg class="d-bm-art" viewBox="0 0 120 120" aria-hidden="true"><path class="d-bm-shape" d="M60 27Q69 27 75 33Q82 39 80 47Q79 55 74 61Q69 68 62 71Q54 74 47 70Q40 66 38 59Q36 52 39 45Q42 37 49 32Q54 27 60 27Z"/></svg><button class="d-bm-btn" type="button" aria-pressed="true">停</button></div>
+</div>
+<p class="pv-note">八个极径按曲线插值再拼成 Q 路径，而不是给 d 做过渡——d 只有 Chromium 能补间；曲线在 1.56 那里过冲，半径会多鼓一点再回来，这才像一个会呼吸的墨点，等比缩放是死板的。半径上限压到 1.14 倍，过冲也不会蹭到边框。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "svg-blob-morph";
+  window.INITS = window.INITS || {};
+  window.INITS["svg-blob-morph"] = (root => {
+    const box = root.querySelector('.d-bm'), shape = box.querySelector('.d-bm-shape'), btn = box.querySelector('.d-bm-btn');
+    const N = 8, R = 38, CX = 60, CY = 60, DUR = 900;
+    const A = [1, .8, .96, .82, 1, .84, .98, .8];
+    const B = [.82, .98, .84, 1, .8, .96, .8, 1];
+    const ease = t => {
+      const x1 = .34, y1 = 1.56, x2 = .64, y2 = 1;
+      const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+      const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+      let u = t;
+      for (let i = 0; i < 5; i++) {
+        const x = ((ax * u + bx) * u + cx) * u - t;
+        const dx = (3 * ax * u + 2 * bx) * u + cx;
+        if (Math.abs(x) < 1e-4 || !dx) break;
+        u -= x / dx;
+      }
+      u = Math.max(0, Math.min(1, u));
+      return ((ay * u + by) * u + cy) * u;
+    };
+    const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+    const draw = k => {
+      const pts = [];
+      for (let i = 0; i < N; i++) {
+        const a = (i / N) * Math.PI * 2 - Math.PI / 2;
+        const r = Math.min(R * 1.14, R * (A[i] + (B[i] - A[i]) * k));
+        pts.push([CX + Math.cos(a) * r, CY + Math.sin(a) * r]);
+      }
+      const m0 = mid(pts[N - 1], pts[0]);
+      let d = 'M' + m0[0].toFixed(1) + ' ' + m0[1].toFixed(1);
+      for (let i = 0; i < N; i++) {
+        const m = mid(pts[i], pts[(i + 1) % N]);
+        d += 'Q' + pts[i][0].toFixed(1) + ' ' + pts[i][1].toFixed(1) + ' ' + m[0].toFixed(1) + ' ' + m[1].toFixed(1);
+      }
+      return d + 'Z';
+    };
+    shape.setAttribute('d', draw(0));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      btn.disabled = true;
+      btn.textContent = '已停';
+      btn.setAttribute('aria-pressed', 'false');
+      return;
+    }
+    let raf = 0, t0 = 0, off = 0;
+    const step = now => {
+      if (!t0) t0 = now - off;
+      const p = ((now - t0) / DUR) % 2;
+      shape.setAttribute('d', draw(ease(p < 1 ? p : 2 - p)));
+      raf = box._raf = requestAnimationFrame(step);
+    };
+    const stop = () => { cancelAnimationFrame(raf); raf = 0; box._raf = 0; };
+    btn.onclick = () => {
+      if (raf) {
+        off = (performance.now() - t0) % (DUR * 2); stop();
+        btn.textContent = '走'; btn.setAttribute('aria-pressed', 'false');
+      } else {
+        t0 = 0; step(performance.now());
+        btn.textContent = '停'; btn.setAttribute('aria-pressed', 'true');
+      }
+    };
+    cancelAnimationFrame(box._raf);
+    step(performance.now());
+  });
+  window.INITS["svg-blob-morph"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

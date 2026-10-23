@@ -1,0 +1,12 @@
+{
+  "id": "text-wrap",
+  "cat": "长文",
+  "t": "文字绕图",
+  "en": "shape-outside",
+  "d": "让文字绕着图形走；排版不必永远是方块，轮廓也能被行盒认识。",
+  "body": "<div class=\"d-tw3\"><span class=\"d-text-wrap-shape3\" aria-hidden=\"true\"></span><p>文字绕着图形走。CSS 的 shape-outside 让行盒认识圆、多边形甚至图片的轮廓，长文就不必永远是一块方块。</p></div>",
+  "css": ".d-tw3{width:280px;font-size:11.5px;line-height:1.8;color:var(--muted);overflow:hidden}\n.d-tw3 .d-text-wrap-shape3{float:left;width:64px;height:64px;border-radius:50%;background:var(--lime);margin:2px 12px 4px 0;shape-outside:circle(50%)}\n.d-tw3 p{margin:0}",
+  "init": null,
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

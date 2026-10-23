@@ -1,0 +1,12 @@
+{
+  "id": "tabs-pill",
+  "cat": "导航",
+  "t": "滑动页签",
+  "en": "sliding tabs",
+  "d": "选中态是一块跟着走的底；比换色更有\"位置感\"。",
+  "body": "<div class=\"d-tabs\" data-v=\"0\"><i class=\"d-tabs-pill-pill\"></i><button>概览</button><button>成员</button><button>设置</button></div>",
+  "css": ".d-tabs{position:relative;display:flex;gap:2px;border-bottom:1px solid var(--line);padding:0 4px}\n.d-tabs button{position:relative;z-index:1;border:0;background:transparent;color:var(--muted);font:inherit;font-size:12px;padding:9px 12px;cursor:pointer}\n.d-tabs button.on{color:var(--ink)}\n.d-tabs .d-tabs-pill-pill{position:absolute;bottom:-1px;height:2px;background:var(--ink);transition:left .26s var(--ease),width .26s var(--ease)}",
+  "init": "root => {\n    const box = root.querySelector('.d-tabs'), pill = box.querySelector('.d-tabs-pill-pill'), btns = [...box.querySelectorAll('button')];\n    const move = i => { const b = btns[i], r = b.getBoundingClientRect(), pr = box.getBoundingClientRect(); pill.style.left = (r.left - pr.left) + 'px'; pill.style.width = r.width + 'px'; btns.forEach((x, k) => x.classList.toggle('on', k === i)); };\n    btns.forEach((b, i) => b.onclick = () => move(i)); setTimeout(() => move(0), 30);\n  }",
+  "source": "lab-more",
+  "motion": "印刷"
+}

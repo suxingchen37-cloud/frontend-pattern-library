@@ -1,0 +1,13 @@
+{
+  "id": "fx-fade-stagger",
+  "cat": "入场",
+  "t": "错峰淡入",
+  "en": "staggered fade-up",
+  "d": "每项延迟 40ms：低于 30ms 人看不出顺序，高于 60ms 会显得慢。",
+  "body": "<div class=\"d-stack\">\n  <i class=\"d-row\">一</i>\n  <i class=\"d-row\">二</i>\n  <i class=\"d-row\">三</i>\n</div>\n<button class=\"d-again\" type=\"button\" data-replay>重放</button>",
+  "css": ".d-stack{display:flex;flex-direction:column;gap:8px;width:200px}\n.d-row{display:block;padding:8px 12px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);font-size:13px;font-style:normal;animation:d-fx-fade-stagger-in 280ms var(--ease-print) both}\n.d-row:nth-child(2){animation-delay:40ms}\n.d-row:nth-child(3){animation-delay:80ms}\n.d-again{margin-top:16px;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--ink);font:inherit;font-size:11px;cursor:pointer;transition:border-color 120ms var(--ease-print)}\n.d-again:hover{border-color:var(--ink)}\n@keyframes d-fx-fade-stagger-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}\n@media (prefers-reduced-motion: reduce){.d-row{animation:none}}",
+  "init": "root => {\n  const rows = Array.from(root.querySelectorAll('.d-row'));\n  const replay = () => rows.forEach((r) => { r.style.animation = 'none'; void r.offsetWidth; r.style.animation = ''; });\n  const btn = root.querySelector('[data-replay]');\n  if (btn) btn.addEventListener('click', replay);\n  replay();\n}",
+  "source": "inline",
+  "motion": "印刷",
+  "tags": ["入场", "列表", "延迟"]
+}

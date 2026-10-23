@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>前端模式库 · 动效与交互</title>
+<title>前端模式库：动效与交互</title>
 <style>
 :root{
   --bg:#f3f1e9;--paper:#fbfaf5;--ink:#20241e;--muted:#6b7860;--faint:#94a184;--line:#deded2;
@@ -19,27 +19,27 @@ header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px
 header h1{margin:0;font-size:15px;letter-spacing:-.01em}
 header .sub{font-size:11px;color:var(--faint);border-left:1px solid var(--line);padding-left:12px}
 header .grow{flex:1}
-header input[type=search]{width:200px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;font:inherit;font-size:12px}
-header button{font:inherit;font-size:12px;padding:7px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;cursor:pointer}
+header input[type=search]{width:200px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;font:inherit;font-size:12px}
+header button{font:inherit;font-size:12px;padding:7px 11px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
 header button:hover{border-color:var(--ink)}
 #catbar{position:sticky;top:55px;z-index:19;display:flex;gap:6px;flex-wrap:wrap;padding:8px 22px;background:var(--bg);border-bottom:1px solid var(--line)}
 #catbar button{font:inherit;font-size:11.5px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
 #catbar button[data-on]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 main{max-width:1240px;margin:0 auto;padding:22px 22px 120px}
-h2.cat{font-size:13px;letter-spacing:.14em;color:var(--faint);margin:34px 0 14px;text-transform:uppercase}
+h2.cat{font-size:13px;letter-spacing:.14em;color:var(--faint);margin:34px 0 14px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 14px;display:flex;flex-direction:column;gap:10px;position:relative;min-width:0}
-.card[data-pick]{border-color:#9bb273;box-shadow:inset 0 0 0 1px #9bb27355}
+.card[data-pick]{border-color:var(--ink);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 22%,transparent)}
 .card h3{margin:0;font-size:14px;font-weight:650;display:flex;align-items:center;gap:8px}
 .card h3 em{font-style:normal;font-weight:500;font-size:10.5px;color:var(--faint);letter-spacing:.04em}
 .card p{margin:0;font-size:11.5px;color:var(--muted);line-height:1.8}
 .stage{min-height:120px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:16px;border-radius:10px;background:color-mix(in srgb,var(--ink) 4%,transparent);overflow:hidden}
 .stage>*{min-width:0;max-width:100%}
 .acts{display:flex;gap:6px;align-items:center;margin-top:auto}
-.acts button{font:inherit;font-size:11px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+.acts button{font:inherit;font-size:11px;padding:5px 9px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
 .acts button:hover{border-color:var(--ink)}
 .pick{margin-left:auto;border:1px solid var(--line)!important}
-.pick[aria-pressed=true]{background:var(--lime);color:#1e2a12;border-color:#b9d94d}
+.pick[aria-pressed=true]{background:var(--lime);color:var(--ink);border-color:color-mix(in srgb,var(--ink) 30%,transparent)}
 .hint{font-size:10.5px;color:var(--faint)}
 #dock{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;padding:12px 22px;background:var(--paper);border-top:1px solid var(--line);z-index:30}
 #dock b{font-size:13px}
@@ -51,7 +51,7 @@ h2.cat{font-size:13px;letter-spacing:.14em;color:var(--faint);margin:34px 0 14px
 
 /* ——— 演示按钮的基础形态（各卡片里复用） ——— */
 .demo-btn{font:inherit;font-size:12.5px;padding:9px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),box-shadow .16s var(--ease),background .16s}
-.demo-btn:hover{box-shadow:0 6px 18px #20241e14}
+.demo-btn:hover{box-shadow:0 1px 0 var(--line)}
 .demo-btn:active{transform:scale(.97)}
 .demo-btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 html.embedded header{display:none}
@@ -59,8 +59,8 @@ html.embedded #catbar{top:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:non
 html.embedded #catbar::-webkit-scrollbar{display:none}
 html.embedded #catbar button{flex:0 0 auto}
 .catbar-tools{margin-left:auto;display:flex;gap:6px;align-items:center;flex:0 0 auto;position:sticky;right:0;background:var(--bg);padding-left:8px;border-left:1px solid var(--line)}
-.catbar-tools input[type=search]{width:190px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;font:inherit;font-size:12px}
-#catbar .catbar-tools button{font:inherit;font-size:12px;padding:7px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:inherit;cursor:pointer}
+.catbar-tools input[type=search]{width:190px;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;font:inherit;font-size:12px}
+#catbar .catbar-tools button{font:inherit;font-size:12px;padding:7px 11px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
 @media(max-width:640px){.catbar-tools input[type=search]{display:none}.catbar-tools{padding-left:6px}}
 
 /* ---------- wide workspace ---------- */
@@ -71,13 +71,13 @@ main#lab{max-width:none;margin:0;padding:20px 22px 96px}
 .grid{--card-min:320px;grid-template-columns:repeat(auto-fill,minmax(var(--card-min),1fr))}
 .grid:empty{min-height:300px}
 .card{content-visibility:auto;contain-intrinsic-size:auto 380px;scroll-margin-top:20px}
-.card.flash{outline:2px solid var(--lime);outline-offset:3px}
+.card.flash{outline:1px solid var(--ink);outline-offset:3px}
 .rail-head{display:flex;align-items:center;justify-content:space-between;font:10px var(--mono);letter-spacing:.12em;color:var(--faint);padding:0 5px 4px}
 .rail-total{font:10px var(--mono);color:var(--faint)}
 .rail-tools{display:flex;flex-direction:column;gap:5px;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:2px}
-.rail-tools input{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:inherit;font:11.5px var(--sans);outline:none}
+.rail-tools input{width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:inherit;font:11.5px var(--sans);outline:none}
 .rail-tools input:focus{border-color:var(--ink)}
-.rail-tools button,.rail-top{font:11px var(--sans);padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--muted);cursor:pointer;text-align:left}
+.rail-tools button,.rail-top{font:11px var(--sans);padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;text-align:left}
 .rail-tools button:hover,.rail-top:hover{border-color:var(--ink);color:var(--ink)}
 .rail-cats{display:flex;flex-direction:column;gap:1px;flex:1;min-height:0;overflow:auto;padding-right:2px}
 .rail-cats button{display:flex;align-items:center;justify-content:space-between;gap:6px;border:0;background:transparent;color:var(--muted);font:12px var(--sans);padding:5px 7px;border-radius:6px;cursor:pointer;text-align:left}
@@ -105,7 +105,7 @@ html:not(.embedded) .picked-panel{top:62px;height:calc(100vh - 62px)}
 .pp-head span[data-count]{color:var(--muted);font-weight:500}
 .pp-hint{font:8.5px var(--mono);color:var(--faint);font-weight:400}
 .pp-list{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:4px}
-.pp-item{display:flex;align-items:center;gap:3px;border:1px solid var(--line);border-radius:7px;padding:4px 5px;min-width:0}
+.pp-item{display:flex;align-items:center;gap:3px;border:1px solid var(--line);border-radius:6px;padding:4px 5px;min-width:0}
 .pp-go{flex:1;min-width:0;border:0;background:transparent;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:1px;padding:2px;color:inherit}
 .pp-go span{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pp-go code{font:9px var(--mono);color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -116,19 +116,19 @@ html:not(.embedded) .picked-panel{top:62px;height:calc(100vh - 62px)}
 .pp-actions button,.pp-close{font:10px var(--sans);padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}
 .pp-actions button:hover,.pp-close:hover{border-color:var(--ink);color:var(--ink)}
 .pp-actions button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.picked-pill{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:999px;background:var(--ink);color:var(--paper);font:12px var(--sans);cursor:pointer;box-shadow:0 10px 28px #20241e33}
-.picked-pill b{font:11px var(--mono);color:var(--lime)}
+.picked-pill{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:6px;padding:7px 12px;border:0;border-radius:999px;background:var(--ink);color:var(--paper);font:12px var(--sans);cursor:pointer;box-shadow:0 12px 24px -8px #20241e26}
+.picked-pill b{font:11px var(--mono);color:var(--ink)}
 .picked-pill span{font-size:10px;opacity:.7}
-.to-top{position:fixed;left:16px;bottom:16px;z-index:40;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);font-size:11px;cursor:pointer;box-shadow:0 6px 18px #20241e18}
+.to-top{position:fixed;left:16px;bottom:16px;z-index:40;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);font-size:11px;cursor:pointer;box-shadow:0 1px 0 var(--line)}
 .sheet-wrap{position:fixed;inset:0;z-index:50}
 .sheet-wrap[hidden]{display:none}
 .sheet-scrim{position:absolute;inset:0;background:#0c0f0a55}
-.sheet{position:absolute;right:14px;bottom:14px;width:min(330px,calc(100vw - 28px));max-height:70vh;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 20px 44px #0004}
+.sheet{position:absolute;right:14px;bottom:14px;width:min(330px,calc(100vw - 28px));max-height:70vh;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 12px 24px -8px #20241e26}
 
 /* preview */
 .preview{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:20px;background:#0c0f0a66}
 .preview[hidden]{display:none}
-.preview-card{width:min(720px,100%);max-height:90vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.preview-card{width:min(720px,100%);max-height:90vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
 .preview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px}
 .preview-head button{font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
 .preview-stage{min-height:260px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:24px;background:var(--bg);border-radius:10px;overflow:auto}
@@ -150,7 +150,7 @@ html[data-density=compact] .card p{font-size:11px;line-height:1.7}
 <body>
 
 <header>
-  <h1>前端模式库 · 动效与交互</h1>
+  <h1>前端模式库：动效与交互</h1>
   <span class="sub">挑你想要的，点「选中」；底部复制清单给我</span>
   <span class="grow"></span>
   <input id="q" type="search" placeholder="搜效果（滚动 / 光标 / 加载…）">
@@ -211,151 +211,181 @@ html[data-density=compact] .card p{font-size:11px;line-height:1.7}
 <script src="lab-more.js?v=3"></script>
 <script src="lab-extra2.js?v=1"></script>
 <script src="lab-extra3.js?v=1"></script>
+<script src="lab-extra4.js?v=1"></script>
+<script src="lab-recipe.js?v=1"></script>
 <script>
 /* 每条 = 一个可交互效果。body 里只允许用 class="d-…"，避免互相污染。 */
 const DEMOS = [
-/* ========== 1 入场与层级 ========== */
-{id:'fade-stagger',cat:'入场',t:'错峰淡入',en:'staggered fade-up',d:'列表/卡片依次出现，每项延迟 40ms；最基础也最耐看的入场。',body:`
+{id:'fade-stagger',cat:"入场",t:"错峰淡入",en:"staggered fade-up",d:"列表/卡片依次出现，每项延迟 40ms；最基础也最耐看的入场。",body:`
   <div class="d-stack"><i class="d-chip"></i><i class="d-chip"></i><i class="d-chip"></i><i class="d-chip"></i></div>
-  <button class="demo-btn" data-replay>重播</button>`,css:`.d-stack{display:flex;flex-direction:column;gap:8px}
-.d-chip{width:120px;height:12px;border-radius:6px;background:color-mix(in srgb,var(--ink) 18%,transparent);opacity:0;animation:d-in .45s var(--ease) forwards}
+  <button class="d-btn" data-replay>重播</button>`,css:`.d-stack{display:flex;flex-direction:column;gap:8px}
+.d-chip{width:120px;height:12px;border-radius:6px;background:color-mix(in srgb,var(--ink) 18%,transparent);opacity:0;animation:d-fade-stagger-in .45s var(--ease) forwards}
 .d-chip:nth-child(1){animation-delay:0ms}.d-chip:nth-child(2){animation-delay:40ms}.d-chip:nth-child(3){animation-delay:80ms}.d-chip:nth-child(4){animation-delay:120ms}
-@keyframes d-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}`},
-
-{id:'pop-spring',cat:'入场',t:'弹簧弹出',en:'spring pop',d:'弹出确认、新建成功这类「有物理感」的时刻；别用在长列表上。',body:`<button class="demo-btn primary" data-pop>点我弹一个</button><span class="d-badge" data-badge hidden>已保存</span>`,css:`.d-badge{padding:4px 10px;border-radius:999px;background:var(--lime);color:#1e2a12;font-size:11px}
-.d-badge.on{animation:d-pop .42s var(--ease-spring)}
-@keyframes d-pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}`},
-
-{id:'blur-in',cat:'入场',t:'模糊聚焦',en:'blur-in',d:'内容从模糊到清晰，适合弹窗、图片、AI 生成结果。',body:`<div class="d-blur">聚焦的那一刻</div><button class="demo-btn" data-replay>重播</button>`,css:`.d-blur{font-size:15px;padding:14px 18px;border-radius:10px;background:var(--paper);border:1px solid var(--line);animation:d-blur .5s var(--ease) forwards}
-@keyframes d-blur{from{filter:blur(10px);opacity:0}to{filter:blur(0);opacity:1}}`},
-
-{id:'mask-reveal',cat:'入场',t:'遮罩揭示',en:'clip reveal',d:'用 clip-path 从上往下「掀开」，适合标题与大幅图片。',body:`<div class="d-mask">把想法，变成能用的界面。</div>`,css:`.d-mask{font-size:20px;font-weight:700;letter-spacing:-.03em;animation:d-mask .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}
-@keyframes d-mask{to{clip-path:inset(0 0 0 0)}}`},
-
-{id:'skeleton',cat:'加载',t:'骨架到内容',en:'skeleton → content',d:'先给形状再给内容，比转圈更稳；加载超过 300ms 才出现。',body:`<div class="d-sk"><i></i><i></i><i></i></div><button class="demo-btn" data-swap>载入完成</button>`,css:`.d-sk{width:180px;display:flex;flex-direction:column;gap:8px}
-.d-sk i{height:12px;border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 8%,transparent),color-mix(in srgb,var(--ink) 16%,transparent),color-mix(in srgb,var(--ink) 8%,transparent));background-size:200% 100%;animation:d-shim 1.2s linear infinite}
+@keyframes d-fade-stagger-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'pop-spring',cat:"入场",t:"弹簧弹出",en:"spring pop",d:"弹出确认、新建成功这类「有物理感」的时刻；别用在长列表上。",body:`<button class="d-btn d-btn-primary" data-pop>点我弹一个</button><span class="d-badge" data-badge hidden>已保存</span>`,css:`.d-badge{padding:4px 10px;border-radius:999px;background:var(--lime);color:#1e2a12;font-size:11px}
+.d-badge.on{animation:d-pop-spring-kf .42s var(--ease-spring)}
+@keyframes d-pop-spring-kf{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+.d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+`},
+{id:'blur-in',cat:"入场",t:"模糊聚焦",en:"blur-in",d:"内容从模糊到清晰，适合弹窗、图片、AI 生成结果。",body:`<div class="d-blur-in-kf">聚焦的那一刻</div><button class="d-btn" data-replay>重播</button>`,css:`.d-blur-in-kf{font-size:15px;padding:14px 18px;border-radius:10px;background:var(--paper);border:1px solid var(--line);animation:d-blur-in-kf .5s var(--ease) forwards}
+@keyframes d-blur-in-kf{from{filter:blur(10px);opacity:0}to{filter:blur(0);opacity:1}}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'mask-reveal',cat:"入场",t:"遮罩揭示",en:"clip reveal",d:"用 clip-path 从上往下「掀开」，适合标题与大幅图片。",body:`<div class="d-mask-reveal-kf">把想法，变成能用的界面。</div>`,css:`.d-mask-reveal-kf{font-size:20px;font-weight:700;letter-spacing:-.03em;animation:d-mask-reveal-kf .7s var(--ease) forwards;clip-path:inset(0 100% 0 0)}
+@keyframes d-mask-reveal-kf{to{clip-path:inset(0 0 0 0)}}`},
+{id:'skeleton',cat:"加载",t:"骨架到内容",en:"skeleton → content",d:"先给形状再给内容，比转圈更稳；加载超过 300ms 才出现。",body:`<div class="d-sk"><i></i><i></i><i></i></div><button class="d-btn" data-swap>载入完成</button>`,css:`.d-sk{width:180px;display:flex;flex-direction:column;gap:8px}
+.d-sk i{height:12px;border-radius:6px;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 8%,transparent),color-mix(in srgb,var(--ink) 16%,transparent),color-mix(in srgb,var(--ink) 8%,transparent));background-size:200% 100%;animation:d-skeleton-shim 1.2s linear infinite}
 .d-sk i:nth-child(2){width:80%}.d-sk i:nth-child(3){width:60%}
-@keyframes d-shim{to{background-position:-200% 0}}`},
-
-/* ========== 2 微交互 ========== */
-{id:'ripple',cat:'微交互',t:'水波按压',en:'ripple',d:'点击处扩散一圈，给「按到了」最直接的反馈。',body:`<button class="demo-btn primary d-rip">点我</button>`,css:`.d-rip{position:relative;overflow:hidden}
-.d-rip .d-wave{position:absolute;border-radius:999px;background:#ffffff55;transform:scale(0);animation:d-wave .6s var(--ease);pointer-events:none}
-@keyframes d-wave{to{transform:scale(4);opacity:0}}`},
-
-{id:'toggle-spring',cat:'微交互',t:'弹簧开关',en:'spring switch',d:'开关的滑块带一点过冲，比线性更「活」。',body:`<button class="d-sw" role="switch" aria-checked="false"><i></i></button>`,css:`.d-sw{width:46px;height:26px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 10%,transparent);position:relative;cursor:pointer;transition:background .2s}
+@keyframes d-skeleton-shim{to{background-position:-200% 0}}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'ripple',cat:"微交互",t:"水波按压",en:"ripple",d:"点击处扩散一圈，给「按到了」最直接的反馈。",body:`<button class="d-btn d-btn-primary d-rip">点我</button>`,css:`.d-rip{position:relative;overflow:hidden}
+.d-rip .d-ripple-wave{position:absolute;border-radius:999px;background:#ffffff55;transform:scale(0);animation:d-ripple-wave .6s var(--ease);pointer-events:none}
+@keyframes d-ripple-wave{to{transform:scale(4);opacity:0}}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+.d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+`},
+{id:'toggle-spring',cat:"微交互",t:"弹簧开关",en:"spring switch",d:"开关的滑块带一点过冲，比线性更「活」。",body:`<button class="d-sw" role="switch" aria-checked="false"><i></i></button>`,css:`.d-sw{width:46px;height:26px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 10%,transparent);position:relative;cursor:pointer;transition:background .2s}
 .d-sw i{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:999px;background:var(--paper);box-shadow:0 1px 3px #0002;transition:transform .34s var(--ease-spring)}
 .d-sw[aria-checked=true]{background:var(--lime)}
 .d-sw[aria-checked=true] i{transform:translateX(20px)}`},
-
-{id:'copy-check',cat:'微交互',t:'复制变对勾',en:'copy → check morph',d:'复制类按钮把图标原地换成对勾，2 秒后复原；别弹 toast 打断。',body:`<button class="demo-btn d-copy"><span class="d-ico">⧉</span><span class="d-lbl">复制</span></button>`,css:`.d-copy .d-ico,.d-copy .d-lbl{display:inline-block;transition:transform .2s var(--ease),opacity .2s}
+{id:'copy-check',cat:"微交互",t:"复制变对勾",en:"copy → check morph",d:"复制类按钮把图标原地换成对勾，2 秒后复原；别弹 toast 打断。",body:`<button class="d-btn d-copy"><span class="d-ico">⧉</span><span class="d-lbl">复制</span></button>`,css:`.d-copy .d-ico,.d-copy .d-lbl{display:inline-block;transition:transform .2s var(--ease),opacity .2s}
 .d-copy.done{background:var(--lime);border-color:#b9d94d;color:#1e2a12}
-.d-copy.done .d-ico{transform:scale(1.2)}`},
-
-{id:'magnetic',cat:'光标',t:'磁吸按钮',en:'magnetic button',d:'指针靠近时按钮轻微跟随，离开回弹；只给一个主按钮用。',body:`<div class="d-mag-wrap"><button class="demo-btn primary d-mag">靠近我</button></div>`,css:`.d-mag-wrap{padding:26px}
-.d-mag{transition:transform .18s var(--ease-out,var(--ease));will-change:transform}`},
-
-{id:'press-depth',cat:'微交互',t:'按压下沉',en:'press depth',d:'按下时缩小 + 阴影收起，模拟真实按键。',body:`<button class="demo-btn d-depth">按住看</button>`,css:`.d-depth{box-shadow:0 4px 0 color-mix(in srgb,var(--ink) 22%,transparent);transition:transform .08s,box-shadow .08s}
-.d-depth:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 22%,transparent)}`},
-
-{id:'tooltip-follow',cat:'光标',t:'跟随提示',en:'cursor-follow tooltip',d:'提示跟着指针走，比固定在元素上更少遮挡。',body:`<div class="d-tipzone"><span class="d-dot"></span><span class="d-tip" hidden>这是提示</span></div>`,css:`.d-tipzone{position:relative;width:200px;height:90px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center}
-.d-dot{width:10px;height:10px;border-radius:99px;background:var(--lime)}
+.d-copy.done .d-ico{transform:scale(1.2)}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'magnetic',cat:"光标",t:"磁吸按钮",en:"magnetic button",d:"指针靠近时按钮轻微跟随，离开回弹；只给一个主按钮用。",body:`<div class="d-mag-wrap"><button class="d-btn d-btn-primary d-mag">靠近我</button></div>`,css:`.d-mag-wrap{padding:26px}
+.d-mag{transition:transform .18s var(--ease-out,var(--ease));will-change:transform}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+.d-btn.d-btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+`},
+{id:'press-depth',cat:"微交互",t:"按压下沉",en:"press depth",d:"按下时缩小 + 阴影收起，模拟真实按键。",body:`<button class="d-btn d-depth">按住看</button>`,css:`.d-depth{box-shadow:0 4px 0 color-mix(in srgb,var(--ink) 22%,transparent);transition:transform .08s,box-shadow .08s}
+.d-depth:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 22%,transparent)}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'tooltip-follow',cat:"光标",t:"跟随提示",en:"cursor-follow tooltip",d:"提示跟着指针走，比固定在元素上更少遮挡。",body:`<div class="d-tipzone"><span class="d-dot"></span><span class="d-tip" hidden>这是提示</span></div>`,css:`.d-tipzone{position:relative;width:200px;height:90px;border:1px dashed var(--line);border-radius:10px;display:grid;place-items:center}
+.d-dot{width:10px;height:10px;border-radius:999px;background:var(--lime)}
 .d-tip{position:absolute;transform:translate(10px,-50%);padding:4px 8px;border-radius:6px;background:var(--ink);color:var(--paper);font-size:11px;pointer-events:none}`},
-
-/* ========== 3 滚动 ========== */
-{id:'reveal-scroll',cat:'滚动',t:'滚动揭示',en:'IntersectionObserver reveal',d:'进入视口才出现；首屏以下的内容不要做，容易被误认为加载失败。',body:`<div class="d-scrollbox"><div class="d-rev">滚到这里我出现 1</div><div class="d-rev">滚到这里我出现 2</div><div class="d-rev">滚到这里我出现 3</div></div>`,css:`.d-scrollbox{height:120px;width:100%;overflow:auto;display:flex;flex-direction:column;gap:80px;padding:20px 8px}
-.d-rev{opacity:0;transform:translateY(16px);transition:all .5s var(--ease)}
+{id:'reveal-scroll',cat:"滚动",t:"滚动揭示",en:"IntersectionObserver reveal",d:"进入视口才出现；首屏以下的内容不要做，容易被误认为加载失败。",body:`<div class="d-scrollbox"><div class="d-rev">滚到这里我出现 1</div><div class="d-rev">滚到这里我出现 2</div><div class="d-rev">滚到这里我出现 3</div></div>`,css:`.d-scrollbox{height:120px;width:100%;overflow:auto;display:flex;flex-direction:column;gap:80px;padding:20px 8px}
+.d-rev{opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .d-rev.on{opacity:1;transform:none}`},
-
-{id:'progress-scroll',cat:'滚动',t:'滚动进度条',en:'scroll progress',d:'阅读进度；用 CSS 滚动驱动动画，不跑 JS。',body:`<div class="d-scrollbox d-prog"><div class="d-bar"></div><p style="height:400px;margin:0;font-size:11px;color:var(--faint)">滚动这个框看顶部进度…</p></div>`,css:`.d-prog{position:relative}
-.d-prog .d-bar{position:sticky;top:0;left:0;height:3px;background:var(--lime);width:100%;transform-origin:0 50%;animation:d-grow linear;animation-timeline:scroll(nearest)}`},
-
-{id:'parallax',cat:'滚动',t:'视差分层',en:'parallax layers',d:'前景动得多、背景动得少；只做 2–3 层，多了会晕。',body:`<div class="d-par"><i class="l1"></i><i class="l2"></i><i class="l3"></i></div><span class="hint">在上面左右移动鼠标</span>`,css:`.d-par{position:relative;width:220px;height:90px;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--ink) 6%,transparent)}
+{id:'progress-scroll',cat:"滚动",t:"滚动进度条",en:"scroll progress",d:"阅读进度；用 CSS 滚动驱动动画，不跑 JS。",body:`<div class="d-scrollbox d-prog"><div class="d-bar"></div><p class="d-fill">滚动这个框看顶部进度…</p></div>`,css:`.d-prog{position:relative}
+.d-prog .d-bar{position:sticky;top:0;left:0;height:3px;background:var(--lime);width:100%;transform-origin:0 50%;animation:d-grow linear;animation-timeline:scroll(nearest)}
+.d-prog .d-fill{height:400px;margin:0;font-size:11px;color:var(--faint)}`},
+{id:'parallax',cat:"滚动",t:"视差分层",en:"parallax layers",d:"前景动得多、背景动得少；只做 2–3 层，多了会晕。",body:`<div class="d-par"><i class="d-parallax-l1"></i><i class="d-parallax-l2"></i><i class="d-parallax-l3"></i></div><span class="d-hint">在上面左右移动鼠标</span>`,css:`.d-par{position:relative;width:220px;height:90px;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .d-par i{position:absolute;border-radius:999px}
-.d-par .l1{inset:18px;background:var(--mint);opacity:.5;transition:transform .2s}
-.d-par .l2{inset:30px;background:var(--lav);opacity:.6;transition:transform .2s}
-.d-par .l3{inset:44px;background:var(--ink);opacity:.8;transition:transform .2s}`},
-
-/* ========== 4 过渡与视图 ========== */
-{id:'view-transition',cat:'过渡',t:'视图过渡',en:'View Transitions API',d:'页面/列表切换的整块过渡；支持的浏览器自动生效，不支持就直接切。',body:`<div class="d-vt"><div class="pane a">列表</div><button class="demo-btn" data-vt>切到详情</button></div>`,css:`.d-vt{display:flex;align-items:center;gap:14px}
-.d-vt .pane{width:120px;height:70px;border-radius:12px;display:grid;place-items:center;font-size:12px;background:var(--paper);border:1px solid var(--line);view-transition-name:d-view}`},
-
-{id:'flip-list',cat:'过渡',t:'列表重排',en:'FLIP reorder',d:'排序/筛选时元素交换位置而不是瞬间跳变；用 transform 记首末位。',body:`<div class="d-flip"><i>1</i><i>2</i><i>3</i><i>4</i></div><button class="demo-btn" data-shuffle>打乱</button>`,css:`.d-flip{display:flex;gap:8px}
-.d-flip i{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);transition:transform .35s var(--ease)}`},
-
-/* ========== 5 光标与拖拽 ========== */
-{id:'custom-cursor',cat:'光标',t:'自定义光标',en:'custom cursor',d:'一个跟随的小圆点，按下时变大；页面内才生效。',body:`<div class="d-cur">在这块里移动</div>`,css:`.d-cur{position:relative;width:220px;height:90px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
-.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:99px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width .15s,height .15s}`},
-
-{id:'tilt',cat:'光标',t:'3D 倾斜卡',en:'pointer tilt',d:'卡片随指针轻微倾斜；角度控制在 6° 内，否则廉价。',body:`<div class="d-tilt"><b>悬停倾斜</b><span>6° 以内</span></div>`,css:`.d-tilt{width:160px;height:90px;border-radius:12px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform .18s var(--ease);will-change:transform;box-shadow:0 8px 24px #20241e10}
+.d-par .d-parallax-l1{inset:18px;background:var(--mint);opacity:.5;transition:transform .2s}
+.d-par .d-parallax-l2{inset:30px;background:var(--lav);opacity:.6;transition:transform .2s}
+.d-par .d-parallax-l3{inset:44px;background:var(--ink);opacity:.8;transition:transform .2s}
+.d-hint{font-size:11px;color:var(--faint)}
+`},
+{id:'view-transition',cat:"过渡",t:"视图过渡",en:"View Transitions API",d:"页面/列表切换的整块过渡；支持的浏览器自动生效，不支持就直接切。",body:`<div class="d-vt"><div class="d-view-transition-pane d-view-transition-a">列表</div><button class="d-btn" data-vt>切到详情</button></div>`,css:`.d-vt{display:flex;align-items:center;gap:14px}
+.d-vt .d-view-transition-pane{width:120px;height:70px;border-radius:10px;display:grid;place-items:center;font-size:12px;background:var(--paper);border:1px solid var(--line);view-transition-name:d-view}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'flip-list',cat:"过渡",t:"列表重排",en:"FLIP reorder",d:"排序/筛选时元素交换位置而不是瞬间跳变；用 transform 记首末位。",body:`<div class="d-flip"><i>1</i><i>2</i><i>3</i><i>4</i></div><button class="d-btn" data-shuffle>打乱</button>`,css:`.d-flip{display:flex;gap:8px}
+.d-flip i{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);transition:transform .35s var(--ease)}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'custom-cursor',cat:"光标",t:"自定义光标",en:"custom cursor",d:"一个跟随的小圆点，按下时变大；页面内才生效。",body:`<div class="d-cur">在这块里移动</div>`,css:`.d-cur{position:relative;width:220px;height:90px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.d-cur .dot{position:absolute;width:12px;height:12px;border-radius:999px;background:var(--ink);pointer-events:none;transform:translate(-50%,-50%);transition:width .15s,height .15s}`},
+{id:'tilt',cat:"光标",t:"3D 倾斜卡",en:"pointer tilt",d:"卡片随指针轻微倾斜；角度控制在 6° 内，否则廉价。",body:`<div class="d-tilt"><b>悬停倾斜</b><span>6° 以内</span></div>`,css:`.d-tilt{width:160px;height:90px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform .18s var(--ease);will-change:transform;box-shadow:0 8px 24px #20241e10}
 .d-tilt span{font-size:10.5px;color:var(--faint)}`},
-
-{id:'drag-scroll',cat:'拖拽',t:'拖拽滚动',en:'drag to scroll',d:'横向列表按住拖动；触屏天然支持，桌面补这一段。',body:`<div class="d-drag"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i></div>`,css:`.d-drag{display:flex;gap:10px;width:100%;overflow:auto;cursor:grab;scrollbar-width:none;padding:4px}
+{id:'drag-scroll',cat:"拖拽",t:"拖拽滚动",en:"drag to scroll",d:"横向列表按住拖动；触屏天然支持，桌面补这一段。",body:`<div class="d-drag"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i></div>`,css:`.d-drag{display:flex;gap:10px;width:100%;overflow:auto;cursor:grab;scrollbar-width:none;padding:4px}
 .d-drag i{flex:0 0 90px;height:70px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line)}`},
-
-/* ========== 6 加载与等待 ========== */
-{id:'progress-ring',cat:'加载',t:'环形进度',en:'progress ring',d:'未知时长用无限转；已知进度用 determinate。',body:`<div class="d-ring"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div>`,css:`.d-ring svg{width:56px;height:56px;transform:rotate(-90deg)}
-.d-ring circle{fill:none;stroke-width:4;stroke:color-mix(in srgb,var(--ink) 12%,transparent)}
-.d-ring .v{stroke:var(--lime);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:30;animation:d-ring 1.6s linear infinite}
-@keyframes d-ring{to{stroke-dashoffset:100}}`},
-
-{id:'typing',cat:'加载',t:'打字指示',en:'typing dots',d:'AI 正在生成但还没出字时的等待感。',body:`<div class="d-typing"><i></i><i></i><i></i></div>`,css:`.d-typing{display:flex;gap:5px;padding:10px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
-.d-typing i{width:6px;height:6px;border-radius:99px;background:var(--faint);animation:d-blink 1s infinite}
+{id:'progress-ring',cat:"加载",t:"环形进度",en:"progress ring",d:"未知时长用无限转；已知进度用 determinate。",body:`<div class="d-progress-ring-kf"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle class="d-progress-ring-v" cx="20" cy="20" r="16"/></svg></div>`,css:`.d-progress-ring-kf svg{width:56px;height:56px;transform:rotate(-90deg)}
+.d-progress-ring-kf circle{fill:none;stroke-width:4;stroke:color-mix(in srgb,var(--ink) 12%,transparent)}
+.d-progress-ring-kf .d-progress-ring-v{stroke:var(--lime);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:30;animation:d-progress-ring-kf 1.6s linear infinite}
+@keyframes d-progress-ring-kf{to{stroke-dashoffset:100}}`},
+{id:'typing',cat:"加载",t:"打字指示",en:"typing dots",d:"AI 正在生成但还没出字时的等待感。",body:`<div class="d-typing"><i></i><i></i><i></i></div>`,css:`.d-typing{display:flex;gap:5px;padding:10px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+.d-typing i{width:6px;height:6px;border-radius:999px;background:var(--faint);animation:d-typing-blink 1s infinite}
 .d-typing i:nth-child(2){animation-delay:.15s}.d-typing i:nth-child(3){animation-delay:.3s}
-@keyframes d-blink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}`},
-
-{id:'optimistic',cat:'加载',t:'乐观上屏',en:'optimistic send',d:'按下发送立刻出现半透明消息，失败再标红；这是聊天里最重要的一个感。',body:`<div class="d-opt"><div class="m mine">这条已经在屏幕上<em>发送中…</em></div></div><button class="demo-btn" data-opt>模拟发送</button>`,css:`.d-opt{display:flex;flex-direction:column;gap:6px;width:100%}
-.d-opt .m{align-self:flex-end;padding:8px 12px;border-radius:10px;background:#dce8c8;color:#141a10;font-size:12px;display:flex;gap:8px;align-items:center;transition:opacity .3s}
-.d-opt .m em{font-style:normal;font-size:10px;color:#5d6f49}
-.d-opt .m.fail{background:#ffe1da;color:#7a2b18}`},
-
-/* ========== 7 布局 ========== */
-{id:'accordion',cat:'布局',t:'手风琴展开',en:'accordion',d:'高度自动过渡（用 grid-template-rows 0fr→1fr，不需要知道内容高度）。',body:`<div class="d-acc"><button class="demo-btn" data-acc>展开详情</button><div class="body"><div class="inner">这里是一段很长的详情内容，展开时高度平滑过渡，不需要测量 scrollHeight。</div></div></div>`,css:`.d-acc{width:100%}
-.d-acc .body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
-.d-acc[data-open] .body{grid-template-rows:1fr}
-.d-acc .inner{overflow:hidden;font-size:12px;color:var(--muted);padding-top:8px}`},
-
-{id:'splitter',cat:'布局',t:'可拖分栏',en:'resizable splitter',d:'两栏之间拖宽窄，双击复位；编辑器/对话列表常用。',body:`<div class="d-split"><div class="l">列表</div><div class="g"></div><div class="r">内容</div></div>`,css:`.d-split{display:flex;width:100%;height:80px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.d-split .l{width:38%;display:grid;place-items:center;font-size:11px;color:var(--muted);background:color-mix(in srgb,var(--ink) 5%,transparent)}
-.d-split .r{flex:1;display:grid;place-items:center;font-size:11px;color:var(--muted)}
-.d-split .g{width:5px;cursor:col-resize;background:var(--line)}`},
-
-{id:'container-query',cat:'布局',t:'容器查询',en:'container query',d:'组件跟着「自己所在栏宽」变形，而不是跟着窗口。',body:`<div class="d-cq"><div class="cardd"><b>自适应卡</b><span>我会跟着所在容器变窄而换行</span></div></div>`,css:`.d-cq{container-type:inline-size;width:100%;resize:horizontal;overflow:auto;border:1px dashed var(--line);border-radius:10px;padding:10px}
-.d-cq .cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px;background:var(--paper);border:1px solid var(--line);font-size:12px}
-@container (max-width:180px){.d-cq .cardd{flex-direction:column;align-items:flex-start}}`},
-
-/* ========== 8 反馈与数据 ========== */
-{id:'count-up',cat:'数据',t:'数字滚动',en:'count-up',d:'金额、计数变化时滚一下；时长 500–900ms，别超过 1s。',body:`<b class="d-num">0</b><button class="demo-btn" data-count>再来一次</button>`,css:`.d-num{font-size:26px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}`},
-
-{id:'bars-grow',cat:'数据',t:'柱状生长',en:'bars grow',d:'图表首次出现时从 0 长到目标值，错峰 40ms。',body:`<div class="d-bars"><i style="--v:40%"></i><i style="--v:72%"></i><i style="--v:56%"></i><i style="--v:90%"></i></div>`,css:`.d-bars{display:flex;align-items:flex-end;gap:8px;height:80px}
-.d-bars i{width:18px;border-radius:6px 6px 0 0;background:var(--lime);height:0;animation:d-grow-bar .7s var(--ease) forwards}
+@keyframes d-typing-blink{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}`},
+{id:'optimistic',cat:"加载",t:"乐观上屏",en:"optimistic send",d:"按下发送立刻出现半透明消息，失败再标红；这是聊天里最重要的一个感。",body:`<div class="d-opt"><div class="d-optimistic-m d-optimistic-mine">这条已经在屏幕上<em>发送中…</em></div></div><button class="d-btn" data-opt>模拟发送</button>`,css:`.d-opt{display:flex;flex-direction:column;gap:6px;width:100%}
+.d-opt .d-optimistic-m{align-self:flex-end;padding:8px 12px;border-radius:10px;background:#dce8c8;color:#141a10;font-size:12px;display:flex;gap:8px;align-items:center;transition:opacity .3s}
+.d-opt .d-optimistic-m em{font-style:normal;font-size:10px;color:#5d6f49}
+.d-opt .d-optimistic-m.fail{background:#ffe1da;color:#7a2b18}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'accordion',cat:"布局",t:"手风琴展开",en:"accordion",d:"高度自动过渡（用 grid-template-rows 0fr→1fr，不需要知道内容高度）。",body:`<div class="d-acc"><button class="d-btn" data-acc>展开详情</button><div class="d-accordion-body"><div class="d-accordion-inner">这里是一段很长的详情内容，展开时高度平滑过渡，不需要测量 scrollHeight。</div></div></div>`,css:`.d-acc{width:100%}
+.d-acc .d-accordion-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
+.d-acc[data-open] .d-accordion-body{grid-template-rows:1fr}
+.d-acc .d-accordion-inner{overflow:hidden;font-size:12px;color:var(--muted);padding-top:8px}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'splitter',cat:"布局",t:"可拖分栏",en:"resizable splitter",d:"两栏之间拖宽窄，双击复位；编辑器/对话列表常用。",body:`<div class="d-split"><div class="d-splitter-l">列表</div><div class="d-splitter-g"></div><div class="d-splitter-r">内容</div></div>`,css:`.d-split{display:flex;width:100%;height:80px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.d-split .d-splitter-l{width:38%;display:grid;place-items:center;font-size:11px;color:var(--muted);background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.d-split .d-splitter-r{flex:1;display:grid;place-items:center;font-size:11px;color:var(--muted)}
+.d-split .d-splitter-g{width:5px;cursor:col-resize;background:var(--line)}`},
+{id:'container-query',cat:"布局",t:"容器查询",en:"container query",d:"组件跟着「自己所在栏宽」变形，而不是跟着窗口。",body:`<div class="d-cq"><div class="d-container-query-cardd"><b>自适应卡</b><span>我会跟着所在容器变窄而换行</span></div></div>`,css:`.d-cq{container-type:inline-size;width:100%;resize:horizontal;overflow:auto;border:1px dashed var(--line);border-radius:10px;padding:10px}
+.d-cq .d-container-query-cardd{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:12px}
+@container (max-width:180px){.d-cq .d-container-query-cardd{flex-direction:column;align-items:flex-start}}`},
+{id:'count-up',cat:"数据",t:"数字滚动",en:"count-up",d:"金额、计数变化时滚一下；时长 500–900ms，别超过 1s。",body:`<b class="d-num">0</b><button class="d-btn" data-count>再来一次</button>`,css:`.d-num{font-size:26px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'bars-grow',cat:"数据",t:"柱状生长",en:"bars grow",d:"图表首次出现时从 0 长到目标值，错峰 40ms。",body:`<div class="d-bars"><i style="--v:40%"></i><i style="--v:72%"></i><i style="--v:56%"></i><i style="--v:90%"></i></div>`,css:`.d-bars{display:flex;align-items:flex-end;gap:8px;height:80px}
+.d-bars i{width:18px;border-radius:6px 6px 0 0;background:var(--lime);height:0;animation:d-bars-grow-bar .7s var(--ease) forwards}
 .d-bars i:nth-child(2){animation-delay:40ms}.d-bars i:nth-child(3){animation-delay:80ms}.d-bars i:nth-child(4){animation-delay:120ms}
-@keyframes d-grow-bar{to{height:var(--v)}}`},
-
-{id:'toast-stack',cat:'反馈',t:'堆叠提示',en:'toast stack',d:'多条提示向上叠、自动消失、悬停暂停。',body:`<button class="demo-btn" data-toast>来一条提示</button><div class="d-toasts"></div>`,css:`.d-toasts{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
-.d-toast{padding:7px 12px;border-radius:9px;background:var(--ink);color:var(--paper);font-size:11px;animation:d-toast-in .28s var(--ease)}`},
-
-{id:'badge-pop',cat:'反馈',t:'角标跳动',en:'badge pop',d:'未读/待办数字变化时弹一下，提醒但不打断。',body:`<div class="d-badge2">收件箱 <b>3</b></div><button class="demo-btn" data-badge2>+1</button>`,css:`.d-badge2{display:flex;align-items:center;gap:8px;font-size:12px}
-.d-badge2 b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:var(--coral);color:#fff;font-size:10.5px}
-.d-badge2 b.on{animation:d-pop .42s var(--ease-spring)}`},
-
-/* ========== 9 排印 ========== */
-{id:'split-text',cat:'排印',t:'逐字揭示',en:'split text',d:'标题逐字浮起；只给首屏主标题用，正文别做。',body:`<div class="d-splittext">把想法变成界面</div>`,css:`.d-splittext{font-size:22px;font-weight:750;letter-spacing:-.03em}
+@keyframes d-bars-grow-bar{to{height:var(--v)}}`},
+{id:'toast-stack',cat:"反馈",t:"堆叠提示",en:"toast stack",d:"多条提示向上叠、自动消失、悬停暂停。",body:`<button class="d-btn" data-toast>来一条提示</button><div class="d-toasts"></div>`,css:`.d-toasts{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.d-toast{padding:7px 12px;border-radius:10px;background:var(--ink);color:var(--paper);font-size:11px;animation:d-toast-in .28s var(--ease)}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'badge-pop',cat:"反馈",t:"角标跳动",en:"badge pop",d:"未读/待办数字变化时弹一下，提醒但不打断。",body:`<div class="d-badge2">收件箱 <b>3</b></div><button class="d-btn" data-badge2>+1</button>`,css:`.d-badge2{display:flex;align-items:center;gap:8px;font-size:12px}
+.d-badge2 b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--coral);color:#fff;font-size:10.5px}
+.d-badge2 b.on{animation:d-pop .42s var(--ease-spring)}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'split-text',cat:"排印",t:"逐字揭示",en:"split text",d:"标题逐字浮起；只给首屏主标题用，正文别做。",body:`<div class="d-splittext">把想法变成界面</div>`,css:`.d-splittext{font-size:22px;font-weight:750;letter-spacing:-.03em}
 .d-splittext span{display:inline-block;opacity:0;transform:translateY(.5em);animation:d-char .5s var(--ease) forwards}`},
-
-{id:'gradient-sweep',cat:'排印',t:'渐变扫光',en:'gradient sweep',d:'标题上一道光扫过；只在「生成完成」时放一次，常驻会廉价。',body:`<div class="d-grad">已完成</div>`,css:`.d-grad{font-size:20px;font-weight:750;background:linear-gradient(90deg,var(--ink) 30%,var(--faint) 50%,var(--ink) 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:d-sweep 2.4s var(--ease) infinite}
-@keyframes d-sweep{from{background-position:200% 0}to{background-position:-200% 0}}`},
-
-{id:'variable-weight',cat:'排印',t:'字重呼吸',en:'variable font weight',d:'悬停时字重变粗；需要可变字体，没有就退化成颜色变化。',body:`<div class="d-vf">悬停我</div>`,css:`.d-vf{font-size:20px;font-weight:400;font-variation-settings:"wght" 400;transition:font-variation-settings .3s var(--ease),letter-spacing .3s var(--ease)}
+{id:'gradient-sweep',cat:"排印",t:"渐变扫光",en:"gradient sweep",d:"标题上一道光扫过；只在「生成完成」时放一次，常驻会廉价。",body:`<div class="d-grad">已完成</div>`,css:`.d-grad{font-size:20px;font-weight:750;background:linear-gradient(90deg,var(--ink) 30%,var(--faint) 50%,var(--ink) 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:d-gradient-sweep-kf 2.4s var(--ease) infinite}
+@keyframes d-gradient-sweep-kf{from{background-position:200% 0}to{background-position:-200% 0}}`},
+{id:'variable-weight',cat:"排印",t:"字重呼吸",en:"variable font weight",d:"悬停时字重变粗；需要可变字体，没有就退化成颜色变化。",body:`<div class="d-vf">悬停我</div>`,css:`.d-vf{font-size:20px;font-weight:400;font-variation-settings:"wght" 400;transition:font-variation-settings .3s var(--ease),letter-spacing .3s var(--ease)}
 .d-vf:hover{font-variation-settings:"wght" 750;letter-spacing:-.02em}`},
-
-/* ========== 10 无障碍 ========== */
-{id:'reduced-motion',cat:'无障碍',t:'尊重减少动效',en:'prefers-reduced-motion',d:'系统开启「减少动态效果」时，动画时长归零但状态仍变化。这是硬要求。',body:`<div class="d-rm">我会动</div><span class="hint" data-rmnote></span>`,css:`.d-rm{width:40px;height:40px;border-radius:10px;background:var(--lime);animation:d-spin 2s var(--ease) infinite}
-@keyframes d-spin{50%{transform:rotate(180deg) scale(.9)}100%{transform:rotate(360deg)}}
-@media (prefers-reduced-motion: reduce){.d-rm{animation:none}}`},
-
-{id:'focus-ring',cat:'无障碍',t:'焦点环',en:'focus-visible',d:'键盘 Tab 才有环、鼠标点没有；环要 2px 且与背景有对比。',body:`<button class="demo-btn d-focus">按 Tab 到我</button><button class="demo-btn">再按一次 Tab</button>`,css:`.d-focus:focus-visible{outline:2px solid var(--blue);outline-offset:3px}`},
-
-{id:'contrast-badge',cat:'无障碍',t:'对比度自检',en:'contrast check',d:'正文 ≥ 7:1、次要 ≥ 4.5:1；这张卡片本身就是示例。',body:`<div class="d-cc"><b>正文 7:1</b><span>次要文字 4.5:1</span></div>`,css:`.d-cc{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:8px;background:var(--paper);border:1px solid var(--line)}
+{id:'reduced-motion',cat:"无障碍",t:"尊重减少动效",en:"prefers-reduced-motion",d:"系统开启「减少动态效果」时，动画时长归零但状态仍变化。这是硬要求。",body:`<div class="d-rm">我会动</div><span class="d-hint" data-rmnote></span>`,css:`.d-rm{width:40px;height:40px;border-radius:10px;background:var(--lime);animation:d-reduced-motion-spin 2s var(--ease) infinite}
+@keyframes d-reduced-motion-spin{50%{transform:rotate(180deg) scale(.9)}100%{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.d-rm{animation:none}}
+.d-hint{font-size:11px;color:var(--faint)}
+`},
+{id:'focus-ring',cat:"无障碍",t:"焦点环",en:"focus-visible",d:"键盘 Tab 才有环、鼠标点没有；环要 2px 且与背景有对比。",body:`<button class="d-btn d-focus">按 Tab 到我</button><button class="d-btn">再按一次 Tab</button>`,css:`.d-focus:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}
+.d-btn:hover{box-shadow:0 6px 18px #20241e14}
+.d-btn:active{transform:scale(.97)}
+`},
+{id:'contrast-badge',cat:"无障碍",t:"对比度自检",en:"contrast check",d:"正文 ≥ 7:1、次要 ≥ 4.5:1；这张卡片本身就是示例。",body:`<div class="d-cc"><b>正文 7:1</b><span>次要文字 4.5:1</span></div>`,css:`.d-cc{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:10px;background:var(--paper);border:1px solid var(--line)}
 .d-cc b{font-size:13px}.d-cc span{font-size:11px;color:var(--muted)}`}
 ];
 DEMOS.push(...(window.DEMOS_EXTRA || []));
@@ -717,36 +747,36 @@ allBtn.addEventListener('click', () => {
 
 /* ——— 每个效果的行为（没有则为纯 CSS） ——— */
 const INITS = {
-  'fade-stagger': root => root.querySelector('[data-replay]')?.addEventListener('click', () => {
+  "fade-stagger": root => root.querySelector('[data-replay]')?.addEventListener('click', () => {
     root.querySelectorAll('.d-chip').forEach(c => { c.style.animation = 'none'; void c.offsetWidth; c.style.animation = ''; });
   }),
-  'pop-spring': root => root.querySelector('[data-pop]')?.addEventListener('click', () => {
+  "pop-spring": root => root.querySelector('[data-pop]')?.addEventListener('click', () => {
     const b = root.querySelector('[data-badge]'); b.hidden = false; b.classList.remove('on'); void b.offsetWidth; b.classList.add('on');
     setTimeout(() => { b.hidden = true; }, 1600);
   }),
-  'blur-in': root => root.querySelector('[data-replay]')?.addEventListener('click', () => {
-    const el = root.querySelector('.d-blur'); el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
+  "blur-in": root => root.querySelector('[data-replay]')?.addEventListener('click', () => {
+    const el = root.querySelector('.d-blur-in-kf'); el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';
   }),
-  'skeleton': root => root.querySelector('[data-swap]')?.addEventListener('click', () => {
+  "skeleton": root => root.querySelector('[data-swap]')?.addEventListener('click', () => {
     const box = root.querySelector('.d-sk');
     box.innerHTML = '<i style="background:var(--lime);animation:none;height:14px"></i><i style="background:color-mix(in srgb,var(--ink) 20%,transparent);animation:none"></i><i style="background:color-mix(in srgb,var(--ink) 12%,transparent);animation:none"></i>';
   }),
-  'ripple': root => root.querySelector('.d-rip')?.addEventListener('click', e => {
+  "ripple": root => root.querySelector('.d-rip')?.addEventListener('click', e => {
     const b = e.currentTarget, r = b.getBoundingClientRect();
-    const w = document.createElement('span'); w.className = 'd-wave';
+    const w = document.createElement('span'); w.className = 'd-ripple-wave';
     const size = Math.max(r.width, r.height); w.style.width = w.style.height = size + 'px';
     w.style.left = (e.clientX - r.left - size / 2) + 'px'; w.style.top = (e.clientY - r.top - size / 2) + 'px';
     b.appendChild(w); setTimeout(() => w.remove(), 620);
   }),
-  'toggle-spring': root => root.querySelector('.d-sw')?.addEventListener('click', e => {
+  "toggle-spring": root => root.querySelector('.d-sw')?.addEventListener('click', e => {
     const b = e.currentTarget; b.setAttribute('aria-checked', b.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
   }),
-  'copy-check': root => root.querySelector('.d-copy')?.addEventListener('click', async e => {
+  "copy-check": root => root.querySelector('.d-copy')?.addEventListener('click', async e => {
     const b = e.currentTarget; await copy('示例文本');
     b.classList.add('done'); b.querySelector('.d-ico').textContent = '✓'; b.querySelector('.d-lbl').textContent = '已复制';
     setTimeout(() => { b.classList.remove('done'); b.querySelector('.d-ico').textContent = '⧉'; b.querySelector('.d-lbl').textContent = '复制'; }, 1600);
   }),
-  'magnetic': root => {
+  "magnetic": root => {
     const b = root.querySelector('.d-mag');
     root.addEventListener('pointermove', e => {
       const r = b.getBoundingClientRect();
@@ -756,7 +786,7 @@ const INITS = {
     });
     root.addEventListener('pointerleave', () => b.style.transform = '');
   },
-  'tooltip-follow': root => {
+  "tooltip-follow": root => {
     const tip = root.querySelector('.d-tip'), zone = root.querySelector('.d-tipzone');
     zone.addEventListener('pointermove', e => {
       const r = zone.getBoundingClientRect(); tip.hidden = false;
@@ -764,25 +794,25 @@ const INITS = {
     });
     zone.addEventListener('pointerleave', () => tip.hidden = true);
   },
-  'reveal-scroll': root => {
+  "reveal-scroll": root => {
     const io = new IntersectionObserver(es => es.forEach(x => x.isIntersecting && x.target.classList.add('on')), { root: root.querySelector('.d-scrollbox') });
     root.querySelectorAll('.d-rev').forEach(el => io.observe(el));
   },
-  'parallax': root => {
+  "parallax": root => {
     const z = root.querySelector('.d-par');
     z.addEventListener('pointermove', e => {
       const r = z.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5;
-      z.querySelector('.l1').style.transform = `translateX(${x * 6}px)`;
-      z.querySelector('.l2').style.transform = `translateX(${x * 14}px)`;
-      z.querySelector('.l3').style.transform = `translateX(${x * 24}px)`;
+      z.querySelector('.d-parallax-l1').style.transform = `translateX(${x * 6}px)`;
+      z.querySelector('.d-parallax-l2').style.transform = `translateX(${x * 14}px)`;
+      z.querySelector('.d-parallax-l3').style.transform = `translateX(${x * 24}px)`;
     });
   },
-  'view-transition': root => root.querySelector('[data-vt]')?.addEventListener('click', () => {
-    const pane = root.querySelector('.pane');
+  "view-transition": root => root.querySelector('[data-vt]')?.addEventListener('click', () => {
+    const pane = root.querySelector('.d-view-transition-pane');
     const go = () => { const detail = pane.textContent === '列表'; pane.textContent = detail ? '详情' : '列表'; pane.style.background = detail ? 'var(--lime)' : 'var(--paper)'; };
     document.startViewTransition ? document.startViewTransition(go) : go();
   }),
-  'flip-list': root => root.querySelector('[data-shuffle]')?.addEventListener('click', () => {
+  "flip-list": root => root.querySelector('[data-shuffle]')?.addEventListener('click', () => {
     const box = root.querySelector('.d-flip'), items = [...box.children];
     const first = new Map(items.map(i => [i, i.getBoundingClientRect()]));
     items.sort(() => Math.random() - .5).forEach(i => box.appendChild(i));
@@ -791,14 +821,14 @@ const INITS = {
       i.animate([{ transform: `translate(${a.left - b.left}px,${a.top - b.top}px)` }, { transform: 'none' }], { duration: 350, easing: 'cubic-bezier(.2,.75,.25,1)' });
     });
   }),
-  'custom-cursor': root => {
+  "custom-cursor": root => {
     const z = root.querySelector('.d-cur'), dot = document.createElement('span'); dot.className = 'dot'; dot.style.opacity = 0; z.appendChild(dot);
     z.addEventListener('pointermove', e => { const r = z.getBoundingClientRect(); dot.style.opacity = 1; dot.style.left = (e.clientX - r.left) + 'px'; dot.style.top = (e.clientY - r.top) + 'px'; });
     z.addEventListener('pointerleave', () => dot.style.opacity = 0);
     z.addEventListener('pointerdown', () => { dot.style.width = dot.style.height = '22px'; });
     z.addEventListener('pointerup', () => { dot.style.width = dot.style.height = '12px'; });
   },
-  'tilt': root => {
+  "tilt": root => {
     const c = root.querySelector('.d-tilt');
     c.addEventListener('pointermove', e => {
       const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
@@ -806,24 +836,24 @@ const INITS = {
     });
     c.addEventListener('pointerleave', () => c.style.transform = '');
   },
-  'drag-scroll': root => {
+  "drag-scroll": root => {
     const el = root.querySelector('.d-drag'); let down = false, x0 = 0, l0 = 0;
     el.addEventListener('pointerdown', e => { down = true; x0 = e.clientX; l0 = el.scrollLeft; el.style.cursor = 'grabbing'; });
     el.addEventListener('pointermove', e => { if (down) el.scrollLeft = l0 - (e.clientX - x0); });
     el.addEventListener('pointerup', () => { down = false; el.style.cursor = 'grab'; });
     el.addEventListener('pointerleave', () => { down = false; el.style.cursor = 'grab'; });
   },
-  'optimistic': root => root.querySelector('[data-opt]')?.addEventListener('click', () => {
-    const box = root.querySelector('.d-opt'); const m = document.createElement('div'); m.className = 'm mine';
+  "optimistic": root => root.querySelector('[data-opt]')?.addEventListener('click', () => {
+    const box = root.querySelector('.d-opt'); const m = document.createElement('div'); m.className = 'd-optimistic-m d-optimistic-mine';
     m.innerHTML = '临时消息 <em>发送中…</em>'; box.appendChild(m);
     setTimeout(() => { const em = m.querySelector('em'); em.textContent = '已送达'; }, 1200);
   }),
-  'accordion': root => root.querySelector('[data-acc]')?.addEventListener('click', e => {
+  "accordion": root => root.querySelector('[data-acc]')?.addEventListener('click', e => {
     const box = e.currentTarget.parentElement; box.toggleAttribute('data-open');
     e.currentTarget.textContent = box.hasAttribute('data-open') ? '收起' : '展开详情';
   }),
-  'splitter': root => {
-    const g = root.querySelector('.d-split .g'), l = root.querySelector('.d-split .l'), box = root.querySelector('.d-split');
+  "splitter": root => {
+    const g = root.querySelector('.d-split .d-splitter-g'), l = root.querySelector('.d-split .d-splitter-l'), box = root.querySelector('.d-split');
     let down = false;
     g.addEventListener('pointerdown', () => down = true);
     window.addEventListener('pointerup', () => down = false);
@@ -834,32 +864,32 @@ const INITS = {
     });
     g.addEventListener('dblclick', () => l.style.width = '38%');
   },
-  'count-up': root => {
+  "count-up": root => {
     const el = root.querySelector('.d-num');
     const run = () => { const t0 = performance.now(), to = 18888;
       const step = now => { const p = Math.min(1, (now - t0) / 800); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString(); if (p < 1) requestAnimationFrame(step); };
       requestAnimationFrame(step); };
     run(); root.querySelector('[data-count]')?.addEventListener('click', run);
   },
-  'toast-stack': root => root.querySelector('[data-toast]')?.addEventListener('click', () => {
+  "toast-stack": root => root.querySelector('[data-toast]')?.addEventListener('click', () => {
     const box = root.querySelector('.d-toasts'); const t = document.createElement('div'); t.className = 'd-toast';
     t.textContent = '已保存 · ' + new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
     box.appendChild(t); setTimeout(() => t.remove(), 2600);
   }),
-  'badge-pop': root => root.querySelector('[data-badge2]')?.addEventListener('click', () => {
+  "badge-pop": root => root.querySelector('[data-badge2]')?.addEventListener('click', () => {
     const b = root.querySelector('.d-badge2 b'); b.textContent = String(Number(b.textContent || 0) + 1);
     b.classList.remove('on'); void b.offsetWidth; b.classList.add('on');
   }),
-  'split-text': root => {
+  "split-text": root => {
     const el = root.querySelector('.d-splittext');
     if (!el.dataset.done) { el.dataset.done = '1'; el.innerHTML = [...el.textContent].map((c, i) => `<span style="animation-delay:${i * 28}ms">${c === ' ' ? '&nbsp;' : c}</span>`).join(''); }
   },
-  'reduced-motion': root => {
+  "reduced-motion": root => {
     const note = root.querySelector('[data-rmnote]');
     const mq = matchMedia('(prefers-reduced-motion: reduce)');
     const set = () => note.textContent = mq.matches ? '系统：已开启「减少动态效果」→ 动画关闭' : '系统：未开启 → 动画运行';
     set(); mq.addEventListener?.('change', set);
-  }
+  },
 };
 
 /* ——— 主题 ——— */

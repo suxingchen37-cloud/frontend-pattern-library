@@ -1,0 +1,18 @@
+{
+  "id": "scroll-view-reveal",
+  "cat": "滚动驱动",
+  "t": "视口进入揭示",
+  "en": "view timeline",
+  "d": "用 view() 而不是 IntersectionObserver：揭示进度交给滚动位置，滚到一半停下卡片就停在半透明，往上滚还会退回去——JS 一次性加 class 只会「已经出现过了」一格，回滚无法复原。区间取 entry 10% 到 cover 45%，这样卡片露出三分之一时才真正看清。",
+  "body": "<div class=\"d-vr\" tabindex=\"0\" aria-label=\"视口进入揭示：在框内滚动，卡片逐张显形\"><div class=\"d-vr-body\"><div class=\"d-vr-card\"><p class=\"d-vr-t\">装版</p><p class=\"d-vr-p\">木楔顶紧，铅字不再走位。</p></div><div class=\"d-vr-card\"><p class=\"d-vr-t\">校色</p><p class=\"d-vr-p\">样张对色标，三块墨一处不看就偏。</p></div><div class=\"d-vr-card\"><p class=\"d-vr-t\">裁切</p><p class=\"d-vr-p\">刀口对齐十字线，一刀到底。</p></div><div class=\"d-vr-card\"><p class=\"d-vr-t\">入档</p><p class=\"d-vr-p\">签样跟着成品一起装袋。</p></div></div></div>",
+  "css": ".d-vr{box-sizing:border-box;width:300px;max-width:100%;height:150px;overflow-x:hidden;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg)}\n.d-vr-body{display:flex;flex-direction:column;gap:12px;padding:12px}\n.d-vr-card{padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);box-shadow:inset 0 1px 0 #fff5;animation:d-scroll-view-reveal-in cubic-bezier(.2,.75,.25,1) both;animation-timeline:view();animation-range:entry 10% cover 45%}\n.d-vr-t{margin:0;font-size:15px;color:var(--ink)}\n.d-vr-p{margin:2px 0 0;font-size:11px;line-height:1.6;color:var(--muted)}\n.d-vr:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n@keyframes d-scroll-view-reveal-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}",
+  "init": null,
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "滚动",
+    "揭示",
+    "视口",
+    "免监听"
+  ]
+}

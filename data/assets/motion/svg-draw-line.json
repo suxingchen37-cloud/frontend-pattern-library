@@ -1,0 +1,18 @@
+{
+  "id": "svg-draw-line",
+  "cat": "SVG 与路径",
+  "t": "描边生长",
+  "en": "stroke draw",
+  "d": "先用 2/4 的虚线铺一遍画稿，墨线再压着它走一趟——读者认的是「起稿→上墨」这个作画顺序，而不是一条线忽然出现；dasharray 取 271 是这条曲线的实长上取整，短一截就会在收笔处提前断掉。",
+  "body": "<div class=\"d-dl\"><svg class=\"d-dl-art\" viewBox=\"0 0 260 96\" aria-hidden=\"true\"><path class=\"d-dl-sketch\" d=\"M14 76C46 76 52 24 92 22C132 20 148 74 188 64C214 57 226 40 236 26\"/><path class=\"d-dl-ink\" d=\"M14 76C46 76 52 24 92 22C132 20 148 74 188 64C214 57 226 40 236 26\"/></svg><button class=\"d-dl-btn\" type=\"button\">重描一遍</button></div>",
+  "css": ".d-dl{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:260px}\n.d-dl-art{display:block;width:260px;height:96px;overflow:visible}\n.d-dl-sketch,.d-dl-ink{fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}\n.d-dl-sketch{stroke:var(--faint);stroke-dasharray:2 4}\n.d-dl-ink{stroke:var(--ink);stroke-dasharray:271;stroke-dashoffset:0}\n.d-dl.is-run .d-dl-ink{animation:d-svg-draw-line-ink 900ms cubic-bezier(.2,.75,.25,1) both}\n@keyframes d-svg-draw-line-ink{from{stroke-dashoffset:271}to{stroke-dashoffset:0}}\n.d-dl-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer;transition:border-color 120ms cubic-bezier(.2,.75,.25,1),color 120ms cubic-bezier(.2,.75,.25,1)}\n.d-dl-btn:hover{border-color:var(--ink);color:var(--ink)}\n.d-dl-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n    const box = root.querySelector('.d-dl'), btn = box.querySelector('.d-dl-btn');\n    const run = () => { box.classList.remove('is-run'); void box.offsetWidth; box.classList.add('is-run'); };\n    btn.onclick = run;\n    run();\n  }",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "描边",
+    "路径",
+    "生长",
+    "印刷"
+  ]
+}

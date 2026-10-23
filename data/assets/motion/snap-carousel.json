@@ -1,0 +1,12 @@
+{
+  "id": "snap-carousel",
+  "cat": "滚动",
+  "t": "吸附轮播",
+  "en": "scroll-snap",
+  "d": "一屏一卡、停得准；比 JS 轮播轻，触屏手感天然好。",
+  "body": "\n  <div class=\"d-snap\"><i>01</i><i>02</i><i>03</i><i>04</i></div>",
+  "css": ".d-snap{display:flex;gap:10px;width:100%;overflow:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}\n.d-snap i{flex:0 0 78%;height:70px;scroll-snap-align:center;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line);font-style:normal;font-size:12px;color:var(--muted)}",
+  "init": null,
+  "source": "lab-extra2",
+  "motion": "物理"
+}

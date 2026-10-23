@@ -1,0 +1,10 @@
+.d-dp3{width:200px;border:1px solid var(--line);border-radius:10px;padding:9px;background:var(--paper)}
+.d-date-pick-dphead3{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.d-date-pick-dphead3 b{font:10px var(--mono);color:var(--ink)}
+.d-date-pick-dphead3 button{width:18px;height:18px;border:1px solid var(--line);border-radius:2px;background:var(--paper);font-size:10px;cursor:pointer;line-height:1}
+.d-date-pick-dpgrid3{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.d-date-pick-dpgrid3 span{text-align:center;font:8px var(--mono);color:var(--faint);padding:2px 0}
+.d-date-pick-dpgrid3 button{aspect-ratio:1;border:0;background:transparent;font-size:9px;color:var(--muted);border-radius:2px;cursor:pointer}
+.d-date-pick-dpgrid3 button:hover{background:var(--bg)}
+.d-date-pick-dpgrid3 button.on{background:var(--ink);color:var(--paper)}
+.d-date-pick-dppick3{margin:7px 0 0;font:9px var(--mono);color:var(--faint)}

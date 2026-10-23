@@ -1,0 +1,12 @@
+{
+  "id": "confirm",
+  "cat": "浮层",
+  "t": "输入确认删除",
+  "en": "type-to-confirm",
+  "d": "不可逆操作要求手打关键词，防误触；比\"再点一次\"更稳。",
+  "body": "<div class=\"d-cf\"><p class=\"d-note\">输入 <b>DELETE</b> 才能删除「素材库」</p><input placeholder=\"DELETE\"><button class=\"d-btn\" disabled>删除</button></div>",
+  "css": ".d-cf{width:230px}\n.d-cf input{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:12px;outline:none;margin-bottom:8px}\n.d-cf .d-btn[disabled]{opacity:.45;cursor:not-allowed}\n.d-cf .d-note{margin:0 0 8px;font-size:11.5px;color:var(--muted)}\n.d-btn{font:inherit;font-size:13px;padding:8px 16px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .16s var(--ease),background-color .16s,color .16s,border-color .16s}\n.d-btn:hover{box-shadow:0 6px 18px #20241e14}\n.d-btn:active{transform:scale(.97)}\n",
+  "init": "root => {\n    const inp = root.querySelector('.d-cf input'), btn = root.querySelector('.d-cf .d-btn');\n    inp.oninput = () => { btn.disabled = inp.value !== 'DELETE'; };\n  }",
+  "source": "lab-more",
+  "motion": "印刷"
+}

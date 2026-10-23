@@ -1,0 +1,12 @@
+{
+  "id": "progress-scroll",
+  "cat": "滚动",
+  "t": "滚动进度条",
+  "en": "scroll progress",
+  "d": "阅读进度；用 CSS 滚动驱动动画，不跑 JS。",
+  "body": "<div class=\"d-scrollbox d-prog\"><div class=\"d-bar\"></div><p class=\"d-fill\">滚动这个框看顶部进度…</p></div>",
+  "css": ".d-prog{position:relative}\n.d-prog .d-bar{position:sticky;top:0;left:0;height:3px;background:var(--lime);width:100%;transform-origin:0 50%;animation:d-grow linear;animation-timeline:scroll(nearest)}\n.d-prog .d-fill{height:400px;margin:0;font-size:11px;color:var(--faint)}",
+  "init": null,
+  "source": "inline",
+  "motion": "机械"
+}

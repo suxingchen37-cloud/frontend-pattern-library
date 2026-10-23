@@ -1,0 +1,6 @@
+.d-kan{display:flex;gap:10px;width:100%}
+.d-kan .d-kanban-col{flex:1;min-height:110px;padding:8px;border-radius:10px;background:color-mix(in srgb,var(--ink) 4%,transparent);font-size:11px}
+.d-kan .d-kanban-col b{display:flex;justify-content:space-between;font-weight:600;color:var(--muted);margin-bottom:6px}
+.d-kan .d-kanban-col em{font-style:normal;color:var(--faint)}
+.d-kan .d-kanban-kcard{padding:7px 9px;margin-bottom:6px;border-radius:6px;background:var(--paper);border:1px solid var(--line);cursor:grab;font-size:11.5px}
+.d-kan .d-kanban-col.over{outline:1.5px dashed var(--ink)}

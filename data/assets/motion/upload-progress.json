@@ -1,0 +1,12 @@
+{
+  "id": "upload-progress",
+  "cat": "反馈",
+  "t": "上传进度",
+  "en": "upload progress",
+  "d": "进度、暂停、重来都在一个位置；失败之前先让人能停。",
+  "body": "<div class=\"d-up3\"><div class=\"d-upload-progress-upfile3\"><span>封面.jpg</span><b data-upn3>0%</b></div><div class=\"d-upload-progress-upbar3\"><i data-upi3></i></div><div class=\"d-upload-progress-upacts3\"><button type=\"button\" data-uppause3>暂停</button><button type=\"button\" data-upreset3>重来</button></div></div>",
+  "css": ".d-up3{width:220px}\n.d-upload-progress-upfile3{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:4px}\n.d-upload-progress-upfile3 b{font-family:var(--mono);font-weight:500;color:var(--ink)}\n.d-upload-progress-upbar3{height:5px;background:var(--line);border-radius:999px;overflow:hidden}\n.d-upload-progress-upbar3 i{display:block;height:100%;width:0;background:var(--ink);transition:width .12s linear}\n.d-upload-progress-upacts3{display:flex;gap:4px;margin-top:6px}\n.d-upload-progress-upacts3 button{font-size:9px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}",
+  "init": "root => {\n    const bar = root.querySelector('[data-upi3]'), n = root.querySelector('[data-upn3]'), pause = root.querySelector('[data-uppause3]');\n    let pct = 0, paused = false;\n    const timer = setInterval(() => {\n      if (!root.isConnected) { clearInterval(timer); return; }\n      if (paused || pct >= 100) return;\n      pct = Math.min(100, pct + 3);\n      bar.style.width = pct + '%'; n.textContent = pct + '%';\n      if (pct >= 100) n.textContent = '完成';\n    }, 130);\n    pause.onclick = () => { paused = !paused; pause.textContent = paused ? '继续' : '暂停'; };\n    root.querySelector('[data-upreset3]').onclick = () => { pct = 0; paused = false; pause.textContent = '暂停'; bar.style.width = '0'; n.textContent = '0%'; };\n  }",
+  "source": "lab-extra3",
+  "motion": "机械"
+}

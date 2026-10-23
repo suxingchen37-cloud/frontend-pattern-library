@@ -1,0 +1,18 @@
+{
+  "id": "text-line-mask",
+  "cat": "排印",
+  "t": "逐行遮罩",
+  "en": "line mask",
+  "d": "行用 overflow:hidden 遮住、字上移 112%（多出的 12% 盖住字头，否则行顶会漏一条白缝），每行错 120ms——正好是一行中文读完的时间，像排字工一行行把字放上版。",
+  "body": "<div class=\"d-line-mask\" tabindex=\"0\" role=\"group\" aria-label=\"逐行遮罩，回车重播\"><span class=\"d-lm-row\"><i>把字排直</i></span><span class=\"d-lm-row\"><i>让行站队</i></span><span class=\"d-lm-row\"><i>再准它出现</i></span></div>",
+  "css": ".d-line-mask{width:248px;max-width:100%;padding:4px 0;font-family:var(--sans);color:var(--ink);outline:none}\n.d-line-mask .d-lm-row{display:block;overflow:hidden;padding-bottom:1px}\n.d-line-mask .d-lm-row i{display:block;font-style:normal;font-size:var(--fs-21);font-weight:650;line-height:var(--lh-display);letter-spacing:-.03em;transform:translateY(112%);animation:d-text-line-mask-rise 280ms cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--i,0) * 120ms)}\n.d-line-mask .d-lm-row:nth-child(2){--i:1}\n.d-line-mask .d-lm-row:nth-child(3){--i:2}\n.d-line-mask.is-reset .d-lm-row i{animation:none}\n.d-line-mask:focus-visible{outline:1px solid var(--ink);outline-offset:6px}\n@keyframes d-text-line-mask-rise{to{transform:translateY(0)}}",
+  "init": "root => {\n  const box = root.querySelector('.d-line-mask');\n  if (!box || box.dataset.dlm) return;\n  box.dataset.dlm = '1';\n  const play = () => { box.classList.add('is-reset'); void box.offsetWidth; box.classList.remove('is-reset'); };\n  box.addEventListener('pointerdown', () => { play(); });\n  box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });\n}",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "排印",
+    "遮罩",
+    "错峰",
+    "标题"
+  ]
+}

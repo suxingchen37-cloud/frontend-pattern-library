@@ -1,0 +1,18 @@
+{
+  "id": "scroll-velocity-skew",
+  "cat": "滚动驱动",
+  "t": "速度倾斜",
+  "en": "velocity skew",
+  "d": "倾斜 6° 封顶：再大文字基线就开始像被压扁，人先感到晃而不是快。速度按「一帧走了多少像素」算，不是按 wheel 一次跳多少——wheel 一跳 100px 不代表真速度，除以帧间隔才是；每帧靠近目标 45%，所以停下后 120ms 内自然回正。",
+  "body": "<div class=\"d-vel\" tabindex=\"0\" aria-label=\"速度倾斜：滚动越快字行越斜，停下回正\"><div class=\"d-vel-body\"><p class=\"d-vel-h\">速度倾斜</p><p class=\"d-vel-p\">滚得越快，这一叠字行越斜。</p><p class=\"d-vel-p\">停手之后它会自己回正，不用等。</p><p class=\"d-vel-p\">慢滚时几乎看不出，快滚时最明显。</p><p class=\"d-vel-p\">只斜 Y 轴，横向不歪，读起来还是正的。</p><p class=\"d-vel-p\">封顶 6°，再大就不是速度而是晃动了。</p><p class=\"d-vel-p\">滚到底部可以再往上滚，看它反向。</p></div></div>",
+  "css": ".d-vel{box-sizing:border-box;width:300px;max-width:100%;height:150px;overflow-x:hidden;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg)}\n.d-vel-body{padding:12px;transform-origin:50% 0;transition:transform 120ms linear;will-change:transform}\n.d-vel-h{margin:0 0 4px;font-size:15px;color:var(--ink)}\n.d-vel-p{margin:0 0 8px;font-size:11px;line-height:1.6;color:var(--muted)}\n.d-vel-p:last-child{margin-bottom:0}\n.d-vel:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n  const box = root.querySelector('.d-vel');\n  if (!box) return;\n  const body = box.querySelector('.d-vel-body');\n  if (!body) return;\n  if (root.__dVelStop) root.__dVelStop();\n  let raf = 0, prevY = box.scrollTop, prevT = 0, cur = 0;\n  const paint = () => {\n    body.style.transform = Math.abs(cur) < .05 ? '' : 'skewY(' + cur.toFixed(2) + 'deg)';\n  };\n  const frame = now => {\n    const y = box.scrollTop;\n    const dt = prevT ? Math.max(8, now - prevT) : 16;\n    const perFrame = (y - prevY) * (16 / dt);\n    prevY = y;\n    prevT = now;\n    const want = Math.max(-6, Math.min(6, perFrame * .28));\n    cur = cur + (want - cur) * .45;\n    if (Math.abs(want) < .05 && Math.abs(cur) < .05) {\n      cur = 0; paint(); prevT = 0; raf = 0;\n      return;\n    }\n    paint();\n    raf = requestAnimationFrame(frame);\n  };\n  const onScroll = () => {\n    if (raf) return;\n    prevY = box.scrollTop;\n    raf = requestAnimationFrame(frame);\n  };\n  box.addEventListener('scroll', onScroll, { passive: true });\n  root.__dVelStop = () => {\n    box.removeEventListener('scroll', onScroll);\n    if (raf) cancelAnimationFrame(raf);\n    raf = 0; prevT = 0; cur = 0;\n    body.style.transform = '';\n  };\n}",
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "滚动",
+    "速度",
+    "倾斜",
+    "惯性"
+  ]
+}

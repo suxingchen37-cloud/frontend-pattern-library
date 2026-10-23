@@ -1,0 +1,4 @@
+.d-gauge{width:120px}
+.d-gauge path{fill:none;stroke-width:9;stroke-linecap:round}
+.d-gauge .d-gauge-track{stroke:color-mix(in srgb,var(--ink) 10%,transparent)}
+.d-gauge .d-gauge-val{stroke:var(--lime);stroke-dasharray:126;stroke-dashoffset:38}

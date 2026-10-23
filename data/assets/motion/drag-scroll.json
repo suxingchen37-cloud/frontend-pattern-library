@@ -1,0 +1,12 @@
+{
+  "id": "drag-scroll",
+  "cat": "拖拽",
+  "t": "拖拽滚动",
+  "en": "drag to scroll",
+  "d": "横向列表按住拖动；触屏天然支持，桌面补这一段。",
+  "body": "<div class=\"d-drag\"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i></div>",
+  "css": ".d-drag{display:flex;gap:10px;width:100%;overflow:auto;cursor:grab;scrollbar-width:none;padding:4px}\n.d-drag i{flex:0 0 90px;height:70px;border-radius:10px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--line)}",
+  "init": "root => {\n    const el = root.querySelector('.d-drag'); let down = false, x0 = 0, l0 = 0;\n    el.addEventListener('pointerdown', e => { down = true; x0 = e.clientX; l0 = el.scrollLeft; el.style.cursor = 'grabbing'; });\n    el.addEventListener('pointermove', e => { if (down) el.scrollLeft = l0 - (e.clientX - x0); });\n    el.addEventListener('pointerup', () => { down = false; el.style.cursor = 'grab'; });\n    el.addEventListener('pointerleave', () => { down = false; el.style.cursor = 'grab'; });\n  }",
+  "source": "inline",
+  "motion": "无动效"
+}

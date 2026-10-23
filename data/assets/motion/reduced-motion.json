@@ -1,0 +1,12 @@
+{
+  "id": "reduced-motion",
+  "cat": "无障碍",
+  "t": "尊重减少动效",
+  "en": "prefers-reduced-motion",
+  "d": "系统开启「减少动态效果」时，动画时长归零但状态仍变化。这是硬要求。",
+  "body": "<div class=\"d-rm\">我会动</div><span class=\"d-hint\" data-rmnote></span>",
+  "css": ".d-rm{width:40px;height:40px;border-radius:10px;background:var(--lime);animation:d-reduced-motion-spin 2s var(--ease) infinite}\n@keyframes d-reduced-motion-spin{50%{transform:rotate(180deg) scale(.9)}100%{transform:rotate(360deg)}}\n@media (prefers-reduced-motion: reduce){.d-rm{animation:none}}\n.d-hint{font-size:11px;color:var(--faint)}\n",
+  "init": "root => {\n    const note = root.querySelector('[data-rmnote]');\n    const mq = matchMedia('(prefers-reduced-motion: reduce)');\n    const set = () => note.textContent = mq.matches ? '系统：已开启「减少动态效果」→ 动画关闭' : '系统：未开启 → 动画运行';\n    set(); mq.addEventListener?.('change', set);\n  }",
+  "source": "inline",
+  "motion": "印刷"
+}

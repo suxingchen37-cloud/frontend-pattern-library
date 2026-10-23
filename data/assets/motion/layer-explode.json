@@ -1,0 +1,18 @@
+{
+  "id": "layer-explode",
+  "cat": "3D 与透视",
+  "t": "分层爆炸图",
+  "en": "layer explode",
+  "d": "三层沿 Z 轴拉开 26px，是 1px 描边在 640px 透视下还能认出「这是三层」的最小间隙，再挤就糊成一张卡；指针进入某层时它抬到 64px、其余退到 -18px 并压到 45% 不透明度，读者先看清被抽出的那一层，再回头对它在原图里的位置。记忆点：抽屉式抽层。",
+  "body": "<div class=\"d-le\" role=\"group\" aria-label=\"分层爆炸图：悬停或聚焦任一层，该层抬起、其余后退\"><div class=\"d-le-deck\"><div class=\"d-le-plate\" tabindex=\"0\"><b class=\"d-le-no\">01</b><span class=\"d-le-name\">底板</span></div><div class=\"d-le-plate\" tabindex=\"0\"><b class=\"d-le-no\">02</b><span class=\"d-le-name\">图文层</span></div><div class=\"d-le-plate\" tabindex=\"0\"><b class=\"d-le-no\">03</b><span class=\"d-le-name\">标注层</span></div></div></div>",
+  "css": ".d-le{box-sizing:border-box;width:260px;max-width:100%;height:150px;display:grid;place-items:center;perspective:640px}\n.d-le-deck{position:relative;width:196px;height:84px;transform-style:preserve-3d;transform:rotateX(18deg) rotateY(-14deg)}\n.d-le-plate{position:absolute;inset:0;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);transform:translateZ(var(--z,0px));transition:transform 280ms cubic-bezier(.34,1.56,.64,1),opacity 180ms cubic-bezier(.34,1.56,.64,1),border-color 120ms cubic-bezier(.34,1.56,.64,1);will-change:transform}\n.d-le-plate:nth-child(1){--z:0px;z-index:1}\n.d-le-plate:nth-child(2){--z:26px;z-index:2}\n.d-le-plate:nth-child(3){--z:52px;z-index:3}\n.d-le-no{font-family:var(--font-mono);font-size:var(--fs-11);font-weight:400;letter-spacing:var(--tracking-mono-label);color:var(--faint)}\n.d-le-name{font-size:var(--fs-13);font-weight:600}\n.d-le-deck.is-hot .d-le-plate{opacity:.45;transform:translateZ(-18px)}\n.d-le-deck.is-hot .d-le-plate.is-on{opacity:1;border-color:var(--ink);transform:translateZ(64px)}\n.d-le-plate:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n  const deck = root.querySelector('.d-le-deck');\n  if (!deck || deck.dataset.le) return;\n  deck.dataset.le = '1';\n  const plates = Array.from(deck.querySelectorAll('.d-le-plate'));\n  const on = el => { deck.classList.add('is-hot'); plates.forEach(p => p.classList.toggle('is-on', p === el)); };\n  const off = () => { deck.classList.remove('is-hot'); plates.forEach(p => p.classList.remove('is-on')); };\n  deck.addEventListener('pointerover', e => { const p = e.target.closest('.d-le-plate'); if (p) on(p); });\n  deck.addEventListener('pointerout', e => { const p = e.target.closest('.d-le-plate'); if (p && !p.contains(e.relatedTarget)) off(); });\n  deck.addEventListener('focusin', e => { const p = e.target.closest('.d-le-plate'); if (p) on(p); });\n  deck.addEventListener('focusout', e => { const p = e.target.closest('.d-le-plate'); if (p && !p.contains(e.relatedTarget)) off(); });\n  deck.addEventListener('keydown', e => { if (e.key === 'Escape') off(); });\n}",
+  "source": "v5",
+  "motion": "物理",
+  "tags": [
+    "分层",
+    "爆炸图",
+    "悬停",
+    "透视"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "multiselect",
+  "cat": "列表",
+  "t": "多选操作条",
+  "en": "multi-select toolbar",
+  "d": "选中若干项后浮出一条操作栏；批量处理的核心。",
+  "body": "<div class=\"d-ms\"><label><input type=\"checkbox\">A</label><label><input type=\"checkbox\">B</label><label><input type=\"checkbox\">C</label><div class=\"d-multiselect-bar\" hidden>已选 <b>0</b> · 指派 · 归档</div></div>",
+  "css": ".d-ms{display:flex;flex-direction:column;gap:5px;width:200px;position:relative;padding-bottom:34px}\n.d-ms label{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted)}\n.d-ms .d-multiselect-bar{position:absolute;bottom:0;left:0;right:0;padding:7px 10px;border-radius:10px;background:var(--ink);color:var(--paper);font-size:10.5px}\n.d-ms .d-multiselect-bar b{color:var(--lime)}",
+  "init": "root => {\n    const box = root.querySelector('.d-ms'), bar = box.querySelector('.d-multiselect-bar'), n = bar.querySelector('b');\n    box.querySelectorAll('input').forEach(i => i.onchange = () => { const c = [...box.querySelectorAll('input')].filter(x => x.checked).length; bar.hidden = !c; n.textContent = c; });\n  }",
+  "source": "lab-more",
+  "motion": "无动效"
+}

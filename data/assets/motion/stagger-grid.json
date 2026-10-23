@@ -1,0 +1,18 @@
+{
+  "id": "stagger-grid",
+  "cat": "入场",
+  "t": "网格错峰",
+  "en": "stagger grid",
+  "d": "3×3 按到中心的切比雪夫距离分三圈：0 / 120 / 280ms，第二圈的延迟等于第一圈的时长、第三圈又等于第二圈，队列首尾相接不重叠；中心先落位是因为视线本来就先落在正中，四角最后补齐，读者感到方格是从中间铺开的，而不是从左上角扫过来。记忆点：从中心炸开。",
+  "body": "<div class=\"d-sg\" tabindex=\"0\" role=\"group\" aria-label=\"网格错峰入场：中心先亮、四角最后，点击或回车重播\"><div class=\"d-sg-grid\"><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i><i class=\"d-sg-cell\"></i></div></div>",
+  "css": ".d-sg{width:200px;max-width:100%;height:150px;display:grid;place-items:center;outline:none}\n.d-sg-grid{display:grid;grid-template-columns:repeat(3,44px);grid-auto-rows:44px;gap:8px}\n.d-sg-cell{display:block;border:1px solid var(--line);border-radius:6px;background:var(--paper)}\n.d-sg-grid.is-run .d-sg-cell{animation:d-stagger-grid-pop 280ms cubic-bezier(.34,1.56,.64,1) both}\n.d-sg-grid.is-run .d-sg-cell:nth-child(2),.d-sg-grid.is-run .d-sg-cell:nth-child(4),.d-sg-grid.is-run .d-sg-cell:nth-child(6),.d-sg-grid.is-run .d-sg-cell:nth-child(8){animation-delay:120ms}\n.d-sg-grid.is-run .d-sg-cell:nth-child(1),.d-sg-grid.is-run .d-sg-cell:nth-child(3),.d-sg-grid.is-run .d-sg-cell:nth-child(7),.d-sg-grid.is-run .d-sg-cell:nth-child(9){animation-delay:280ms}\n.d-sg:focus-visible{outline:1px solid var(--ink);outline-offset:6px}\n@keyframes d-stagger-grid-pop{from{opacity:0;transform:translateY(6px) scale(.92)}to{opacity:1;transform:none}}",
+  "init": "root => {\n  const box = root.querySelector('.d-sg');\n  const grid = root.querySelector('.d-sg-grid');\n  if (!box || !grid || grid.dataset.sg) return;\n  grid.dataset.sg = '1';\n  const run = () => { grid.classList.remove('is-run'); void grid.offsetWidth; grid.classList.add('is-run'); };\n  box.addEventListener('pointerdown', () => { run(); });\n  box.addEventListener('keydown', e => {\n    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); run(); }\n  });\n  run();\n}",
+  "source": "v5",
+  "motion": "物理",
+  "tags": [
+    "入场",
+    "网格",
+    "错峰",
+    "中心"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "zoom-view",
+  "cat": "媒体",
+  "t": "缩放与拖看",
+  "en": "zoom & pan",
+  "d": "点倍率放大，按住拖动看细节；比直接打开原图更适合核对画面。",
+  "body": "<div class=\"d-zv3\"><div class=\"d-zoom-view-zvstage3\" data-zstage><div class=\"d-zoom-view-zvart3\" data-zvart></div></div><div class=\"d-zoom-view-zvbtns3\"><button type=\"button\" data-zoom3=\"1\" class=\"d-zoom-view-on\">1×</button><button type=\"button\" data-zoom3=\"2\">2×</button><button type=\"button\" data-zoom3=\"3\">3×</button></div></div>",
+  "css": ".d-zv3{width:240px}\n.d-zoom-view-zvstage3{height:110px;overflow:hidden;border:1px solid var(--line);border-radius:6px;position:relative;cursor:grab;background:var(--bg)}\n.d-zoom-view-zvart3{position:absolute;inset:0;background:repeating-linear-gradient(45deg,var(--lime) 0 12px,var(--paper) 12px 24px);transition:transform .2s var(--ease)}\n.d-zoom-view-zvbtns3{display:flex;gap:4px;margin-top:6px}\n.d-zoom-view-zvbtns3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:2px;padding:2px 7px;cursor:pointer}\n.d-zoom-view-zvbtns3 button.d-zoom-view-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}",
+  "init": "root => {\n    const stage = root.querySelector('[data-zstage]'), art = root.querySelector('[data-zvart]');\n    let scale = 1, x = 0, y = 0, down = false, sx = 0, sy = 0, ox = 0, oy = 0;\n    const paint = () => { art.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + scale + ')'; stage.style.cursor = scale > 1 ? 'grab' : 'default'; };\n    root.querySelectorAll('[data-zoom3]').forEach((b) => b.onclick = () => {\n      scale = Number(b.dataset.zoom3); x = 0; y = 0; paint();\n      root.querySelectorAll('[data-zoom3]').forEach((z) => z.classList.toggle('d-zoom-view-on', z === b));\n    });\n    stage.addEventListener('pointerdown', (e) => { if (scale <= 1) return; down = true; sx = e.clientX; sy = e.clientY; ox = x; oy = y; stage.setPointerCapture?.(e.pointerId); });\n    stage.addEventListener('pointermove', (e) => { if (!down) return; x = ox + e.clientX - sx; y = oy + e.clientY - sy; paint(); });\n    stage.addEventListener('pointerup', () => { down = false; });\n    paint();\n  }",
+  "source": "lab-extra3",
+  "motion": "物理"
+}

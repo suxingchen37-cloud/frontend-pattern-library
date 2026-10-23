@@ -1,0 +1,12 @@
+{
+  "id": "success-next",
+  "cat": "状态页",
+  "t": "成功与下一步",
+  "en": "success next steps",
+  "d": "成功页不只打勾，还告诉人接下来能做什么；否则用户会停在原地。",
+  "body": "<div class=\"d-sx3\"><span class=\"d-success-next-sxcheck3\" aria-hidden=\"true\">✓</span><b>发布完成</b><p>版本已上线，接下来可以：</p><div class=\"d-success-next-sxacts3\"><button type=\"button\" data-next3>查看监控</button><button type=\"button\" data-next3>分享链接</button><button type=\"button\" data-next3>再发一版</button></div><em data-nextmsg3></em></div>",
+  "css": ".d-sx3{width:240px;text-align:center}\n.d-success-next-sxcheck3{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--lime);color:#141a10;margin:0 auto 8px;font-size:14px}\n.d-sx3 b{font-size:12.5px}\n.d-sx3 p{margin:3px 0 9px;font-size:10px;color:var(--muted)}\n.d-success-next-sxacts3{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}\n.d-success-next-sxacts3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 8px;cursor:pointer}\n.d-sx3 em{display:block;margin-top:8px;font:9px var(--mono);color:var(--faint);font-style:normal}",
+  "init": "root => {\n    const msg = root.querySelector('[data-nextmsg3]');\n    root.querySelectorAll('[data-next3]').forEach((b) => b.onclick = () => { msg.textContent = '演示：这里会打开「' + b.textContent + '」'; });\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

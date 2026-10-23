@@ -1,0 +1,8 @@
+.d-tp{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.d-tp-art{display:block;width:260px;height:118px;overflow:visible}
+.d-tp-guide{fill:none;stroke:var(--faint);stroke-width:1;stroke-dasharray:2 4;opacity:0;transition:opacity 280ms cubic-bezier(.2,.75,.25,1)}
+.d-tp.is-guide .d-tp-guide{opacity:1}
+.d-tp-txt{fill:var(--ink);font-family:var(--font-sans);font-size:21px;font-weight:600;letter-spacing:.06em;dominant-baseline:middle}
+.d-tp-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}
+.d-tp-btn:hover{border-color:var(--ink);color:var(--ink)}
+.d-tp-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}

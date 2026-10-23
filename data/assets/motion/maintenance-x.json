@@ -1,0 +1,12 @@
+{
+  "id": "maintenance-x",
+  "cat": "状态页",
+  "t": "维护倒计时",
+  "en": "maintenance",
+  "d": "维护页给一个可见的等待；有进度和出口，比“请稍后”有诚意。",
+  "body": "<div class=\"d-mt3\"><b>维护中</b><p>预计 <span data-mtsec>10</span> 秒后恢复。</p><div class=\"d-maintenance-x-mtprog3\"><i data-mtprog></i></div><button type=\"button\" data-mtskip>提前恢复</button></div>",
+  "css": ".d-mt3{width:220px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--paper)}\n.d-mt3 b{font-size:12px}\n.d-mt3 p{margin:4px 0 9px;font-size:10px;color:var(--muted)}\n.d-maintenance-x-mtprog3{height:4px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:9px}\n.d-maintenance-x-mtprog3 i{display:block;height:100%;width:0;background:var(--ink);transition:width .3s linear}\n.d-mt3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 9px;cursor:pointer}",
+  "init": "root => {\n    const sec = root.querySelector('[data-mtsec]'), prog = root.querySelector('[data-mtprog]'), btn = root.querySelector('[data-mtskip]');\n    let left = 10;\n    const paint = () => {\n      sec.textContent = left;\n      prog.style.width = ((10 - left) * 10) + '%';\n      if (left === 0) { root.querySelector('b').textContent = '已恢复'; root.querySelector('p').textContent = '可以继续了。'; btn.disabled = true; }\n    };\n    const timer = setInterval(() => { left = Math.max(0, left - 1); paint(); if (!left) clearInterval(timer); }, 1000);\n    btn.onclick = () => { left = 0; paint(); clearInterval(timer); };\n    paint();\n  }",
+  "source": "lab-extra3",
+  "motion": "机械"
+}

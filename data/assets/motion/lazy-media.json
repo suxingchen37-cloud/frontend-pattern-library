@@ -1,0 +1,12 @@
+{
+  "id": "lazy-media",
+  "cat": "媒体",
+  "t": "懒加载占位",
+  "en": "lazy media",
+  "d": "没进视口先占位，进来再加载；列表再长，首屏也不会被拖慢。",
+  "body": "<div class=\"d-lz3\" data-lz><div class=\"d-lazy-media-lzrow3\" data-lzrow><i></i><span>占位</span></div><div class=\"d-lazy-media-lzrow3\" data-lzrow><i></i><span>占位</span></div><div class=\"d-lazy-media-lzrow3\" data-lzrow><i></i><span>占位</span></div><div class=\"d-lazy-media-lzrow3\" data-lzrow><i></i><span>占位</span></div><div class=\"d-lazy-media-lzrow3\" data-lzrow><i></i><span>占位</span></div></div>",
+  "css": ".d-lz3{width:230px;height:120px;overflow:auto;border:1px solid var(--line);border-radius:6px;padding:6px}\n.d-lazy-media-lzrow3{display:flex;align-items:center;gap:8px;height:52px;margin-bottom:6px;padding:0 8px;border-radius:6px;background:var(--bg);color:var(--faint);font:9px var(--mono)}\n.d-lazy-media-lzrow3 i{width:38px;height:38px;border-radius:2px;background:var(--line);animation:d-lazy-media-shimmer 1.2s linear infinite}\n.d-lazy-media-lzrow3.loaded{background:var(--lime-soft);color:var(--ink)}\n.d-lazy-media-lzrow3.loaded i{background:var(--lime);animation:none}\n@keyframes d-lazy-media-shimmer{50%{opacity:.45}}\n@media(prefers-reduced-motion:reduce){.d-lazy-media-lzrow3 i{animation:none}}",
+  "init": "root => {\n    const box = root.querySelector('[data-lz]');\n    const rows = [...root.querySelectorAll('[data-lzrow]')];\n    const load = (row) => {\n      setTimeout(() => {\n        if (!row.isConnected) return;\n        row.classList.add('loaded');\n        row.querySelector('span').textContent = '已加载';\n      }, 350);\n    };\n    if (!('IntersectionObserver' in window)) { rows.forEach(load); return; }\n    const io = new IntersectionObserver((entries) => entries.forEach((e) => {\n      if (!e.isIntersecting || e.target.dataset.done) return;\n      e.target.dataset.done = '1'; load(e.target); io.unobserve(e.target);\n    }), { root: box, rootMargin: '20px' });\n    rows.forEach((r) => io.observe(r));\n  }",
+  "source": "lab-extra3",
+  "motion": "机械"
+}

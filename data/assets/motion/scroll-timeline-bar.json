@@ -1,0 +1,18 @@
+{
+  "id": "scroll-timeline-bar",
+  "cat": "滚动驱动",
+  "t": "滚动刻度进度",
+  "en": "scroll timeline",
+  "d": "已有 progress-scroll 也是 CSS 驱动的细线，只回答「到哪了」；这条把 0–100% 切成 6 档并画上刻度，读数靠对齐刻度而不是估长度——它是仪表，那条是书签。用 steps(6) 而不是 linear，因为刻度本来就是一格一格，连续增长的条和下面的 6 个刻线对不上。",
+  "body": "<div class=\"d-st\" tabindex=\"0\" aria-label=\"滚动刻度进度：滚动框内内容看刻度前进\"><div class=\"d-st-head\"><div class=\"d-st-bar\"><span class=\"d-st-fill\"></span></div><div class=\"d-st-scale\"><i class=\"d-st-tick\"></i><i class=\"d-st-tick\"></i><i class=\"d-st-tick\"></i><i class=\"d-st-tick\"></i><i class=\"d-st-tick\"></i><i class=\"d-st-tick\"></i></div></div><div class=\"d-st-body\"><p class=\"d-st-h\">01 装版</p><p class=\"d-st-p\">铅字按行排进版框，木楔从两侧顶紧。</p><p class=\"d-st-h\">02 校色</p><p class=\"d-st-p\">先印一张样张，对着色标看三块油墨的深浅。</p><p class=\"d-st-h\">03 裁切</p><p class=\"d-st-p\">切刀对齐十字线，一刀到底，纸边不起毛。</p><p class=\"d-st-h\">04 入档</p><p class=\"d-st-p\">成品按印次编号，签样一起装进牛皮纸袋。</p></div></div>",
+  "css": ".d-st{box-sizing:border-box;width:300px;max-width:100%;height:150px;overflow-x:hidden;overflow-y:auto;border:1px solid var(--line);border-radius:10px;background:var(--bg)}\n.d-st-head{position:sticky;top:0;z-index:1;padding:8px 12px 6px;background:var(--bg);border-bottom:1px solid var(--line)}\n.d-st-bar{height:6px;border:1px solid var(--line);border-radius:2px;background:var(--paper)}\n.d-st-fill{display:block;height:100%;border-radius:2px;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);animation:d-scroll-timeline-bar-grow steps(6) both;animation-timeline:scroll(nearest)}\n.d-st-scale{display:flex;justify-content:space-between;margin-top:4px}\n.d-st-tick{display:block;width:1px;height:4px;background:var(--faint)}\n.d-st-body{padding:0 12px 16px}\n.d-st-h{margin:12px 0 2px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}\n.d-st-p{margin:0;font-size:11px;line-height:1.6;color:var(--faint)}\n.d-st:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n@keyframes d-scroll-timeline-bar-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}",
+  "init": null,
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "滚动",
+    "进度",
+    "刻度",
+    "仪表"
+  ]
+}

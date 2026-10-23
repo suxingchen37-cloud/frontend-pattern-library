@@ -1,0 +1,18 @@
+{
+  "id": "scroll-snap-sections",
+  "cat": "滚动驱动",
+  "t": "分屏吸附",
+  "en": "snap sections",
+  "d": "每段高度正好等于滚动框内高（148px），所以 scroll-snap 一定停在段首，不会停在半段；右侧刻度按同样的 28px 步距排三点，指针用 linear 180ms 平移——刻度是读数，加弹簧反而让人以为还有惯性没走完。记忆点：翻页式的段落，右边有个跟着走的指针。",
+  "body": "<div class=\"d-ss\" role=\"group\" aria-label=\"分屏吸附：滚动三段，右侧刻度指示当前段\"><div class=\"d-ss-scroll\" tabindex=\"0\" aria-label=\"三段面板，滚动或按 PageUp / PageDown 换段\"><section class=\"d-ss-panel\"><span class=\"d-ss-no\">01 / 03</span><h3 class=\"d-ss-h\">装版</h3><p class=\"d-ss-p\">铅字按行排进版框，木楔从两侧顶紧</p></section><section class=\"d-ss-panel\"><span class=\"d-ss-no\">02 / 03</span><h3 class=\"d-ss-h\">校色</h3><p class=\"d-ss-p\">先印一张样张，对着色标看深浅</p></section><section class=\"d-ss-panel\"><span class=\"d-ss-no\">03 / 03</span><h3 class=\"d-ss-h\">裁切</h3><p class=\"d-ss-p\">切刀对齐十字线，一刀到底</p></section></div><div class=\"d-ss-rail\" aria-hidden=\"true\"><i class=\"d-ss-tick\"></i><i class=\"d-ss-tick\"></i><i class=\"d-ss-tick\"></i><span class=\"d-ss-mark\"></span></div></div>",
+  "css": ".d-ss{position:relative;box-sizing:border-box;width:300px;max-width:100%;height:150px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}\n.d-ss-scroll{box-sizing:border-box;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;padding-right:30px}\n.d-ss-scroll::-webkit-scrollbar{width:0;height:0}\n.d-ss-panel{box-sizing:border-box;height:100%;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:0 16px;border-bottom:1px solid var(--line);scroll-snap-align:start;scroll-snap-stop:always}\n.d-ss-panel:last-child{border-bottom:0}\n.d-ss-no{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);color:var(--faint)}\n.d-ss-h{margin:0;font-size:var(--fs-21);font-weight:650;line-height:var(--lh-display);letter-spacing:var(--tracking-display);color:var(--ink)}\n.d-ss-p{margin:0;font-size:var(--fs-11);line-height:var(--lh-note);color:var(--muted)}\n.d-ss-rail{--i:0;position:absolute;right:8px;top:50%;width:16px;height:58px;transform:translateY(-50%)}\n.d-ss-tick{position:absolute;right:0;width:7px;height:1px;background:var(--faint)}\n.d-ss-tick:nth-child(1){top:0}\n.d-ss-tick:nth-child(2){top:28px}\n.d-ss-tick:nth-child(3){top:56px}\n.d-ss-mark{position:absolute;right:0;top:0;width:12px;height:2px;background:var(--ink);transform:translateY(calc(var(--i,0) * 28px));transition:transform 180ms linear}\n.d-ss-scroll:focus-visible{outline:1px solid var(--ink);outline-offset:-3px}",
+  "init": "root => {\n  const box = root.querySelector('.d-ss-scroll');\n  const rail = root.querySelector('.d-ss-rail');\n  if (!box || !rail || box.dataset.ss) return;\n  box.dataset.ss = '1';\n  const sync = () => {\n    const h = box.clientHeight || 1;\n    const i = Math.max(0, Math.min(2, Math.round(box.scrollTop / h)));\n    rail.style.setProperty('--i', String(i));\n  };\n  box.addEventListener('scroll', sync, { passive: true });\n  box.addEventListener('keydown', e => {\n    const h = box.clientHeight || 0;\n    if (e.key === 'PageDown') { e.preventDefault(); box.scrollTo({ top: Math.min(box.scrollHeight, box.scrollTop + h) }); }\n    else if (e.key === 'PageUp') { e.preventDefault(); box.scrollTo({ top: Math.max(0, box.scrollTop - h) }); }\n  });\n  sync();\n}",
+  "source": "v5",
+  "motion": "机械",
+  "tags": [
+    "分屏",
+    "吸附",
+    "滚动",
+    "刻度"
+  ]
+}

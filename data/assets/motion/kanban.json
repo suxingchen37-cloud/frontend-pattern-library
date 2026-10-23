@@ -1,0 +1,12 @@
+{
+  "id": "kanban",
+  "cat": "列表",
+  "t": "看板列",
+  "en": "kanban board",
+  "d": "列间拖卡、列头计数、列内滚动；任务流的骨架。",
+  "body": "\n  <div class=\"d-kan\"><div class=\"d-kanban-col\" data-col=\"todo\"><b>待办 <em>2</em></b><div class=\"d-kanban-kcard\" draggable=\"true\">需求</div><div class=\"d-kanban-kcard\" draggable=\"true\">设计</div></div><div class=\"d-kanban-col\" data-col=\"doing\"><b>进行中 <em>0</em></b></div></div>",
+  "css": ".d-kan{display:flex;gap:10px;width:100%}\n.d-kan .d-kanban-col{flex:1;min-height:110px;padding:8px;border-radius:10px;background:color-mix(in srgb,var(--ink) 4%,transparent);font-size:11px}\n.d-kan .d-kanban-col b{display:flex;justify-content:space-between;font-weight:600;color:var(--muted);margin-bottom:6px}\n.d-kan .d-kanban-col em{font-style:normal;color:var(--faint)}\n.d-kan .d-kanban-kcard{padding:7px 9px;margin-bottom:6px;border-radius:6px;background:var(--paper);border:1px solid var(--line);cursor:grab;font-size:11.5px}\n.d-kan .d-kanban-col.over{outline:1.5px dashed var(--ink)}",
+  "init": "root => {\n    root.querySelectorAll('.d-kanban-kcard').forEach(c => c.addEventListener('dragstart', e => e.dataTransfer.setData('text/plain', c.textContent)));\n    root.querySelectorAll('.d-kanban-col').forEach(col => {\n      col.addEventListener('dragover', e => { e.preventDefault(); col.classList.add('over'); });\n      col.addEventListener('dragleave', () => col.classList.remove('over'));\n      col.addEventListener('drop', e => {\n        e.preventDefault(); col.classList.remove('over');\n        const card = document.createElement('div'); card.className = 'd-kanban-kcard'; card.draggable = true; card.textContent = e.dataTransfer.getData('text/plain');\n        col.appendChild(card);\n      });\n    });\n  }",
+  "source": "lab-extra2",
+  "motion": "无动效"
+}

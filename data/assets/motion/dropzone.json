@@ -1,0 +1,12 @@
+{
+  "id": "dropzone",
+  "cat": "表单",
+  "t": "拖拽上传区",
+  "en": "dropzone",
+  "d": "整体高亮 + 松手提示；本组件库里附件暂不可用，这类交互可以留给「服务端执行」的文件操作。",
+  "body": "<div class=\"d-drop\">把文件拖到这里<input type=\"file\" hidden></div><span class=\"d-hint\" data-dropnote></span>",
+  "css": ".d-drop{display:grid;place-items:center;width:220px;height:74px;border:1.5px dashed var(--line);border-radius:10px;font-size:11.5px;color:var(--muted);transition:border-color .16s,background-color .16s,color .16s}\n.d-drop.over{border-color:var(--ink);background:color-mix(in srgb,var(--lime) 22%,transparent);color:var(--ink)}\n.d-hint{font-size:11px;color:var(--faint)}\n",
+  "init": "root => {\n    const z = root.querySelector('.d-drop'), note = root.querySelector('[data-dropnote]');\n    ['dragenter', 'dragover'].forEach(t => z.addEventListener(t, e => { e.preventDefault(); z.classList.add('over'); }));\n    ['dragleave', 'drop'].forEach(t => z.addEventListener(t, e => { e.preventDefault(); z.classList.remove('over'); }));\n    z.addEventListener('drop', e => { const f = e.dataTransfer?.files?.[0]; if (note) note.textContent = f ? '收到：' + f.name + '（演示不落盘）' : ''; });\n  }",
+  "source": "lab-more",
+  "motion": "物理"
+}

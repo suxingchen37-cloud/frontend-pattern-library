@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>两卡互换 · drag-swap · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px var(--line);
+  --border-strong:1px var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-swap{position:relative;width:300px;height:150px;color:var(--ink)}
+.d-swap-slot{position:absolute;top:26px;left:24px;width:104px;height:78px;border:1px dashed var(--line);border-radius:10px}
+.d-swap-slot[data-slot="1"]{left:172px}
+.d-swap-card{position:absolute;left:0;top:0;width:104px;height:78px;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:8px 9px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line);cursor:grab;touch-action:none;user-select:none;will-change:transform}
+.d-swap-card b{font-size:21px;line-height:1;font-weight:650}
+.d-swap-card em{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--faint)}
+.d-swap-card[data-drag]{cursor:grabbing;border-color:var(--ink);box-shadow:0 12px 24px -8px #20241e26}
+.d-swap-card[data-yield]{border-style:dashed}
+.d-swap-card:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-swap-hint{position:absolute;left:24px;bottom:8px;margin:0;font-family:var(--mono);font-size:9px;letter-spacing:.04em;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>drag-swap</code>
+  <b>两卡互换</b>
+  <span>drag to swap</span>
+  <span>分类 拖拽</span>
+  <span>运动 物理</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<div class="d-swap" role="group" aria-label="两张卡片，拖到另一张上互换">
+  <div class="d-swap-slot" data-slot="0"></div>
+  <div class="d-swap-slot" data-slot="1"></div>
+  <article class="d-swap-card" data-slot="0" tabindex="0" role="button" aria-label="甲卡，拖到乙卡上互换"><b>甲</b><em>01</em></article>
+  <article class="d-swap-card" data-slot="1" tabindex="0" role="button" aria-label="乙卡，拖到甲卡上互换"><b>乙</b><em>02</em></article>
+  <p class="d-swap-hint">拖到另一张上 · Enter 也能换</p>
+</div>
+</div>
+<p class="pv-note">判定用「两张卡中心相距 58px 以内」而不是「碰到边缘」：手指会盖住接触点，按接触判定永远慢半拍，人会觉得没反应。目标卡只让 22px——正好是两卡间隙的一半，再多它就贴到画框边上，看着像目标卡先跑了；让位用 180ms、落位用 280ms，先让后落才有先后顺序。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "drag-swap";
+  window.INITS = window.INITS || {};
+  window.INITS["drag-swap"] = (root => {
+  const wrap = root.querySelector('.d-swap');
+  if (!wrap || wrap.dataset.ready) return;
+  wrap.dataset.ready = '1';
+  const cards = [].slice.call(wrap.querySelectorAll('.d-swap-card'));
+  const SLOT = [24, 172];
+  const Y = 26;
+
+  function place(el, i, animate) {
+    el.dataset.slot = String(i);
+    el.style.transition = animate ? 'transform .28s cubic-bezier(.34,1.56,.64,1)' : 'none';
+    el.style.transform = 'translate(' + SLOT[i] + 'px,' + Y + 'px)';
+  }
+  cards.forEach(el => place(el, Number(el.dataset.slot), false));
+
+  const other = el => cards.filter(c => c !== el)[0];
+  let drag = null;
+
+  function down(e) {
+    if (drag) return;
+    const el = e.currentTarget;
+    e.preventDefault();
+    el.focus({ preventScroll: true });
+    el.setPointerCapture(e.pointerId);
+    el.dataset.drag = '1';
+    el.style.transition = 'none';
+    el.style.zIndex = '3';
+    drag = { el: el, from: Number(el.dataset.slot), x0: e.clientX, y0: e.clientY, over: false };
+  }
+
+  function move(e) {
+    if (!drag) return;
+    const el = drag.el;
+    const dx = e.clientX - drag.x0;
+    const dy = e.clientY - drag.y0;
+    el.style.transform = 'translate(' + (SLOT[drag.from] + dx) + 'px,' + (Y + dy) + 'px)';
+    const o = other(el);
+    const oSlot = Number(o.dataset.slot);
+    const ecx = SLOT[drag.from] + el.offsetWidth / 2 + dx;
+    const ocx = SLOT[oSlot] + o.offsetWidth / 2;
+    const over = Math.abs(ecx - ocx) < 58;
+    if (over === drag.over) return;
+    drag.over = over;
+    if (over) o.dataset.yield = '1'; else delete o.dataset.yield;
+    o.style.transition = 'transform .18s cubic-bezier(.34,1.56,.64,1)';
+    // 让位 22px = 间隙的一半，再多目标卡就被推出画框
+    o.style.transform = 'translate(' + (SLOT[oSlot] + (over ? (drag.from === 0 ? 22 : -22) : 0)) + 'px,' + Y + 'px)';
+  }
+
+  function up() {
+    if (!drag) return;
+    const el = drag.el;
+    const from = drag.from;
+    const o = other(el);
+    const over = drag.over;
+    drag = null;
+    delete el.dataset.drag;
+    delete o.dataset.yield;
+    el.style.zIndex = '2';
+    if (over) {
+      place(el, from === 0 ? 1 : 0, true);
+      place(o, from, true);
+    } else {
+      place(el, from, true);
+      place(o, Number(o.dataset.slot), true);
+    }
+  }
+
+  function key(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    const o = other(el);
+    const from = Number(el.dataset.slot);
+    delete o.dataset.yield;
+    place(o, from, true);
+    place(el, from === 0 ? 1 : 0, true);
+  }
+
+  cards.forEach(el => {
+    el.addEventListener('pointerdown', down);
+    el.addEventListener('pointermove', move);
+    el.addEventListener('pointerup', up);
+    el.addEventListener('pointercancel', up);
+    el.addEventListener('keydown', key);
+  });
+});
+  window.INITS["drag-swap"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

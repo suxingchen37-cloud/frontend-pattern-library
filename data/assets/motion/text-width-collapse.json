@@ -1,0 +1,18 @@
+{
+  "id": "text-width-collapse",
+  "cat": "排印",
+  "t": "字宽压缩",
+  "en": "width collapse",
+  "d": "字宽只压到 .75、放到 1.18：超过 ±25% 读者先看到「变形」而不是「宽窄」；基线锚在左侧，缩放都往右长，字才不像被整体缩放。900ms 是唯一能看清中间态的时长——这是连续量，不是反馈。34px 是本条唯一的破格，字号阶里的展示档只为一句话用。",
+  "body": "<div class=\"d-width-collapse\" tabindex=\"0\" role=\"button\" aria-pressed=\"false\" aria-label=\"切换字宽\"><span class=\"d-wc-word\">可变字宽</span><span class=\"d-wc-meta\">wdth 75</span></div>",
+  "css": ".d-width-collapse{display:inline-flex;flex-direction:column;gap:2px;width:max-content;max-width:100%;font-family:var(--sans);outline:none;cursor:pointer}\n.d-width-collapse .d-wc-word{display:inline-block;transform-origin:left center;font-size:var(--fs-34);font-weight:600;line-height:var(--lh-display);letter-spacing:-.03em;color:var(--ink);transform:scaleX(.75);transition:transform 900ms cubic-bezier(.2,.75,.25,1),letter-spacing 900ms cubic-bezier(.2,.75,.25,1)}\n.d-width-collapse .d-wc-meta{font-family:var(--mono);font-size:var(--fs-9);letter-spacing:.08em;color:var(--faint)}\n.d-width-collapse.is-wide .d-wc-word{transform:scaleX(1.18);letter-spacing:.02em}\n.d-width-collapse.is-wide .d-wc-meta{color:var(--muted)}\n.d-width-collapse:focus-visible{outline:1px solid var(--ink);outline-offset:6px}",
+  "init": "root => {\n  const box = root.querySelector('.d-width-collapse');\n  if (!box || box.dataset.dwc) return;\n  box.dataset.dwc = '1';\n  const meta = box.querySelector('.d-wc-meta');\n  const set = wide => {\n    box.classList.toggle('is-wide', wide);\n    box.setAttribute('aria-pressed', wide ? 'true' : 'false');\n    meta.textContent = wide ? 'wdth 118' : 'wdth 75';\n  };\n  const toggle = () => set(!box.classList.contains('is-wide'));\n  box._dwcT = setTimeout(() => set(true), 280);\n  box.addEventListener('click', toggle);\n  box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });\n}",
+  "source": "v4",
+  "motion": "印刷",
+  "tags": [
+    "排印",
+    "字宽",
+    "可变字体",
+    "对照"
+  ]
+}

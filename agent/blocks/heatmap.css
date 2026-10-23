@@ -1,0 +1,2 @@
+.d-heat{display:grid;grid-template-columns:repeat(12,10px);gap:3px}
+.d-heat i{opacity:var(--o);width:10px;height:10px;border-radius:2px;background:var(--ink)}

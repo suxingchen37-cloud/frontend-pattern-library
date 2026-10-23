@@ -1,0 +1,12 @@
+{
+  "id": "diff-view",
+  "cat": "内容",
+  "t": "差异视图",
+  "en": "diff view",
+  "d": "红删绿增、上下文折叠；版本对比最需要。",
+  "body": "\n  <div class=\"d-diff\"><div class=\"d-diff-view-line d-diff-view-ctx\">  \"dependencies\": {\"react\": \"^19.0.0\"},</div><div class=\"d-diff-view-line d-diff-view-del\">- \"vite\": \"^5.0.0\",</div><div class=\"d-diff-view-line d-diff-view-add\">+ \"vite\": \"^6.1.0\",</div><button class=\"d-diff-view-fold\" data-fold>展开其余 8 行</button><div class=\"d-diff-view-more\" hidden><div class=\"d-diff-view-line d-diff-view-ctx\">  \"files\": [...]</div><div class=\"d-diff-view-line d-diff-view-add\">+ \"README.md\"</div></div></div>",
+  "css": ".d-diff{width:250px;font:12px ui-monospace,Consolas,monospace;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}\n.d-diff .d-diff-view-line{padding:3px 9px;white-space:pre;overflow:hidden;text-overflow:ellipsis}\n.d-diff .d-diff-view-add{background:#e4f3d8;color:#22421a}\n.d-diff .d-diff-view-del{background:#fbe1da;color:#6d2415}\n.d-diff .d-diff-view-ctx{color:var(--muted)}\n.d-diff .d-diff-view-fold{border:0;border-top:1px solid var(--line);background:transparent;width:100%;font:11px inherit;padding:5px;color:var(--faint);cursor:pointer}",
+  "init": "root => root.querySelector('[data-fold]').onclick = e => {\n    const more = root.querySelector('.d-diff-view-more'); more.hidden = !more.hidden;\n    e.target.textContent = more.hidden ? '展开其余 8 行' : '收起';\n  }",
+  "source": "lab-extra2",
+  "motion": "无动效"
+}

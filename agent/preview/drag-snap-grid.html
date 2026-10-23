@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>网格吸附 · drag-snap-grid · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px var(--line);
+  --border-strong:1px var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-snap{position:relative;width:300px;height:150px;color:var(--ink)}
+.d-snap-grid{position:absolute;left:12px;top:12px;display:grid;grid-template-columns:repeat(3,48px);grid-auto-rows:48px;gap:8px}
+.d-snap-cell{border:1px dashed var(--line);border-radius:6px}
+.d-snap-cell[data-hot]{border-style:solid;border-color:var(--ink);background:var(--bg)}
+.d-snap-guide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .12s linear}
+.d-snap-guide[data-on]{opacity:1}
+.d-snap-guide i{position:absolute;background:var(--ink)}
+.d-snap-guide i:first-child{left:0;top:0;bottom:0;width:1px}
+.d-snap-guide i:last-child{top:0;left:0;right:0;height:1px}
+.d-snap-tile{position:absolute;left:0;top:0;width:40px;height:40px;display:grid;place-items:center;background:var(--paper);border:1px solid var(--ink);border-radius:6px;box-shadow:0 1px 0 var(--line);cursor:grab;touch-action:none;will-change:transform}
+.d-snap-tile b{font-family:var(--mono);font-size:13px;font-weight:500;color:#c2402a}
+.d-snap-tile[data-drag]{cursor:grabbing;box-shadow:0 12px 24px -8px #20241e26}
+.d-snap-tile:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
+.d-snap-hint{position:absolute;left:12px;bottom:4px;margin:0;font-family:var(--mono);font-size:9px;line-height:1.6;color:var(--faint)}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>drag-snap-grid</code>
+  <b>网格吸附</b>
+  <span>snap grid</span>
+  <span>分类 拖拽</span>
+  <span>运动 物理</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<div class="d-snap" role="group" aria-label="网格吸附">
+  <div class="d-snap-grid">
+    <i class="d-snap-cell"></i><i class="d-snap-cell"></i><i class="d-snap-cell"></i>
+    <i class="d-snap-cell"></i><i class="d-snap-cell"></i><i class="d-snap-cell"></i>
+    <div class="d-snap-guide" aria-hidden="true"><i></i><i></i></div>
+  </div>
+  <div class="d-snap-tile" tabindex="0" role="button" aria-label="拖动方块吸附到格子，方向键移动一格"><b>1</b></div>
+  <p class="d-snap-hint">离格心 26px 内松手就进去</p>
+</div>
+</div>
+<p class="pv-note">吸附半径 26px 是照 48px 的格子算的：半格 24px 再加 2px 容错——半径只要小于半格，手指压着方块偏一格就永远吸不进去，人会觉得这功能坏了。对齐提示线只画 1px：它的作用是解释落点，不是参与构图，粗一格就把格子本身的秩序压掉了。格子松手用 280ms 落位，比 180ms 慢一点，落点才看得出是「归位」而不是被甩进去。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "drag-snap-grid";
+  window.INITS = window.INITS || {};
+  window.INITS["drag-snap-grid"] = (root => {
+  const box = root.querySelector('.d-snap');
+  if (!box || box.dataset.ready) return;
+  box.dataset.ready = '1';
+  const grid = box.querySelector('.d-snap-grid');
+  const tile = box.querySelector('.d-snap-tile');
+  const cells = [].slice.call(grid.querySelectorAll('.d-snap-cell'));
+  const guide = box.querySelector('.d-snap-guide');
+  const lines = guide.querySelectorAll('i');
+  const hint = box.querySelector('.d-snap-hint');
+  const COLS = 3, ROWS = 2, STEP = 56, SIZE = 48;
+  const TW = tile.offsetWidth, TH = tile.offsetHeight;
+  const GX = grid.offsetLeft, GY = grid.offsetTop;
+  const pos = { x: 216, y: 38 };
+  const IDLE = '离格心 26px 内松手就进去';
+
+  function center(c, r) {
+    return { x: GX + c * STEP + SIZE / 2, y: GY + r * STEP + SIZE / 2 };
+  }
+  function draw() {
+    tile.style.transform = 'translate(' + pos.x + 'px,' + pos.y + 'px)';
+  }
+  function moveTo(x, y, animate) {
+    tile.style.transition = animate ? 'transform .28s cubic-bezier(.34,1.56,.64,1)' : 'none';
+    pos.x = x; pos.y = y; draw();
+  }
+  function nearest(x, y) {
+    let best = null, bd = 1e9;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const k = center(c, r);
+        const d = Math.hypot(k.x - x, k.y - y);
+        if (d < bd) { bd = d; best = { c: c, r: r, x: k.x, y: k.y, d: d }; }
+      }
+    }
+    return best;
+  }
+  function mark(hit) {
+    cells.forEach((el, i) => {
+      if (hit && i === hit.r * COLS + hit.c) el.dataset.hot = '1'; else delete el.dataset.hot;
+    });
+    if (!hit) { delete guide.dataset.on; return; }
+    lines[0].style.left = (hit.c * STEP + SIZE / 2) + 'px';
+    lines[1].style.top = (hit.r * STEP + SIZE / 2) + 'px';
+    guide.dataset.on = '1';
+  }
+  function hot(x, y) {
+    const hit = nearest(x, y);
+    return hit && hit.d < 26 ? hit : null;
+  }
+
+  let drag = null;
+  function down(e) {
+    if (drag) return;
+    e.preventDefault();
+    tile.focus({ preventScroll: true });
+    tile.setPointerCapture(e.pointerId);
+    tile.dataset.drag = '1';
+    drag = { x0: e.clientX - pos.x, y0: e.clientY - pos.y };
+  }
+  function move(e) {
+    if (!drag) return;
+    pos.x = Math.max(0, Math.min(300 - TW, e.clientX - drag.x0));
+    pos.y = Math.max(0, Math.min(150 - TH, e.clientY - drag.y0));
+    moveTo(pos.x, pos.y, false);
+    const hit = hot(pos.x + TW / 2, pos.y + TH / 2);
+    mark(hit);
+    hint.textContent = hit ? '吸附中 · 松手进格子' : IDLE;
+  }
+  function up() {
+    if (!drag) return;
+    drag = null;
+    delete tile.dataset.drag;
+    const hit = hot(pos.x + TW / 2, pos.y + TH / 2);
+    if (hit) moveTo(hit.x - TW / 2, hit.y - TH / 2, true);
+    else moveTo(pos.x, pos.y, true);
+    hint.textContent = hit ? '已吸附 · 对齐提示线随落点走' : IDLE;
+    clearTimeout(box._hintT);
+    box._hintT = setTimeout(() => { mark(null); hint.textContent = IDLE; }, 900);
+  }
+  function key(e) {
+    const mv = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[e.key];
+    if (!mv) return;
+    e.preventDefault();
+    const from = nearest(pos.x + TW / 2, pos.y + TH / 2);
+    const c = Math.max(0, Math.min(COLS - 1, from.c + mv[0]));
+    const r = Math.max(0, Math.min(ROWS - 1, from.r + mv[1]));
+    const k = center(c, r);
+    moveTo(k.x - TW / 2, k.y - TH / 2, true);
+    mark({ c: c, r: r });
+    clearTimeout(box._hintT);
+    box._hintT = setTimeout(() => mark(null), 900);
+  }
+
+  tile.addEventListener('pointerdown', down);
+  tile.addEventListener('pointermove', move);
+  tile.addEventListener('pointerup', up);
+  tile.addEventListener('pointercancel', up);
+  tile.addEventListener('keydown', key);
+  draw();
+});
+  window.INITS["drag-snap-grid"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

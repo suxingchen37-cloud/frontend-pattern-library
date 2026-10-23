@@ -1,0 +1,18 @@
+{
+  "id": "carousel-coverflow",
+  "cat": "3D 与透视",
+  "t": "封面轮播",
+  "en": "coverflow",
+  "d": "侧过身 34° 是「明显侧着」又不至于把标题折到看不见的角度，两侧再缩到 .82、压到 72% 不透就分出了主次。中间那张铺满靛墨是本组唯一的大色块：轮播的活是挑出一张，只靠描边看不出谁被选中。",
+  "body": "<div class=\"d-cf\" role=\"group\" aria-label=\"封面轮播：点两侧的封面把它挪到中间\"><button type=\"button\" class=\"d-cf-item\" aria-current=\"false\"><span class=\"d-cf-n\">01</span><span class=\"d-cf-t\">纸样</span></button><button type=\"button\" class=\"d-cf-item\" aria-current=\"true\"><span class=\"d-cf-n\">02</span><span class=\"d-cf-t\">印版</span></button><button type=\"button\" class=\"d-cf-item\" aria-current=\"false\"><span class=\"d-cf-n\">03</span><span class=\"d-cf-t\">装订</span></button></div>",
+  "css": ".d-cf{position:relative;width:300px;max-width:100%;height:150px;perspective:640px}\n.d-cf-item{position:absolute;top:8px;left:50%;width:132px;height:132px;margin-left:-66px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;padding:10px;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform 280ms cubic-bezier(.34,1.56,.64,1),opacity 280ms cubic-bezier(.34,1.56,.64,1),background-color 280ms cubic-bezier(.34,1.56,.64,1),border-color 280ms cubic-bezier(.34,1.56,.64,1),color 280ms cubic-bezier(.34,1.56,.64,1)}\n.d-cf-item[data-pos=\"0\"]{transform:translateX(0) rotateY(0) scale(1);z-index:3;background:#2b4b8f;border-color:#2b4b8f;color:var(--paper)}\n.d-cf-item[data-pos=\"-1\"]{transform:translateX(-88px) rotateY(34deg) scale(.82);z-index:2;opacity:.72}\n.d-cf-item[data-pos=\"1\"]{transform:translateX(88px) rotateY(-34deg) scale(.82);z-index:2;opacity:.72}\n.d-cf-item:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n.d-cf-n{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;opacity:.7}\n.d-cf-t{font-size:15px}",
+  "init": "root => {\n  const items = Array.from(root.querySelectorAll('.d-cf-item'));\n  if (!items.length) return;\n  const set = i => items.forEach((el, k) => {\n    el.dataset.pos = String(k - i);\n    el.setAttribute('aria-current', k === i ? 'true' : 'false');\n  });\n  items.forEach((el, k) => { el.onclick = () => set(k); });\n  set(1);\n}",
+  "source": "v4",
+  "motion": "物理",
+  "tags": [
+    "轮播",
+    "封面",
+    "透视",
+    "立体"
+  ]
+}

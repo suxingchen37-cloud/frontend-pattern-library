@@ -1,0 +1,12 @@
+{
+  "id": "image-viewer",
+  "cat": "内容",
+  "t": "图片查看器",
+  "en": "image viewer",
+  "d": "缩略图点开大图，可缩放、左右翻、Esc 关；聊天里贴截图必备。",
+  "body": "\n  <div class=\"d-iv2\"><button class=\"d-image-viewer-iv-thumb\" data-iv=\"1\">图 1</button><button class=\"d-image-viewer-iv-thumb\" data-iv=\"2\">图 2</button><button class=\"d-image-viewer-iv-thumb\" data-iv=\"3\">图 3</button><div class=\"d-image-viewer-iv-box\" hidden><div class=\"d-image-viewer-iv-img\">图 <b>1</b></div><div class=\"d-image-viewer-iv-bar\"><button data-ivprev>‹</button><span data-ivn>1 / 3</span><button data-ivnext>›</button><button data-ivclose>关闭</button></div></div></div>",
+  "css": ".d-iv2{display:flex;gap:8px;flex-wrap:wrap;position:relative}\n.d-image-viewer-iv-thumb{width:64px;height:46px;border-radius:10px;border:1px solid var(--line);background:background:#e7eedd;background-image:repeating-linear-gradient(135deg,#dfe8d2 0 8px,#e9f0df 8px 16px);font:inherit;font-size:10px;color:#122016;cursor:zoom-in}\n.d-image-viewer-iv-box{position:absolute;left:0;top:52px;width:220px;padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--paper);box-shadow:0 14px 30px #20241e20;z-index:4}\n.d-image-viewer-iv-img{height:110px;border-radius:10px;background:background:#e7eedd;background-image:repeating-linear-gradient(135deg,#dfe8d2 0 8px,#e9f0df 8px 16px);display:grid;place-items:center;font-size:12px;color:#122016}\n.d-image-viewer-iv-bar{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:11px;color:var(--muted)}\n.d-image-viewer-iv-bar button{border:1px solid var(--line);background:transparent;border-radius:6px;font:inherit;font-size:11px;padding:2px 7px;cursor:pointer;color:inherit}",
+  "init": "root => {\n    const box = root.querySelector('.d-image-viewer-iv-box'), img = box.querySelector('.d-image-viewer-iv-img b'), n = box.querySelector('[data-ivn]');\n    let cur = 1;\n    const show = i => { cur = (i + 3 - 1) % 3 + 1; img.textContent = cur; n.textContent = cur + ' / 3'; box.hidden = false; };\n    root.querySelectorAll('[data-iv]').forEach(b => b.onclick = () => show(+b.dataset.iv));\n    box.querySelector('[data-ivprev]').onclick = () => show(cur - 1);\n    box.querySelector('[data-ivnext]').onclick = () => show(cur + 1);\n    box.querySelector('[data-ivclose]').onclick = () => box.hidden = true;\n  }",
+  "source": "lab-extra2",
+  "motion": "无动效"
+}

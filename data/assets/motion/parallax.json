@@ -1,0 +1,12 @@
+{
+  "id": "parallax",
+  "cat": "滚动",
+  "t": "视差分层",
+  "en": "parallax layers",
+  "d": "前景动得多、背景动得少；只做 2–3 层，多了会晕。",
+  "body": "<div class=\"d-par\"><i class=\"d-parallax-l1\"></i><i class=\"d-parallax-l2\"></i><i class=\"d-parallax-l3\"></i></div><span class=\"d-hint\">在上面左右移动鼠标</span>",
+  "css": ".d-par{position:relative;width:220px;height:90px;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--ink) 6%,transparent)}\n.d-par i{position:absolute;border-radius:999px}\n.d-par .d-parallax-l1{inset:18px;background:var(--mint);opacity:.5;transition:transform .2s}\n.d-par .d-parallax-l2{inset:30px;background:var(--lav);opacity:.6;transition:transform .2s}\n.d-par .d-parallax-l3{inset:44px;background:var(--ink);opacity:.8;transition:transform .2s}\n.d-hint{font-size:11px;color:var(--faint)}\n",
+  "init": "root => {\n    const z = root.querySelector('.d-par');\n    z.addEventListener('pointermove', e => {\n      const r = z.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5;\n      z.querySelector('.d-parallax-l1').style.transform = `translateX(${x * 6}px)`;\n      z.querySelector('.d-parallax-l2').style.transform = `translateX(${x * 14}px)`;\n      z.querySelector('.d-parallax-l3').style.transform = `translateX(${x * 24}px)`;\n    });\n  }",
+  "source": "inline",
+  "motion": "物理"
+}

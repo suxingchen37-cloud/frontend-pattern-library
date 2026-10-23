@@ -1,0 +1,12 @@
+{
+  "id": "footnote-pop",
+  "cat": "长文",
+  "t": "脚注浮层",
+  "en": "footnote popover",
+  "d": "正文不打断，点右上角的小数字才出现注释；适合引用和来源。",
+  "body": "<p class=\"d-fn3\">字符间距不应小于字高的十分之一<button class=\"d-footnote-pop-ref3\" type=\"button\" data-fnref aria-label=\"查看注释\">1</button>，这是一条在街道上验证过的经验值。</p><div class=\"d-footnote-pop-pop3\" data-fnpop hidden>公共标识可读性研究中的经验值；实际仍要按观看距离调整。</div>",
+  "css": ".d-fn3{max-width:280px;margin:0;font-size:12.5px;line-height:1.9}\n.d-footnote-pop-ref3{font:9px var(--mono);border:0;background:var(--lime-soft);color:var(--ink);border-radius:2px;padding:0 4px;cursor:pointer;vertical-align:super;margin-left:2px}\n.d-footnote-pop-pop3{margin-top:10px;max-width:280px;border-top:1px solid var(--line);padding-top:8px;font-size:10.5px;line-height:1.7;color:var(--muted)}",
+  "init": "root => {\n    const btn = root.querySelector('[data-fnref]'), pop = root.querySelector('[data-fnpop]');\n    btn.onclick = () => { pop.hidden = !pop.hidden; };\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "icon-morph-menu",
+  "cat": "微交互",
+  "t": "汉堡变叉",
+  "en": "hamburger morph",
+  "d": "三条 1px 线在 40px 按钮里留 6px 间距，比 4px 更接近字排的行距；中间那条先退 120ms（它没法参与 X），上下两条再用物理曲线 280ms 合拢——三条一起转会像图案翻转，不像折叠。",
+  "body": "<div class=\"d-icon-morph-menu\"><button class=\"d-im-btn\" type=\"button\" aria-expanded=\"false\" aria-label=\"打开菜单\"><i class=\"d-im-bar d-im-top\"></i><i class=\"d-im-bar d-im-mid\"></i><i class=\"d-im-bar d-im-bot\"></i></button><span class=\"d-im-label\">菜单</span></div>",
+  "css": ".d-icon-morph-menu{display:inline-flex;align-items:center;gap:var(--sp-12);font-family:var(--sans);outline:none}\n.d-im-btn{position:relative;width:40px;height:40px;padding:0;border:1px solid var(--line);border-radius:6px;background:var(--paper);box-shadow:inset 0 1px 0 #fff5;cursor:pointer}\n.d-im-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n.d-im-bar{position:absolute;left:10px;width:18px;height:1px;background:var(--ink);transform-origin:center;transition:transform 280ms cubic-bezier(.34,1.56,.64,1) 120ms,opacity 120ms linear}\n.d-im-top{top:13px}\n.d-im-mid{top:19px}\n.d-im-bot{top:25px}\n.d-im-btn[aria-expanded=true] .d-im-top{transform:translateY(6px) rotate(45deg)}\n.d-im-btn[aria-expanded=true] .d-im-mid{opacity:0;transform:scaleX(.4)}\n.d-im-btn[aria-expanded=true] .d-im-bot{transform:translateY(-6px) rotate(-45deg)}\n.d-im-label{font-size:var(--fs-11);letter-spacing:.08em;color:var(--muted);min-width:26px}",
+  "init": "root => {\n  const box = root.querySelector('.d-icon-morph-menu');\n  if (!box || box.dataset.dim) return;\n  box.dataset.dim = '1';\n  const btn = box.querySelector('.d-im-btn'), label = box.querySelector('.d-im-label');\n  btn.addEventListener('click', () => {\n    const open = btn.getAttribute('aria-expanded') !== 'true';\n    btn.setAttribute('aria-expanded', open ? 'true' : 'false');\n    btn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');\n    label.textContent = open ? '关闭' : '菜单';\n  });\n}",
+  "source": "v4",
+  "motion": "物理",
+  "tags": [
+    "微交互",
+    "菜单",
+    "汉堡",
+    "折叠"
+  ]
+}

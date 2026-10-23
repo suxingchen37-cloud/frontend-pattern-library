@@ -1,0 +1,18 @@
+{
+  "id": "svg-stagger-dots",
+  "cat": "SVG 与路径",
+  "t": "点阵依次点亮",
+  "en": "staggered dots",
+  "d": "六格、每格迟 120ms：最后一格在 600ms 亮起，赶在第一格 900ms 复亮之前把这一轮走完，再加一格就会和第一轮撞上，先后顺序就读不出来了。点用实心圆不用方，12px 的方块会被眼睛读成表格线。",
+  "body": "<div class=\"d-sd\"><div class=\"d-sd-grid\"><i class=\"d-sd-dot\"></i><i class=\"d-sd-dot\"></i><i class=\"d-sd-dot\"></i><i class=\"d-sd-dot\"></i><i class=\"d-sd-dot\"></i><i class=\"d-sd-dot\"></i></div><button class=\"d-sd-btn\" type=\"button\" aria-pressed=\"false\">暂停</button></div>",
+  "css": ".d-sd{display:flex;align-items:center;gap:16px}\n.d-sd-grid{display:grid;grid-template-columns:repeat(3,12px);gap:16px}\n.d-sd-dot{--k:0;width:12px;height:12px;border-radius:999px;background:#2b4b8f;opacity:.22;animation:d-svg-stagger-dots-scan 900ms linear infinite;animation-delay:calc(120ms * var(--k))}\n.d-sd-dot:nth-child(2){--k:1}\n.d-sd-dot:nth-child(3){--k:2}\n.d-sd-dot:nth-child(4){--k:3}\n.d-sd-dot:nth-child(5){--k:4}\n.d-sd-dot:nth-child(6){--k:5}\n@keyframes d-svg-stagger-dots-scan{0%{opacity:.22}20%{opacity:1}55%{opacity:1}75%{opacity:.22}100%{opacity:.22}}\n.d-sd.is-paused .d-sd-dot{animation-play-state:paused}\n.d-sd-btn{font-family:var(--font-mono);font-size:var(--fs-11);letter-spacing:var(--tracking-mono-label);padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--muted);cursor:pointer}\n.d-sd-btn:hover{border-color:var(--ink);color:var(--ink)}\n.d-sd-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n@media (prefers-reduced-motion: reduce){.d-sd-dot{animation:none;opacity:1}}",
+  "init": "root => {\n    const box = root.querySelector('.d-sd'), btn = box.querySelector('.d-sd-btn');\n    btn.onclick = () => {\n      const paused = box.classList.toggle('is-paused');\n      btn.textContent = paused ? '继续' : '暂停';\n      btn.setAttribute('aria-pressed', String(paused));\n    };\n  }",
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "点阵",
+    "延迟",
+    "节奏",
+    "扫描"
+  ]
+}

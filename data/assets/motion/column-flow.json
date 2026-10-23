@@ -1,0 +1,12 @@
+{
+  "id": "column-flow",
+  "cat": "长文",
+  "t": "分栏切换",
+  "en": "column flow",
+  "d": "宽屏分两栏，窄屏回一栏；一行四十五到七十五个字，读起来最省力。",
+  "body": "<div class=\"d-cf3\" data-cf3><p>分栏不是把内容切碎，而是让长文在宽屏上有一个合适的行长。一行四十五到七十五个字，读起来最省力；再宽，眼睛回行会丢。窄屏就回到一栏，别硬分。</p></div><div class=\"d-column-flow-cfbtns3\"><button type=\"button\" data-col3=\"1\">1 栏</button><button type=\"button\" data-col3=\"2\" class=\"d-column-flow-on\">2 栏</button><button type=\"button\" data-col3=\"3\">3 栏</button></div>",
+  "css": ".d-cf3{width:280px;height:110px;overflow:hidden}\n.d-cf3 p{margin:0;font-size:10.5px;line-height:1.75;color:var(--muted);column-count:2;column-gap:14px}\n.d-column-flow-cfbtns3{display:flex;gap:4px}\n.d-column-flow-cfbtns3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:2px;padding:2px 7px;cursor:pointer}\n.d-column-flow-cfbtns3 button.d-column-flow-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}",
+  "init": "root => {\n    const box = root.querySelector('[data-cf3] p');\n    root.querySelectorAll('[data-col3]').forEach((b) => b.onclick = () => {\n      box.style.columnCount = b.dataset.col3;\n      root.querySelectorAll('[data-col3]').forEach((x) => x.classList.toggle('d-column-flow-on', x === b));\n    });\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

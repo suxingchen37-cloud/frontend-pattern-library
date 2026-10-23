@@ -1,0 +1,12 @@
+{
+  "id": "sticky-group",
+  "cat": "列表",
+  "t": "分组吸顶",
+  "en": "sticky group headers",
+  "d": "按日期分组、组头吸顶；长消息流按天分开最清楚。",
+  "body": "\n  <div class=\"d-grp\"><div class=\"d-sticky-group-g\"><b>今天</b><p>3 条消息</p><p>再来一条</p></div><div class=\"d-sticky-group-g\"><b>昨天</b><p>2 条消息</p><p>更早一条</p></div></div>",
+  "css": ".d-grp{width:210px;height:110px;overflow:auto;font-size:11.5px}\n.d-grp .d-sticky-group-g b{position:sticky;top:0;display:block;padding:5px 8px;background:var(--bg);color:var(--faint);font-size:10.5px;letter-spacing:.06em}\n.d-grp p{margin:0;padding:7px 8px;border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--muted)}",
+  "init": null,
+  "source": "lab-extra2",
+  "motion": "无动效"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "read-progress-x",
+  "cat": "长文",
+  "t": "阅读进度",
+  "en": "reading progress",
+  "d": "长文里的一条细线，告诉读者还剩多少；比百分比数字安静。",
+  "body": "<div class=\"d-rp3\"><div class=\"d-read-progress-x-rpbar3\"><i data-rpi></i></div><div class=\"d-read-progress-x-rpscroll3\" data-rpscroll><p>滚动这段文字，上面的线会走。它不是装饰，是在回答“还剩多少”。</p><p>读长文最怕的不是长，是不知道尽头。进度条把不可见的距离变成可见的长度，人就会愿意继续。</p><p>注意它只做一件事：给位置。不加百分比，不加动效，不抢正文。</p><p>到这里应该走完了。如果你的手指还在滚，说明这段文字够长。</p></div><span class=\"d-read-progress-x-rphint3\">在框内滚动</span></div>",
+  "css": ".d-rp3{width:270px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}\n.d-read-progress-x-rpbar3{height:2px;background:var(--line)}\n.d-read-progress-x-rpbar3 i{display:block;height:100%;width:0;background:var(--ink)}\n.d-read-progress-x-rpscroll3{height:104px;overflow:auto;padding:10px 12px;font-size:11px;line-height:1.8;color:var(--muted)}\n.d-read-progress-x-rpscroll3 p{margin:0 0 8px}\n.d-read-progress-x-rphint3{display:block;padding:6px 12px;border-top:1px solid var(--line);font:9px var(--mono);color:var(--faint)}",
+  "init": "root => {\n    const box = root.querySelector('[data-rpscroll]'), bar = root.querySelector('[data-rpi]');\n    box.addEventListener('scroll', () => {\n      const pct = box.scrollTop / Math.max(1, box.scrollHeight - box.clientHeight);\n      bar.style.width = Math.min(100, pct * 100) + '%';\n    });\n  }",
+  "source": "lab-extra3",
+  "motion": "机械"
+}

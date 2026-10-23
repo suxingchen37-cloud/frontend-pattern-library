@@ -1,0 +1,12 @@
+{
+  "id": "contrast-badge",
+  "cat": "无障碍",
+  "t": "对比度自检",
+  "en": "contrast check",
+  "d": "正文 ≥ 7:1、次要 ≥ 4.5:1；这张卡片本身就是示例。",
+  "body": "<div class=\"d-cc\"><b>正文 7:1</b><span>次要文字 4.5:1</span></div>",
+  "css": ".d-cc{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:10px;background:var(--paper);border:1px solid var(--line)}\n.d-cc b{font-size:13px}.d-cc span{font-size:11px;color:var(--muted)}",
+  "init": null,
+  "source": "inline",
+  "motion": "无动效"
+}

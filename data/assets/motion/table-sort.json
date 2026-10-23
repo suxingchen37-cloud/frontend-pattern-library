@@ -1,0 +1,12 @@
+{
+  "id": "table-sort",
+  "cat": "表格",
+  "t": "表头排序",
+  "en": "sortable table",
+  "d": "点表头排序，箭头表示方向；表格的第一层交互，比再画一个筛选器有用。",
+  "body": "<table class=\"d-ts3\"><thead><tr><th data-sort3=\"0\">文章 <span>↕</span></th><th data-sort3=\"1\">分钟 <span>↕</span></th></tr></thead><tbody><tr><td>招牌</td><td>12</td></tr><tr><td>价签</td><td>6</td></tr><tr><td>椅子</td><td>8</td></tr><tr><td>站牌</td><td>9</td></tr></tbody></table>",
+  "css": ".d-ts3{width:250px;border-collapse:collapse;font-size:11px}\n.d-ts3 th{font:9px var(--mono);letter-spacing:.06em;color:var(--faint);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none}\n.d-ts3 th span{opacity:.5}\n.d-ts3 td{padding:6px 8px;border-bottom:1px solid var(--line);color:var(--muted)}\n.d-ts3 td:last-child{text-align:right;font-family:var(--mono)}\n.d-ts3 th:last-child{text-align:right}",
+  "init": "root => {\n    const tbody = root.querySelector('tbody');\n    root.querySelectorAll('[data-sort3]').forEach((th) => th.onclick = () => {\n      const col = Number(th.dataset.sort3);\n      const rows = [...tbody.rows];\n      const asc = th.dataset.asc !== '1';\n      th.dataset.asc = asc ? '1' : '0';\n      rows.sort((a, b) => {\n        const x = a.cells[col].textContent.trim(), y = b.cells[col].textContent.trim();\n        const nx = Number(x), ny = Number(y);\n        const cmp = !isNaN(nx) && !isNaN(ny) ? nx - ny : x.localeCompare(y, 'zh');\n        return asc ? cmp : -cmp;\n      });\n      rows.forEach((r) => tbody.appendChild(r));\n      root.querySelectorAll('[data-sort3] span').forEach((s) => s.textContent = '↕');\n      th.querySelector('span').textContent = asc ? '↑' : '↓';\n    });\n  }",
+  "source": "lab-extra3",
+  "motion": "印刷"
+}

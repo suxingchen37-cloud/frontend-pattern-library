@@ -1,0 +1,4 @@
+.d-cc3{width:250px;height:64px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-size:11px;line-height:1.7;resize:none;outline:none}
+.d-cc3:focus{border-color:var(--ink)}
+.d-char-count-ccount3{font:9px var(--mono);color:var(--faint);margin-top:4px}
+.d-char-count-ccount3 em{font-style:normal;color:var(--warn);margin-left:6px}

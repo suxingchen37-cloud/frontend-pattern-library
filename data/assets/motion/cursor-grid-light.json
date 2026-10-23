@@ -1,0 +1,18 @@
+{
+  "id": "cursor-grid-light",
+  "cat": "光标",
+  "t": "光标点亮网格",
+  "en": "grid spotlight",
+  "d": "亮度按与光标的欧氏距离分三档（1 / 2.2 / 3.2 格），不用连续值：连续亮度在 180ms 里会糊成一片，分档才看得出一圈一圈；最近一圈不加延迟，加了就变成追着光标跑。",
+  "body": "<div class=\"d-grid-light\" tabindex=\"0\" role=\"group\" aria-label=\"光标点亮网格，方向键移动\"><div class=\"d-gl-grid\"></div><span class=\"d-gl-tip\">移动光标 / 方向键</span></div>",
+  "css": ".d-grid-light{display:inline-flex;flex-direction:column;gap:var(--sp-8);font-family:var(--sans);outline:none;cursor:crosshair}\n.d-gl-grid{display:grid;grid-template-columns:repeat(12,22px);grid-auto-rows:22px;gap:1px;width:max-content;background:var(--line);border:1px solid var(--line)}\n.d-gl-cell{background:var(--paper);transition:background 180ms steps(6),opacity 180ms steps(6)}\n.d-gl-cell.is-l1{background:#c2402a}\n.d-gl-cell.is-l2{background:#c2402a;opacity:.5}\n.d-gl-cell.is-l3{background:#c2402a;opacity:.22}\n.d-gl-tip{font-family:var(--mono);font-size:var(--fs-9);letter-spacing:.08em;color:var(--faint)}\n.d-grid-light:focus-visible{outline:1px solid var(--ink);outline-offset:4px}",
+  "init": "root => {\n  const box = root.querySelector('.d-grid-light');\n  if (!box || box.dataset.dgl) return;\n  box.dataset.dgl = '1';\n  const grid = box.querySelector('.d-gl-grid');\n  const cols = 12, rows = 5, step = 23;\n  if (!grid.children.length) {\n    for (let i = 0; i < cols * rows; i++) {\n      const cell = document.createElement('span');\n      cell.className = 'd-gl-cell';\n      grid.appendChild(cell);\n    }\n  }\n  const cells = [...grid.children];\n  let at = -1, kx = 5, ky = 2;\n  const clear = () => { cells.forEach(c => { c.className = 'd-gl-cell'; }); at = -1; };\n  const paint = (col, row) => {\n    if (col < 0 || row < 0 || col >= cols || row >= rows) { clear(); return; }\n    const idx = row * cols + col;\n    if (idx === at) return;\n    at = idx;\n    cells.forEach((c, i) => {\n      const d = Math.hypot(i % cols - col, Math.floor(i / cols) - row);\n      c.className = 'd-gl-cell' + (d <= 1 ? ' is-l1' : d <= 2.2 ? ' is-l2' : d <= 3.2 ? ' is-l3' : '');\n    });\n  };\n  const atPointer = e => {\n    const r = grid.getBoundingClientRect();\n    kx = Math.floor((e.clientX - r.left) / step);\n    ky = Math.floor((e.clientY - r.top) / step);\n    paint(kx, ky);\n  };\n  grid.addEventListener('pointermove', atPointer);\n  grid.addEventListener('pointerdown', atPointer);\n  grid.addEventListener('pointerleave', clear);\n  box.addEventListener('focus', () => paint(kx, ky));\n  box.addEventListener('blur', clear);\n  box.addEventListener('keydown', e => {\n    const k = e.key;\n    if (k === 'ArrowLeft' || k === 'ArrowRight' || k === 'ArrowUp' || k === 'ArrowDown') {\n      e.preventDefault();\n      kx = Math.max(0, Math.min(cols - 1, kx + (k === 'ArrowRight' ? 1 : k === 'ArrowLeft' ? -1 : 0)));\n      ky = Math.max(0, Math.min(rows - 1, ky + (k === 'ArrowDown' ? 1 : k === 'ArrowUp' ? -1 : 0)));\n      paint(kx, ky);\n    } else if (k === 'Escape') { clear(); }\n  });\n}",
+  "source": "v4",
+  "motion": "机械",
+  "tags": [
+    "光标",
+    "网格",
+    "跟随",
+    "距离"
+  ]
+}

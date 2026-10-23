@@ -1,0 +1,12 @@
+{
+  "id": "audio-wave",
+  "cat": "媒体",
+  "t": "音频波形",
+  "en": "audio waveform",
+  "d": "播放时波形动，暂停时停；没有真实音频，也能表达“正在响”。",
+  "body": "<div class=\"d-aw3\"><div class=\"d-audio-wave-wave3\" data-wave3><i style=\"--h:24%\"></i><i style=\"--h:56%\"></i><i style=\"--h:38%\"></i><i style=\"--h:76%\"></i><i style=\"--h:46%\"></i><i style=\"--h:88%\"></i><i style=\"--h:60%\"></i><i style=\"--h:32%\"></i><i style=\"--h:70%\"></i><i style=\"--h:48%\"></i><i style=\"--h:82%\"></i><i style=\"--h:36%\"></i><i style=\"--h:64%\"></i><i style=\"--h:28%\"></i><i style=\"--h:54%\"></i><i style=\"--h:72%\"></i></div><button type=\"button\" data-aw3>播放</button></div>",
+  "css": ".d-aw3{width:240px}\n.d-audio-wave-wave3{display:flex;align-items:center;gap:3px;height:52px;margin-bottom:8px}\n.d-audio-wave-wave3 i{height:var(--h);flex:1;background:var(--ink);border-radius:2px;transform-origin:center;opacity:.35}\n.d-audio-wave-wave3.on i{opacity:1;animation:d-audio-wave-kf .8s ease-in-out infinite alternate}\n.d-audio-wave-wave3.on i:nth-child(3n){animation-duration:.62s}\n.d-audio-wave-wave3.on i:nth-child(4n){animation-duration:.94s}\n@keyframes d-audio-wave-kf{from{transform:scaleY(.45)}to{transform:scaleY(1.4)}}\n@media(prefers-reduced-motion:reduce){.d-audio-wave-wave3.on i{animation:none}}\n.d-aw3 button{font-size:9.5px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:3px 10px;cursor:pointer}",
+  "init": "root => {\n    const wave = root.querySelector('[data-wave3]'), btn = root.querySelector('[data-aw3]');\n    btn.onclick = () => { const on = wave.classList.toggle('on'); btn.textContent = on ? '暂停' : '播放'; };\n  }",
+  "source": "lab-extra3",
+  "motion": "机械"
+}

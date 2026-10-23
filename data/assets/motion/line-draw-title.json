@@ -1,0 +1,18 @@
+{
+  "id": "line-draw-title",
+  "cat": "入场",
+  "t": "标题描线",
+  "en": "line draw title",
+  "d": "线用 scaleX 而不是 width，宽度每帧都要重排，标题会跟着抖一下；280ms 走完再让副标题淡入，延迟正好等于线的时长，两者不在中间叠——读者先看到一条线把版面定住，再读出下面那行小字。记忆点：先画线，再说话。",
+  "body": "<div class=\"d-ldt\" tabindex=\"0\" role=\"group\" aria-label=\"标题描线：线从左画到右，再淡入副标题，点击或回车重播\"><h3 class=\"d-ldt-t\">排版的秩序</h3><span class=\"d-ldt-rule\" aria-hidden=\"true\"></span><p class=\"d-ldt-sub\">先排版心，再排标题</p></div>",
+  "css": ".d-ldt{box-sizing:border-box;width:260px;max-width:100%;outline:none}\n.d-ldt-t{margin:0;font-family:var(--font-sans);font-size:var(--fs-21);font-weight:700;line-height:var(--lh-display);letter-spacing:var(--tracking-display);color:var(--ink)}\n.d-ldt-rule{display:block;height:1px;margin:8px 0;background:var(--ink);transform:scaleX(0);transform-origin:0 50%}\n.d-ldt-sub{margin:0;font-family:var(--font-sans);font-size:var(--fs-11);line-height:var(--lh-note);color:var(--muted);opacity:0}\n.d-ldt.is-run .d-ldt-rule{animation:d-line-draw-title-rule 280ms cubic-bezier(.2,.75,.25,1) both}\n.d-ldt.is-run .d-ldt-sub{animation:d-line-draw-title-sub 180ms cubic-bezier(.2,.75,.25,1) 280ms both}\n.d-ldt:focus-visible{outline:1px solid var(--ink);outline-offset:6px}\n@keyframes d-line-draw-title-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}\n@keyframes d-line-draw-title-sub{from{opacity:0}to{opacity:1}}",
+  "init": "root => {\n  const box = root.querySelector('.d-ldt');\n  if (!box || box.dataset.ldt) return;\n  box.dataset.ldt = '1';\n  const run = () => { box.classList.remove('is-run'); void box.offsetWidth; box.classList.add('is-run'); };\n  box.addEventListener('pointerdown', () => { run(); });\n  box.addEventListener('keydown', e => {\n    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); run(); }\n  });\n  run();\n}",
+  "source": "v5",
+  "motion": "印刷",
+  "tags": [
+    "标题",
+    "描线",
+    "副标题",
+    "入场"
+  ]
+}

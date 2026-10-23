@@ -1,0 +1,18 @@
+{
+  "id": "card-flip-3d",
+  "cat": "3D 与透视",
+  "t": "卡片翻面",
+  "en": "card flip",
+  "d": "翻面用 280ms：180° 要让眼睛看清「转的是同一张卡」，再短只剩闪一下，900ms 又会两面叠在半途、分不清哪面是新的。参数表放背面，因为翻面这个动作已经说明是同一张卡的另一面，不必再换位置。",
+  "body": "<button type=\"button\" class=\"d-cf3d\" aria-pressed=\"false\" aria-label=\"卡片翻面：正面看名称，背面看参数\"><span class=\"d-cf3d-in\"><span class=\"d-cf3d-face\"><span class=\"d-cf3d-k\">规格 · spec</span><span class=\"d-cf3d-name\">卡片 A</span><span class=\"d-cf3d-note\">点一下，背面是参数表</span></span><span class=\"d-cf3d-face d-cf3d-back\"><span class=\"d-cf3d-row\"><span class=\"d-cf3d-k\">尺寸</span><span class=\"d-cf3d-v\">300 × 148</span></span><span class=\"d-cf3d-row\"><span class=\"d-cf3d-k\">圆角</span><span class=\"d-cf3d-v\">10</span></span><span class=\"d-cf3d-row\"><span class=\"d-cf3d-k\">翻面</span><span class=\"d-cf3d-v\">280ms</span></span></span></span></button>",
+  "css": ".d-cf3d{position:relative;box-sizing:border-box;width:300px;max-width:100%;height:148px;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;perspective:900px;cursor:pointer;-webkit-tap-highlight-color:transparent}\n.d-cf3d-in{position:absolute;inset:0;display:block;transform-style:preserve-3d;transition:transform 280ms cubic-bezier(.34,1.56,.64,1)}\n.d-cf3d-on .d-cf3d-in{transform:rotateY(180deg)}\n.d-cf3d-face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:12px 16px;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;background:var(--paper);box-shadow:inset 0 1px 0 #fff5;backface-visibility:hidden}\n.d-cf3d-back{transform:rotateY(180deg);gap:2px}\n.d-cf3d-k{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--faint);text-transform:uppercase}\n.d-cf3d-name{font-size:21px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}\n.d-cf3d-note{font-size:11px;color:var(--muted)}\n.d-cf3d-row{display:flex;justify-content:space-between;gap:8px;padding:2px 0;border-bottom:1px solid var(--line);font-size:11px}\n.d-cf3d-row:last-child{border-bottom:0}\n.d-cf3d-v{font-family:var(--font-mono);color:var(--ink)}\n.d-cf3d:focus-visible{outline:1px solid var(--ink);outline-offset:2px}",
+  "init": "root => {\n  const box = root.querySelector('.d-cf3d');\n  if (!box) return;\n  box.onclick = () => {\n    const on = !box.classList.contains('d-cf3d-on');\n    box.classList.toggle('d-cf3d-on', on);\n    box.setAttribute('aria-pressed', on ? 'true' : 'false');\n  };\n}",
+  "source": "v4",
+  "motion": "物理",
+  "tags": [
+    "翻面",
+    "卡片",
+    "参数",
+    "立体"
+  ]
+}

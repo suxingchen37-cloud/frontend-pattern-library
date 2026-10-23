@@ -1,0 +1,12 @@
+{
+  "id": "masonry-x",
+  "cat": "媒体",
+  "t": "瀑布流",
+  "en": "masonry",
+  "d": "列高不齐的卡片墙；适合图片、笔记、灵感板，不适合需要逐行对齐的数据。",
+  "body": "<div class=\"d-ms3\"><div></div><div></div><div></div><div></div><div></div><div></div></div>",
+  "css": ".d-ms3{width:280px;columns:3;column-gap:8px}\n.d-ms3 div{break-inside:avoid;margin-bottom:8px;border-radius:6px}\n.d-ms3 div:nth-child(1){height:54px;background:var(--ink);border:1px solid transparent}\n.d-ms3 div:nth-child(2){height:76px;background:var(--lime);border:1px solid transparent}\n.d-ms3 div:nth-child(3){height:44px;background:var(--coral);border:1px solid transparent}\n.d-ms3 div:nth-child(4){height:62px;background:var(--mint);border:1px solid transparent}\n.d-ms3 div:nth-child(5){height:50px;background:var(--bg);border:1px solid var(--line)}\n.d-ms3 div:nth-child(6){height:70px;background:var(--lime-soft);border:1px solid var(--line)}\n",
+  "init": null,
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

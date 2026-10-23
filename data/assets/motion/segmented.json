@@ -1,0 +1,12 @@
+{
+  "id": "segmented",
+  "cat": "表单",
+  "t": "分段选择",
+  "en": "segmented control",
+  "d": "2–4 个互斥选项，滑块跟随；比 radio 更省地方。",
+  "body": "<div class=\"d-seg\" data-v=\"0\"><i class=\"d-segmented-pill\"></i><button>全部</button><button>进行中</button><button>已完成</button></div>",
+  "css": ".d-seg{position:relative;display:inline-flex;padding:3px;border-radius:10px;background:color-mix(in srgb,var(--ink) 7%,transparent)}\n.d-seg button{position:relative;z-index:1;border:0;background:transparent;color:var(--ink);font:inherit;font-size:12px;padding:6px 12px;cursor:pointer}\n.d-seg .d-segmented-pill{position:absolute;top:3px;left:3px;height:calc(100% - 6px);border-radius:10px;background:var(--paper);box-shadow:0 1px 3px #0002;transition:left .26s var(--ease),width .26s var(--ease)}",
+  "init": "root => {\n    const seg = root.querySelector('.d-seg'), pill = seg.querySelector('.d-segmented-pill'), btns = [...seg.querySelectorAll('button')];\n    const move = i => { const b = btns[i], r = b.getBoundingClientRect(), pr = seg.getBoundingClientRect(); pill.style.left = (r.left - pr.left) + 'px'; pill.style.width = r.width + 'px'; btns.forEach((x, k) => x.style.color = k === i ? 'var(--ink)' : 'var(--muted)'); };\n    btns.forEach((b, i) => b.onclick = () => move(i)); setTimeout(() => move(0), 30);\n  }",
+  "source": "lab-more",
+  "motion": "印刷"
+}

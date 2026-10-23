@@ -1,0 +1,18 @@
+{
+  "id": "svg-morph-icon",
+  "cat": "SVG 与路径",
+  "t": "图标路径变形",
+  "en": "icon path morph",
+  "d": "两条箭头的 d 命令数与顺序完全一样，只有端点互换，所以交叉淡入的那一帧在空间里几乎重合，看不出是两个图形；命令数不同的图标硬切会在中途抖一下，这就是必须先对齐 d 结构的原因。",
+  "body": "<div class=\"d-mi\"><button class=\"d-mi-btn\" type=\"button\" aria-pressed=\"false\" aria-label=\"切换箭头方向\"><svg class=\"d-mi-art\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path class=\"d-mi-up\" d=\"M24 40V8M14 18L24 8L34 18\"/><path class=\"d-mi-down\" d=\"M24 8V40M14 30L24 40L34 30\"/></svg></button></div>",
+  "css": ".d-mi-btn{display:grid;place-items:center;width:64px;height:64px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;transition:border-color 180ms cubic-bezier(.34,1.56,.64,1)}\n.d-mi-btn:hover{border-color:var(--ink)}\n.d-mi-btn:focus-visible{outline:1px solid var(--ink);outline-offset:2px}\n.d-mi-art{width:48px;height:48px}\n.d-mi-up,.d-mi-down{fill:none;stroke:#2b4b8f;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;transform-box:fill-box;transform-origin:50% 50%;transition:opacity 180ms cubic-bezier(.34,1.56,.64,1),transform 180ms cubic-bezier(.34,1.56,.64,1)}\n.d-mi-up{opacity:1;transform:scale(1)}\n.d-mi-down{opacity:0;transform:scale(.8)}\n.d-mi-btn.is-down .d-mi-up{opacity:0;transform:scale(.8)}\n.d-mi-btn.is-down .d-mi-down{opacity:1;transform:scale(1)}",
+  "init": "root => {\n    const btn = root.querySelector('.d-mi-btn');\n    btn.onclick = () => {\n      const down = btn.classList.toggle('is-down');\n      btn.setAttribute('aria-pressed', String(down));\n    };\n  }",
+  "source": "v4",
+  "motion": "物理",
+  "tags": [
+    "图标",
+    "形变",
+    "路径",
+    "切换"
+  ]
+}

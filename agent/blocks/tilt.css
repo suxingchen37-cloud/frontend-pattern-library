@@ -1,0 +1,2 @@
+.d-tilt{width:160px;height:90px;border-radius:10px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;transition:transform .18s var(--ease);will-change:transform;box-shadow:0 8px 24px #20241e10}
+.d-tilt span{font-size:10.5px;color:var(--faint)}

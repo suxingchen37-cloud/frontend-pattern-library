@@ -1,0 +1,12 @@
+{
+  "id": "before-after",
+  "cat": "媒体",
+  "t": "前后对比滑杆",
+  "en": "before / after",
+  "d": "一根滑杆把改版前后叠在一起；比两张图并排更容易看出差别。",
+  "body": "<div class=\"d-ba3\"><div class=\"d-before-after-after3\"><span>改版后</span></div><div class=\"d-before-after-before3\" data-before3><span>改版前</span></div><input type=\"range\" min=\"0\" max=\"100\" value=\"55\" data-ba3 aria-label=\"前后对比\"></div>",
+  "css": ".d-ba3{position:relative;width:270px;height:120px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}\n.d-before-after-after3,.d-before-after-before3{position:absolute;inset:0;display:flex;align-items:flex-end;padding:8px}\n.d-before-after-after3{background:linear-gradient(90deg,var(--lime),#c7ec9a)}\n.d-before-after-before3{background:var(--ink);color:var(--paper);overflow:hidden;width:55%}\n.d-before-after-after3 span,.d-before-after-before3 span{font:9px var(--mono);letter-spacing:.1em;white-space:nowrap}\n.d-before-after-before3 span{position:absolute;left:8px;bottom:8px}\n.d-ba3 input{position:absolute;left:8px;right:8px;bottom:6px;width:calc(100% - 16px);accent-color:var(--ink);z-index:2}",
+  "init": "root => {\n    const input = root.querySelector('[data-ba3]'), before = root.querySelector('[data-before3]');\n    const set = () => { before.style.width = input.value + '%'; };\n    input.addEventListener('input', set); set();\n  }",
+  "source": "lab-extra3",
+  "motion": "无动效"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "progress-ring",
+  "cat": "加载",
+  "t": "环形进度",
+  "en": "progress ring",
+  "d": "未知时长用无限转；已知进度用 determinate。",
+  "body": "<div class=\"d-progress-ring-kf\"><svg viewBox=\"0 0 40 40\"><circle cx=\"20\" cy=\"20\" r=\"16\"/><circle class=\"d-progress-ring-v\" cx=\"20\" cy=\"20\" r=\"16\"/></svg></div>",
+  "css": ".d-progress-ring-kf svg{width:56px;height:56px;transform:rotate(-90deg)}\n.d-progress-ring-kf circle{fill:none;stroke-width:4;stroke:color-mix(in srgb,var(--ink) 12%,transparent)}\n.d-progress-ring-kf .d-progress-ring-v{stroke:var(--lime);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:30;animation:d-progress-ring-kf 1.6s linear infinite}\n@keyframes d-progress-ring-kf{to{stroke-dashoffset:100}}",
+  "init": null,
+  "source": "inline",
+  "motion": "机械"
+}

@@ -1,0 +1,6 @@
+.d-rp3{width:270px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.d-read-progress-x-rpbar3{height:2px;background:var(--line)}
+.d-read-progress-x-rpbar3 i{display:block;height:100%;width:0;background:var(--ink)}
+.d-read-progress-x-rpscroll3{height:104px;overflow:auto;padding:10px 12px;font-size:11px;line-height:1.8;color:var(--muted)}
+.d-read-progress-x-rpscroll3 p{margin:0 0 8px}
+.d-read-progress-x-rphint3{display:block;padding:6px 12px;border-top:1px solid var(--line);font:9px var(--mono);color:var(--faint)}

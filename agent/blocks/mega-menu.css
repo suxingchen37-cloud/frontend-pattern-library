@@ -1,0 +1,6 @@
+.d-mm3{width:260px;position:relative}
+.d-mm3>button{font-size:10.5px;border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:5px 10px;cursor:pointer}
+.d-mega-menu-mmpanel3{position:absolute;left:0;top:32px;right:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);box-shadow:0 12px 26px #20241e18;z-index:3}
+.d-mega-menu-mmpanel3 b{display:block;font:9px var(--mono);color:var(--faint);margin-bottom:4px}
+.d-mega-menu-mmpanel3 a{display:block;font-size:10px;color:var(--muted);padding:2px 0}
+.d-mega-menu-mmpanel3 a:hover{color:var(--ink)}

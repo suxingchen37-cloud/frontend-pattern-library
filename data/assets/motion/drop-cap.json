@@ -1,0 +1,12 @@
+{
+  "id": "drop-cap",
+  "cat": "长文",
+  "t": "首字下沉",
+  "en": "drop cap",
+  "d": "长文开头把第一个字放大，视线有了明确起点；比加粗整段安静。",
+  "body": "<p class=\"d-dc3\">排版不是把字放上去，而是决定阅读从哪里开始。首字下沉是最老的一种“请从这里读”。</p>",
+  "css": ".d-dc3{max-width:300px;margin:0;font-size:13px;line-height:1.95;text-align:justify}\n.d-dc3:first-letter{float:left;font-size:46px;line-height:.82;padding:3px 9px 0 0;font-weight:700}",
+  "init": null,
+  "source": "lab-extra3",
+  "motion": "无动效"
+}
