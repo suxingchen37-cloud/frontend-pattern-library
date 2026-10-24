@@ -1,0 +1,23 @@
+.d-bounded-checkbox-group{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-bounded-checkbox-group *,.d-bounded-checkbox-group *::before,.d-bounded-checkbox-group *::after{box-sizing:border-box}
+.d-bounded-checkbox-group [hidden]{display:none!important}
+.d-bounded-checkbox-group .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-bounded-checkbox-group .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-bounded-checkbox-group label{display:block;margin:8px 0}
+.d-bounded-checkbox-group input,.d-bounded-checkbox-group select,.d-bounded-checkbox-group textarea,.d-bounded-checkbox-group button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-bounded-checkbox-group input:not([type=checkbox]):not([type=radio]),.d-bounded-checkbox-group select,.d-bounded-checkbox-group textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-bounded-checkbox-group button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-bounded-checkbox-group button:disabled{opacity:.5;cursor:default}
+.d-bounded-checkbox-group :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-bounded-checkbox-group [aria-invalid=true]{border-color:var(--warn)!important}
+.d-bounded-checkbox-group .d-scroll{max-width:100%;overflow:auto}
+.d-bounded-checkbox-group table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-bounded-checkbox-group th,.d-bounded-checkbox-group td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-bounded-checkbox-group caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-bounded-checkbox-group progress{width:100%;accent-color:var(--ink)}
+.d-bounded-checkbox-group pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-bounded-checkbox-group h3,.d-bounded-checkbox-group p{margin:8px 0}
+.d-bounded-checkbox-group [aria-pressed=true],.d-bounded-checkbox-group [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-bounded-checkbox-group .d-grow{flex:1;min-width:100px}
+.d-bounded-checkbox-group summary{cursor:pointer;padding:6px 0}
+.d-bounded-checkbox-group ul,.d-bounded-checkbox-group ol{padding-left:24px}

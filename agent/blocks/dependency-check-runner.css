@@ -1,0 +1,23 @@
+.d-dependency-check-runner{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-dependency-check-runner *,.d-dependency-check-runner *::before,.d-dependency-check-runner *::after{box-sizing:border-box}
+.d-dependency-check-runner [hidden]{display:none!important}
+.d-dependency-check-runner .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-dependency-check-runner .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-dependency-check-runner label{display:block;margin:8px 0}
+.d-dependency-check-runner input,.d-dependency-check-runner select,.d-dependency-check-runner textarea,.d-dependency-check-runner button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-dependency-check-runner input:not([type=checkbox]):not([type=radio]),.d-dependency-check-runner select,.d-dependency-check-runner textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-dependency-check-runner button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-dependency-check-runner button:disabled{opacity:.5;cursor:default}
+.d-dependency-check-runner :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-dependency-check-runner [aria-invalid=true]{border-color:var(--warn)!important}
+.d-dependency-check-runner .d-scroll{max-width:100%;overflow:auto}
+.d-dependency-check-runner table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-dependency-check-runner th,.d-dependency-check-runner td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-dependency-check-runner caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-dependency-check-runner progress{width:100%;accent-color:var(--ink)}
+.d-dependency-check-runner pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-dependency-check-runner h3,.d-dependency-check-runner p{margin:8px 0}
+.d-dependency-check-runner [aria-pressed=true],.d-dependency-check-runner [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-dependency-check-runner .d-grow{flex:1;min-width:100px}
+.d-dependency-check-runner summary{cursor:pointer;padding:6px 0}
+.d-dependency-check-runner ul,.d-dependency-check-runner ol{padding-left:24px}

@@ -1,0 +1,18 @@
+{
+  "id": "text-case-transform",
+  "cat": "内容",
+  "t": "文本大小写与空白转换",
+  "en": "text case transform",
+  "d": "转换结果单独展示，原文保留；折叠空白和大小写模式分别选择，支持空输入。",
+  "body": "<section class=\"d-text-case-transform\" aria-label=\"文本大小写与空白转换\"><label>原始文本<textarea data-input rows=\"3\">  Scene ONE   Door  </textarea></label><label>转换方式<select data-mode><option value=\"lower\">全部小写</option><option value=\"upper\">全部大写</option><option value=\"spaces\">折叠空白</option></select></label><button type=\"button\" data-convert>生成结果</button><label>转换结果<textarea data-result rows=\"3\"></textarea></label><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-text-case-transform{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-text-case-transform *,.d-text-case-transform *::before,.d-text-case-transform *::after{box-sizing:border-box}\n.d-text-case-transform [hidden]{display:none!important}\n.d-text-case-transform .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-text-case-transform .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-text-case-transform label{display:block;margin:8px 0}\n.d-text-case-transform input,.d-text-case-transform select,.d-text-case-transform textarea,.d-text-case-transform button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-text-case-transform input:not([type=checkbox]):not([type=radio]),.d-text-case-transform select,.d-text-case-transform textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-text-case-transform button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-text-case-transform button:disabled{opacity:.5;cursor:default}\n.d-text-case-transform :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-text-case-transform [aria-invalid=true]{border-color:var(--warn)!important}\n.d-text-case-transform .d-scroll{max-width:100%;overflow:auto}\n.d-text-case-transform table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-text-case-transform th,.d-text-case-transform td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-text-case-transform caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-text-case-transform progress{width:100%;accent-color:var(--ink)}\n.d-text-case-transform pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-text-case-transform h3,.d-text-case-transform p{margin:8px 0}\n.d-text-case-transform [aria-pressed=true],.d-text-case-transform [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-text-case-transform .d-grow{flex:1;min-width:100px}\n.d-text-case-transform summary{cursor:pointer;padding:6px 0}\n.d-text-case-transform ul,.d-text-case-transform ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{q('[data-result]').readOnly=true;q('[data-convert]').onclick=()=>{const text=q('[data-input]').value,mode=q('[data-mode]').value;q('[data-result]').value=mode==='upper'?text.toLocaleUpperCase():mode==='lower'?text.toLocaleLowerCase():text.trim().replace(/\\s+/g,' ');say(text?'转换完成，原文保留':'原文为空，结果已清空');};})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "内容",
+    "文本大小写与空白转换",
+    "交互",
+    "本地演示"
+  ]
+}

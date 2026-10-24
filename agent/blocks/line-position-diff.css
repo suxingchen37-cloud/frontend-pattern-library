@@ -1,0 +1,23 @@
+.d-line-position-diff{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-line-position-diff *,.d-line-position-diff *::before,.d-line-position-diff *::after{box-sizing:border-box}
+.d-line-position-diff [hidden]{display:none!important}
+.d-line-position-diff .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-line-position-diff .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-line-position-diff label{display:block;margin:8px 0}
+.d-line-position-diff input,.d-line-position-diff select,.d-line-position-diff textarea,.d-line-position-diff button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-line-position-diff input:not([type=checkbox]):not([type=radio]),.d-line-position-diff select,.d-line-position-diff textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-line-position-diff button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-line-position-diff button:disabled{opacity:.5;cursor:default}
+.d-line-position-diff :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-line-position-diff [aria-invalid=true]{border-color:var(--warn)!important}
+.d-line-position-diff .d-scroll{max-width:100%;overflow:auto}
+.d-line-position-diff table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-line-position-diff th,.d-line-position-diff td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-line-position-diff caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-line-position-diff progress{width:100%;accent-color:var(--ink)}
+.d-line-position-diff pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-line-position-diff h3,.d-line-position-diff p{margin:8px 0}
+.d-line-position-diff [aria-pressed=true],.d-line-position-diff [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-line-position-diff .d-grow{flex:1;min-width:100px}
+.d-line-position-diff summary{cursor:pointer;padding:6px 0}
+.d-line-position-diff ul,.d-line-position-diff ol{padding-left:24px}

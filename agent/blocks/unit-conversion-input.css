@@ -1,0 +1,23 @@
+.d-unit-conversion-input{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-unit-conversion-input *,.d-unit-conversion-input *::before,.d-unit-conversion-input *::after{box-sizing:border-box}
+.d-unit-conversion-input [hidden]{display:none!important}
+.d-unit-conversion-input .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-unit-conversion-input .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-unit-conversion-input label{display:block;margin:8px 0}
+.d-unit-conversion-input input,.d-unit-conversion-input select,.d-unit-conversion-input textarea,.d-unit-conversion-input button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-unit-conversion-input input:not([type=checkbox]):not([type=radio]),.d-unit-conversion-input select,.d-unit-conversion-input textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-unit-conversion-input button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-unit-conversion-input button:disabled{opacity:.5;cursor:default}
+.d-unit-conversion-input :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-unit-conversion-input [aria-invalid=true]{border-color:var(--warn)!important}
+.d-unit-conversion-input .d-scroll{max-width:100%;overflow:auto}
+.d-unit-conversion-input table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-unit-conversion-input th,.d-unit-conversion-input td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-unit-conversion-input caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-unit-conversion-input progress{width:100%;accent-color:var(--ink)}
+.d-unit-conversion-input pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-unit-conversion-input h3,.d-unit-conversion-input p{margin:8px 0}
+.d-unit-conversion-input [aria-pressed=true],.d-unit-conversion-input [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-unit-conversion-input .d-grow{flex:1;min-width:100px}
+.d-unit-conversion-input summary{cursor:pointer;padding:6px 0}
+.d-unit-conversion-input ul,.d-unit-conversion-input ol{padding-left:24px}

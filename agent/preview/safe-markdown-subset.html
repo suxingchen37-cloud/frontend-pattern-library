@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>安全的轻量文本预览 · safe-markdown-subset · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px solid var(--line);
+  --border-strong:1px solid var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-safe-markdown-subset{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-safe-markdown-subset *,.d-safe-markdown-subset *::before,.d-safe-markdown-subset *::after{box-sizing:border-box}
+.d-safe-markdown-subset [hidden]{display:none!important}
+.d-safe-markdown-subset .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-safe-markdown-subset .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-safe-markdown-subset label{display:block;margin:8px 0}
+.d-safe-markdown-subset input,.d-safe-markdown-subset select,.d-safe-markdown-subset textarea,.d-safe-markdown-subset button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-safe-markdown-subset input:not([type=checkbox]):not([type=radio]),.d-safe-markdown-subset select,.d-safe-markdown-subset textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-safe-markdown-subset button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-safe-markdown-subset button:disabled{opacity:.5;cursor:default}
+.d-safe-markdown-subset :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-safe-markdown-subset [aria-invalid=true]{border-color:var(--warn)!important}
+.d-safe-markdown-subset .d-scroll{max-width:100%;overflow:auto}
+.d-safe-markdown-subset table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-safe-markdown-subset th,.d-safe-markdown-subset td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-safe-markdown-subset caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-safe-markdown-subset progress{width:100%;accent-color:var(--ink)}
+.d-safe-markdown-subset pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-safe-markdown-subset h3,.d-safe-markdown-subset p{margin:8px 0}
+.d-safe-markdown-subset [aria-pressed=true],.d-safe-markdown-subset [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-safe-markdown-subset .d-grow{flex:1;min-width:100px}
+.d-safe-markdown-subset summary{cursor:pointer;padding:6px 0}
+.d-safe-markdown-subset ul,.d-safe-markdown-subset ol{padding-left:24px}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>safe-markdown-subset</code>
+  <b>安全的轻量文本预览</b>
+  <span>safe markdown subset</span>
+  <span>分类 内容</span>
+  <span>运动 无动效</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<section class="d-safe-markdown-subset" aria-label="安全的轻量文本预览"><label>轻量文本<textarea data-input rows="3"># 镜头说明
+- 门口
+- 走廊
+保持动作连续。</textarea></label><button type="button" data-preview>更新预览</button><div data-result></div><output class="d-note" data-out role="status" aria-live="polite"></output></section>
+</div>
+<p class="pv-note">只识别标题、列表和普通段落，输入中的 HTML 按文本显示，不执行标签或脚本。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "safe-markdown-subset";
+  window.INITS = window.INITS || {};
+  window.INITS["safe-markdown-subset"] = (root => {
+ const q = selector => root.querySelector(selector);
+ const qa = selector => [...root.querySelectorAll(selector)];
+ const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };
+ ((root,q,qa,say)=>{const draw=()=>{const fragment=document.createDocumentFragment();let list=null;for(const line of q('[data-input]').value.split(/\r?\n/)){if(line.startsWith('- ')){if(!list){list=document.createElement('ul');fragment.append(list);}const li=document.createElement('li');li.textContent=line.slice(2);list.append(li);}else{list=null;if(!line.trim())continue;const el=document.createElement(line.startsWith('# ')?'h3':'p');el.textContent=line.startsWith('# ')?line.slice(2):line;fragment.append(el);}}q('[data-result]').replaceChildren(fragment);say('已更新纯文本预览，仅支持一级标题和列表');};q('[data-preview]').onclick=draw;draw();})(root, q, qa, say);
+});
+  window.INITS["safe-markdown-subset"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

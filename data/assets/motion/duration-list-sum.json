@@ -1,0 +1,18 @@
+{
+  "id": "duration-list-sum",
+  "cat": "数据",
+  "t": "多段时长累计",
+  "en": "duration list sum",
+  "d": "按 分:秒 累加多段时长，秒数必须小于 60；总时长支持超过一小时。",
+  "body": "<section class=\"d-duration-list-sum\" aria-label=\"多段时长累计\"><label>每行一段（分:秒）<textarea data-input rows=\"3\">01:20\n02:45\n00:55</textarea></label><button type=\"button\" data-sum>累计时长</button><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-duration-list-sum{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-duration-list-sum *,.d-duration-list-sum *::before,.d-duration-list-sum *::after{box-sizing:border-box}\n.d-duration-list-sum [hidden]{display:none!important}\n.d-duration-list-sum .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-duration-list-sum .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-duration-list-sum label{display:block;margin:8px 0}\n.d-duration-list-sum input,.d-duration-list-sum select,.d-duration-list-sum textarea,.d-duration-list-sum button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-duration-list-sum input:not([type=checkbox]):not([type=radio]),.d-duration-list-sum select,.d-duration-list-sum textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-duration-list-sum button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-duration-list-sum button:disabled{opacity:.5;cursor:default}\n.d-duration-list-sum :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-duration-list-sum [aria-invalid=true]{border-color:var(--warn)!important}\n.d-duration-list-sum .d-scroll{max-width:100%;overflow:auto}\n.d-duration-list-sum table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-duration-list-sum th,.d-duration-list-sum td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-duration-list-sum caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-duration-list-sum progress{width:100%;accent-color:var(--ink)}\n.d-duration-list-sum pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-duration-list-sum h3,.d-duration-list-sum p{margin:8px 0}\n.d-duration-list-sum [aria-pressed=true],.d-duration-list-sum [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-duration-list-sum .d-grow{flex:1;min-width:100px}\n.d-duration-list-sum summary{cursor:pointer;padding:6px 0}\n.d-duration-list-sum ul,.d-duration-list-sum ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{q('[data-sum]').onclick=()=>{const lines=q('[data-input]').value.split(/\\r?\\n/).map(s=>s.trim()).filter(Boolean);if(!lines.length||lines.some(line=>!/^\\d{1,5}:[0-5]\\d$/.test(line))){say('每行须为 分:秒，秒数为 00–59');return;}const total=lines.reduce((sum,line)=>{const [m,s]=line.split(':').map(Number);return sum+m*60+s;},0);say('总计 '+Math.floor(total/3600)+':'+String(Math.floor(total/60)%60).padStart(2,'0')+':'+String(total%60).padStart(2,'0')+'（'+total+' 秒）');};})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "数据",
+    "多段时长累计",
+    "交互",
+    "本地演示"
+  ]
+}

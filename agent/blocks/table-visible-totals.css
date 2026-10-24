@@ -1,0 +1,23 @@
+.d-table-visible-totals{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-table-visible-totals *,.d-table-visible-totals *::before,.d-table-visible-totals *::after{box-sizing:border-box}
+.d-table-visible-totals [hidden]{display:none!important}
+.d-table-visible-totals .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-table-visible-totals .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-table-visible-totals label{display:block;margin:8px 0}
+.d-table-visible-totals input,.d-table-visible-totals select,.d-table-visible-totals textarea,.d-table-visible-totals button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-table-visible-totals input:not([type=checkbox]):not([type=radio]),.d-table-visible-totals select,.d-table-visible-totals textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-table-visible-totals button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-table-visible-totals button:disabled{opacity:.5;cursor:default}
+.d-table-visible-totals :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-table-visible-totals [aria-invalid=true]{border-color:var(--warn)!important}
+.d-table-visible-totals .d-scroll{max-width:100%;overflow:auto}
+.d-table-visible-totals table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-table-visible-totals th,.d-table-visible-totals td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-table-visible-totals caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-table-visible-totals progress{width:100%;accent-color:var(--ink)}
+.d-table-visible-totals pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-table-visible-totals h3,.d-table-visible-totals p{margin:8px 0}
+.d-table-visible-totals [aria-pressed=true],.d-table-visible-totals [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-table-visible-totals .d-grow{flex:1;min-width:100px}
+.d-table-visible-totals summary{cursor:pointer;padding:6px 0}
+.d-table-visible-totals ul,.d-table-visible-totals ol{padding-left:24px}

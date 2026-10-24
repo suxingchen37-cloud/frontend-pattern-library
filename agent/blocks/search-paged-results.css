@@ -1,0 +1,23 @@
+.d-search-paged-results{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-search-paged-results *,.d-search-paged-results *::before,.d-search-paged-results *::after{box-sizing:border-box}
+.d-search-paged-results [hidden]{display:none!important}
+.d-search-paged-results .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-search-paged-results .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-search-paged-results label{display:block;margin:8px 0}
+.d-search-paged-results input,.d-search-paged-results select,.d-search-paged-results textarea,.d-search-paged-results button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-search-paged-results input:not([type=checkbox]):not([type=radio]),.d-search-paged-results select,.d-search-paged-results textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-search-paged-results button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-search-paged-results button:disabled{opacity:.5;cursor:default}
+.d-search-paged-results :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-search-paged-results [aria-invalid=true]{border-color:var(--warn)!important}
+.d-search-paged-results .d-scroll{max-width:100%;overflow:auto}
+.d-search-paged-results table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-search-paged-results th,.d-search-paged-results td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-search-paged-results caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-search-paged-results progress{width:100%;accent-color:var(--ink)}
+.d-search-paged-results pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-search-paged-results h3,.d-search-paged-results p{margin:8px 0}
+.d-search-paged-results [aria-pressed=true],.d-search-paged-results [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-search-paged-results .d-grow{flex:1;min-width:100px}
+.d-search-paged-results summary{cursor:pointer;padding:6px 0}
+.d-search-paged-results ul,.d-search-paged-results ol{padding-left:24px}

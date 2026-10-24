@@ -1,0 +1,23 @@
+.d-notification-inbox-state{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-notification-inbox-state *,.d-notification-inbox-state *::before,.d-notification-inbox-state *::after{box-sizing:border-box}
+.d-notification-inbox-state [hidden]{display:none!important}
+.d-notification-inbox-state .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-notification-inbox-state .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-notification-inbox-state label{display:block;margin:8px 0}
+.d-notification-inbox-state input,.d-notification-inbox-state select,.d-notification-inbox-state textarea,.d-notification-inbox-state button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-notification-inbox-state input:not([type=checkbox]):not([type=radio]),.d-notification-inbox-state select,.d-notification-inbox-state textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-notification-inbox-state button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-notification-inbox-state button:disabled{opacity:.5;cursor:default}
+.d-notification-inbox-state :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-notification-inbox-state [aria-invalid=true]{border-color:var(--warn)!important}
+.d-notification-inbox-state .d-scroll{max-width:100%;overflow:auto}
+.d-notification-inbox-state table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-notification-inbox-state th,.d-notification-inbox-state td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-notification-inbox-state caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-notification-inbox-state progress{width:100%;accent-color:var(--ink)}
+.d-notification-inbox-state pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-notification-inbox-state h3,.d-notification-inbox-state p{margin:8px 0}
+.d-notification-inbox-state [aria-pressed=true],.d-notification-inbox-state [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-notification-inbox-state .d-grow{flex:1;min-width:100px}
+.d-notification-inbox-state summary{cursor:pointer;padding:6px 0}
+.d-notification-inbox-state ul,.d-notification-inbox-state ol{padding-left:24px}

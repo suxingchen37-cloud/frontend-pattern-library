@@ -1,0 +1,18 @@
+{
+  "id": "unit-conversion-input",
+  "cat": "表单",
+  "t": "双向单位换算输入",
+  "en": "unit conversion input",
+  "d": "厘米与英寸以最后编辑的字段为准，保留其输入；无效输入清空对应换算结果。",
+  "body": "<section class=\"d-unit-conversion-input\" aria-label=\"双向单位换算输入\"><label>厘米<input data-cm type=\"number\" value=\"2.54\"></label><label>英寸<input data-inch type=\"number\" value=\"1\"></label><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-unit-conversion-input{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-unit-conversion-input *,.d-unit-conversion-input *::before,.d-unit-conversion-input *::after{box-sizing:border-box}\n.d-unit-conversion-input [hidden]{display:none!important}\n.d-unit-conversion-input .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-unit-conversion-input .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-unit-conversion-input label{display:block;margin:8px 0}\n.d-unit-conversion-input input,.d-unit-conversion-input select,.d-unit-conversion-input textarea,.d-unit-conversion-input button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-unit-conversion-input input:not([type=checkbox]):not([type=radio]),.d-unit-conversion-input select,.d-unit-conversion-input textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-unit-conversion-input button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-unit-conversion-input button:disabled{opacity:.5;cursor:default}\n.d-unit-conversion-input :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-unit-conversion-input [aria-invalid=true]{border-color:var(--warn)!important}\n.d-unit-conversion-input .d-scroll{max-width:100%;overflow:auto}\n.d-unit-conversion-input table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-unit-conversion-input th,.d-unit-conversion-input td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-unit-conversion-input caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-unit-conversion-input progress{width:100%;accent-color:var(--ink)}\n.d-unit-conversion-input pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-unit-conversion-input h3,.d-unit-conversion-input p{margin:8px 0}\n.d-unit-conversion-input [aria-pressed=true],.d-unit-conversion-input [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-unit-conversion-input .d-grow{flex:1;min-width:100px}\n.d-unit-conversion-input summary{cursor:pointer;padding:6px 0}\n.d-unit-conversion-input ul,.d-unit-conversion-input ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const bind=(from,to,factor)=>{q(from).step='any';q(from).oninput=()=>{const text=q(from).value,n=Number(text);if(!text.trim()||!Number.isFinite(n)||n<0){q(to).value='';q(from).setAttribute('aria-invalid','true');say('请输入非负长度');return;}q(from).removeAttribute('aria-invalid');q(to).removeAttribute('aria-invalid');q(to).value=String(Math.round(n*factor*10000)/10000);say('已换算，最后编辑值保留');};};bind('[data-cm]','[data-inch]',1/2.54);bind('[data-inch]','[data-cm]',2.54);})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "表单",
+    "双向单位换算输入",
+    "交互",
+    "本地演示"
+  ]
+}

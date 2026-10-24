@@ -1,0 +1,23 @@
+.d-linked-field-description{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-linked-field-description *,.d-linked-field-description *::before,.d-linked-field-description *::after{box-sizing:border-box}
+.d-linked-field-description [hidden]{display:none!important}
+.d-linked-field-description .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-linked-field-description .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-linked-field-description label{display:block;margin:8px 0}
+.d-linked-field-description input,.d-linked-field-description select,.d-linked-field-description textarea,.d-linked-field-description button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-linked-field-description input:not([type=checkbox]):not([type=radio]),.d-linked-field-description select,.d-linked-field-description textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-linked-field-description button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-linked-field-description button:disabled{opacity:.5;cursor:default}
+.d-linked-field-description :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-linked-field-description [aria-invalid=true]{border-color:var(--warn)!important}
+.d-linked-field-description .d-scroll{max-width:100%;overflow:auto}
+.d-linked-field-description table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-linked-field-description th,.d-linked-field-description td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-linked-field-description caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-linked-field-description progress{width:100%;accent-color:var(--ink)}
+.d-linked-field-description pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-linked-field-description h3,.d-linked-field-description p{margin:8px 0}
+.d-linked-field-description [aria-pressed=true],.d-linked-field-description [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-linked-field-description .d-grow{flex:1;min-width:100px}
+.d-linked-field-description summary{cursor:pointer;padding:6px 0}
+.d-linked-field-description ul,.d-linked-field-description ol{padding-left:24px}

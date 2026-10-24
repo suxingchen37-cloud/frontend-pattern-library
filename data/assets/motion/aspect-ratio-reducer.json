@@ -1,0 +1,18 @@
+{
+  "id": "aspect-ratio-reducer",
+  "cat": "媒体",
+  "t": "尺寸约分为画幅比例",
+  "en": "aspect ratio reducer",
+  "d": "用最大公约数约分整数尺寸，同时计算目标宽度对应高度；不强制任何画幅。",
+  "body": "<section class=\"d-aspect-ratio-reducer\" aria-label=\"尺寸约分为画幅比例\"><label>原始宽度<input data-width type=\"number\" value=\"1920\"></label><label>原始高度<input data-height type=\"number\" value=\"1080\"></label><label>目标宽度<input data-target type=\"number\" value=\"1280\"></label><button type=\"button\" data-calculate>计算比例与高度</button><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-aspect-ratio-reducer{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-aspect-ratio-reducer *,.d-aspect-ratio-reducer *::before,.d-aspect-ratio-reducer *::after{box-sizing:border-box}\n.d-aspect-ratio-reducer [hidden]{display:none!important}\n.d-aspect-ratio-reducer .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-aspect-ratio-reducer .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-aspect-ratio-reducer label{display:block;margin:8px 0}\n.d-aspect-ratio-reducer input,.d-aspect-ratio-reducer select,.d-aspect-ratio-reducer textarea,.d-aspect-ratio-reducer button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-aspect-ratio-reducer input:not([type=checkbox]):not([type=radio]),.d-aspect-ratio-reducer select,.d-aspect-ratio-reducer textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-aspect-ratio-reducer button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-aspect-ratio-reducer button:disabled{opacity:.5;cursor:default}\n.d-aspect-ratio-reducer :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-aspect-ratio-reducer [aria-invalid=true]{border-color:var(--warn)!important}\n.d-aspect-ratio-reducer .d-scroll{max-width:100%;overflow:auto}\n.d-aspect-ratio-reducer table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-aspect-ratio-reducer th,.d-aspect-ratio-reducer td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-aspect-ratio-reducer caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-aspect-ratio-reducer progress{width:100%;accent-color:var(--ink)}\n.d-aspect-ratio-reducer pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-aspect-ratio-reducer h3,.d-aspect-ratio-reducer p{margin:8px 0}\n.d-aspect-ratio-reducer [aria-pressed=true],.d-aspect-ratio-reducer [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-aspect-ratio-reducer .d-grow{flex:1;min-width:100px}\n.d-aspect-ratio-reducer summary{cursor:pointer;padding:6px 0}\n.d-aspect-ratio-reducer ul,.d-aspect-ratio-reducer ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{q('[data-calculate]').onclick=()=>{const inputs=qa('input'),v=inputs.map(el=>Number(el.value));if(inputs.some(el=>!el.value.trim())||v.some(n=>!Number.isSafeInteger(n)||n<=0||n>1000000)){say('请输入不超过 1000000 的正整数');return;}let x=v[0],y=v[1];while(y){[x,y]=[y,x%y];}say('比例 '+(v[0]/x)+':'+(v[1]/x)+'；目标高度 '+Number((v[2]*v[1]/v[0]).toFixed(3)));};})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "媒体",
+    "尺寸约分为画幅比例",
+    "交互",
+    "本地演示"
+  ]
+}

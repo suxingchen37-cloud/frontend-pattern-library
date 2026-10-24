@@ -1,0 +1,23 @@
+.d-recent-destinations-list{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-recent-destinations-list *,.d-recent-destinations-list *::before,.d-recent-destinations-list *::after{box-sizing:border-box}
+.d-recent-destinations-list [hidden]{display:none!important}
+.d-recent-destinations-list .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-recent-destinations-list .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-recent-destinations-list label{display:block;margin:8px 0}
+.d-recent-destinations-list input,.d-recent-destinations-list select,.d-recent-destinations-list textarea,.d-recent-destinations-list button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-recent-destinations-list input:not([type=checkbox]):not([type=radio]),.d-recent-destinations-list select,.d-recent-destinations-list textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-recent-destinations-list button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-recent-destinations-list button:disabled{opacity:.5;cursor:default}
+.d-recent-destinations-list :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-recent-destinations-list [aria-invalid=true]{border-color:var(--warn)!important}
+.d-recent-destinations-list .d-scroll{max-width:100%;overflow:auto}
+.d-recent-destinations-list table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-recent-destinations-list th,.d-recent-destinations-list td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-recent-destinations-list caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-recent-destinations-list progress{width:100%;accent-color:var(--ink)}
+.d-recent-destinations-list pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-recent-destinations-list h3,.d-recent-destinations-list p{margin:8px 0}
+.d-recent-destinations-list [aria-pressed=true],.d-recent-destinations-list [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-recent-destinations-list .d-grow{flex:1;min-width:100px}
+.d-recent-destinations-list summary{cursor:pointer;padding:6px 0}
+.d-recent-destinations-list ul,.d-recent-destinations-list ol{padding-left:24px}

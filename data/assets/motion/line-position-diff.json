@@ -1,0 +1,18 @@
+{
+  "id": "line-position-diff",
+  "cat": "内容",
+  "t": "逐行位置差异核对",
+  "en": "line position diff",
+  "d": "按相同行号比较两份文本，区分缺失与修改；不把它冒充自动对齐的最小编辑差异算法。",
+  "body": "<section class=\"d-line-position-diff\" aria-label=\"逐行位置差异核对\"><label>修改前<textarea data-before rows=\"3\">门口\n走廊\n窗边</textarea></label><label>修改后<textarea data-after rows=\"3\">门口\n走廊补拍</textarea></label><button type=\"button\" data-compare>按行号核对</button><ol data-result></ol><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-line-position-diff{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-line-position-diff *,.d-line-position-diff *::before,.d-line-position-diff *::after{box-sizing:border-box}\n.d-line-position-diff [hidden]{display:none!important}\n.d-line-position-diff .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-line-position-diff .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-line-position-diff label{display:block;margin:8px 0}\n.d-line-position-diff input,.d-line-position-diff select,.d-line-position-diff textarea,.d-line-position-diff button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-line-position-diff input:not([type=checkbox]):not([type=radio]),.d-line-position-diff select,.d-line-position-diff textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-line-position-diff button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-line-position-diff button:disabled{opacity:.5;cursor:default}\n.d-line-position-diff :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-line-position-diff [aria-invalid=true]{border-color:var(--warn)!important}\n.d-line-position-diff .d-scroll{max-width:100%;overflow:auto}\n.d-line-position-diff table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-line-position-diff th,.d-line-position-diff td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-line-position-diff caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-line-position-diff progress{width:100%;accent-color:var(--ink)}\n.d-line-position-diff pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-line-position-diff h3,.d-line-position-diff p{margin:8px 0}\n.d-line-position-diff [aria-pressed=true],.d-line-position-diff [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-line-position-diff .d-grow{flex:1;min-width:100px}\n.d-line-position-diff summary{cursor:pointer;padding:6px 0}\n.d-line-position-diff ul,.d-line-position-diff ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{q('[data-compare]').onclick=()=>{const left=q('[data-before]').value.split('\\n'),right=q('[data-after]').value.split('\\n');let changed=0;q('[data-result]').replaceChildren(...Array.from({length:Math.max(left.length,right.length)},(_,i)=>{const same=left[i]===right[i];if(!same)changed++;const li=document.createElement('li');li.textContent=same?'相同：'+left[i]:'原：'+(left[i]===undefined?'[缺少此行]':left[i])+' → 新：'+(right[i]===undefined?'[缺少此行]':right[i]);return li;}));say(changed+' 个行号的内容不同');};})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "内容",
+    "逐行位置差异核对",
+    "交互",
+    "本地演示"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "table-row-compare",
+  "cat": "表格",
+  "t": "两行字段对照",
+  "en": "table row compare",
+  "d": "选择两个不同记录，对齐字段并用文字指出差异；同一记录不能作为对照双方。",
+  "body": "<section class=\"d-table-row-compare\" aria-label=\"两行字段对照\"><label>记录一<select data-left><option value=\"门口\">门口</option><option value=\"走廊\">走廊</option><option value=\"窗边\">窗边</option></select></label><label>记录二<select data-right><option value=\"走廊\">走廊</option><option value=\"窗边\">窗边</option><option value=\"门口\">门口</option></select></label><div data-result></div><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-table-row-compare{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-table-row-compare *,.d-table-row-compare *::before,.d-table-row-compare *::after{box-sizing:border-box}\n.d-table-row-compare [hidden]{display:none!important}\n.d-table-row-compare .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-table-row-compare .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-table-row-compare label{display:block;margin:8px 0}\n.d-table-row-compare input,.d-table-row-compare select,.d-table-row-compare textarea,.d-table-row-compare button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-table-row-compare input:not([type=checkbox]):not([type=radio]),.d-table-row-compare select,.d-table-row-compare textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-table-row-compare button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-table-row-compare button:disabled{opacity:.5;cursor:default}\n.d-table-row-compare :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-table-row-compare [aria-invalid=true]{border-color:var(--warn)!important}\n.d-table-row-compare .d-scroll{max-width:100%;overflow:auto}\n.d-table-row-compare table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-table-row-compare th,.d-table-row-compare td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-table-row-compare caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-table-row-compare progress{width:100%;accent-color:var(--ink)}\n.d-table-row-compare pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-table-row-compare h3,.d-table-row-compare p{margin:8px 0}\n.d-table-row-compare [aria-pressed=true],.d-table-row-compare [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-table-row-compare .d-grow{flex:1;min-width:100px}\n.d-table-row-compare summary{cursor:pointer;padding:6px 0}\n.d-table-row-compare ul,.d-table-row-compare ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const data={'门口':[12,'待拍'],'走廊':[18,'完成'],'窗边':[8,'待拍']};const draw=()=>{const left=q('[data-left]').value,right=q('[data-right]').value;q('[data-result]').replaceChildren();if(left===right){say('请选择两个不同记录');return;}['时长','状态'].forEach((name,i)=>{const p=document.createElement('p');p.textContent=name+'：'+left+' '+data[left][i]+' / '+right+' '+data[right][i]+' · '+(data[left][i]===data[right][i]?'相同':'不同');q('[data-result]').append(p);});say('已对照两个记录');};qa('select').forEach(el=>el.onchange=draw);draw();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "表格",
+    "两行字段对照",
+    "交互",
+    "本地演示"
+  ]
+}

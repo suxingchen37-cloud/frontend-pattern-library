@@ -1,0 +1,23 @@
+.d-table-transpose-view{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-table-transpose-view *,.d-table-transpose-view *::before,.d-table-transpose-view *::after{box-sizing:border-box}
+.d-table-transpose-view [hidden]{display:none!important}
+.d-table-transpose-view .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-table-transpose-view .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-table-transpose-view label{display:block;margin:8px 0}
+.d-table-transpose-view input,.d-table-transpose-view select,.d-table-transpose-view textarea,.d-table-transpose-view button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-table-transpose-view input:not([type=checkbox]):not([type=radio]),.d-table-transpose-view select,.d-table-transpose-view textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-table-transpose-view button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-table-transpose-view button:disabled{opacity:.5;cursor:default}
+.d-table-transpose-view :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-table-transpose-view [aria-invalid=true]{border-color:var(--warn)!important}
+.d-table-transpose-view .d-scroll{max-width:100%;overflow:auto}
+.d-table-transpose-view table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-table-transpose-view th,.d-table-transpose-view td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-table-transpose-view caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-table-transpose-view progress{width:100%;accent-color:var(--ink)}
+.d-table-transpose-view pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-table-transpose-view h3,.d-table-transpose-view p{margin:8px 0}
+.d-table-transpose-view [aria-pressed=true],.d-table-transpose-view [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-table-transpose-view .d-grow{flex:1;min-width:100px}
+.d-table-transpose-view summary{cursor:pointer;padding:6px 0}
+.d-table-transpose-view ul,.d-table-transpose-view ol{padding-left:24px}

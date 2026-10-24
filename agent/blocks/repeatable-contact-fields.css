@@ -1,0 +1,23 @@
+.d-repeatable-contact-fields{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-repeatable-contact-fields *,.d-repeatable-contact-fields *::before,.d-repeatable-contact-fields *::after{box-sizing:border-box}
+.d-repeatable-contact-fields [hidden]{display:none!important}
+.d-repeatable-contact-fields .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-repeatable-contact-fields .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-repeatable-contact-fields label{display:block;margin:8px 0}
+.d-repeatable-contact-fields input,.d-repeatable-contact-fields select,.d-repeatable-contact-fields textarea,.d-repeatable-contact-fields button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-repeatable-contact-fields input:not([type=checkbox]):not([type=radio]),.d-repeatable-contact-fields select,.d-repeatable-contact-fields textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-repeatable-contact-fields button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-repeatable-contact-fields button:disabled{opacity:.5;cursor:default}
+.d-repeatable-contact-fields :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-repeatable-contact-fields [aria-invalid=true]{border-color:var(--warn)!important}
+.d-repeatable-contact-fields .d-scroll{max-width:100%;overflow:auto}
+.d-repeatable-contact-fields table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-repeatable-contact-fields th,.d-repeatable-contact-fields td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-repeatable-contact-fields caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-repeatable-contact-fields progress{width:100%;accent-color:var(--ink)}
+.d-repeatable-contact-fields pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-repeatable-contact-fields h3,.d-repeatable-contact-fields p{margin:8px 0}
+.d-repeatable-contact-fields [aria-pressed=true],.d-repeatable-contact-fields [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-repeatable-contact-fields .d-grow{flex:1;min-width:100px}
+.d-repeatable-contact-fields summary{cursor:pointer;padding:6px 0}
+.d-repeatable-contact-fields ul,.d-repeatable-contact-fields ol{padding-left:24px}

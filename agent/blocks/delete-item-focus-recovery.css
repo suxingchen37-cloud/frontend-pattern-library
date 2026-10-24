@@ -1,0 +1,23 @@
+.d-delete-item-focus-recovery{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-delete-item-focus-recovery *,.d-delete-item-focus-recovery *::before,.d-delete-item-focus-recovery *::after{box-sizing:border-box}
+.d-delete-item-focus-recovery [hidden]{display:none!important}
+.d-delete-item-focus-recovery .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-delete-item-focus-recovery .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-delete-item-focus-recovery label{display:block;margin:8px 0}
+.d-delete-item-focus-recovery input,.d-delete-item-focus-recovery select,.d-delete-item-focus-recovery textarea,.d-delete-item-focus-recovery button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-delete-item-focus-recovery input:not([type=checkbox]):not([type=radio]),.d-delete-item-focus-recovery select,.d-delete-item-focus-recovery textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-delete-item-focus-recovery button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-delete-item-focus-recovery button:disabled{opacity:.5;cursor:default}
+.d-delete-item-focus-recovery :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-delete-item-focus-recovery [aria-invalid=true]{border-color:var(--warn)!important}
+.d-delete-item-focus-recovery .d-scroll{max-width:100%;overflow:auto}
+.d-delete-item-focus-recovery table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-delete-item-focus-recovery th,.d-delete-item-focus-recovery td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-delete-item-focus-recovery caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-delete-item-focus-recovery progress{width:100%;accent-color:var(--ink)}
+.d-delete-item-focus-recovery pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-delete-item-focus-recovery h3,.d-delete-item-focus-recovery p{margin:8px 0}
+.d-delete-item-focus-recovery [aria-pressed=true],.d-delete-item-focus-recovery [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-delete-item-focus-recovery .d-grow{flex:1;min-width:100px}
+.d-delete-item-focus-recovery summary{cursor:pointer;padding:6px 0}
+.d-delete-item-focus-recovery ul,.d-delete-item-focus-recovery ol{padding-left:24px}

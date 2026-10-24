@@ -1,0 +1,24 @@
+.d-modal-create-record{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-modal-create-record *,.d-modal-create-record *::before,.d-modal-create-record *::after{box-sizing:border-box}
+.d-modal-create-record [hidden]{display:none!important}
+.d-modal-create-record .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-modal-create-record .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-modal-create-record label{display:block;margin:8px 0}
+.d-modal-create-record input,.d-modal-create-record select,.d-modal-create-record textarea,.d-modal-create-record button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-modal-create-record input:not([type=checkbox]):not([type=radio]),.d-modal-create-record select,.d-modal-create-record textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-modal-create-record button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-modal-create-record button:disabled{opacity:.5;cursor:default}
+.d-modal-create-record :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-modal-create-record [aria-invalid=true]{border-color:var(--warn)!important}
+.d-modal-create-record .d-scroll{max-width:100%;overflow:auto}
+.d-modal-create-record table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-modal-create-record th,.d-modal-create-record td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-modal-create-record caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-modal-create-record progress{width:100%;accent-color:var(--ink)}
+.d-modal-create-record pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-modal-create-record h3,.d-modal-create-record p{margin:8px 0}
+.d-modal-create-record [aria-pressed=true],.d-modal-create-record [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-modal-create-record .d-grow{flex:1;min-width:100px}
+.d-modal-create-record summary{cursor:pointer;padding:6px 0}
+.d-modal-create-record ul,.d-modal-create-record ol{padding-left:24px}
+.d-modal-create-record dialog{max-width:min(400px,calc(100vw - 32px));max-height:85vh;overflow:auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:16px}.d-modal-create-record dialog::backdrop{background:rgb(0 0 0 / .35)}

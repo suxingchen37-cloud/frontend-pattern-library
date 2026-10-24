@@ -1,0 +1,23 @@
+.d-allocation-total-form{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-allocation-total-form *,.d-allocation-total-form *::before,.d-allocation-total-form *::after{box-sizing:border-box}
+.d-allocation-total-form [hidden]{display:none!important}
+.d-allocation-total-form .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-allocation-total-form .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-allocation-total-form label{display:block;margin:8px 0}
+.d-allocation-total-form input,.d-allocation-total-form select,.d-allocation-total-form textarea,.d-allocation-total-form button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-allocation-total-form input:not([type=checkbox]):not([type=radio]),.d-allocation-total-form select,.d-allocation-total-form textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-allocation-total-form button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-allocation-total-form button:disabled{opacity:.5;cursor:default}
+.d-allocation-total-form :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-allocation-total-form [aria-invalid=true]{border-color:var(--warn)!important}
+.d-allocation-total-form .d-scroll{max-width:100%;overflow:auto}
+.d-allocation-total-form table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-allocation-total-form th,.d-allocation-total-form td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-allocation-total-form caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-allocation-total-form progress{width:100%;accent-color:var(--ink)}
+.d-allocation-total-form pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-allocation-total-form h3,.d-allocation-total-form p{margin:8px 0}
+.d-allocation-total-form [aria-pressed=true],.d-allocation-total-form [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-allocation-total-form .d-grow{flex:1;min-width:100px}
+.d-allocation-total-form summary{cursor:pointer;padding:6px 0}
+.d-allocation-total-form ul,.d-allocation-total-form ol{padding-left:24px}

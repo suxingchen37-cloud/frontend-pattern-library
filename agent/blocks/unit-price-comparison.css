@@ -1,0 +1,23 @@
+.d-unit-price-comparison{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-unit-price-comparison *,.d-unit-price-comparison *::before,.d-unit-price-comparison *::after{box-sizing:border-box}
+.d-unit-price-comparison [hidden]{display:none!important}
+.d-unit-price-comparison .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-unit-price-comparison .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-unit-price-comparison label{display:block;margin:8px 0}
+.d-unit-price-comparison input,.d-unit-price-comparison select,.d-unit-price-comparison textarea,.d-unit-price-comparison button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-unit-price-comparison input:not([type=checkbox]):not([type=radio]),.d-unit-price-comparison select,.d-unit-price-comparison textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-unit-price-comparison button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-unit-price-comparison button:disabled{opacity:.5;cursor:default}
+.d-unit-price-comparison :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-unit-price-comparison [aria-invalid=true]{border-color:var(--warn)!important}
+.d-unit-price-comparison .d-scroll{max-width:100%;overflow:auto}
+.d-unit-price-comparison table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-unit-price-comparison th,.d-unit-price-comparison td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-unit-price-comparison caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-unit-price-comparison progress{width:100%;accent-color:var(--ink)}
+.d-unit-price-comparison pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-unit-price-comparison h3,.d-unit-price-comparison p{margin:8px 0}
+.d-unit-price-comparison [aria-pressed=true],.d-unit-price-comparison [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-unit-price-comparison .d-grow{flex:1;min-width:100px}
+.d-unit-price-comparison summary{cursor:pointer;padding:6px 0}
+.d-unit-price-comparison ul,.d-unit-price-comparison ol{padding-left:24px}

@@ -1,0 +1,23 @@
+.d-hash-section-router{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-hash-section-router *,.d-hash-section-router *::before,.d-hash-section-router *::after{box-sizing:border-box}
+.d-hash-section-router [hidden]{display:none!important}
+.d-hash-section-router .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-hash-section-router .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-hash-section-router label{display:block;margin:8px 0}
+.d-hash-section-router input,.d-hash-section-router select,.d-hash-section-router textarea,.d-hash-section-router button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-hash-section-router input:not([type=checkbox]):not([type=radio]),.d-hash-section-router select,.d-hash-section-router textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-hash-section-router button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-hash-section-router button:disabled{opacity:.5;cursor:default}
+.d-hash-section-router :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-hash-section-router [aria-invalid=true]{border-color:var(--warn)!important}
+.d-hash-section-router .d-scroll{max-width:100%;overflow:auto}
+.d-hash-section-router table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-hash-section-router th,.d-hash-section-router td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-hash-section-router caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-hash-section-router progress{width:100%;accent-color:var(--ink)}
+.d-hash-section-router pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-hash-section-router h3,.d-hash-section-router p{margin:8px 0}
+.d-hash-section-router [aria-pressed=true],.d-hash-section-router [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-hash-section-router .d-grow{flex:1;min-width:100px}
+.d-hash-section-router summary{cursor:pointer;padding:6px 0}
+.d-hash-section-router ul,.d-hash-section-router ol{padding-left:24px}

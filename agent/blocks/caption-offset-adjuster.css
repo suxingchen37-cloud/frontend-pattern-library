@@ -1,0 +1,23 @@
+.d-caption-offset-adjuster{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-caption-offset-adjuster *,.d-caption-offset-adjuster *::before,.d-caption-offset-adjuster *::after{box-sizing:border-box}
+.d-caption-offset-adjuster [hidden]{display:none!important}
+.d-caption-offset-adjuster .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-caption-offset-adjuster .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-caption-offset-adjuster label{display:block;margin:8px 0}
+.d-caption-offset-adjuster input,.d-caption-offset-adjuster select,.d-caption-offset-adjuster textarea,.d-caption-offset-adjuster button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-caption-offset-adjuster input:not([type=checkbox]):not([type=radio]),.d-caption-offset-adjuster select,.d-caption-offset-adjuster textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-caption-offset-adjuster button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-caption-offset-adjuster button:disabled{opacity:.5;cursor:default}
+.d-caption-offset-adjuster :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-caption-offset-adjuster [aria-invalid=true]{border-color:var(--warn)!important}
+.d-caption-offset-adjuster .d-scroll{max-width:100%;overflow:auto}
+.d-caption-offset-adjuster table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-caption-offset-adjuster th,.d-caption-offset-adjuster td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-caption-offset-adjuster caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-caption-offset-adjuster progress{width:100%;accent-color:var(--ink)}
+.d-caption-offset-adjuster pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-caption-offset-adjuster h3,.d-caption-offset-adjuster p{margin:8px 0}
+.d-caption-offset-adjuster [aria-pressed=true],.d-caption-offset-adjuster [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-caption-offset-adjuster .d-grow{flex:1;min-width:100px}
+.d-caption-offset-adjuster summary{cursor:pointer;padding:6px 0}
+.d-caption-offset-adjuster ul,.d-caption-offset-adjuster ol{padding-left:24px}

@@ -1,0 +1,23 @@
+.d-roving-toolbar-controls{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-roving-toolbar-controls *,.d-roving-toolbar-controls *::before,.d-roving-toolbar-controls *::after{box-sizing:border-box}
+.d-roving-toolbar-controls [hidden]{display:none!important}
+.d-roving-toolbar-controls .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-roving-toolbar-controls .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-roving-toolbar-controls label{display:block;margin:8px 0}
+.d-roving-toolbar-controls input,.d-roving-toolbar-controls select,.d-roving-toolbar-controls textarea,.d-roving-toolbar-controls button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-roving-toolbar-controls input:not([type=checkbox]):not([type=radio]),.d-roving-toolbar-controls select,.d-roving-toolbar-controls textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-roving-toolbar-controls button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-roving-toolbar-controls button:disabled{opacity:.5;cursor:default}
+.d-roving-toolbar-controls :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-roving-toolbar-controls [aria-invalid=true]{border-color:var(--warn)!important}
+.d-roving-toolbar-controls .d-scroll{max-width:100%;overflow:auto}
+.d-roving-toolbar-controls table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-roving-toolbar-controls th,.d-roving-toolbar-controls td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-roving-toolbar-controls caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-roving-toolbar-controls progress{width:100%;accent-color:var(--ink)}
+.d-roving-toolbar-controls pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-roving-toolbar-controls h3,.d-roving-toolbar-controls p{margin:8px 0}
+.d-roving-toolbar-controls [aria-pressed=true],.d-roving-toolbar-controls [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-roving-toolbar-controls .d-grow{flex:1;min-width:100px}
+.d-roving-toolbar-controls summary{cursor:pointer;padding:6px 0}
+.d-roving-toolbar-controls ul,.d-roving-toolbar-controls ol{padding-left:24px}

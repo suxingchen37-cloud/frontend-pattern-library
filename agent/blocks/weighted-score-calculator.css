@@ -1,0 +1,23 @@
+.d-weighted-score-calculator{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-weighted-score-calculator *,.d-weighted-score-calculator *::before,.d-weighted-score-calculator *::after{box-sizing:border-box}
+.d-weighted-score-calculator [hidden]{display:none!important}
+.d-weighted-score-calculator .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-weighted-score-calculator .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-weighted-score-calculator label{display:block;margin:8px 0}
+.d-weighted-score-calculator input,.d-weighted-score-calculator select,.d-weighted-score-calculator textarea,.d-weighted-score-calculator button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-weighted-score-calculator input:not([type=checkbox]):not([type=radio]),.d-weighted-score-calculator select,.d-weighted-score-calculator textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-weighted-score-calculator button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-weighted-score-calculator button:disabled{opacity:.5;cursor:default}
+.d-weighted-score-calculator :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-weighted-score-calculator [aria-invalid=true]{border-color:var(--warn)!important}
+.d-weighted-score-calculator .d-scroll{max-width:100%;overflow:auto}
+.d-weighted-score-calculator table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-weighted-score-calculator th,.d-weighted-score-calculator td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-weighted-score-calculator caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-weighted-score-calculator progress{width:100%;accent-color:var(--ink)}
+.d-weighted-score-calculator pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-weighted-score-calculator h3,.d-weighted-score-calculator p{margin:8px 0}
+.d-weighted-score-calculator [aria-pressed=true],.d-weighted-score-calculator [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-weighted-score-calculator .d-grow{flex:1;min-width:100px}
+.d-weighted-score-calculator summary{cursor:pointer;padding:6px 0}
+.d-weighted-score-calculator ul,.d-weighted-score-calculator ol{padding-left:24px}

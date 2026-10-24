@@ -1,0 +1,23 @@
+.d-editable-path-breadcrumb{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-editable-path-breadcrumb *,.d-editable-path-breadcrumb *::before,.d-editable-path-breadcrumb *::after{box-sizing:border-box}
+.d-editable-path-breadcrumb [hidden]{display:none!important}
+.d-editable-path-breadcrumb .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-editable-path-breadcrumb .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-editable-path-breadcrumb label{display:block;margin:8px 0}
+.d-editable-path-breadcrumb input,.d-editable-path-breadcrumb select,.d-editable-path-breadcrumb textarea,.d-editable-path-breadcrumb button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-editable-path-breadcrumb input:not([type=checkbox]):not([type=radio]),.d-editable-path-breadcrumb select,.d-editable-path-breadcrumb textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-editable-path-breadcrumb button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-editable-path-breadcrumb button:disabled{opacity:.5;cursor:default}
+.d-editable-path-breadcrumb :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-editable-path-breadcrumb [aria-invalid=true]{border-color:var(--warn)!important}
+.d-editable-path-breadcrumb .d-scroll{max-width:100%;overflow:auto}
+.d-editable-path-breadcrumb table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-editable-path-breadcrumb th,.d-editable-path-breadcrumb td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-editable-path-breadcrumb caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-editable-path-breadcrumb progress{width:100%;accent-color:var(--ink)}
+.d-editable-path-breadcrumb pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-editable-path-breadcrumb h3,.d-editable-path-breadcrumb p{margin:8px 0}
+.d-editable-path-breadcrumb [aria-pressed=true],.d-editable-path-breadcrumb [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-editable-path-breadcrumb .d-grow{flex:1;min-width:100px}
+.d-editable-path-breadcrumb summary{cursor:pointer;padding:6px 0}
+.d-editable-path-breadcrumb ul,.d-editable-path-breadcrumb ol{padding-left:24px}

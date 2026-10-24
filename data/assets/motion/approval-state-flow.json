@@ -1,0 +1,18 @@
+{
+  "id": "approval-state-flow",
+  "cat": "反馈",
+  "t": "审阅审批状态流",
+  "en": "approval state flow",
+  "d": "状态决定可用操作，草稿提交后才可批准或退回；所有操作仅改变演示状态。",
+  "body": "<section class=\"d-approval-state-flow\" aria-label=\"审阅审批状态流\"><p data-state></p><div class=\"d-row\"><button type=\"button\" data-submit>提交审阅</button><button type=\"button\" data-approve>批准</button><button type=\"button\" data-revise>退回修改</button><button type=\"button\" data-reset>重置演示</button></div><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-approval-state-flow{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-approval-state-flow *,.d-approval-state-flow *::before,.d-approval-state-flow *::after{box-sizing:border-box}\n.d-approval-state-flow [hidden]{display:none!important}\n.d-approval-state-flow .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-approval-state-flow .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-approval-state-flow label{display:block;margin:8px 0}\n.d-approval-state-flow input,.d-approval-state-flow select,.d-approval-state-flow textarea,.d-approval-state-flow button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-approval-state-flow input:not([type=checkbox]):not([type=radio]),.d-approval-state-flow select,.d-approval-state-flow textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-approval-state-flow button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-approval-state-flow button:disabled{opacity:.5;cursor:default}\n.d-approval-state-flow :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-approval-state-flow [aria-invalid=true]{border-color:var(--warn)!important}\n.d-approval-state-flow .d-scroll{max-width:100%;overflow:auto}\n.d-approval-state-flow table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-approval-state-flow th,.d-approval-state-flow td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-approval-state-flow caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-approval-state-flow progress{width:100%;accent-color:var(--ink)}\n.d-approval-state-flow pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-approval-state-flow h3,.d-approval-state-flow p{margin:8px 0}\n.d-approval-state-flow [aria-pressed=true],.d-approval-state-flow [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-approval-state-flow .d-grow{flex:1;min-width:100px}\n.d-approval-state-flow summary{cursor:pointer;padding:6px 0}\n.d-approval-state-flow ul,.d-approval-state-flow ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{let state='draft';const draw=()=>{q('[data-state]').textContent='本地状态：'+{draft:'草稿',review:'待审阅',approved:'已批准'}[state];q('[data-submit]').disabled=state!=='draft';q('[data-approve]').disabled=q('[data-revise]').disabled=state!=='review';say('可用操作已按当前状态更新');};q('[data-submit]').onclick=()=>{state='review';draw();};q('[data-approve]').onclick=()=>{state='approved';draw();};q('[data-revise]').onclick=()=>{state='draft';draw();};q('[data-reset]').onclick=()=>{state='draft';draw();};draw();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "反馈",
+    "审阅审批状态流",
+    "交互",
+    "本地演示"
+  ]
+}

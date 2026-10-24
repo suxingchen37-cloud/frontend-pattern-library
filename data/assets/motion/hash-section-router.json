@@ -1,0 +1,18 @@
+{
+  "id": "hash-section-router",
+  "cat": "导航",
+  "t": "片段地址驱动视图",
+  "en": "hash section router",
+  "d": "三个视图共用明确的片段前缀，刷新时读取片段；浏览器前进后退同步当前视图。",
+  "body": "<section class=\"d-hash-section-router\" aria-label=\"片段地址驱动视图\"><div class=\"d-row\"><button type=\"button\" data-overview>概览</button><button type=\"button\" data-assets>素材</button><button type=\"button\" data-delivery>交付</button></div><p data-view></p><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-hash-section-router{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-hash-section-router *,.d-hash-section-router *::before,.d-hash-section-router *::after{box-sizing:border-box}\n.d-hash-section-router [hidden]{display:none!important}\n.d-hash-section-router .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-hash-section-router .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-hash-section-router label{display:block;margin:8px 0}\n.d-hash-section-router input,.d-hash-section-router select,.d-hash-section-router textarea,.d-hash-section-router button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-hash-section-router input:not([type=checkbox]):not([type=radio]),.d-hash-section-router select,.d-hash-section-router textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-hash-section-router button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-hash-section-router button:disabled{opacity:.5;cursor:default}\n.d-hash-section-router :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-hash-section-router [aria-invalid=true]{border-color:var(--warn)!important}\n.d-hash-section-router .d-scroll{max-width:100%;overflow:auto}\n.d-hash-section-router table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-hash-section-router th,.d-hash-section-router td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-hash-section-router caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-hash-section-router progress{width:100%;accent-color:var(--ink)}\n.d-hash-section-router pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-hash-section-router h3,.d-hash-section-router p{margin:8px 0}\n.d-hash-section-router [aria-pressed=true],.d-hash-section-router [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-hash-section-router .d-grow{flex:1;min-width:100px}\n.d-hash-section-router summary{cursor:pointer;padding:6px 0}\n.d-hash-section-router ul,.d-hash-section-router ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const views={overview:'项目概览',assets:'素材目录',delivery:'交付说明'};const draw=()=>{const key=location.hash.replace('#workflow-route-',''),current=Object.hasOwn(views,key)?key:'overview';q('[data-view]').textContent=views[current];Object.keys(views).forEach(name=>q('[data-'+name+']').setAttribute('aria-pressed',String(name===current)));say('当前视图：'+views[current]);};Object.keys(views).forEach(key=>q('[data-'+key+']').onclick=()=>{location.hash='workflow-route-'+key;draw();});window.addEventListener('hashchange',draw);draw();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "导航",
+    "片段地址驱动视图",
+    "交互",
+    "本地演示"
+  ]
+}

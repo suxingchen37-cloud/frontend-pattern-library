@@ -1,0 +1,23 @@
+.d-caption-cue-editor{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-caption-cue-editor *,.d-caption-cue-editor *::before,.d-caption-cue-editor *::after{box-sizing:border-box}
+.d-caption-cue-editor [hidden]{display:none!important}
+.d-caption-cue-editor .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-caption-cue-editor .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-caption-cue-editor label{display:block;margin:8px 0}
+.d-caption-cue-editor input,.d-caption-cue-editor select,.d-caption-cue-editor textarea,.d-caption-cue-editor button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-caption-cue-editor input:not([type=checkbox]):not([type=radio]),.d-caption-cue-editor select,.d-caption-cue-editor textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-caption-cue-editor button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-caption-cue-editor button:disabled{opacity:.5;cursor:default}
+.d-caption-cue-editor :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-caption-cue-editor [aria-invalid=true]{border-color:var(--warn)!important}
+.d-caption-cue-editor .d-scroll{max-width:100%;overflow:auto}
+.d-caption-cue-editor table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-caption-cue-editor th,.d-caption-cue-editor td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-caption-cue-editor caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-caption-cue-editor progress{width:100%;accent-color:var(--ink)}
+.d-caption-cue-editor pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-caption-cue-editor h3,.d-caption-cue-editor p{margin:8px 0}
+.d-caption-cue-editor [aria-pressed=true],.d-caption-cue-editor [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-caption-cue-editor .d-grow{flex:1;min-width:100px}
+.d-caption-cue-editor summary{cursor:pointer;padding:6px 0}
+.d-caption-cue-editor ul,.d-caption-cue-editor ol{padding-left:24px}

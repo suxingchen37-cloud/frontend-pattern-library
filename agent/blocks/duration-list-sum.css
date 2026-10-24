@@ -1,0 +1,23 @@
+.d-duration-list-sum{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-duration-list-sum *,.d-duration-list-sum *::before,.d-duration-list-sum *::after{box-sizing:border-box}
+.d-duration-list-sum [hidden]{display:none!important}
+.d-duration-list-sum .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-duration-list-sum .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-duration-list-sum label{display:block;margin:8px 0}
+.d-duration-list-sum input,.d-duration-list-sum select,.d-duration-list-sum textarea,.d-duration-list-sum button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-duration-list-sum input:not([type=checkbox]):not([type=radio]),.d-duration-list-sum select,.d-duration-list-sum textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-duration-list-sum button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-duration-list-sum button:disabled{opacity:.5;cursor:default}
+.d-duration-list-sum :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-duration-list-sum [aria-invalid=true]{border-color:var(--warn)!important}
+.d-duration-list-sum .d-scroll{max-width:100%;overflow:auto}
+.d-duration-list-sum table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-duration-list-sum th,.d-duration-list-sum td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-duration-list-sum caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-duration-list-sum progress{width:100%;accent-color:var(--ink)}
+.d-duration-list-sum pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-duration-list-sum h3,.d-duration-list-sum p{margin:8px 0}
+.d-duration-list-sum [aria-pressed=true],.d-duration-list-sum [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-duration-list-sum .d-grow{flex:1;min-width:100px}
+.d-duration-list-sum summary{cursor:pointer;padding:6px 0}
+.d-duration-list-sum ul,.d-duration-list-sum ol{padding-left:24px}

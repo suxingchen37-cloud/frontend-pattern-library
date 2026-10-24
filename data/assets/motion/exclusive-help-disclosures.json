@@ -1,0 +1,18 @@
+{
+  "id": "exclusive-help-disclosures",
+  "cat": "浮层",
+  "t": "互斥帮助展开组",
+  "en": "exclusive help disclosures",
+  "d": "展开一条帮助会收起其他条目，所有条目也可全部收起；原生 summary 支持键盘。",
+  "body": "<section class=\"d-exclusive-help-disclosures\" aria-label=\"互斥帮助展开组\"><details data-help><summary>命名规则</summary><p>用内容说明镜头，不用空泛口号。</p></details><details data-help><summary>交付格式</summary><p>按接收方实际要求选择格式。</p></details><details data-help><summary>版本记录</summary><p>每次交付记录已确认的修改。</p></details><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-exclusive-help-disclosures{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-exclusive-help-disclosures *,.d-exclusive-help-disclosures *::before,.d-exclusive-help-disclosures *::after{box-sizing:border-box}\n.d-exclusive-help-disclosures [hidden]{display:none!important}\n.d-exclusive-help-disclosures .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-exclusive-help-disclosures .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-exclusive-help-disclosures label{display:block;margin:8px 0}\n.d-exclusive-help-disclosures input,.d-exclusive-help-disclosures select,.d-exclusive-help-disclosures textarea,.d-exclusive-help-disclosures button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-exclusive-help-disclosures input:not([type=checkbox]):not([type=radio]),.d-exclusive-help-disclosures select,.d-exclusive-help-disclosures textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-exclusive-help-disclosures button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-exclusive-help-disclosures button:disabled{opacity:.5;cursor:default}\n.d-exclusive-help-disclosures :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-exclusive-help-disclosures [aria-invalid=true]{border-color:var(--warn)!important}\n.d-exclusive-help-disclosures .d-scroll{max-width:100%;overflow:auto}\n.d-exclusive-help-disclosures table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-exclusive-help-disclosures th,.d-exclusive-help-disclosures td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-exclusive-help-disclosures caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-exclusive-help-disclosures progress{width:100%;accent-color:var(--ink)}\n.d-exclusive-help-disclosures pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-exclusive-help-disclosures h3,.d-exclusive-help-disclosures p{margin:8px 0}\n.d-exclusive-help-disclosures [aria-pressed=true],.d-exclusive-help-disclosures [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-exclusive-help-disclosures .d-grow{flex:1;min-width:100px}\n.d-exclusive-help-disclosures summary{cursor:pointer;padding:6px 0}\n.d-exclusive-help-disclosures ul,.d-exclusive-help-disclosures ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{qa('[data-help]').forEach(item=>item.addEventListener('toggle',()=>{if(item.open){qa('[data-help]').forEach(other=>{if(other!==item)other.open=false;});say(item.querySelector('summary').textContent+'已展开');}}));})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "浮层",
+    "互斥帮助展开组",
+    "交互",
+    "本地演示"
+  ]
+}

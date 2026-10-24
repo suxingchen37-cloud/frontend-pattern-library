@@ -1,0 +1,23 @@
+.d-gated-review-navigation{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-gated-review-navigation *,.d-gated-review-navigation *::before,.d-gated-review-navigation *::after{box-sizing:border-box}
+.d-gated-review-navigation [hidden]{display:none!important}
+.d-gated-review-navigation .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-gated-review-navigation .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-gated-review-navigation label{display:block;margin:8px 0}
+.d-gated-review-navigation input,.d-gated-review-navigation select,.d-gated-review-navigation textarea,.d-gated-review-navigation button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-gated-review-navigation input:not([type=checkbox]):not([type=radio]),.d-gated-review-navigation select,.d-gated-review-navigation textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-gated-review-navigation button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-gated-review-navigation button:disabled{opacity:.5;cursor:default}
+.d-gated-review-navigation :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-gated-review-navigation [aria-invalid=true]{border-color:var(--warn)!important}
+.d-gated-review-navigation .d-scroll{max-width:100%;overflow:auto}
+.d-gated-review-navigation table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-gated-review-navigation th,.d-gated-review-navigation td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-gated-review-navigation caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-gated-review-navigation progress{width:100%;accent-color:var(--ink)}
+.d-gated-review-navigation pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-gated-review-navigation h3,.d-gated-review-navigation p{margin:8px 0}
+.d-gated-review-navigation [aria-pressed=true],.d-gated-review-navigation [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-gated-review-navigation .d-grow{flex:1;min-width:100px}
+.d-gated-review-navigation summary{cursor:pointer;padding:6px 0}
+.d-gated-review-navigation ul,.d-gated-review-navigation ol{padding-left:24px}

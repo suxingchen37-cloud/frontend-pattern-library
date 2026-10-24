@@ -1,0 +1,23 @@
+.d-approval-state-flow{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-approval-state-flow *,.d-approval-state-flow *::before,.d-approval-state-flow *::after{box-sizing:border-box}
+.d-approval-state-flow [hidden]{display:none!important}
+.d-approval-state-flow .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-approval-state-flow .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-approval-state-flow label{display:block;margin:8px 0}
+.d-approval-state-flow input,.d-approval-state-flow select,.d-approval-state-flow textarea,.d-approval-state-flow button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-approval-state-flow input:not([type=checkbox]):not([type=radio]),.d-approval-state-flow select,.d-approval-state-flow textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-approval-state-flow button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-approval-state-flow button:disabled{opacity:.5;cursor:default}
+.d-approval-state-flow :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-approval-state-flow [aria-invalid=true]{border-color:var(--warn)!important}
+.d-approval-state-flow .d-scroll{max-width:100%;overflow:auto}
+.d-approval-state-flow table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-approval-state-flow th,.d-approval-state-flow td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-approval-state-flow caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-approval-state-flow progress{width:100%;accent-color:var(--ink)}
+.d-approval-state-flow pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-approval-state-flow h3,.d-approval-state-flow p{margin:8px 0}
+.d-approval-state-flow [aria-pressed=true],.d-approval-state-flow [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-approval-state-flow .d-grow{flex:1;min-width:100px}
+.d-approval-state-flow summary{cursor:pointer;padding:6px 0}
+.d-approval-state-flow ul,.d-approval-state-flow ol{padding-left:24px}

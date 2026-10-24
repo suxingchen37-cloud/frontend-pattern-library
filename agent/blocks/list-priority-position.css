@@ -1,0 +1,23 @@
+.d-list-priority-position{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-list-priority-position *,.d-list-priority-position *::before,.d-list-priority-position *::after{box-sizing:border-box}
+.d-list-priority-position [hidden]{display:none!important}
+.d-list-priority-position .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-list-priority-position .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-list-priority-position label{display:block;margin:8px 0}
+.d-list-priority-position input,.d-list-priority-position select,.d-list-priority-position textarea,.d-list-priority-position button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-list-priority-position input:not([type=checkbox]):not([type=radio]),.d-list-priority-position select,.d-list-priority-position textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-list-priority-position button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-list-priority-position button:disabled{opacity:.5;cursor:default}
+.d-list-priority-position :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-list-priority-position [aria-invalid=true]{border-color:var(--warn)!important}
+.d-list-priority-position .d-scroll{max-width:100%;overflow:auto}
+.d-list-priority-position table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-list-priority-position th,.d-list-priority-position td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-list-priority-position caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-list-priority-position progress{width:100%;accent-color:var(--ink)}
+.d-list-priority-position pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-list-priority-position h3,.d-list-priority-position p{margin:8px 0}
+.d-list-priority-position [aria-pressed=true],.d-list-priority-position [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-list-priority-position .d-grow{flex:1;min-width:100px}
+.d-list-priority-position summary{cursor:pointer;padding:6px 0}
+.d-list-priority-position ul,.d-list-priority-position ol{padding-left:24px}

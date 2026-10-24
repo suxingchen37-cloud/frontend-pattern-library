@@ -1,0 +1,23 @@
+.d-numeric-series-summary{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-numeric-series-summary *,.d-numeric-series-summary *::before,.d-numeric-series-summary *::after{box-sizing:border-box}
+.d-numeric-series-summary [hidden]{display:none!important}
+.d-numeric-series-summary .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-numeric-series-summary .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-numeric-series-summary label{display:block;margin:8px 0}
+.d-numeric-series-summary input,.d-numeric-series-summary select,.d-numeric-series-summary textarea,.d-numeric-series-summary button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-numeric-series-summary input:not([type=checkbox]):not([type=radio]),.d-numeric-series-summary select,.d-numeric-series-summary textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-numeric-series-summary button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-numeric-series-summary button:disabled{opacity:.5;cursor:default}
+.d-numeric-series-summary :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-numeric-series-summary [aria-invalid=true]{border-color:var(--warn)!important}
+.d-numeric-series-summary .d-scroll{max-width:100%;overflow:auto}
+.d-numeric-series-summary table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-numeric-series-summary th,.d-numeric-series-summary td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-numeric-series-summary caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-numeric-series-summary progress{width:100%;accent-color:var(--ink)}
+.d-numeric-series-summary pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-numeric-series-summary h3,.d-numeric-series-summary p{margin:8px 0}
+.d-numeric-series-summary [aria-pressed=true],.d-numeric-series-summary [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-numeric-series-summary .d-grow{flex:1;min-width:100px}
+.d-numeric-series-summary summary{cursor:pointer;padding:6px 0}
+.d-numeric-series-summary ul,.d-numeric-series-summary ol{padding-left:24px}

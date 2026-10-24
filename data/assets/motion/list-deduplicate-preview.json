@@ -1,0 +1,18 @@
+{
+  "id": "list-deduplicate-preview",
+  "cat": "列表",
+  "t": "逐行去重预览",
+  "en": "list deduplicate preview",
+  "d": "去除空行与首尾空白，保留首次出现的顺序；预览不覆盖输入，按纯文本显示。",
+  "body": "<section class=\"d-list-deduplicate-preview\" aria-label=\"逐行去重预览\"><label>每行一项<textarea data-input rows=\"3\">门口\n走廊\n门口\n窗边</textarea></label><button type=\"button\" data-dedupe>预览去重结果</button><ol data-result></ol><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-list-deduplicate-preview{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-list-deduplicate-preview *,.d-list-deduplicate-preview *::before,.d-list-deduplicate-preview *::after{box-sizing:border-box}\n.d-list-deduplicate-preview [hidden]{display:none!important}\n.d-list-deduplicate-preview .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-list-deduplicate-preview .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-list-deduplicate-preview label{display:block;margin:8px 0}\n.d-list-deduplicate-preview input,.d-list-deduplicate-preview select,.d-list-deduplicate-preview textarea,.d-list-deduplicate-preview button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-list-deduplicate-preview input:not([type=checkbox]):not([type=radio]),.d-list-deduplicate-preview select,.d-list-deduplicate-preview textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-list-deduplicate-preview button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-list-deduplicate-preview button:disabled{opacity:.5;cursor:default}\n.d-list-deduplicate-preview :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-list-deduplicate-preview [aria-invalid=true]{border-color:var(--warn)!important}\n.d-list-deduplicate-preview .d-scroll{max-width:100%;overflow:auto}\n.d-list-deduplicate-preview table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-list-deduplicate-preview th,.d-list-deduplicate-preview td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-list-deduplicate-preview caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-list-deduplicate-preview progress{width:100%;accent-color:var(--ink)}\n.d-list-deduplicate-preview pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-list-deduplicate-preview h3,.d-list-deduplicate-preview p{margin:8px 0}\n.d-list-deduplicate-preview [aria-pressed=true],.d-list-deduplicate-preview [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-list-deduplicate-preview .d-grow{flex:1;min-width:100px}\n.d-list-deduplicate-preview summary{cursor:pointer;padding:6px 0}\n.d-list-deduplicate-preview ul,.d-list-deduplicate-preview ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{q('[data-dedupe]').onclick=()=>{const lines=q('[data-input]').value.split(/\\r?\\n/).map(s=>s.trim()).filter(Boolean),unique=[...new Set(lines)];q('[data-result]').replaceChildren(...unique.map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));say('保留 '+unique.length+' 项，去除重复 '+(lines.length-unique.length)+' 项');};})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "列表",
+    "逐行去重预览",
+    "交互",
+    "本地演示"
+  ]
+}

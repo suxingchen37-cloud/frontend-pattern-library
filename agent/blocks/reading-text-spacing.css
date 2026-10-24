@@ -1,0 +1,23 @@
+.d-reading-text-spacing{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-reading-text-spacing *,.d-reading-text-spacing *::before,.d-reading-text-spacing *::after{box-sizing:border-box}
+.d-reading-text-spacing [hidden]{display:none!important}
+.d-reading-text-spacing .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-reading-text-spacing .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-reading-text-spacing label{display:block;margin:8px 0}
+.d-reading-text-spacing input,.d-reading-text-spacing select,.d-reading-text-spacing textarea,.d-reading-text-spacing button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-reading-text-spacing input:not([type=checkbox]):not([type=radio]),.d-reading-text-spacing select,.d-reading-text-spacing textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-reading-text-spacing button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-reading-text-spacing button:disabled{opacity:.5;cursor:default}
+.d-reading-text-spacing :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-reading-text-spacing [aria-invalid=true]{border-color:var(--warn)!important}
+.d-reading-text-spacing .d-scroll{max-width:100%;overflow:auto}
+.d-reading-text-spacing table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-reading-text-spacing th,.d-reading-text-spacing td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-reading-text-spacing caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-reading-text-spacing progress{width:100%;accent-color:var(--ink)}
+.d-reading-text-spacing pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-reading-text-spacing h3,.d-reading-text-spacing p{margin:8px 0}
+.d-reading-text-spacing [aria-pressed=true],.d-reading-text-spacing [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-reading-text-spacing .d-grow{flex:1;min-width:100px}
+.d-reading-text-spacing summary{cursor:pointer;padding:6px 0}
+.d-reading-text-spacing ul,.d-reading-text-spacing ol{padding-left:24px}

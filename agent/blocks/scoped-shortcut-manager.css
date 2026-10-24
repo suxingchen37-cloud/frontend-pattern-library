@@ -1,0 +1,23 @@
+.d-scoped-shortcut-manager{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-scoped-shortcut-manager *,.d-scoped-shortcut-manager *::before,.d-scoped-shortcut-manager *::after{box-sizing:border-box}
+.d-scoped-shortcut-manager [hidden]{display:none!important}
+.d-scoped-shortcut-manager .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-scoped-shortcut-manager .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-scoped-shortcut-manager label{display:block;margin:8px 0}
+.d-scoped-shortcut-manager input,.d-scoped-shortcut-manager select,.d-scoped-shortcut-manager textarea,.d-scoped-shortcut-manager button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-scoped-shortcut-manager input:not([type=checkbox]):not([type=radio]),.d-scoped-shortcut-manager select,.d-scoped-shortcut-manager textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-scoped-shortcut-manager button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-scoped-shortcut-manager button:disabled{opacity:.5;cursor:default}
+.d-scoped-shortcut-manager :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-scoped-shortcut-manager [aria-invalid=true]{border-color:var(--warn)!important}
+.d-scoped-shortcut-manager .d-scroll{max-width:100%;overflow:auto}
+.d-scoped-shortcut-manager table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-scoped-shortcut-manager th,.d-scoped-shortcut-manager td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-scoped-shortcut-manager caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-scoped-shortcut-manager progress{width:100%;accent-color:var(--ink)}
+.d-scoped-shortcut-manager pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-scoped-shortcut-manager h3,.d-scoped-shortcut-manager p{margin:8px 0}
+.d-scoped-shortcut-manager [aria-pressed=true],.d-scoped-shortcut-manager [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-scoped-shortcut-manager .d-grow{flex:1;min-width:100px}
+.d-scoped-shortcut-manager summary{cursor:pointer;padding:6px 0}
+.d-scoped-shortcut-manager ul,.d-scoped-shortcut-manager ol{padding-left:24px}

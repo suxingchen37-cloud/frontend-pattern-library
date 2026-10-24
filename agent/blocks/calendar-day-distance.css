@@ -1,0 +1,23 @@
+.d-calendar-day-distance{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-calendar-day-distance *,.d-calendar-day-distance *::before,.d-calendar-day-distance *::after{box-sizing:border-box}
+.d-calendar-day-distance [hidden]{display:none!important}
+.d-calendar-day-distance .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-calendar-day-distance .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-calendar-day-distance label{display:block;margin:8px 0}
+.d-calendar-day-distance input,.d-calendar-day-distance select,.d-calendar-day-distance textarea,.d-calendar-day-distance button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-calendar-day-distance input:not([type=checkbox]):not([type=radio]),.d-calendar-day-distance select,.d-calendar-day-distance textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-calendar-day-distance button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-calendar-day-distance button:disabled{opacity:.5;cursor:default}
+.d-calendar-day-distance :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-calendar-day-distance [aria-invalid=true]{border-color:var(--warn)!important}
+.d-calendar-day-distance .d-scroll{max-width:100%;overflow:auto}
+.d-calendar-day-distance table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-calendar-day-distance th,.d-calendar-day-distance td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-calendar-day-distance caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-calendar-day-distance progress{width:100%;accent-color:var(--ink)}
+.d-calendar-day-distance pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-calendar-day-distance h3,.d-calendar-day-distance p{margin:8px 0}
+.d-calendar-day-distance [aria-pressed=true],.d-calendar-day-distance [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-calendar-day-distance .d-grow{flex:1;min-width:100px}
+.d-calendar-day-distance summary{cursor:pointer;padding:6px 0}
+.d-calendar-day-distance ul,.d-calendar-day-distance ol{padding-left:24px}

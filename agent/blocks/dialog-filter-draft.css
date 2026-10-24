@@ -1,0 +1,24 @@
+.d-dialog-filter-draft{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-dialog-filter-draft *,.d-dialog-filter-draft *::before,.d-dialog-filter-draft *::after{box-sizing:border-box}
+.d-dialog-filter-draft [hidden]{display:none!important}
+.d-dialog-filter-draft .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-dialog-filter-draft .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-dialog-filter-draft label{display:block;margin:8px 0}
+.d-dialog-filter-draft input,.d-dialog-filter-draft select,.d-dialog-filter-draft textarea,.d-dialog-filter-draft button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-dialog-filter-draft input:not([type=checkbox]):not([type=radio]),.d-dialog-filter-draft select,.d-dialog-filter-draft textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-dialog-filter-draft button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-dialog-filter-draft button:disabled{opacity:.5;cursor:default}
+.d-dialog-filter-draft :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-dialog-filter-draft [aria-invalid=true]{border-color:var(--warn)!important}
+.d-dialog-filter-draft .d-scroll{max-width:100%;overflow:auto}
+.d-dialog-filter-draft table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-dialog-filter-draft th,.d-dialog-filter-draft td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-dialog-filter-draft caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-dialog-filter-draft progress{width:100%;accent-color:var(--ink)}
+.d-dialog-filter-draft pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-dialog-filter-draft h3,.d-dialog-filter-draft p{margin:8px 0}
+.d-dialog-filter-draft [aria-pressed=true],.d-dialog-filter-draft [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-dialog-filter-draft .d-grow{flex:1;min-width:100px}
+.d-dialog-filter-draft summary{cursor:pointer;padding:6px 0}
+.d-dialog-filter-draft ul,.d-dialog-filter-draft ol{padding-left:24px}
+.d-dialog-filter-draft dialog{max-width:min(400px,calc(100vw - 32px));max-height:85vh;overflow:auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:16px}.d-dialog-filter-draft dialog::backdrop{background:rgb(0 0 0 / .35)}

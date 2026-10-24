@@ -1,0 +1,23 @@
+.d-aspect-ratio-reducer{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-aspect-ratio-reducer *,.d-aspect-ratio-reducer *::before,.d-aspect-ratio-reducer *::after{box-sizing:border-box}
+.d-aspect-ratio-reducer [hidden]{display:none!important}
+.d-aspect-ratio-reducer .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-aspect-ratio-reducer .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-aspect-ratio-reducer label{display:block;margin:8px 0}
+.d-aspect-ratio-reducer input,.d-aspect-ratio-reducer select,.d-aspect-ratio-reducer textarea,.d-aspect-ratio-reducer button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-aspect-ratio-reducer input:not([type=checkbox]):not([type=radio]),.d-aspect-ratio-reducer select,.d-aspect-ratio-reducer textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-aspect-ratio-reducer button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-aspect-ratio-reducer button:disabled{opacity:.5;cursor:default}
+.d-aspect-ratio-reducer :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-aspect-ratio-reducer [aria-invalid=true]{border-color:var(--warn)!important}
+.d-aspect-ratio-reducer .d-scroll{max-width:100%;overflow:auto}
+.d-aspect-ratio-reducer table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-aspect-ratio-reducer th,.d-aspect-ratio-reducer td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-aspect-ratio-reducer caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-aspect-ratio-reducer progress{width:100%;accent-color:var(--ink)}
+.d-aspect-ratio-reducer pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-aspect-ratio-reducer h3,.d-aspect-ratio-reducer p{margin:8px 0}
+.d-aspect-ratio-reducer [aria-pressed=true],.d-aspect-ratio-reducer [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-aspect-ratio-reducer .d-grow{flex:1;min-width:100px}
+.d-aspect-ratio-reducer summary{cursor:pointer;padding:6px 0}
+.d-aspect-ratio-reducer ul,.d-aspect-ratio-reducer ol{padding-left:24px}

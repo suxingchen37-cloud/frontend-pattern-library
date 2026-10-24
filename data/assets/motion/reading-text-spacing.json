@@ -1,0 +1,18 @@
+{
+  "id": "reading-text-spacing",
+  "cat": "无障碍",
+  "t": "阅读字距与行距控制",
+  "en": "reading text spacing",
+  "d": "分别调整字距和行距以检查阅读适配，恢复按钮回到示例值；不规定项目字体或排版。",
+  "body": "<section class=\"d-reading-text-spacing\" aria-label=\"阅读字距与行距控制\"><label>行距<input data-line type=\"range\" min=\"1\" max=\"2.5\" step=\"0.1\" value=\"1.5\"></label><label>字距<input data-letter type=\"range\" min=\"0\" max=\"0.2\" step=\"0.01\" value=\"0\"></label><button type=\"button\" data-reset>恢复示例间距</button><p data-text>门口镜头先交代空间。人物从走廊进入，停顿后再看向窗边，阅读调整时文字应保持可见。</p><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-reading-text-spacing{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-reading-text-spacing *,.d-reading-text-spacing *::before,.d-reading-text-spacing *::after{box-sizing:border-box}\n.d-reading-text-spacing [hidden]{display:none!important}\n.d-reading-text-spacing .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-reading-text-spacing .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-reading-text-spacing label{display:block;margin:8px 0}\n.d-reading-text-spacing input,.d-reading-text-spacing select,.d-reading-text-spacing textarea,.d-reading-text-spacing button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-reading-text-spacing input:not([type=checkbox]):not([type=radio]),.d-reading-text-spacing select,.d-reading-text-spacing textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-reading-text-spacing button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-reading-text-spacing button:disabled{opacity:.5;cursor:default}\n.d-reading-text-spacing :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-reading-text-spacing [aria-invalid=true]{border-color:var(--warn)!important}\n.d-reading-text-spacing .d-scroll{max-width:100%;overflow:auto}\n.d-reading-text-spacing table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-reading-text-spacing th,.d-reading-text-spacing td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-reading-text-spacing caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-reading-text-spacing progress{width:100%;accent-color:var(--ink)}\n.d-reading-text-spacing pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-reading-text-spacing h3,.d-reading-text-spacing p{margin:8px 0}\n.d-reading-text-spacing [aria-pressed=true],.d-reading-text-spacing [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-reading-text-spacing .d-grow{flex:1;min-width:100px}\n.d-reading-text-spacing summary{cursor:pointer;padding:6px 0}\n.d-reading-text-spacing ul,.d-reading-text-spacing ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const draw=()=>{q('[data-text]').style.lineHeight=q('[data-line]').value;q('[data-text]').style.letterSpacing=q('[data-letter]').value+'em';say('行距 '+q('[data-line]').value+'；字距 '+q('[data-letter]').value+'em');};qa('input').forEach(el=>el.oninput=draw);q('[data-reset]').onclick=()=>{q('[data-line]').value='1.5';q('[data-letter]').value='0';draw();};draw();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "无障碍",
+    "阅读字距与行距控制",
+    "交互",
+    "本地演示"
+  ]
+}

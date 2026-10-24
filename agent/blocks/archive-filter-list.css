@@ -1,0 +1,23 @@
+.d-archive-filter-list{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-archive-filter-list *,.d-archive-filter-list *::before,.d-archive-filter-list *::after{box-sizing:border-box}
+.d-archive-filter-list [hidden]{display:none!important}
+.d-archive-filter-list .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-archive-filter-list .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-archive-filter-list label{display:block;margin:8px 0}
+.d-archive-filter-list input,.d-archive-filter-list select,.d-archive-filter-list textarea,.d-archive-filter-list button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-archive-filter-list input:not([type=checkbox]):not([type=radio]),.d-archive-filter-list select,.d-archive-filter-list textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-archive-filter-list button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-archive-filter-list button:disabled{opacity:.5;cursor:default}
+.d-archive-filter-list :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-archive-filter-list [aria-invalid=true]{border-color:var(--warn)!important}
+.d-archive-filter-list .d-scroll{max-width:100%;overflow:auto}
+.d-archive-filter-list table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-archive-filter-list th,.d-archive-filter-list td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-archive-filter-list caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-archive-filter-list progress{width:100%;accent-color:var(--ink)}
+.d-archive-filter-list pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-archive-filter-list h3,.d-archive-filter-list p{margin:8px 0}
+.d-archive-filter-list [aria-pressed=true],.d-archive-filter-list [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-archive-filter-list .d-grow{flex:1;min-width:100px}
+.d-archive-filter-list summary{cursor:pointer;padding:6px 0}
+.d-archive-filter-list ul,.d-archive-filter-list ol{padding-left:24px}

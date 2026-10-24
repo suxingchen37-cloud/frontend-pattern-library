@@ -1,0 +1,23 @@
+.d-range-select-list{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-range-select-list *,.d-range-select-list *::before,.d-range-select-list *::after{box-sizing:border-box}
+.d-range-select-list [hidden]{display:none!important}
+.d-range-select-list .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-range-select-list .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-range-select-list label{display:block;margin:8px 0}
+.d-range-select-list input,.d-range-select-list select,.d-range-select-list textarea,.d-range-select-list button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-range-select-list input:not([type=checkbox]):not([type=radio]),.d-range-select-list select,.d-range-select-list textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-range-select-list button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-range-select-list button:disabled{opacity:.5;cursor:default}
+.d-range-select-list :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-range-select-list [aria-invalid=true]{border-color:var(--warn)!important}
+.d-range-select-list .d-scroll{max-width:100%;overflow:auto}
+.d-range-select-list table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-range-select-list th,.d-range-select-list td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-range-select-list caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-range-select-list progress{width:100%;accent-color:var(--ink)}
+.d-range-select-list pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-range-select-list h3,.d-range-select-list p{margin:8px 0}
+.d-range-select-list [aria-pressed=true],.d-range-select-list [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-range-select-list .d-grow{flex:1;min-width:100px}
+.d-range-select-list summary{cursor:pointer;padding:6px 0}
+.d-range-select-list ul,.d-range-select-list ol{padding-left:24px}

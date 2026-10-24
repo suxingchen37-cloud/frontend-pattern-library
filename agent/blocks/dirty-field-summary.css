@@ -1,0 +1,23 @@
+.d-dirty-field-summary{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-dirty-field-summary *,.d-dirty-field-summary *::before,.d-dirty-field-summary *::after{box-sizing:border-box}
+.d-dirty-field-summary [hidden]{display:none!important}
+.d-dirty-field-summary .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-dirty-field-summary .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-dirty-field-summary label{display:block;margin:8px 0}
+.d-dirty-field-summary input,.d-dirty-field-summary select,.d-dirty-field-summary textarea,.d-dirty-field-summary button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-dirty-field-summary input:not([type=checkbox]):not([type=radio]),.d-dirty-field-summary select,.d-dirty-field-summary textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-dirty-field-summary button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-dirty-field-summary button:disabled{opacity:.5;cursor:default}
+.d-dirty-field-summary :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-dirty-field-summary [aria-invalid=true]{border-color:var(--warn)!important}
+.d-dirty-field-summary .d-scroll{max-width:100%;overflow:auto}
+.d-dirty-field-summary table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-dirty-field-summary th,.d-dirty-field-summary td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-dirty-field-summary caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-dirty-field-summary progress{width:100%;accent-color:var(--ink)}
+.d-dirty-field-summary pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-dirty-field-summary h3,.d-dirty-field-summary p{margin:8px 0}
+.d-dirty-field-summary [aria-pressed=true],.d-dirty-field-summary [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-dirty-field-summary .d-grow{flex:1;min-width:100px}
+.d-dirty-field-summary summary{cursor:pointer;padding:6px 0}
+.d-dirty-field-summary ul,.d-dirty-field-summary ol{padding-left:24px}
