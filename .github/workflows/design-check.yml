@@ -1,0 +1,30 @@
+name: design-check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - name: Check generated files and quality contracts
+        run: |
+          node tools/build.mjs --check --strict
+          node tools/site.mjs --check
+          node tools/emit.mjs --check
+          node tools/verify.mjs
+      - name: Run regression tests
+        run: node --test tools/tests/*.test.mjs
+      - name: Check publication allowlist
+        run: node tools/package-site.mjs
