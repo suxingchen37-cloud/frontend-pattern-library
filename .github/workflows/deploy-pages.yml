@@ -1,0 +1,59 @@
+name: deploy-pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - name: Verify committed sources and generated files
+        run: |
+          node tools/build.mjs --check --strict
+          node tools/site.mjs --check
+          node tools/emit.mjs --check
+          node tools/verify.mjs
+          node --test tools/tests/*.test.mjs
+      - name: Rebuild and package public site
+        run: |
+          node tools/build.mjs --strict
+          node tools/site.mjs
+          node tools/emit.mjs
+          node tools/verify.mjs
+          node tools/package-site.mjs
+      - uses: actions/configure-pages@v6.0.0
+      - uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1
