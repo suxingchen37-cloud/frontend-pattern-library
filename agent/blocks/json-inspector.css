@@ -1,0 +1,24 @@
+.d-json-inspector{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-json-inspector *,.d-json-inspector *::before,.d-json-inspector *::after{box-sizing:border-box}
+.d-json-inspector [hidden]{display:none!important}
+.d-json-inspector .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-json-inspector .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-json-inspector label{display:block;margin:8px 0}
+.d-json-inspector input,.d-json-inspector select,.d-json-inspector textarea,.d-json-inspector button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-json-inspector input:not([type=checkbox]):not([type=radio]),.d-json-inspector select,.d-json-inspector textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-json-inspector button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-json-inspector button:disabled{opacity:.5;cursor:default}
+.d-json-inspector :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-json-inspector [aria-invalid=true]{border-color:var(--warn)!important}
+.d-json-inspector .d-scroll{max-width:100%;overflow:auto}
+.d-json-inspector table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-json-inspector th,.d-json-inspector td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-json-inspector caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-json-inspector progress{width:100%;accent-color:var(--ink)}
+.d-json-inspector pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-json-inspector h3,.d-json-inspector p{margin:8px 0}
+.d-json-inspector [aria-pressed=true],.d-json-inspector [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-json-inspector .d-grow{flex:1;min-width:100px}
+.d-json-inspector summary{cursor:pointer;padding:6px 0}
+.d-json-inspector ul,.d-json-inspector ol{padding-left:24px}
+.d-json-inspector [data-tree]{border-top:1px solid var(--line);margin-top:8px}.d-json-inspector [data-tree] details{padding-left:12px}.d-json-inspector [data-tree] p{font-family:var(--font-mono);font-size:12px}

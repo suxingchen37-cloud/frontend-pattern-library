@@ -1,0 +1,17 @@
+{
+  "id": "dependent-selects",
+  "cat": "表单",
+  "t": "联动选项",
+  "en": "dependent selects",
+  "d": "上级分类变化后重建下级选项并重置旧值，防止把不适用的导出格式带入下一步。",
+  "body": "<section class=\"d-dependent-selects\" aria-label=\"联动选项\"><label>素材类型<select data-kind><option value=\"image\">图片</option><option value=\"video\">视频</option></select></label><label>导出格式<select data-format></select></label><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-dependent-selects{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-dependent-selects *,.d-dependent-selects *::before,.d-dependent-selects *::after{box-sizing:border-box}\n.d-dependent-selects [hidden]{display:none!important}\n.d-dependent-selects .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-dependent-selects .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-dependent-selects label{display:block;margin:8px 0}\n.d-dependent-selects input,.d-dependent-selects select,.d-dependent-selects textarea,.d-dependent-selects button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-dependent-selects input:not([type=checkbox]):not([type=radio]),.d-dependent-selects select,.d-dependent-selects textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-dependent-selects button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-dependent-selects button:disabled{opacity:.5;cursor:default}\n.d-dependent-selects :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-dependent-selects [aria-invalid=true]{border-color:var(--warn)!important}\n.d-dependent-selects .d-scroll{max-width:100%;overflow:auto}\n.d-dependent-selects table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-dependent-selects th,.d-dependent-selects td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-dependent-selects caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-dependent-selects progress{width:100%;accent-color:var(--ink)}\n.d-dependent-selects pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-dependent-selects h3,.d-dependent-selects p{margin:8px 0}\n.d-dependent-selects [aria-pressed=true],.d-dependent-selects [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-dependent-selects .d-grow{flex:1;min-width:100px}\n.d-dependent-selects summary{cursor:pointer;padding:6px 0}\n.d-dependent-selects ul,.d-dependent-selects ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const kinds={image:['PNG','JPEG','WebP'],video:['MP4','WebM']},kind=q('[data-kind]'),format=q('[data-format]');const rebuild=()=>{format.replaceChildren(...kinds[kind.value].map(value=>{const option=document.createElement('option');option.value=value;option.textContent=value;return option;}));say('可用格式已更新为 '+format.value);};kind.onchange=rebuild;format.onchange=()=>say('选择格式：'+format.value);rebuild();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "联动",
+    "选择",
+    "格式"
+  ]
+}

@@ -1,0 +1,23 @@
+.d-table-column-toggle{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-table-column-toggle *,.d-table-column-toggle *::before,.d-table-column-toggle *::after{box-sizing:border-box}
+.d-table-column-toggle [hidden]{display:none!important}
+.d-table-column-toggle .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-table-column-toggle .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-table-column-toggle label{display:block;margin:8px 0}
+.d-table-column-toggle input,.d-table-column-toggle select,.d-table-column-toggle textarea,.d-table-column-toggle button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-table-column-toggle input:not([type=checkbox]):not([type=radio]),.d-table-column-toggle select,.d-table-column-toggle textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-table-column-toggle button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-table-column-toggle button:disabled{opacity:.5;cursor:default}
+.d-table-column-toggle :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-table-column-toggle [aria-invalid=true]{border-color:var(--warn)!important}
+.d-table-column-toggle .d-scroll{max-width:100%;overflow:auto}
+.d-table-column-toggle table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-table-column-toggle th,.d-table-column-toggle td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-table-column-toggle caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-table-column-toggle progress{width:100%;accent-color:var(--ink)}
+.d-table-column-toggle pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-table-column-toggle h3,.d-table-column-toggle p{margin:8px 0}
+.d-table-column-toggle [aria-pressed=true],.d-table-column-toggle [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-table-column-toggle .d-grow{flex:1;min-width:100px}
+.d-table-column-toggle summary{cursor:pointer;padding:6px 0}
+.d-table-column-toggle ul,.d-table-column-toggle ol{padding-left:24px}

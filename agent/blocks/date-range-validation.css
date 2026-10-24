@@ -1,0 +1,23 @@
+.d-date-range-validation{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-date-range-validation *,.d-date-range-validation *::before,.d-date-range-validation *::after{box-sizing:border-box}
+.d-date-range-validation [hidden]{display:none!important}
+.d-date-range-validation .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-date-range-validation .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-date-range-validation label{display:block;margin:8px 0}
+.d-date-range-validation input,.d-date-range-validation select,.d-date-range-validation textarea,.d-date-range-validation button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-date-range-validation input:not([type=checkbox]):not([type=radio]),.d-date-range-validation select,.d-date-range-validation textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-date-range-validation button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-date-range-validation button:disabled{opacity:.5;cursor:default}
+.d-date-range-validation :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-date-range-validation [aria-invalid=true]{border-color:var(--warn)!important}
+.d-date-range-validation .d-scroll{max-width:100%;overflow:auto}
+.d-date-range-validation table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-date-range-validation th,.d-date-range-validation td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-date-range-validation caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-date-range-validation progress{width:100%;accent-color:var(--ink)}
+.d-date-range-validation pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-date-range-validation h3,.d-date-range-validation p{margin:8px 0}
+.d-date-range-validation [aria-pressed=true],.d-date-range-validation [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-date-range-validation .d-grow{flex:1;min-width:100px}
+.d-date-range-validation summary{cursor:pointer;padding:6px 0}
+.d-date-range-validation ul,.d-date-range-validation ol{padding-left:24px}

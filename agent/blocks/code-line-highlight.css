@@ -1,0 +1,24 @@
+.d-code-line-highlight{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-code-line-highlight *,.d-code-line-highlight *::before,.d-code-line-highlight *::after{box-sizing:border-box}
+.d-code-line-highlight [hidden]{display:none!important}
+.d-code-line-highlight .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-code-line-highlight .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-code-line-highlight label{display:block;margin:8px 0}
+.d-code-line-highlight input,.d-code-line-highlight select,.d-code-line-highlight textarea,.d-code-line-highlight button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-code-line-highlight input:not([type=checkbox]):not([type=radio]),.d-code-line-highlight select,.d-code-line-highlight textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-code-line-highlight button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-code-line-highlight button:disabled{opacity:.5;cursor:default}
+.d-code-line-highlight :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-code-line-highlight [aria-invalid=true]{border-color:var(--warn)!important}
+.d-code-line-highlight .d-scroll{max-width:100%;overflow:auto}
+.d-code-line-highlight table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-code-line-highlight th,.d-code-line-highlight td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-code-line-highlight caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-code-line-highlight progress{width:100%;accent-color:var(--ink)}
+.d-code-line-highlight pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-code-line-highlight h3,.d-code-line-highlight p{margin:8px 0}
+.d-code-line-highlight [aria-pressed=true],.d-code-line-highlight [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-code-line-highlight .d-grow{flex:1;min-width:100px}
+.d-code-line-highlight summary{cursor:pointer;padding:6px 0}
+.d-code-line-highlight ul,.d-code-line-highlight ol{padding-left:24px}
+.d-code-line-highlight [data-line]{width:100%;text-align:left}.d-code-line-highlight code{font-family:var(--font-mono);font-size:12px}

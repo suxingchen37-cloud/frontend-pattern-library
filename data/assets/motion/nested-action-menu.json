@@ -1,0 +1,17 @@
+{
+  "id": "nested-action-menu",
+  "cat": "导航",
+  "t": "分层操作入口",
+  "en": "nested action disclosure",
+  "d": "将同类但不常用的操作放在可展开层级里，保留原生键盘操作，不把所有动作挤成一排。",
+  "body": "<section class=\"d-nested-action-menu\" aria-label=\"分层操作入口\"><details><summary>项目操作</summary><button data-action=\"复制项目\" type=\"button\">复制项目</button><details><summary>导出格式</summary><div class=\"d-row\"><button data-action=\"导出 JSON\" type=\"button\">JSON</button><button data-action=\"导出 Markdown\" type=\"button\">Markdown</button></div></details></details><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-nested-action-menu{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-nested-action-menu *,.d-nested-action-menu *::before,.d-nested-action-menu *::after{box-sizing:border-box}\n.d-nested-action-menu [hidden]{display:none!important}\n.d-nested-action-menu .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-nested-action-menu .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-nested-action-menu label{display:block;margin:8px 0}\n.d-nested-action-menu input,.d-nested-action-menu select,.d-nested-action-menu textarea,.d-nested-action-menu button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-nested-action-menu input:not([type=checkbox]):not([type=radio]),.d-nested-action-menu select,.d-nested-action-menu textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-nested-action-menu button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-nested-action-menu button:disabled{opacity:.5;cursor:default}\n.d-nested-action-menu :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-nested-action-menu [aria-invalid=true]{border-color:var(--warn)!important}\n.d-nested-action-menu .d-scroll{max-width:100%;overflow:auto}\n.d-nested-action-menu table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-nested-action-menu th,.d-nested-action-menu td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-nested-action-menu caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-nested-action-menu progress{width:100%;accent-color:var(--ink)}\n.d-nested-action-menu pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-nested-action-menu h3,.d-nested-action-menu p{margin:8px 0}\n.d-nested-action-menu [aria-pressed=true],.d-nested-action-menu [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-nested-action-menu .d-grow{flex:1;min-width:100px}\n.d-nested-action-menu summary{cursor:pointer;padding:6px 0}\n.d-nested-action-menu ul,.d-nested-action-menu ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{qa('[data-action]').forEach(button=>button.onclick=()=>{say('已选择：'+button.dataset.action+'（演示，不下载文件）');qa('details').forEach(item=>item.open=false);q('summary').focus();});})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "分层",
+    "操作",
+    "原生控件"
+  ]
+}

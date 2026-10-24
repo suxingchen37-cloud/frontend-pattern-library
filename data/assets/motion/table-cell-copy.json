@@ -1,0 +1,17 @@
+{
+  "id": "table-cell-copy",
+  "cat": "表格",
+  "t": "单元格复制",
+  "en": "copy table cell",
+  "d": "只复制被点中的字段而不夹带整行内容；浏览器不能自动复制时展示可选中的原文。",
+  "body": "<section class=\"d-table-cell-copy\" aria-label=\"单元格复制\"><table><caption>镜头编号</caption><tbody><tr><th scope=\"row\">门口</th><td><button type=\"button\" data-copy=\"SC-001\">SC-001</button></td></tr><tr><th scope=\"row\">走廊</th><td><button type=\"button\" data-copy=\"SC-002\">SC-002</button></td></tr></tbody></table><label data-fallback hidden>请手动复制<input data-manual readonly></label><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-table-cell-copy{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-table-cell-copy *,.d-table-cell-copy *::before,.d-table-cell-copy *::after{box-sizing:border-box}\n.d-table-cell-copy [hidden]{display:none!important}\n.d-table-cell-copy .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-table-cell-copy .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-table-cell-copy label{display:block;margin:8px 0}\n.d-table-cell-copy input,.d-table-cell-copy select,.d-table-cell-copy textarea,.d-table-cell-copy button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-table-cell-copy input:not([type=checkbox]):not([type=radio]),.d-table-cell-copy select,.d-table-cell-copy textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-table-cell-copy button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-table-cell-copy button:disabled{opacity:.5;cursor:default}\n.d-table-cell-copy :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-table-cell-copy [aria-invalid=true]{border-color:var(--warn)!important}\n.d-table-cell-copy .d-scroll{max-width:100%;overflow:auto}\n.d-table-cell-copy table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-table-cell-copy th,.d-table-cell-copy td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-table-cell-copy caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-table-cell-copy progress{width:100%;accent-color:var(--ink)}\n.d-table-cell-copy pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-table-cell-copy h3,.d-table-cell-copy p{margin:8px 0}\n.d-table-cell-copy [aria-pressed=true],.d-table-cell-copy [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-table-cell-copy .d-grow{flex:1;min-width:100px}\n.d-table-cell-copy summary{cursor:pointer;padding:6px 0}\n.d-table-cell-copy ul,.d-table-cell-copy ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{qa('[data-copy]').forEach(button=>button.onclick=async()=>{try{await navigator.clipboard.writeText(button.dataset.copy);q('[data-fallback]').hidden=true;say('已复制 '+button.dataset.copy);}catch{q('[data-fallback]').hidden=false;q('[data-manual]').value=button.dataset.copy;q('[data-manual]').focus();q('[data-manual]').select();say('自动复制不可用，已选中编号');}});})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "复制",
+    "单元格",
+    "降级"
+  ]
+}

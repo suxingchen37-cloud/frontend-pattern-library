@@ -1,0 +1,23 @@
+.d-table-multi-sort{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-table-multi-sort *,.d-table-multi-sort *::before,.d-table-multi-sort *::after{box-sizing:border-box}
+.d-table-multi-sort [hidden]{display:none!important}
+.d-table-multi-sort .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-table-multi-sort .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-table-multi-sort label{display:block;margin:8px 0}
+.d-table-multi-sort input,.d-table-multi-sort select,.d-table-multi-sort textarea,.d-table-multi-sort button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-table-multi-sort input:not([type=checkbox]):not([type=radio]),.d-table-multi-sort select,.d-table-multi-sort textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-table-multi-sort button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-table-multi-sort button:disabled{opacity:.5;cursor:default}
+.d-table-multi-sort :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-table-multi-sort [aria-invalid=true]{border-color:var(--warn)!important}
+.d-table-multi-sort .d-scroll{max-width:100%;overflow:auto}
+.d-table-multi-sort table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-table-multi-sort th,.d-table-multi-sort td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-table-multi-sort caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-table-multi-sort progress{width:100%;accent-color:var(--ink)}
+.d-table-multi-sort pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-table-multi-sort h3,.d-table-multi-sort p{margin:8px 0}
+.d-table-multi-sort [aria-pressed=true],.d-table-multi-sort [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-table-multi-sort .d-grow{flex:1;min-width:100px}
+.d-table-multi-sort summary{cursor:pointer;padding:6px 0}
+.d-table-multi-sort ul,.d-table-multi-sort ol{padding-left:24px}

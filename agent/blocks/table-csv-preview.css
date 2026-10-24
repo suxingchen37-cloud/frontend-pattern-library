@@ -1,0 +1,23 @@
+.d-table-csv-preview{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-table-csv-preview *,.d-table-csv-preview *::before,.d-table-csv-preview *::after{box-sizing:border-box}
+.d-table-csv-preview [hidden]{display:none!important}
+.d-table-csv-preview .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-table-csv-preview .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-table-csv-preview label{display:block;margin:8px 0}
+.d-table-csv-preview input,.d-table-csv-preview select,.d-table-csv-preview textarea,.d-table-csv-preview button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-table-csv-preview input:not([type=checkbox]):not([type=radio]),.d-table-csv-preview select,.d-table-csv-preview textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-table-csv-preview button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-table-csv-preview button:disabled{opacity:.5;cursor:default}
+.d-table-csv-preview :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-table-csv-preview [aria-invalid=true]{border-color:var(--warn)!important}
+.d-table-csv-preview .d-scroll{max-width:100%;overflow:auto}
+.d-table-csv-preview table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-table-csv-preview th,.d-table-csv-preview td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-table-csv-preview caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-table-csv-preview progress{width:100%;accent-color:var(--ink)}
+.d-table-csv-preview pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-table-csv-preview h3,.d-table-csv-preview p{margin:8px 0}
+.d-table-csv-preview [aria-pressed=true],.d-table-csv-preview [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-table-csv-preview .d-grow{flex:1;min-width:100px}
+.d-table-csv-preview summary{cursor:pointer;padding:6px 0}
+.d-table-csv-preview ul,.d-table-csv-preview ol{padding-left:24px}

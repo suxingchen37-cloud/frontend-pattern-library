@@ -1,0 +1,23 @@
+.d-draft-conflict-resolution{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-draft-conflict-resolution *,.d-draft-conflict-resolution *::before,.d-draft-conflict-resolution *::after{box-sizing:border-box}
+.d-draft-conflict-resolution [hidden]{display:none!important}
+.d-draft-conflict-resolution .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-draft-conflict-resolution .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-draft-conflict-resolution label{display:block;margin:8px 0}
+.d-draft-conflict-resolution input,.d-draft-conflict-resolution select,.d-draft-conflict-resolution textarea,.d-draft-conflict-resolution button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-draft-conflict-resolution input:not([type=checkbox]):not([type=radio]),.d-draft-conflict-resolution select,.d-draft-conflict-resolution textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-draft-conflict-resolution button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-draft-conflict-resolution button:disabled{opacity:.5;cursor:default}
+.d-draft-conflict-resolution :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-draft-conflict-resolution [aria-invalid=true]{border-color:var(--warn)!important}
+.d-draft-conflict-resolution .d-scroll{max-width:100%;overflow:auto}
+.d-draft-conflict-resolution table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-draft-conflict-resolution th,.d-draft-conflict-resolution td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-draft-conflict-resolution caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-draft-conflict-resolution progress{width:100%;accent-color:var(--ink)}
+.d-draft-conflict-resolution pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-draft-conflict-resolution h3,.d-draft-conflict-resolution p{margin:8px 0}
+.d-draft-conflict-resolution [aria-pressed=true],.d-draft-conflict-resolution [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-draft-conflict-resolution .d-grow{flex:1;min-width:100px}
+.d-draft-conflict-resolution summary{cursor:pointer;padding:6px 0}
+.d-draft-conflict-resolution ul,.d-draft-conflict-resolution ol{padding-left:24px}

@@ -1,0 +1,23 @@
+.d-cancelable-task-progress{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-cancelable-task-progress *,.d-cancelable-task-progress *::before,.d-cancelable-task-progress *::after{box-sizing:border-box}
+.d-cancelable-task-progress [hidden]{display:none!important}
+.d-cancelable-task-progress .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-cancelable-task-progress .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-cancelable-task-progress label{display:block;margin:8px 0}
+.d-cancelable-task-progress input,.d-cancelable-task-progress select,.d-cancelable-task-progress textarea,.d-cancelable-task-progress button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-cancelable-task-progress input:not([type=checkbox]):not([type=radio]),.d-cancelable-task-progress select,.d-cancelable-task-progress textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-cancelable-task-progress button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-cancelable-task-progress button:disabled{opacity:.5;cursor:default}
+.d-cancelable-task-progress :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-cancelable-task-progress [aria-invalid=true]{border-color:var(--warn)!important}
+.d-cancelable-task-progress .d-scroll{max-width:100%;overflow:auto}
+.d-cancelable-task-progress table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-cancelable-task-progress th,.d-cancelable-task-progress td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-cancelable-task-progress caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-cancelable-task-progress progress{width:100%;accent-color:var(--ink)}
+.d-cancelable-task-progress pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-cancelable-task-progress h3,.d-cancelable-task-progress p{margin:8px 0}
+.d-cancelable-task-progress [aria-pressed=true],.d-cancelable-task-progress [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-cancelable-task-progress .d-grow{flex:1;min-width:100px}
+.d-cancelable-task-progress summary{cursor:pointer;padding:6px 0}
+.d-cancelable-task-progress ul,.d-cancelable-task-progress ol{padding-left:24px}

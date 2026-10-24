@@ -1,0 +1,17 @@
+{
+  "id": "clearable-input",
+  "cat": "表单",
+  "t": "可清空输入",
+  "en": "clearable input",
+  "d": "清空动作只在有内容时可用，执行后将焦点交回输入框，便于连续重输而不改变键盘路径。",
+  "body": "<section class=\"d-clearable-input\" aria-label=\"可清空输入\"><label>搜索素材<input data-input type=\"search\" value=\"走廊夜景\"></label><button type=\"button\" data-clear>清空</button><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-clearable-input{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-clearable-input *,.d-clearable-input *::before,.d-clearable-input *::after{box-sizing:border-box}\n.d-clearable-input [hidden]{display:none!important}\n.d-clearable-input .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-clearable-input .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-clearable-input label{display:block;margin:8px 0}\n.d-clearable-input input,.d-clearable-input select,.d-clearable-input textarea,.d-clearable-input button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-clearable-input input:not([type=checkbox]):not([type=radio]),.d-clearable-input select,.d-clearable-input textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-clearable-input button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-clearable-input button:disabled{opacity:.5;cursor:default}\n.d-clearable-input :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-clearable-input [aria-invalid=true]{border-color:var(--warn)!important}\n.d-clearable-input .d-scroll{max-width:100%;overflow:auto}\n.d-clearable-input table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-clearable-input th,.d-clearable-input td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-clearable-input caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-clearable-input progress{width:100%;accent-color:var(--ink)}\n.d-clearable-input pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-clearable-input h3,.d-clearable-input p{margin:8px 0}\n.d-clearable-input [aria-pressed=true],.d-clearable-input [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-clearable-input .d-grow{flex:1;min-width:100px}\n.d-clearable-input summary{cursor:pointer;padding:6px 0}\n.d-clearable-input ul,.d-clearable-input ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const input=q('[data-input]'),clear=q('[data-clear]');const sync=()=>{clear.disabled=!input.value;};input.oninput=sync;clear.onclick=()=>{input.value='';sync();input.focus();input.dispatchEvent(new Event('input',{bubbles:true}));say('输入已清空');};sync();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "输入",
+    "清空",
+    "焦点"
+  ]
+}

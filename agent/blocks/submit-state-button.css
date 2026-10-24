@@ -1,0 +1,23 @@
+.d-submit-state-button{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-submit-state-button *,.d-submit-state-button *::before,.d-submit-state-button *::after{box-sizing:border-box}
+.d-submit-state-button [hidden]{display:none!important}
+.d-submit-state-button .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-submit-state-button .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-submit-state-button label{display:block;margin:8px 0}
+.d-submit-state-button input,.d-submit-state-button select,.d-submit-state-button textarea,.d-submit-state-button button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-submit-state-button input:not([type=checkbox]):not([type=radio]),.d-submit-state-button select,.d-submit-state-button textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-submit-state-button button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-submit-state-button button:disabled{opacity:.5;cursor:default}
+.d-submit-state-button :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-submit-state-button [aria-invalid=true]{border-color:var(--warn)!important}
+.d-submit-state-button .d-scroll{max-width:100%;overflow:auto}
+.d-submit-state-button table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-submit-state-button th,.d-submit-state-button td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-submit-state-button caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-submit-state-button progress{width:100%;accent-color:var(--ink)}
+.d-submit-state-button pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-submit-state-button h3,.d-submit-state-button p{margin:8px 0}
+.d-submit-state-button [aria-pressed=true],.d-submit-state-button [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-submit-state-button .d-grow{flex:1;min-width:100px}
+.d-submit-state-button summary{cursor:pointer;padding:6px 0}
+.d-submit-state-button ul,.d-submit-state-button ol{padding-left:24px}

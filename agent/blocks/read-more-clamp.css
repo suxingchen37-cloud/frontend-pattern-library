@@ -1,0 +1,24 @@
+.d-read-more-clamp{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-read-more-clamp *,.d-read-more-clamp *::before,.d-read-more-clamp *::after{box-sizing:border-box}
+.d-read-more-clamp [hidden]{display:none!important}
+.d-read-more-clamp .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-read-more-clamp .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-read-more-clamp label{display:block;margin:8px 0}
+.d-read-more-clamp input,.d-read-more-clamp select,.d-read-more-clamp textarea,.d-read-more-clamp button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-read-more-clamp input:not([type=checkbox]):not([type=radio]),.d-read-more-clamp select,.d-read-more-clamp textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-read-more-clamp button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-read-more-clamp button:disabled{opacity:.5;cursor:default}
+.d-read-more-clamp :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-read-more-clamp [aria-invalid=true]{border-color:var(--warn)!important}
+.d-read-more-clamp .d-scroll{max-width:100%;overflow:auto}
+.d-read-more-clamp table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-read-more-clamp th,.d-read-more-clamp td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-read-more-clamp caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-read-more-clamp progress{width:100%;accent-color:var(--ink)}
+.d-read-more-clamp pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-read-more-clamp h3,.d-read-more-clamp p{margin:8px 0}
+.d-read-more-clamp [aria-pressed=true],.d-read-more-clamp [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-read-more-clamp .d-grow{flex:1;min-width:100px}
+.d-read-more-clamp summary{cursor:pointer;padding:6px 0}
+.d-read-more-clamp ul,.d-read-more-clamp ol{padding-left:24px}
+.d-read-more-clamp [data-expanded=false]{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}

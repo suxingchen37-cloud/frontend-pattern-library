@@ -1,0 +1,23 @@
+.d-retry-countdown{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-retry-countdown *,.d-retry-countdown *::before,.d-retry-countdown *::after{box-sizing:border-box}
+.d-retry-countdown [hidden]{display:none!important}
+.d-retry-countdown .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-retry-countdown .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-retry-countdown label{display:block;margin:8px 0}
+.d-retry-countdown input,.d-retry-countdown select,.d-retry-countdown textarea,.d-retry-countdown button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-retry-countdown input:not([type=checkbox]):not([type=radio]),.d-retry-countdown select,.d-retry-countdown textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-retry-countdown button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-retry-countdown button:disabled{opacity:.5;cursor:default}
+.d-retry-countdown :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-retry-countdown [aria-invalid=true]{border-color:var(--warn)!important}
+.d-retry-countdown .d-scroll{max-width:100%;overflow:auto}
+.d-retry-countdown table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-retry-countdown th,.d-retry-countdown td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-retry-countdown caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-retry-countdown progress{width:100%;accent-color:var(--ink)}
+.d-retry-countdown pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-retry-countdown h3,.d-retry-countdown p{margin:8px 0}
+.d-retry-countdown [aria-pressed=true],.d-retry-countdown [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-retry-countdown .d-grow{flex:1;min-width:100px}
+.d-retry-countdown summary{cursor:pointer;padding:6px 0}
+.d-retry-countdown ul,.d-retry-countdown ol{padding-left:24px}

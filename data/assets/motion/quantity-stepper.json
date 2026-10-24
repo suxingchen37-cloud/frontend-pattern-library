@@ -1,0 +1,17 @@
+{
+  "id": "quantity-stepper",
+  "cat": "表单",
+  "t": "有边界的数量步进",
+  "en": "bounded quantity stepper",
+  "d": "加减按钮与直接输入使用相同的边界和步长，到达边界时禁用对应按钮，避免显示无法提交的数量。",
+  "body": "<section class=\"d-quantity-stepper\" aria-label=\"有边界的数量步进\"><label>演示时长（小时）<input data-value type=\"number\" min=\"0\" max=\"10\" step=\"0.5\" value=\"1.5\"></label><div class=\"d-row\"><button type=\"button\" data-minus aria-label=\"减少半小时\">− 0.5</button><button type=\"button\" data-plus aria-label=\"增加半小时\">＋ 0.5</button></div><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-quantity-stepper{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-quantity-stepper *,.d-quantity-stepper *::before,.d-quantity-stepper *::after{box-sizing:border-box}\n.d-quantity-stepper [hidden]{display:none!important}\n.d-quantity-stepper .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-quantity-stepper .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-quantity-stepper label{display:block;margin:8px 0}\n.d-quantity-stepper input,.d-quantity-stepper select,.d-quantity-stepper textarea,.d-quantity-stepper button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-quantity-stepper input:not([type=checkbox]):not([type=radio]),.d-quantity-stepper select,.d-quantity-stepper textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-quantity-stepper button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-quantity-stepper button:disabled{opacity:.5;cursor:default}\n.d-quantity-stepper :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-quantity-stepper [aria-invalid=true]{border-color:var(--warn)!important}\n.d-quantity-stepper .d-scroll{max-width:100%;overflow:auto}\n.d-quantity-stepper table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-quantity-stepper th,.d-quantity-stepper td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-quantity-stepper caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-quantity-stepper progress{width:100%;accent-color:var(--ink)}\n.d-quantity-stepper pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-quantity-stepper h3,.d-quantity-stepper p{margin:8px 0}\n.d-quantity-stepper [aria-pressed=true],.d-quantity-stepper [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-quantity-stepper .d-grow{flex:1;min-width:100px}\n.d-quantity-stepper summary{cursor:pointer;padding:6px 0}\n.d-quantity-stepper ul,.d-quantity-stepper ol{padding-left:24px}\n",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const field=q('[data-value]');const sync=()=>{let n=Number(field.value);if(!Number.isFinite(n))n=0;n=Math.min(10,Math.max(0,Math.round(n*2)/2));field.value=String(n);q('[data-minus]').disabled=n<=0;q('[data-plus]').disabled=n>=10;say(n+' 小时');};q('[data-minus]').onclick=()=>{field.stepDown();sync();};q('[data-plus]').onclick=()=>{field.stepUp();sync();};field.onchange=sync;sync();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "数量",
+    "边界",
+    "步进"
+  ]
+}

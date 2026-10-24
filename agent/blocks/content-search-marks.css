@@ -1,0 +1,24 @@
+.d-content-search-marks{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-content-search-marks *,.d-content-search-marks *::before,.d-content-search-marks *::after{box-sizing:border-box}
+.d-content-search-marks [hidden]{display:none!important}
+.d-content-search-marks .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-content-search-marks .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-content-search-marks label{display:block;margin:8px 0}
+.d-content-search-marks input,.d-content-search-marks select,.d-content-search-marks textarea,.d-content-search-marks button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-content-search-marks input:not([type=checkbox]):not([type=radio]),.d-content-search-marks select,.d-content-search-marks textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-content-search-marks button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-content-search-marks button:disabled{opacity:.5;cursor:default}
+.d-content-search-marks :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-content-search-marks [aria-invalid=true]{border-color:var(--warn)!important}
+.d-content-search-marks .d-scroll{max-width:100%;overflow:auto}
+.d-content-search-marks table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-content-search-marks th,.d-content-search-marks td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-content-search-marks caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-content-search-marks progress{width:100%;accent-color:var(--ink)}
+.d-content-search-marks pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-content-search-marks h3,.d-content-search-marks p{margin:8px 0}
+.d-content-search-marks [aria-pressed=true],.d-content-search-marks [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-content-search-marks .d-grow{flex:1;min-width:100px}
+.d-content-search-marks summary{cursor:pointer;padding:6px 0}
+.d-content-search-marks ul,.d-content-search-marks ol{padding-left:24px}
+.d-content-search-marks mark{background:color-mix(in srgb,var(--ink) 12%,var(--paper));color:inherit}.d-content-search-marks mark[data-active=true]{outline:2px solid var(--ink)}

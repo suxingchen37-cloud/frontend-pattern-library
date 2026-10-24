@@ -1,0 +1,23 @@
+.d-table-cell-copy{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-table-cell-copy *,.d-table-cell-copy *::before,.d-table-cell-copy *::after{box-sizing:border-box}
+.d-table-cell-copy [hidden]{display:none!important}
+.d-table-cell-copy .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-table-cell-copy .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-table-cell-copy label{display:block;margin:8px 0}
+.d-table-cell-copy input,.d-table-cell-copy select,.d-table-cell-copy textarea,.d-table-cell-copy button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-table-cell-copy input:not([type=checkbox]):not([type=radio]),.d-table-cell-copy select,.d-table-cell-copy textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-table-cell-copy button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-table-cell-copy button:disabled{opacity:.5;cursor:default}
+.d-table-cell-copy :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-table-cell-copy [aria-invalid=true]{border-color:var(--warn)!important}
+.d-table-cell-copy .d-scroll{max-width:100%;overflow:auto}
+.d-table-cell-copy table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-table-cell-copy th,.d-table-cell-copy td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-table-cell-copy caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-table-cell-copy progress{width:100%;accent-color:var(--ink)}
+.d-table-cell-copy pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-table-cell-copy h3,.d-table-cell-copy p{margin:8px 0}
+.d-table-cell-copy [aria-pressed=true],.d-table-cell-copy [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-table-cell-copy .d-grow{flex:1;min-width:100px}
+.d-table-cell-copy summary{cursor:pointer;padding:6px 0}
+.d-table-cell-copy ul,.d-table-cell-copy ol{padding-left:24px}

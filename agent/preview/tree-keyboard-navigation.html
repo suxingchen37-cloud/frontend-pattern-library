@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>键盘树导航 · tree-keyboard-navigation · 预览</title>
+<script>document.documentElement.dataset.theme = (location.search || "").indexOf("theme=night") !== -1 ? "night" : "paper";</script>
+<style>
+:root{
+  /* 纸与墨 */
+  --bg:#f3f1e9;
+  --paper:#fbfaf5;
+  --ink:#20241e;
+  --muted:#6b7860;
+  --faint:#94a184;
+  --line:#deded2;
+  /* 油墨与标记笔 */
+  --ink-vermilion:#c2402a; /* 朱 */
+  --ink-indigo:#2b4b8f; /* 靛 */
+  --ink-yellow:#e8c34a; /* 黄 */
+  --marker-hi:#d9f875;
+  --ok:#3d7347;
+  --warn:#a8502f;
+  /* 字号（px） */
+  --fs-9:9px;
+  --fs-11:11px;
+  --fs-13:13px;
+  --fs-15:15px;
+  --fs-21:21px;
+  --fs-34:34px;
+  --fs-56:56px;
+  --fs-96:96px;
+  /* 行高与字距 */
+  --lh-body:1.7;
+  --lh-note:1.6;
+  --lh-display:1.05;
+  --tracking-display:-0.03em;
+  --tracking-body:0;
+  --tracking-mono-label:0.08em; /* 等宽小标签 */
+  /* 字体 */
+  --font-sans:Inter,-apple-system,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  --font-serif:Songti SC,STSong,Noto Serif CJK SC,SimSun,serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* 间距（px） */
+  --sp-4:4px;
+  --sp-8:8px;
+  --sp-12:12px;
+  --sp-16:16px;
+  --sp-24:24px;
+  --sp-40:40px;
+  --sp-64:64px;
+  --sp-96:96px;
+  /* 圆角（px） */
+  --radius-table:0px;
+  --radius-tag:2px;
+  --radius-control:6px;
+  --radius-card:10px;
+  --radius-pill:999px;
+  /* 时长（ms） */
+  --dur-feedback:120ms;
+  --dur-move:180ms;
+  --dur-reveal:280ms;
+  --dur-ambient:900ms;
+  /* 曲线 */
+  --ease-mechanical:linear; /* tokens: linear | steps(6) */
+  --ease-physical:cubic-bezier(.34,1.56,.64,1); /* 物理 */
+  --ease-print:cubic-bezier(.2,.75,.25,1); /* 印刷 */
+  /* 阴影与描边 */
+  --shadow-divider:0 1px 0 var(--line);
+  --shadow-press:inset 0 1px 0 #fff5;
+  --shadow-overlay:0 12px 24px -8px #20241e26;
+  --border-default:1px solid var(--line);
+  --border-strong:1px solid var(--ink);
+  /* 兼容别名：老资产 css 里的短名，值仍然是 tokens 里的同一个值 */
+  --sans:var(--font-sans);
+  --serif:var(--font-serif);
+  --mono:var(--font-mono);
+  --lime:var(--marker-hi);
+  --coral:var(--ink-vermilion);
+  --blue:var(--ink-indigo);
+  --mint:color-mix(in srgb,var(--ink) 14%,var(--paper));
+  --lime-soft:color-mix(in srgb,var(--ink) 8%,var(--paper));
+  --lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));
+  --ease:var(--ease-print);
+  --ease-out:var(--ease-print);
+  --ease-spring:var(--ease-physical);
+  --r:var(--radius-card);
+  --sp:var(--sp-4);
+}
+[data-theme="night"]{
+  --bg:#121610;
+  --paper:#191d18;
+  --ink:#e8efe0;
+  --muted:#a9b8a0;
+  --faint:#7b8a72;
+  --line:#2c3327;
+  --ok:#8fd3a4;
+  --warn:#f0a184;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-15);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+.pv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-8);padding:var(--sp-8) var(--sp-16);border-bottom:1px solid var(--line);background:var(--paper);font-size:var(--fs-11);color:var(--muted)}
+.pv-bar b{font-size:var(--fs-13);font-weight:650;color:var(--ink)}
+.pv-bar code{font-family:var(--font-mono);font-size:var(--fs-11);color:var(--faint)}
+.pv-bar .pv-grow{flex:1}
+.pv-bar button{font:inherit;font-size:var(--fs-11);padding:var(--sp-4) var(--sp-8);border:1px solid var(--line);border-radius:var(--radius-control);background:transparent;color:var(--ink);cursor:pointer}
+.pv-bar button:hover{border-color:var(--ink)}
+.pv-stage{min-height:70vh;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--sp-12);padding:var(--sp-40) var(--sp-24)}
+.pv-note{max-width:64ch;margin:0 auto;padding:0 var(--sp-24) var(--sp-40);color:var(--muted);font-size:var(--fs-11);line-height:var(--lh-note)}
+/* ——— 本条 css（原样注入，单页里不需要作用域） ——— */
+.d-tree-keyboard-navigation{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-tree-keyboard-navigation *,.d-tree-keyboard-navigation *::before,.d-tree-keyboard-navigation *::after{box-sizing:border-box}
+.d-tree-keyboard-navigation [hidden]{display:none!important}
+.d-tree-keyboard-navigation .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-tree-keyboard-navigation .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-tree-keyboard-navigation label{display:block;margin:8px 0}
+.d-tree-keyboard-navigation input,.d-tree-keyboard-navigation select,.d-tree-keyboard-navigation textarea,.d-tree-keyboard-navigation button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-tree-keyboard-navigation input:not([type=checkbox]):not([type=radio]),.d-tree-keyboard-navigation select,.d-tree-keyboard-navigation textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-tree-keyboard-navigation button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-tree-keyboard-navigation button:disabled{opacity:.5;cursor:default}
+.d-tree-keyboard-navigation :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-tree-keyboard-navigation [aria-invalid=true]{border-color:var(--warn)!important}
+.d-tree-keyboard-navigation .d-scroll{max-width:100%;overflow:auto}
+.d-tree-keyboard-navigation table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-tree-keyboard-navigation th,.d-tree-keyboard-navigation td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-tree-keyboard-navigation caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-tree-keyboard-navigation progress{width:100%;accent-color:var(--ink)}
+.d-tree-keyboard-navigation pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-tree-keyboard-navigation h3,.d-tree-keyboard-navigation p{margin:8px 0}
+.d-tree-keyboard-navigation [aria-pressed=true],.d-tree-keyboard-navigation [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-tree-keyboard-navigation .d-grow{flex:1;min-width:100px}
+.d-tree-keyboard-navigation summary{cursor:pointer;padding:6px 0}
+.d-tree-keyboard-navigation ul,.d-tree-keyboard-navigation ol{padding-left:24px}
+.d-tree-keyboard-navigation [role=tree],.d-tree-keyboard-navigation [role=group]{list-style:none;padding-left:16px}.d-tree-keyboard-navigation [role=treeitem]{display:block;margin:4px 0}
+</style>
+</head>
+<body>
+<div class="pv-bar">
+  <code>tree-keyboard-navigation</code>
+  <b>键盘树导航</b>
+  <span>keyboard tree navigation</span>
+  <span>分类 导航</span>
+  <span>运动 无动效</span>
+  <span class="pv-grow"></span>
+  <button type="button" id="pv-toggle">切换夜间</button>
+</div>
+<div class="pv-stage" id="pv-stage">
+<section class="d-tree-keyboard-navigation" aria-label="键盘树导航"><ul role="tree" aria-label="样例文件"><li role="none"><button type="button" role="treeitem" aria-expanded="false">素材</button><ul role="group" hidden><li role="none"><button type="button" role="treeitem">镜头 A.mp4</button></li><li role="none"><button type="button" role="treeitem">环境声.wav</button></li></ul></li><li role="none"><button type="button" role="treeitem">交付说明.md</button></li></ul><output class="d-note" data-out role="status" aria-live="polite"></output></section>
+</div>
+<p class="pv-note">折叠层级仍保留当前位置，方向键展开、回到父级和移动到可见节点，长目录不必逐项 Tab。</p>
+<script>
+(function () {
+  var root = document.getElementById('pv-stage');
+  root.dataset.item = "tree-keyboard-navigation";
+  window.INITS = window.INITS || {};
+  window.INITS["tree-keyboard-navigation"] = (root => {
+ const q = selector => root.querySelector(selector);
+ const qa = selector => [...root.querySelectorAll(selector)];
+ const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };
+ ((root,q,qa,say)=>{const items=qa('[role=treeitem]');const group=button=>button.parentElement.querySelector(':scope > [role=group]');const focus=button=>{items.forEach(item=>item.tabIndex=item===button?0:-1);button.focus();say(button.textContent);};items.forEach(button=>{button.tabIndex=-1;button.onclick=()=>{const child=group(button);if(child){child.hidden=!child.hidden;button.setAttribute('aria-expanded',String(!child.hidden));}focus(button);};button.onkeydown=event=>{const visible=items.filter(item=>!item.closest('[hidden]')),index=visible.indexOf(button),child=group(button);let target;if(event.key==='ArrowDown')target=visible[Math.min(index+1,visible.length-1)];else if(event.key==='ArrowUp')target=visible[Math.max(0,index-1)];else if(event.key==='Home')target=visible[0];else if(event.key==='End')target=visible.at(-1);else if(event.key==='ArrowRight'&&child){if(child.hidden){child.hidden=false;button.setAttribute('aria-expanded','true');}else target=child.querySelector('[role=treeitem]');}else if(event.key==='ArrowLeft'){if(child&&!child.hidden){child.hidden=true;button.setAttribute('aria-expanded','false');}else target=button.parentElement.parentElement.closest('li')?.querySelector(':scope > [role=treeitem]');}else return;event.preventDefault();if(target)focus(target);};});items[0].tabIndex=0;})(root, q, qa, say);
+});
+  window.INITS["tree-keyboard-navigation"](root);
+  document.getElementById('pv-toggle').addEventListener('click', function () {
+    var d = document.documentElement;
+    d.dataset.theme = d.dataset.theme === 'night' ? 'paper' : 'night';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.d-editable-heading{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-editable-heading *,.d-editable-heading *::before,.d-editable-heading *::after{box-sizing:border-box}
+.d-editable-heading [hidden]{display:none!important}
+.d-editable-heading .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-editable-heading .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-editable-heading label{display:block;margin:8px 0}
+.d-editable-heading input,.d-editable-heading select,.d-editable-heading textarea,.d-editable-heading button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-editable-heading input:not([type=checkbox]):not([type=radio]),.d-editable-heading select,.d-editable-heading textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-editable-heading button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-editable-heading button:disabled{opacity:.5;cursor:default}
+.d-editable-heading :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-editable-heading [aria-invalid=true]{border-color:var(--warn)!important}
+.d-editable-heading .d-scroll{max-width:100%;overflow:auto}
+.d-editable-heading table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-editable-heading th,.d-editable-heading td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-editable-heading caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-editable-heading progress{width:100%;accent-color:var(--ink)}
+.d-editable-heading pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-editable-heading h3,.d-editable-heading p{margin:8px 0}
+.d-editable-heading [aria-pressed=true],.d-editable-heading [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-editable-heading .d-grow{flex:1;min-width:100px}
+.d-editable-heading summary{cursor:pointer;padding:6px 0}
+.d-editable-heading ul,.d-editable-heading ol{padding-left:24px}

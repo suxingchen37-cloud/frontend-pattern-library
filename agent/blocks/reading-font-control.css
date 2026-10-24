@@ -1,0 +1,24 @@
+.d-reading-font-control{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-reading-font-control *,.d-reading-font-control *::before,.d-reading-font-control *::after{box-sizing:border-box}
+.d-reading-font-control [hidden]{display:none!important}
+.d-reading-font-control .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-reading-font-control .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-reading-font-control label{display:block;margin:8px 0}
+.d-reading-font-control input,.d-reading-font-control select,.d-reading-font-control textarea,.d-reading-font-control button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-reading-font-control input:not([type=checkbox]):not([type=radio]),.d-reading-font-control select,.d-reading-font-control textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-reading-font-control button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-reading-font-control button:disabled{opacity:.5;cursor:default}
+.d-reading-font-control :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-reading-font-control [aria-invalid=true]{border-color:var(--warn)!important}
+.d-reading-font-control .d-scroll{max-width:100%;overflow:auto}
+.d-reading-font-control table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-reading-font-control th,.d-reading-font-control td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-reading-font-control caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-reading-font-control progress{width:100%;accent-color:var(--ink)}
+.d-reading-font-control pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-reading-font-control h3,.d-reading-font-control p{margin:8px 0}
+.d-reading-font-control [aria-pressed=true],.d-reading-font-control [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-reading-font-control .d-grow{flex:1;min-width:100px}
+.d-reading-font-control summary{cursor:pointer;padding:6px 0}
+.d-reading-font-control ul,.d-reading-font-control ol{padding-left:24px}
+.d-reading-font-control article{font-size:var(--reader-size,16px);line-height:1.7}

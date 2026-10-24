@@ -1,0 +1,23 @@
+.d-dependent-selects{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-dependent-selects *,.d-dependent-selects *::before,.d-dependent-selects *::after{box-sizing:border-box}
+.d-dependent-selects [hidden]{display:none!important}
+.d-dependent-selects .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-dependent-selects .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-dependent-selects label{display:block;margin:8px 0}
+.d-dependent-selects input,.d-dependent-selects select,.d-dependent-selects textarea,.d-dependent-selects button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-dependent-selects input:not([type=checkbox]):not([type=radio]),.d-dependent-selects select,.d-dependent-selects textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-dependent-selects button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-dependent-selects button:disabled{opacity:.5;cursor:default}
+.d-dependent-selects :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-dependent-selects [aria-invalid=true]{border-color:var(--warn)!important}
+.d-dependent-selects .d-scroll{max-width:100%;overflow:auto}
+.d-dependent-selects table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-dependent-selects th,.d-dependent-selects td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-dependent-selects caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-dependent-selects progress{width:100%;accent-color:var(--ink)}
+.d-dependent-selects pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-dependent-selects h3,.d-dependent-selects p{margin:8px 0}
+.d-dependent-selects [aria-pressed=true],.d-dependent-selects [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-dependent-selects .d-grow{flex:1;min-width:100px}
+.d-dependent-selects summary{cursor:pointer;padding:6px 0}
+.d-dependent-selects ul,.d-dependent-selects ol{padding-left:24px}

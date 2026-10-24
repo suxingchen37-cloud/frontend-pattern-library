@@ -1,0 +1,24 @@
+.d-textarea-auto-grow{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-textarea-auto-grow *,.d-textarea-auto-grow *::before,.d-textarea-auto-grow *::after{box-sizing:border-box}
+.d-textarea-auto-grow [hidden]{display:none!important}
+.d-textarea-auto-grow .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-textarea-auto-grow .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-textarea-auto-grow label{display:block;margin:8px 0}
+.d-textarea-auto-grow input,.d-textarea-auto-grow select,.d-textarea-auto-grow textarea,.d-textarea-auto-grow button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-textarea-auto-grow input:not([type=checkbox]):not([type=radio]),.d-textarea-auto-grow select,.d-textarea-auto-grow textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-textarea-auto-grow button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-textarea-auto-grow button:disabled{opacity:.5;cursor:default}
+.d-textarea-auto-grow :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-textarea-auto-grow [aria-invalid=true]{border-color:var(--warn)!important}
+.d-textarea-auto-grow .d-scroll{max-width:100%;overflow:auto}
+.d-textarea-auto-grow table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-textarea-auto-grow th,.d-textarea-auto-grow td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-textarea-auto-grow caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-textarea-auto-grow progress{width:100%;accent-color:var(--ink)}
+.d-textarea-auto-grow pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-textarea-auto-grow h3,.d-textarea-auto-grow p{margin:8px 0}
+.d-textarea-auto-grow [aria-pressed=true],.d-textarea-auto-grow [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-textarea-auto-grow .d-grow{flex:1;min-width:100px}
+.d-textarea-auto-grow summary{cursor:pointer;padding:6px 0}
+.d-textarea-auto-grow ul,.d-textarea-auto-grow ol{padding-left:24px}
+.d-textarea-auto-grow textarea{resize:vertical;max-height:220px;overflow:auto}

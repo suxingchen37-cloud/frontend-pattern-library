@@ -1,0 +1,8 @@
+// 用法：先 <script src="blocks/content-search-marks.js"></script>，再调用 window.INITS['content-search-marks'](root)；root 是承载该条 body 的那个元素。
+window.INITS = window.INITS || {};
+window.INITS['content-search-marks'] = (root => {
+ const q = selector => root.querySelector(selector);
+ const qa = selector => [...root.querySelectorAll(selector)];
+ const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };
+ ((root,q,qa,say)=>{const text=q('[data-content]').textContent;let marks=[],active=-1;const draw=()=>{marks.forEach((mark,i)=>mark.dataset.active=String(i===active));q('[data-prev]').disabled=!marks.length;q('[data-next]').disabled=!marks.length;say(marks.length?(active+1)+' / '+marks.length+' 处匹配':'没有匹配');};const search=()=>{const needle=q('[data-search]').value;q('[data-content]').replaceChildren();marks=[];active=-1;if(!needle){q('[data-content]').textContent=text;draw();return;}let position=0,index;while((index=text.toLocaleLowerCase().indexOf(needle.toLocaleLowerCase(),position))!==-1){q('[data-content]').append(document.createTextNode(text.slice(position,index)));const mark=document.createElement('mark');mark.textContent=text.slice(index,index+needle.length);mark.tabIndex=-1;marks.push(mark);q('[data-content]').append(mark);position=index+needle.length;}q('[data-content]').append(document.createTextNode(text.slice(position)));if(marks.length)active=0;draw();};const move=step=>{if(!marks.length)return;active=(active+step+marks.length)%marks.length;draw();marks[active].focus({preventScroll:true});marks[active].scrollIntoView({block:'nearest'});};q('[data-search]').oninput=search;q('[data-prev]').onclick=()=>move(-1);q('[data-next]').onclick=()=>move(1);search();})(root, q, qa, say);
+});

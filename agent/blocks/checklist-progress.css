@@ -1,0 +1,23 @@
+.d-checklist-progress{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-checklist-progress *,.d-checklist-progress *::before,.d-checklist-progress *::after{box-sizing:border-box}
+.d-checklist-progress [hidden]{display:none!important}
+.d-checklist-progress .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-checklist-progress .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-checklist-progress label{display:block;margin:8px 0}
+.d-checklist-progress input,.d-checklist-progress select,.d-checklist-progress textarea,.d-checklist-progress button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-checklist-progress input:not([type=checkbox]):not([type=radio]),.d-checklist-progress select,.d-checklist-progress textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-checklist-progress button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-checklist-progress button:disabled{opacity:.5;cursor:default}
+.d-checklist-progress :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-checklist-progress [aria-invalid=true]{border-color:var(--warn)!important}
+.d-checklist-progress .d-scroll{max-width:100%;overflow:auto}
+.d-checklist-progress table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-checklist-progress th,.d-checklist-progress td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-checklist-progress caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-checklist-progress progress{width:100%;accent-color:var(--ink)}
+.d-checklist-progress pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-checklist-progress h3,.d-checklist-progress p{margin:8px 0}
+.d-checklist-progress [aria-pressed=true],.d-checklist-progress [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-checklist-progress .d-grow{flex:1;min-width:100px}
+.d-checklist-progress summary{cursor:pointer;padding:6px 0}
+.d-checklist-progress ul,.d-checklist-progress ol{padding-left:24px}

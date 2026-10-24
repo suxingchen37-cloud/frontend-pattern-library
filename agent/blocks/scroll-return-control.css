@@ -1,0 +1,24 @@
+.d-scroll-return-control{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-scroll-return-control *,.d-scroll-return-control *::before,.d-scroll-return-control *::after{box-sizing:border-box}
+.d-scroll-return-control [hidden]{display:none!important}
+.d-scroll-return-control .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-scroll-return-control .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-scroll-return-control label{display:block;margin:8px 0}
+.d-scroll-return-control input,.d-scroll-return-control select,.d-scroll-return-control textarea,.d-scroll-return-control button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-scroll-return-control input:not([type=checkbox]):not([type=radio]),.d-scroll-return-control select,.d-scroll-return-control textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-scroll-return-control button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-scroll-return-control button:disabled{opacity:.5;cursor:default}
+.d-scroll-return-control :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-scroll-return-control [aria-invalid=true]{border-color:var(--warn)!important}
+.d-scroll-return-control .d-scroll{max-width:100%;overflow:auto}
+.d-scroll-return-control table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-scroll-return-control th,.d-scroll-return-control td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-scroll-return-control caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-scroll-return-control progress{width:100%;accent-color:var(--ink)}
+.d-scroll-return-control pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-scroll-return-control h3,.d-scroll-return-control p{margin:8px 0}
+.d-scroll-return-control [aria-pressed=true],.d-scroll-return-control [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-scroll-return-control .d-grow{flex:1;min-width:100px}
+.d-scroll-return-control summary{cursor:pointer;padding:6px 0}
+.d-scroll-return-control ul,.d-scroll-return-control ol{padding-left:24px}
+.d-scroll-return-control [data-scroll]{max-height:var(--demo-height,150px);overflow:auto;border-block:1px solid var(--line)}.d-scroll-return-control li{padding:8px 0}

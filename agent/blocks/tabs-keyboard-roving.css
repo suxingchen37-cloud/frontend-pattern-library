@@ -1,0 +1,23 @@
+.d-tabs-keyboard-roving{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-tabs-keyboard-roving *,.d-tabs-keyboard-roving *::before,.d-tabs-keyboard-roving *::after{box-sizing:border-box}
+.d-tabs-keyboard-roving [hidden]{display:none!important}
+.d-tabs-keyboard-roving .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-tabs-keyboard-roving .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-tabs-keyboard-roving label{display:block;margin:8px 0}
+.d-tabs-keyboard-roving input,.d-tabs-keyboard-roving select,.d-tabs-keyboard-roving textarea,.d-tabs-keyboard-roving button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-tabs-keyboard-roving input:not([type=checkbox]):not([type=radio]),.d-tabs-keyboard-roving select,.d-tabs-keyboard-roving textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-tabs-keyboard-roving button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-tabs-keyboard-roving button:disabled{opacity:.5;cursor:default}
+.d-tabs-keyboard-roving :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-tabs-keyboard-roving [aria-invalid=true]{border-color:var(--warn)!important}
+.d-tabs-keyboard-roving .d-scroll{max-width:100%;overflow:auto}
+.d-tabs-keyboard-roving table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-tabs-keyboard-roving th,.d-tabs-keyboard-roving td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-tabs-keyboard-roving caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-tabs-keyboard-roving progress{width:100%;accent-color:var(--ink)}
+.d-tabs-keyboard-roving pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-tabs-keyboard-roving h3,.d-tabs-keyboard-roving p{margin:8px 0}
+.d-tabs-keyboard-roving [aria-pressed=true],.d-tabs-keyboard-roving [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-tabs-keyboard-roving .d-grow{flex:1;min-width:100px}
+.d-tabs-keyboard-roving summary{cursor:pointer;padding:6px 0}
+.d-tabs-keyboard-roving ul,.d-tabs-keyboard-roving ol{padding-left:24px}

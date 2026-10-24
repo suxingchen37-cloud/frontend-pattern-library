@@ -1,0 +1,23 @@
+.d-conditional-fields{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-conditional-fields *,.d-conditional-fields *::before,.d-conditional-fields *::after{box-sizing:border-box}
+.d-conditional-fields [hidden]{display:none!important}
+.d-conditional-fields .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-conditional-fields .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-conditional-fields label{display:block;margin:8px 0}
+.d-conditional-fields input,.d-conditional-fields select,.d-conditional-fields textarea,.d-conditional-fields button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-conditional-fields input:not([type=checkbox]):not([type=radio]),.d-conditional-fields select,.d-conditional-fields textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-conditional-fields button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-conditional-fields button:disabled{opacity:.5;cursor:default}
+.d-conditional-fields :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-conditional-fields [aria-invalid=true]{border-color:var(--warn)!important}
+.d-conditional-fields .d-scroll{max-width:100%;overflow:auto}
+.d-conditional-fields table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-conditional-fields th,.d-conditional-fields td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-conditional-fields caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-conditional-fields progress{width:100%;accent-color:var(--ink)}
+.d-conditional-fields pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-conditional-fields h3,.d-conditional-fields p{margin:8px 0}
+.d-conditional-fields [aria-pressed=true],.d-conditional-fields [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-conditional-fields .d-grow{flex:1;min-width:100px}
+.d-conditional-fields summary{cursor:pointer;padding:6px 0}
+.d-conditional-fields ul,.d-conditional-fields ol{padding-left:24px}

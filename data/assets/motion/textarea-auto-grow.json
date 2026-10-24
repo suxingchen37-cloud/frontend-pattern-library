@@ -1,0 +1,17 @@
+{
+  "id": "textarea-auto-grow",
+  "cat": "表单",
+  "t": "文本框随内容增高",
+  "en": "auto growing textarea",
+  "d": "短备注不占用大块空白，长内容逐步扩展到上限后才滚动，删除内容时也能回缩。",
+  "body": "<section class=\"d-textarea-auto-grow\" aria-label=\"文本框随内容增高\"><label>镜头备注<textarea data-text rows=\"2\">演员停在门口，先看门牌，再推门。</textarea></label><output class=\"d-note\" data-out role=\"status\" aria-live=\"polite\"></output></section>",
+  "css": ".d-textarea-auto-grow{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}\n.d-textarea-auto-grow *,.d-textarea-auto-grow *::before,.d-textarea-auto-grow *::after{box-sizing:border-box}\n.d-textarea-auto-grow [hidden]{display:none!important}\n.d-textarea-auto-grow .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}\n.d-textarea-auto-grow .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}\n.d-textarea-auto-grow label{display:block;margin:8px 0}\n.d-textarea-auto-grow input,.d-textarea-auto-grow select,.d-textarea-auto-grow textarea,.d-textarea-auto-grow button{font:inherit;color:inherit;max-width:100%;min-width:0}\n.d-textarea-auto-grow input:not([type=checkbox]):not([type=radio]),.d-textarea-auto-grow select,.d-textarea-auto-grow textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}\n.d-textarea-auto-grow button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}\n.d-textarea-auto-grow button:disabled{opacity:.5;cursor:default}\n.d-textarea-auto-grow :focus-visible{outline:2px solid var(--ink);outline-offset:3px}\n.d-textarea-auto-grow [aria-invalid=true]{border-color:var(--warn)!important}\n.d-textarea-auto-grow .d-scroll{max-width:100%;overflow:auto}\n.d-textarea-auto-grow table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}\n.d-textarea-auto-grow th,.d-textarea-auto-grow td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}\n.d-textarea-auto-grow caption{text-align:left;font-weight:600;margin-bottom:8px}\n.d-textarea-auto-grow progress{width:100%;accent-color:var(--ink)}\n.d-textarea-auto-grow pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}\n.d-textarea-auto-grow h3,.d-textarea-auto-grow p{margin:8px 0}\n.d-textarea-auto-grow [aria-pressed=true],.d-textarea-auto-grow [aria-selected=true]{border-color:var(--ink);font-weight:650}\n.d-textarea-auto-grow .d-grow{flex:1;min-width:100px}\n.d-textarea-auto-grow summary{cursor:pointer;padding:6px 0}\n.d-textarea-auto-grow ul,.d-textarea-auto-grow ol{padding-left:24px}\n.d-textarea-auto-grow textarea{resize:vertical;max-height:220px;overflow:auto}",
+  "init": "root => {\n const q = selector => root.querySelector(selector);\n const qa = selector => [...root.querySelectorAll(selector)];\n const say = text => { const out = q('[data-out]'); if (out) out.textContent = text; };\n ((root,q,qa,say)=>{const field=q('[data-text]');const resize=()=>{field.style.height='auto';field.style.height=Math.min(220,field.scrollHeight+2)+'px';};field.oninput=resize;resize();})(root, q, qa, say);\n}",
+  "source": "v5",
+  "motion": "无动效",
+  "tags": [
+    "备注",
+    "文本框",
+    "自适应"
+  ]
+}

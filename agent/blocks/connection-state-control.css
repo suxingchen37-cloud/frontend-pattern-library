@@ -1,0 +1,23 @@
+.d-connection-state-control{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-connection-state-control *,.d-connection-state-control *::before,.d-connection-state-control *::after{box-sizing:border-box}
+.d-connection-state-control [hidden]{display:none!important}
+.d-connection-state-control .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-connection-state-control .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-connection-state-control label{display:block;margin:8px 0}
+.d-connection-state-control input,.d-connection-state-control select,.d-connection-state-control textarea,.d-connection-state-control button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-connection-state-control input:not([type=checkbox]):not([type=radio]),.d-connection-state-control select,.d-connection-state-control textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-connection-state-control button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-connection-state-control button:disabled{opacity:.5;cursor:default}
+.d-connection-state-control :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-connection-state-control [aria-invalid=true]{border-color:var(--warn)!important}
+.d-connection-state-control .d-scroll{max-width:100%;overflow:auto}
+.d-connection-state-control table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-connection-state-control th,.d-connection-state-control td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-connection-state-control caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-connection-state-control progress{width:100%;accent-color:var(--ink)}
+.d-connection-state-control pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-connection-state-control h3,.d-connection-state-control p{margin:8px 0}
+.d-connection-state-control [aria-pressed=true],.d-connection-state-control [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-connection-state-control .d-grow{flex:1;min-width:100px}
+.d-connection-state-control summary{cursor:pointer;padding:6px 0}
+.d-connection-state-control ul,.d-connection-state-control ol{padding-left:24px}

@@ -1,0 +1,23 @@
+.d-batched-status-announcer{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-batched-status-announcer *,.d-batched-status-announcer *::before,.d-batched-status-announcer *::after{box-sizing:border-box}
+.d-batched-status-announcer [hidden]{display:none!important}
+.d-batched-status-announcer .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-batched-status-announcer .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-batched-status-announcer label{display:block;margin:8px 0}
+.d-batched-status-announcer input,.d-batched-status-announcer select,.d-batched-status-announcer textarea,.d-batched-status-announcer button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-batched-status-announcer input:not([type=checkbox]):not([type=radio]),.d-batched-status-announcer select,.d-batched-status-announcer textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-batched-status-announcer button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-batched-status-announcer button:disabled{opacity:.5;cursor:default}
+.d-batched-status-announcer :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-batched-status-announcer [aria-invalid=true]{border-color:var(--warn)!important}
+.d-batched-status-announcer .d-scroll{max-width:100%;overflow:auto}
+.d-batched-status-announcer table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-batched-status-announcer th,.d-batched-status-announcer td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-batched-status-announcer caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-batched-status-announcer progress{width:100%;accent-color:var(--ink)}
+.d-batched-status-announcer pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-batched-status-announcer h3,.d-batched-status-announcer p{margin:8px 0}
+.d-batched-status-announcer [aria-pressed=true],.d-batched-status-announcer [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-batched-status-announcer .d-grow{flex:1;min-width:100px}
+.d-batched-status-announcer summary{cursor:pointer;padding:6px 0}
+.d-batched-status-announcer ul,.d-batched-status-announcer ol{padding-left:24px}

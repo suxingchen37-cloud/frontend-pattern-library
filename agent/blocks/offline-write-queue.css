@@ -1,0 +1,23 @@
+.d-offline-write-queue{width:100%;max-width:430px;min-width:0;color:var(--ink);font:inherit;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.d-offline-write-queue *,.d-offline-write-queue *::before,.d-offline-write-queue *::after{box-sizing:border-box}
+.d-offline-write-queue [hidden]{display:none!important}
+.d-offline-write-queue .d-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.d-offline-write-queue .d-note{display:block;margin:8px 0 0;color:var(--muted);font-size:12px;min-height:1.5em}
+.d-offline-write-queue label{display:block;margin:8px 0}
+.d-offline-write-queue input,.d-offline-write-queue select,.d-offline-write-queue textarea,.d-offline-write-queue button{font:inherit;color:inherit;max-width:100%;min-width:0}
+.d-offline-write-queue input:not([type=checkbox]):not([type=radio]),.d-offline-write-queue select,.d-offline-write-queue textarea{width:100%;padding:8px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper)}
+.d-offline-write-queue button{padding:6px 10px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--paper);cursor:pointer}
+.d-offline-write-queue button:disabled{opacity:.5;cursor:default}
+.d-offline-write-queue :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.d-offline-write-queue [aria-invalid=true]{border-color:var(--warn)!important}
+.d-offline-write-queue .d-scroll{max-width:100%;overflow:auto}
+.d-offline-write-queue table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.d-offline-write-queue th,.d-offline-write-queue td{padding:7px;border-bottom:1px solid var(--line);vertical-align:top}
+.d-offline-write-queue caption{text-align:left;font-weight:600;margin-bottom:8px}
+.d-offline-write-queue progress{width:100%;accent-color:var(--ink)}
+.d-offline-write-queue pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.d-offline-write-queue h3,.d-offline-write-queue p{margin:8px 0}
+.d-offline-write-queue [aria-pressed=true],.d-offline-write-queue [aria-selected=true]{border-color:var(--ink);font-weight:650}
+.d-offline-write-queue .d-grow{flex:1;min-width:100px}
+.d-offline-write-queue summary{cursor:pointer;padding:6px 0}
+.d-offline-write-queue ul,.d-offline-write-queue ol{padding-left:24px}
