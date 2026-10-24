@@ -44,7 +44,8 @@ function patchIndex(src) {
 }
 const recipeTag = '<script src="lab-recipe.js?v=1"></script>';
 function patchLab(src) {
-  let out = src;
+  // 项目站点有仓库名前缀；嵌入预览的分享链接也必须留在同一个站点下。
+  let out = src.replace("new URL(location.origin + '/')", "new URL('index.html', location.href)");
   if (!out.includes('lab-extra4.js')) {
     const anchor = '<script src="lab-extra3.js?v=1"></script>';
     if (!out.includes(anchor)) throw new Error('motion-lab.html: 找不到 lab-extra3 脚本锚点');

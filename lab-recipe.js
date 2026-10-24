@@ -24,9 +24,9 @@
     var ids = picks();
     return loadIndex().then(function (idx) {
       var items = idx.items || [];
-      var base = location.origin;
+      var base = new URL('.', location.href).href.replace(/\/$/, '');
       var out = [
-        '按这个库的口味做一页：' + base + '/llms.txt',
+        '参考这个库的资产与质量要求做一页，视觉风格按本次需求决定：' + base + '/llms.txt',
         '先读 ' + base + '/agent/index.json（只读 items 里对应的几条），再用这些原件：'
       ];
       ids.forEach(function (id) {
@@ -36,7 +36,7 @@
         })());
       });
       out.push('要求：（一句话：要做什么页面、给谁用、最重要的一个动作是什么）');
-      out.push('破格：整页只允许一处，写明破坏了哪条规则、为什么。');
+      out.push('设计要求：依据实际内容组织层级，避免无意义的卡片堆砌、重复版式和装饰抢内容；不要求刻意破格。');
       out.push('做完跑一遍 llms.txt 的「交付前自检」，把没过的条目贴给我。');
       return out.join('\n');
     });

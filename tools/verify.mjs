@@ -30,6 +30,21 @@ const idx = JSON.parse(rd(path.join(ROOT, 'agent/index.json')));
 idx.count === assets.length ? ok('agent/index.json ' + idx.count + ' 条') : bad('index.count=' + idx.count + ' ≠ ' + assets.length);
 const idxIds = new Set(idx.items.map(i => i.id));
 idxIds.size === idSet.size && [...idSet].every(i => idxIds.has(i)) ? ok('索引 id 与源数据一致') : bad('索引 id 与源数据不一致');
+idx.items.length === idx.count ? ok('索引条数与 count 一致') : bad('索引存在重复项或 count 漂移');
+const categories = JSON.parse(rd(path.join(ROOT, 'data/categories.json'))).order;
+const categoryCounts = new Map(categories.map(c => [c, 0]));
+for (const { a } of assets) {
+  if (!categoryCounts.has(a.cat)) bad('未登记分类: ' + a.id + ' / ' + a.cat);
+  else categoryCounts.set(a.cat, categoryCounts.get(a.cat) + 1);
+}
+const expectedCategories = categories.map(name => ({ name, count: categoryCounts.get(name) }));
+JSON.stringify(idx.categories) === JSON.stringify(expectedCategories) ? ok('分类顺序与逐类计数一致') : bad('索引分类与源数据不一致');
+for (const item of idx.items) {
+  for (const file of Object.values(item.files)) {
+    const absolute = path.resolve(ROOT, 'agent', file);
+    if (!absolute.startsWith(path.join(ROOT, 'agent') + path.sep) || !fs.existsSync(absolute)) bad('索引文件缺失或越界: ' + item.id + ' / ' + file);
+  }
+}
 
 const cnt = (d, ext) => fs.readdirSync(path.join(ROOT, d)).filter(f => f.endsWith(ext)).length;
 const pv = cnt('agent/preview', '.html'), bh = cnt('agent/blocks', '.html'), bc = cnt('agent/blocks', '.css'), bj = cnt('agent/blocks', '.js');

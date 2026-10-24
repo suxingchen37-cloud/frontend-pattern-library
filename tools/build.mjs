@@ -24,7 +24,7 @@
  *   ERR  读不到 / JSON 解析失败 / 缺必填字段 / 字段类型错 / id 与文件名不一致 /
  *        cat 未登记 / id 重复 / body 为空 / init 语法错 / css 里漏出 </style>。
  *        —— 这类直接退出码 1，且一个文件都不写（宁可不产出，也不产出坏产物）。
- *   WARN 契约条款：class 前缀、@keyframes 前缀、圆角表、黑名单写法、禁用词、
+ *   WARN 质量契约：class 前缀、@keyframes 前缀、transition:all、说明空话、
  *        引用了 tokens 里没有的变量、motion 为空、css 为空（产物仍可用）。
  *        —— 默认只折叠打印、不影响退出码；--strict 时升级为失败。
  *
@@ -156,20 +156,10 @@ function need(tk, dotted, label) {
   return v;
 }
 
-function radiusValues(tk) {
-  const set = new Set();
-  for (const k of Object.keys(tk.radius || {})) {
-    if (k === 'policy') continue;
-    const n = Number(tk.radius[k]);
-    if (!Number.isNaN(n)) set.add(n);
-  }
-  return set;
-}
-
 /** 预览页的 :root 变量块：只从 tokens.json 取值，一个数字都不手抄。 */
 function tokenVarBlock(tk) {
   // 这套值是**中性占位**：只为让预览页/单条资产能渲染，不是推荐风格。
-  // 正式项目请整段替换成自己的六色位与字体（见 llms.txt「风格：本库不预设」）。
+  // 正式项目按内容与品牌需要覆盖；变量名是兼容接口，不代表风格约束。
   const L = [];
   const put = (name, value, note) => {
     if (value === null || value === undefined) return;
@@ -287,44 +277,12 @@ function tokenVarNames(tk) {
 
 /* ─────────────────────────── 资产校验 ─────────────────────────── */
 
-function hexToHsl(hex) {
-  const h = hex.replace('#', '');
-  let r, g, b;
-  if (h.length === 3) {
-    r = parseInt(h[0] + h[0], 16); g = parseInt(h[1] + h[1], 16); b = parseInt(h[2] + h[2], 16);
-  } else {
-    r = parseInt(h.slice(0, 2), 16); g = parseInt(h.slice(2, 4), 16); b = parseInt(h.slice(4, 6), 16);
-  }
-  r /= 255; g /= 255; b /= 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, d = max - min;
-  if (d === 0) return { h: 0, s: 0, l: l };
-  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-  let hue;
-  if (max === r) hue = (g - b) / d + (g < b ? 6 : 0);
-  else if (max === g) hue = (b - r) / d + 2;
-  else hue = (r - g) / d + 4;
-  return { h: hue * 60, s: s, l: l };
-}
-
 function styleWarnings(a, label, rules) {
   const css = a.css;
-  const flat = css.replace(/\s+/g, '').toLowerCase();
   const uniq = (xs) => [...new Set(xs)].sort(byString);
 
-  if (/transition:\s*all\b/i.test(css)) warn(label, '黑名单：transition:all', '会把无关属性一起动画');
-  if (flat.indexOf('cubic-bezier(.4,0,.2,1)') !== -1 || flat.indexOf('cubic-bezier(0.4,0,0.2,1)') !== -1) {
-    warn(label, '黑名单：Material 默认曲线', 'cubic-bezier(.4,0,.2,1)');
-  }
-  if (/rgba\(\s*0\s*,\s*0\s*,\s*0\s*,/i.test(css)) warn(label, '黑名单：纯黑阴影', 'rgba(0,0,0,…)');
-  if (/backdrop-filter/i.test(css)) warn(label, '黑名单：backdrop-filter');
+  if (/transition:\s*all\b/i.test(css)) warn(label, '质量：transition:all', '会把无关属性一起动画');
   if (/#c-|#pv-/.test(css)) warn(label, 'css 手写了 #c- / #pv- 前缀', '渲染层会自动加，写了会套两层');
-
-  const purples = [];
-  for (const hex of css.match(/#[0-9a-fA-F]{3}\b|#[0-9a-fA-F]{6}\b/g) || []) {
-    const hsl = hexToHsl(hex);
-    if (hsl.h >= 245 && hsl.h <= 300 && hsl.s > 0.15) purples.push(hex);
-  }
-  if (purples.length) warn(label, '紫色系 hex（已从 tokens 退役）', uniq(purples).join(' / '));
 
   const words = BANNED_WORDS.filter((f) => String(a.d).indexOf(f) !== -1);
   if (words.length) warn(label, 'd 里有禁用词', words.join(' / '));
@@ -351,27 +309,13 @@ function styleWarnings(a, label, rules) {
   }
   if (badStyle.length) warn(label, 'body 里有行内 style（只允许 --自定义属性）', uniq(badStyle).join(' / '));
 
-  const radBad = [];
-  for (const decl of css.match(/border-radius\s*:\s*([^;}\n]+)/g) || []) {
-    const val = decl.replace(/^border-radius\s*:\s*/, '');
-    if (/var\(|calc\(/.test(val)) continue;
-    for (const part of val.split(/[\/\s]+/)) {
-      if (!part) continue;
-      const m = part.match(/^(\d*\.?\d+)(px|rem|em|%)?$/);
-      if (!m) continue;
-      if (m[2] === '%') continue; // 百分比圆角是圆形/椭圆（头像、圆点），不属于圆角档位
-      if (!rules.radiusAllowed.has(Number(m[1]))) radBad.push(part);
-    }
-  }
-  if (radBad.length) warn(label, 'border-radius 不在 tokens 圆角表', uniq(radBad).join(' / ') + '（表：' + rules.radiusText + '）');
-
   const defined = new Set();
   for (const decl of css.match(/--[A-Za-z0-9-]+\s*:/g) || []) defined.add(decl.replace(/\s*:$/, ''));
   for (const decl of a.body.match(/--[A-Za-z0-9-]+\s*:/g) || []) defined.add(decl.replace(/\s*:$/, ''));
   const unknown = new Set();
-  for (const decl of css.match(/var\(\s*(--[A-Za-z0-9-]+)/g) || []) {
-    const name = decl.replace(/^var\(\s*/, '');
-    if (!rules.varNames.has(name) && !defined.has(name)) unknown.add(name);
+  for (const match of css.matchAll(/var\(\s*(--[A-Za-z0-9-]+)\s*([,)])/g)) {
+    const name = match[1];
+    if (match[2] !== ',' && !rules.varNames.has(name) && !defined.has(name)) unknown.add(name);
   }
   if (unknown.size) warn(label, 'css 引用了 tokens 里没有的变量', [...unknown].sort(byString).join(' / ') + '（preview 里取不到值）');
 }
@@ -703,6 +647,8 @@ function buildProducts(ctx) {
       const md = [
         '# ' + L.name + '（' + L.id + '）',
         '',
+        '> 可修改的结构示例；尺寸、字体和动效均为示意，不约束消费方的视觉风格。',
+        '',
         '- 栅格：' + L.grid,
         '- 行宽/字号：' + L.measure,
         '- 层级：' + L.hierarchy,
@@ -823,8 +769,6 @@ async function main() {
   const rules = {
     ids: new Set(),
     cats: new Set(cats),
-    radiusAllowed: tkOk ? radiusValues(tk) : new Set(),
-    radiusText: tkOk ? Object.keys(tk.radius).filter((k) => k !== 'policy').map((k) => k + ' ' + tk.radius[k]).join(' / ') : '',
     varNames: tkOk ? tokenVarNames(tk) : new Set()
   };
 

@@ -1,108 +1,91 @@
 # 前端模式库
 
-给人和 AI 共用的前端资产库：**200+ 条可交互动效与 UI 模式**，二十多个分类。
+给人和 AI 共用的前端资产库：可交互动效、UI 模式、排版判断方法和可修改的结构示例。
+人在页面里挑，AI 按索引取代码，两边读同一份数据。
 
-> 条数以 `agent/index.json` 的 `count` 字段为准（会随新增变化，不要写死在别处）。本文写作时：284 条 / 26 分类。
-人在这里挑，AI 在这里取料，两边读同一份数据。
-
-本地打开：`http://127.0.0.1:8801/?tab=motion`
-线上（AI 取料用）：`https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/llms.txt`
+**当前数量只看 [`agent/index.json`](agent/index.json) 的 `count` 与 `categories`。** 本文不维护手写快照。
+本地运行 `node serve.mjs`，打开 `http://127.0.0.1:8801/?tab=motion`。
+AI 入口：[llms.txt](https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/llms.txt)。
 
 ## 页面
 
 | 页面 | 内容 |
 |---|---|
-| `index.html` | 总览（印刷目录版式） |
-| `motion-lab.html` | 动效与交互实验室（条数与分类随数据变化） |
-| `design-system.html` | 设计系统：令牌、字阶、图标、组件图鉴 |
-| `depth.html` | 纵深示范：一台测距仪的使用说明（整页组合样例） |
-| `ai-tells.html` | 反例对照：AI 默认写法 vs 本库改法，8 组并排 |
-| `landing.html` | 产品落地页《场记 SLATE》：首屏打板卡、三件能力、现场流程、两档价格、FAQ（纯静态） |
-| `dashboard.html` | 数据工作台《拍摄日报》：指标、柱状图、可筛选可排序的场次表、详情抽屉、空筛选态 |
-| `site/` | 整站实战《缓坡》四页 |
+| `index.html` | 总览 |
+| `motion-lab.html` | 动效与交互实验室，分类与数量从数据推导 |
+| `design-system.html` | 预览用的设计系统示例与内容呈现，不是消费方的风格规范 |
+| `depth.html` | 纵深组合示例 |
+| `ai-tells.html` | 默认套版与基于内容设计的反例对照 |
+| `landing.html` / `dashboard.html` | 落地页与数据工作台示例 |
+| `site/` | 多页面整站示例 |
 
-## 为什么是「数据 + 生成」
+## 数据与生成
 
-页面、AI 取料文件、GitHub 上的那份——过去是三份手抄件，改一处就分叉。
-现在只有一份真相：`data/`，其余都是生成物。
+`data/` 是唯一真源，`agent/`、`llms.txt`、站点资产与计数由脚本生成：
 
-```
-data/assets/motion/<id>.json   一条资产 = 一个文件（body / css / init / 分类 / 运动语言）
-data/tokens.json               颜色、字阶、间距、圆角、时长、曲线、阴影（唯一数字源）
-data/rules.md                  给 AI 的口味底线（占位符渲染进 llms.txt）
-data/categories.json           分类登记
-data/schema.md                 字段契约与机器校验规则
-        │
-        ├─ node tools/build.mjs  → agent/（索引 + 单条 blocks + 单条预览）+ llms.txt
-        ├─ node tools/site.mjs   → lab-extra4.js + 给 index.html / motion-lab.html 打补丁（source=v4/v5）
-        └─ node tools/emit.mjs   → 反向生成：老 144 条的 motion-lab 内联数组 + lab-more/extra2/extra3
-```
+- `data/assets/motion/<id>.json`：资产 body、css、init、分类与检索元数据。
+- `data/categories.json`：分类登记；`data/tokens.json`：预览变量的数值来源。
+- `data/rules.md`：AI 入口正文；`data/typography.md`、`data/layouts/`：排版方法和结构示例。
+- `tools/build.mjs` → `agent/` 与 `llms.txt`。
+- `tools/site.mjs` → 新批次资产与站点计数；`tools/emit.mjs` → 老批次展示代码。
 
-## 改完数据必须跑这三条
+改完数据，依次运行下面四步，并提交再生成的产物：
 
 ```bash
-node tools/build.mjs && node tools/site.mjs && node tools/emit.mjs && node tools/verify.mjs
+node tools/build.mjs
+node tools/site.mjs
+node tools/emit.mjs
+node tools/verify.mjs
 ```
 
-三条都退出 0 才算改完。**`agent/` 目前入库**，所以改完还要把再生后的 `agent/` 一起提交
-（否则线上 AI 拿到的是旧产物）。只想确认有没有漂移：
+只读检查与回归测试：
 
 ```bash
-node tools/build.mjs --check && node tools/site.mjs --check
+node tools/build.mjs --check --strict
+node tools/site.mjs --check
+node tools/emit.mjs --check
+node tools/verify.mjs
+node --test tools/tests/*.test.mjs
 ```
 
-> `agent/` 入库是「还没有 Pages 时的取料方案」。等 GitHub Actions 部署跑通，
-> 可以把它移出仓库、改由 CI 在发布前构建，届时 `.gitignore` 加回 `agent/` 即可。
+`agent/` 当前仍入库，让 raw / CDN 可以直接取料；自动发布不会改变这个约定。
 
-## 本库不预设风格
+## 完全不预设风格，保留质量要求
 
-**资产是材料，不是风格。** `llms.txt` 只规定质量底线（禁 AI 味、参数自洽、必须破一处），
-风格由使用方每次自定：六个色位、两个字族、材质与圆角取向、运动性格。
+本库不规定配色、字体、圆角、材质、阴影、动效曲线或必须使用的版式，也不要求刻意破格。
+资产和预览参数是可修改的实现示例；变量名是兼容接口，`agent/tokens.css` 的值只为让示例可运行。
 
-资产 css 用变量（`var(--ink)`、`var(--ease)`），换风格＝换一张变量表，资产代码不动。
-`agent/tokens.css` 里那套值是**中性占位**（只为预览能渲染），不是推荐风格。
+避免 AI 模板感的要求仍保留：内容先于容器，不机械堆砌卡片和重复区块，不虚构指标与评价，装饰不抢内容，动效说明状态或关系，文案写具体信息。
+这不等于封禁某种颜色、渐变、玻璃或胶囊；是否使用，由实际内容、品牌和用户需求决定。
+键盘焦点、必要状态、可读性、响应式、reduced-motion、变量依赖和代码隔离仍需检查。
+维护资产时 `--strict` 检查质量契约，不按视觉偏好拒收。
 
-## 给人
+## 给人和 AI
 
-- 左栏分类筛选、搜索、密度切换、夜间主题
-- 每张卡：`复制 CSS` / `整卡` / `预览` / `选中`
-- 选中几条后点 `复制配方`：生成一段可直接粘给 AI 的单子（含 id、取料地址、组装要求）
+页面提供分类筛选、搜索、预览与复制。选中资产后点击“复制配方”，可把 id、取料地址和质量要求交给 AI。
+AI 从 `llms.txt` 开始，查 `agent/index.json`，再按 `files` 获取：
 
-## 给 AI
-
-从 `llms.txt` 开始，它指向 `agent/index.json`。取单条资产：
-
-```
-agent/blocks/<id>.html   body 原文
-agent/blocks/<id>.css    css 原文（外层自己加作用域）
-agent/blocks/<id>.js     init 源码（hasInit 为 true 才有）
-agent/preview/<id>.html  单条独立预览页，加 ?theme=night 看夜间
+```text
+agent/blocks/<id>.html   body
+agent/blocks/<id>.css    CSS，消费方添加作用域
+agent/blocks/<id>.js     init，仅 hasInit 为 true 时存在
+agent/preview/<id>.html  独立预览，可加 ?theme=night
 ```
 
-远程基址两条（国内网络优先 jsDelivr）：
+远程基址：
 
-| 基址 | 实测 |
-|---|---|
-| `https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/` | 可用；有约 12 小时缓存，要最新版加 `?v=<时间戳>` |
-| `https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/` | 国内常超时，作兜底 |
+- `https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`
+- `https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`
 
-一条页面只挑 2–3 条资产，必须留一处破格并写明破坏了哪条——这是 `data/rules.md` 的硬要求。
+CDN 可能缓存分支内容；需要固定版本时将 `@main` 换成提交 SHA。Pages 启用后也可使用项目站点基址。
 
-## 目录
+## 自动校验与发布
 
-| 路径 | 说明 |
-|---|---|
-| `data/` | **唯一真相**，手改这里 |
-| `tools/` | 生成器与自检（build / site / emit / verify / extract / annotate-motion） |
-| `agent/` | AI 取料产物，当前入库（文件数随资产增加，可由 build 重建） |
-| `llms.txt` | AI 入口（生成物） |
-| `lab-extra4.js` | 新资产挂载（生成物） |
-| `lab-recipe.js` | 手写，已选面板的「复制配方」 |
-| `lab-more.js` `lab-extra2.js` `lab-extra3.js` | 存量资产来源（老 144 条仍在这些文件里） |
-| `README.md` / `AGENTS.md` | 流水线说明与协作约定 |
+- `.github/workflows/design-check.yml`：PR、主分支推送和手动运行时检查产物一致性、质量契约、回归测试与发布白名单。
+- `.github/workflows/deploy-pages.yml`：主分支推送或手动运行时，检查后重新生成并发布；部署任务只在构建成功后运行。
+- `node tools/package-site.mjs`：生成 `_site/`。只发布指定页面、浏览器脚本、`site/`、`agent/`、`llms.txt` 与取料需要的 `data/tokens.json`。
+- 不发布完整 `data/`、`tools/`、协作文档或仓库元数据。上传和部署使用 GitHub 官方 Pages Actions。
 
-## 部署
-
-当前可用路径：**公开仓库 + jsDelivr**（无需构建服务）。
-GitHub Pages / Actions 尚未启用（推送令牌缺 `workflow` 权限，工作流暂存在仓库外）。
-启用后：推送到 `main` → `design-check` 校验 → `deploy-pages` 先构建 `agent/` 再按白名单发布。
+首次启用需在仓库 **Settings → Pages → Source** 选择 **GitHub Actions**；提交工作流需要可写仓库连接以及相应 workflow 权限。
+实际发布状态以仓库 Settings 和 Actions 运行结果为准；有工作流文件不代表已经上线。
+回滚时恢复上一份正常提交，重新运行发布流程。

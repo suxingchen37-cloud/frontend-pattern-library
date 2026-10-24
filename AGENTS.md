@@ -1,107 +1,74 @@
 # 本仓库的生成流水线（人机共用）
 
-这个站点**不是手改页面来的**。内容长在 `data/` 里，页面与 AI 产物都是生成物。
+## 权威入口
 
-## 当前规模
+资产数量和分类数量只从 `agent/index.json` 的 `count` 与 `categories` 读取，不在协作文档或规范里保留手写快照。
+资产 JSON 位于 `data/assets/motion/`，分类在 `data/categories.json` 登记。设计系统与内容呈现页面仍有手写示例，不能视为全库数据化。
 
-条数以 `agent/index.json` 的 `count` 为准，**不要在其他地方写死**。截至 2026-10-23 18:40 的快照：
-
-- 资产 **224 条 / 26 分类**：老 144 条（`inline` + `lab-more` + `lab-extra2` + `lab-extra3`）+ 新增（`v4` / `v5`，含「图表」新分类）
-- 页面：总览、动效实验室、设计系统、纵深示范（`depth.html`）、反例对照（`ai-tells.html`）、整站实战 `site/`
-- 生成物：`agent/`、`llms.txt`、`lab-extra4.js`
-- 远端：`github.com/suxingchen37-cloud/frontend-pattern-library`（public）
-
-## 唯一真相 / 生成物
-
-| 层 | 位置 | 说明 |
+| 层 | 维护入口 | 产物 |
 |---|---|---|
-| 资产数据（唯一真相） | `data/assets/motion/<id>.json` | 按 `data/schema.md` 写 |
-| 令牌（数字唯一来源） | `data/tokens.json` | 只增不改语义 |
-| 分类登记 | `data/categories.json` | 新分类必须先登记 |
-| `llms.txt` 正文源 | `data/rules.md` | 改文案只改这里，不动代码 |
-| 站点合成器 | `tools/site.mjs` | 改后必须重跑 |
-| AI 产物生成器 | `tools/build.mjs` | 改后必须重跑 |
-| 老批次反向生成器 | `tools/emit.mjs` | 把 JSON 写回 motion-lab 内联数组与 lab-more/extra2/extra3 |
-| 一致性自检 | `tools/verify.mjs` | 只读 |
-| 站点补丁产物 | `lab-extra4.js`、`index.html`、`motion-lab.html` | 生成物，勿手改 |
-| AI 取料产物 | `agent/`、`llms.txt` | 生成物，**当前入库**，勿手改 |
+| 资产与分类 | `data/assets/motion/*.json`、`data/categories.json` | 展示代码与 AI 索引 |
+| 预览变量 | `data/tokens.json` | `agent/tokens.css` 与独立预览 |
+| AI 使用要求 | `data/rules.md` | `llms.txt` |
+| 排版方法与结构示例 | `data/typography.md`、`data/layouts/*.json` | `agent/typography.md`、`agent/layouts/` |
+| AI 生成器 | `tools/build.mjs` | `agent/`、`llms.txt` |
+| 站点合成器 | `tools/site.mjs` | `lab-extra4.js` 与首页、实验室补丁 |
+| 老批次生成器 | `tools/emit.mjs` | 实验室内联数组、`lab-more.js`、`lab-extra2.js`、`lab-extra3.js` |
+| 一致性核验 | `tools/verify.mjs` | 只读，不写盘 |
+| 发布打包 | `tools/package-site.mjs` | `_site/`，按白名单生成 |
 
-## 改完数据必须跑这三条
+## 修改与检查
 
-```
-node tools/build.mjs && node tools/site.mjs && node tools/emit.mjs && node tools/verify.mjs
-```
+改源数据或生成器后按顺序执行四步，再提交生成物：
 
-三条都退出 0 才算改完。因为 `agent/` 现在入库，改完还要把再生后的 `agent/` 一起提交——
-否则线上（jsDelivr / raw）取到的是旧产物。只确认漂移：
-
-```
-node tools/build.mjs --check && node tools/site.mjs --check && node tools/emit.mjs --check
+```bash
+node tools/build.mjs
+node tools/site.mjs
+node tools/emit.mjs
+node tools/verify.mjs
 ```
 
-## 协作约定（多 agent / 多人同时在场时）
+交付前运行：
 
-1. **同一时刻只允许一个人跑 `build` + `site`**，否则产物互相覆盖。
-2. **谁改 `data/` 谁跑那三条 + 提交 `agent/` 变更**；不跑等于把漂移留给下一个人。
-3. 新增资产按 `data/schema.md` 写 JSON；**不要手改** `agent/`、`index.html`、`motion-lab.html`、`lab-extra4.js`。
-4. 分类只用 `data/categories.json` 已登记的；要加新分类先登记。
-5. 临时脚本用 `tools/_` 前缀，别混进提交。
-6. 提交说明写清「改了什么、为什么」；用 `git log` 能看懂才能回退。
+```bash
+node tools/build.mjs --check --strict
+node tools/site.mjs --check
+node tools/emit.mjs --check
+node tools/verify.mjs
+node --test tools/tests/*.test.mjs
+node tools/package-site.mjs
+```
 
-## 风格口径（重要）
+- `--strict` 把质量契约 WARN 当作失败；颜色、圆角、材质与曲线不是质量错误。
+- 生成物勿手改；`agent/` 当前入库，改源数据后必须一起提交，避免远程取料过期。
+- 不运行一次性 `tools/extract.mjs`，它会覆盖 motion 元数据；不要把它加入校验或发布流程。
+- 同一时刻只允许一个执行者跑生成器，避免并发覆盖。
+- 分类必须先登记；临时脚本用 `tools/_` 前缀且不要提交。
+- 提交只包含当前任务的修改，换行统一 LF，说明改了什么以及原因。
 
-本库**不预设视觉风格**：`data/rules.md` 只定质量底线（禁 AI 味、参数自洽、必须破一处、自检）。
-消费方每次自定六色位 + 两个字族 + 取向 + 运动性格；资产用变量，换风格只换变量表。
-`agent/tokens.css` 的当前值仅是**中性占位**（供预览渲染），不要当成推荐配色。
+## 完全不预设风格
 
-## 站点与取料
+用户需求、内容、品牌与受众决定视觉表现。库内不设风格预案，不强定配色、字体数量、字阶、圆角档数、材质、阴影、曲线或版式配额，也不要求刻意破格。
+预览变量、示例页面和布局骨架只是可修改的材料，变量名不是视觉限制。
 
-- 本地站点：`http://127.0.0.1:8801/?tab=motion`
-- AI 取料（国内优先）：
-  `https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-pattern-library@main/`
-  索引 `agent/index.json`，单条 `agent/blocks/<id>.html|.css|.js`，预览 `agent/preview/<id>.html`
-- raw 兜底：`https://raw.githubusercontent.com/suxingchen37-cloud/frontend-pattern-library/main/`（国内常超时）
+保留避免 AI 模板感的要求：按内容组织信息，不堆无意义卡片，不机械重复区块，不用装饰和口号填补空内容，不虚构指标与评价。
+渐变、玻璃、紫色、胶囊等元素不被单独封禁；检查它们是否服务当前内容与任务。
+代码隔离、变量依赖、交互正确性、必要状态、键盘焦点、可读性、响应式与 reduced-motion 仍是质量底线。
 
-卡片的增减、计数、分类列表全部由数据推导，不需要手改任何 HTML。
+## 远程取料
 
-## emit.mjs 的用途
+从 `llms.txt` 到 `agent/index.json`，再按 files 读取 blocks；使用 `agent/preview/` 核对交互。
+可使用 jsDelivr、raw 或已启用的 Pages。项目站点地址带仓库名前缀，复制链接不能丢掉这个路径。
+需要可复现版本时，CDN 地址固定提交 SHA，不能假定 @main 没有缓存。
 
-老 144 条资产同时存在于两处：`data/assets/motion/*.json`（真相）与站点里的
-`motion-lab.html` 内联数组 / `lab-more.js` / `lab-extra2.js` / `lab-extra3.js`（人看的页面）。
-`tools/emit.mjs` 负责把前者写回后者（含 `data/order.json` 的排序）。
+## 发布与权限
 
-- `node tools/emit.mjs --check`：只比对，不写盘
-- `node tools/emit.mjs`：重写那 4 个源文件 + 回读核对
-- **跑过 emit 之后不要再跑 extract**，除非你确定要丢弃 JSON 里的 motion/tags 元数据
+- `design-check.yml` 对 PR、main 推送与手动运行执行只读检查、回归测试及打包。
+- `deploy-pages.yml` 在 main 推送与手动运行时检查、构建并部署，只发布打包白名单。
+- 首次启用需将仓库 Pages Source 设为 GitHub Actions；写入 workflow 文件需要相应权限。
+- 工作流文件、仓库设置、成功运行与线上验证是不同状态，不在文档里写死已上线。核实后再报告完成。
+- Pages 未启用或部署失败时，raw / CDN 取料路径仍可使用；恢复正常提交后重新运行部署即可回滚。
 
-## 改 llms.txt 的正文
+## 尚需独立处理
 
-正文在 `data/rules.md`，用占位符引用数据，改完跑 `node tools/build.mjs` 就会填进去：
-
-- `{{assetCount}}` / `{{catCount}}` / `{{tokensVersion}}` / `{{catList}}`
-- `{{fsList}}` `{{spList}}` `{{radiusList}}` `{{durList}}` `{{easeList}}` `{{inkList}}` `{{shadowList}}` `{{borderList}}`
-- `{{lhBody}}` `{{lhNote}}` `{{lhDisplay}}` `{{trDisplay}}` `{{trBody}}` `{{trMono}}`
-- `{{paperBg}}` `{{paperPanel}}` `{{nightBg}}` `{{nightPanel}}` 与 `{{inkMain}}` 等墨色
-- `{{radiusPolicy}}` `{{spacePolicy}}` `{{durationPolicy}}` `{{shadowPolicy}}` `{{borderPolicy}}` `{{inkPolicy}}` `{{markerPolicy}}`
-- `{{statusList}}`（状态色）
-- `{{markerHi}}` `{{durAmbient}}` `{{retiredLav}}` `{{bannedWords}}`
-- `{{#emptyAssets}}…{{/emptyAssets}}`：资产为空时才出现的段落
-
-写了不存在的占位符、或删掉 `rules.md`，`build.mjs` 会直接报错退出 1 —— 不会悄悄产出半截文件。
-
-## 存档约定（git）
-
-- 仓库是公开的；`agent/` 目前入库（786 个生成物），其余生成物（`llms.txt`、`lab-extra4.js`）同样入库以便 diff。
-- **谁改谁提交**，说明写清「改了什么、为什么」。
-- 看改动：`git diff` / `git show --stat HEAD`；回退：`git reset --hard <hash>` 或 `git checkout <hash> -- <file>`。
-- 换行统一 LF（见 `.gitattributes`），避免 Windows 把生成物改成 CRLF 后 `--check` 误报漂移。
-- 本地历史备份分支：`local-history-2026-10-23`（合并远端历史前的那条独立历史）。
-
-## 待办（未完成，按优先级）
-
-1. **GitHub Actions 未启用**：推送令牌缺 `workflow` 权限；两个工作流暂存在
-   `D:\111\_poc-world\_github-pending\github\workflows\`。授权后放回 `.github/workflows/` 并推送。
-2. **Pages 未配置**：启用后把 Source 设为 GitHub Actions（`deploy-pages` 按白名单发布，已排除 `data/`、`tools/`）。
-   在 Pages 可用之前，AI 取料走 jsDelivr / raw。
-3. **设计系统与内容呈现尚未接入数据管道**：这两块仍是手写 HTML，只有动效 206 条由 `data/` 驱动。
-4. 移动端与可访问性未做系统巡检（375 / 768 / 1280、键盘 Tab、夜间对比度）。
+设计系统与内容呈现的完整数据化，以及全资产移动端和可访问性巡检不属于本次修复，不能因生成检查通过就宣称这些已完成。

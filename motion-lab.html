@@ -467,7 +467,7 @@ function cardSnippet(d) {
 function linkFor(id) {
   const theme = document.documentElement.getAttribute('data-theme') === 'night' ? 'night' : 'paper';
   if (window.self !== window.top) {
-    const u = new URL(location.origin + '/');
+    const u = new URL('index.html', location.href);
     u.searchParams.set('tab', 'motion');
     u.searchParams.set('demo', id);
     u.searchParams.set('theme', theme);
