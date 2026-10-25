@@ -16,7 +16,7 @@
 - agent/guides/composition.md：按信息关系组合零件，检查共享状态、作用域与依赖，不设组件或区块配额。
 - agent/guides/interaction.md：补全当前操作的真实结果、等待、失败、取消和返回等必要分支，不强加统一流程。
 - agent/guides/adaptation.md：用内容、数据、语言、设备和输入方式的变化检查适配，不只等比例缩小页面。
-- agent/guides/review.md：走通实际任务、发现机械套版并记录验证证据，不以外观元素判错。
+- agent/guides/review.md：分别检查操作、视觉完成度与机械套版，记录实际验证证据，不以测试数量代替视觉判断。
 
 ## 现在有什么
 - 资产 374 条，分类 26 个，令牌表 v1.0.0。数量以 agent/index.json 为准。
