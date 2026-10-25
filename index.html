@@ -30,6 +30,12 @@ iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:var(
 .mast::before{content:"";display:block;width:40px;height:1px;background:var(--red);margin:0 0 24px}
 h1{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.05;letter-spacing:-.03em;margin:0}
 .dek{max-width:40em;margin:24px 0 0;font-size:15px;line-height:1.7;color:var(--muted)}
+.method-entry{margin:0 0 32px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.method-entry h2{font-size:21px;line-height:1.5;margin:0}
+.method-entry p{max-width:46em;margin:8px 0;color:var(--muted);font-size:13px}
+.method-entry ul{display:flex;flex-wrap:wrap;gap:8px 24px;padding:0;margin:12px 0 0;list-style:none}
+.method-entry a{color:inherit;text-underline-offset:3px;font-size:13px}
+.method-entry a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 .rows{border-bottom:1px solid var(--line)}
 .row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;grid-template-areas:"idx ttl num" "idx note note";gap:0 24px;width:100%;margin:0;padding:24px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:transform 180ms var(--ease),border-top-color 180ms linear}
 .row:hover{transform:translateY(-1px);border-top-color:var(--ink)}
@@ -91,6 +97,17 @@ h1{font-family:var(--serif);font-weight:400;font-size:96px;line-height:1.05;lett
         <h1>前端模式库</h1>
         <p class="dek">按任务选取交互、组件和内容结构，再根据实际内容与品牌决定外观。本站页面是一组可修改的展示示例，不限定消费方的设计风格。</p>
       </div>
+      <section class="method-entry" aria-labelledby="method-title">
+        <h2 id="method-title">先判断，再取零件</h2>
+        <p>根据当前需求组织内容与操作，再选可复用资产。这些材料提供判断和检查方法，不规定整页顺序，也不要求从有限模板或风格名单中选择。</p>
+        <ul>
+          <li><a href="agent/guides/decisions.md">判断需求</a></li>
+          <li><a href="agent/guides/composition.md">组合零件</a></li>
+          <li><a href="agent/guides/interaction.md">补全操作</a></li>
+          <li><a href="agent/guides/adaptation.md">适应变化</a></li>
+          <li><a href="agent/guides/review.md">检查套版</a></li>
+        </ul>
+      </section>
       <div class="rows">
         <button class="row" data-tab="motion">
           <span class="idx">01</span>

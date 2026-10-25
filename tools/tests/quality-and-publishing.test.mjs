@@ -111,6 +111,7 @@ test('copied recipes keep the project path and do not prescribe a style', async 
     vm.runInNewContext(script, context);
     const recipe = await context.window.__recipe();
     assert.ok(recipe.includes(base + 'llms.txt'), recipe);
+    assert.ok(recipe.includes(base + 'agent/guides/index.json'), recipe);
     assert.ok(recipe.includes(base + 'agent/blocks/example.html'), recipe);
     assert.ok(recipe.includes('避免无意义的卡片堆砌'), recipe);
     assert.ok(!recipe.includes('只允许一处'), recipe);

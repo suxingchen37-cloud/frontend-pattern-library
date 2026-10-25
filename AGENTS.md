@@ -11,6 +11,7 @@
 | 预览变量 | `data/tokens.json` | `agent/tokens.css` 与独立预览 |
 | AI 使用要求 | `data/rules.md` | `llms.txt` |
 | 排版方法与结构示例 | `data/typography.md`、`data/layouts/*.json` | `agent/typography.md`、`agent/layouts/` |
+| 设计、组合与检查方法 | `data/guides/index.json`、`data/guides/*.md` | `agent/guides/index.json` 与同目录 Markdown |
 | AI 生成器 | `tools/build.mjs` | `agent/`、`llms.txt` |
 | 站点合成器 | `tools/site.mjs` | `lab-extra4.js` 与首页、实验室补丁 |
 | 老批次生成器 | `tools/emit.mjs` | 实验室内联数组、`lab-more.js`、`lab-extra2.js`、`lab-extra3.js` |
@@ -50,6 +51,7 @@ node tools/package-site.mjs
 
 用户需求、内容、品牌与受众决定视觉表现。库内不设风格预案，不强定配色、字体数量、字阶、圆角档数、材质、阴影、曲线或版式配额，也不要求刻意破格。
 预览变量、示例页面和布局骨架只是可修改的材料，变量名不是视觉限制。
+扩充以零件、设计判断和验证方法为主，不以堆积整页模板为目标。布局材料只描述可选的局部结构关系，不能规定整页顺序或要求从有限骨架中强选；也不随机换风格或强制差异。方法材料按需读取，不要求统一输出格式。
 
 保留避免 AI 模板感的要求：按内容组织信息，不堆无意义卡片，不机械重复区块，不用装饰和口号填补空内容，不虚构指标与评价。
 渐变、玻璃、紫色、胶囊等元素不被单独封禁；检查它们是否服务当前内容与任务。
@@ -57,7 +59,7 @@ node tools/package-site.mjs
 
 ## 远程取料
 
-从 `llms.txt` 到 `agent/index.json`，再按 files 读取 blocks；使用 `agent/preview/` 核对交互。
+从 `llms.txt` 按问题选择 `agent/guides/` 的方法材料，再到 `agent/index.json` 按 files 读取 blocks；使用 `agent/preview/` 核对交互。
 可使用 jsDelivr、raw 或已启用的 Pages。项目站点地址带仓库名前缀，复制链接不能丢掉这个路径。
 需要可复现版本时，CDN 地址固定提交 SHA，不能假定 @main 没有缓存。
 

@@ -1,6 +1,6 @@
 # 前端模式库
 
-给人和 AI 共用的前端资产库：可交互动效、UI 模式、排版判断方法和可修改的结构示例。
+给人和 AI 共用的前端资产库：可交互动效、UI 模式，以及设计判断、组合与验收方法。
 人在页面里挑，AI 按索引取代码，两边读同一份数据。
 
 **当前数量只看 [`agent/index.json`](agent/index.json) 的 `count` 与 `categories`。** 本文不维护手写快照。
@@ -26,6 +26,7 @@ AI 入口：[llms.txt](https://cdn.jsdelivr.net/gh/suxingchen37-cloud/frontend-p
 - `data/assets/motion/<id>.json`：资产 body、css、init、分类与检索元数据。
 - `data/categories.json`：分类登记；`data/tokens.json`：预览变量的数值来源。
 - `data/rules.md`：AI 入口正文；`data/typography.md`、`data/layouts/`：排版方法和结构示例。
+- `data/guides/index.json` 与 `data/guides/*.md`：按问题查找的设计、组合、交互、适配与检查方法，生成到 `agent/guides/`。
 - `tools/build.mjs` → `agent/` 与 `llms.txt`。
 - `tools/site.mjs` → 新批次资产与站点计数；`tools/emit.mjs` → 老批次展示代码。
 
@@ -62,8 +63,11 @@ node --test tools/tests/*.test.mjs
 
 ## 给人和 AI
 
+扩充重点是可复用零件、判断方法与验证材料，不以堆积整页模板为目标。布局文件只记录可修改的局部结构关系，不规定页面顺序；完整示例仅用于理解特定情境，不是新项目的默认起点。
+AI 可先从 `agent/guides/index.json` 按问题查找方法，再按当前任务取资产。不要求每次通读全部方法，也不通过随机换风格制造差异。
+
 页面提供分类筛选、搜索、预览与复制。选中资产后点击“复制配方”，可把 id、取料地址和质量要求交给 AI。
-AI 从 `llms.txt` 开始，查 `agent/index.json`，再按 `files` 获取：
+AI 从 `llms.txt` 开始，按问题读取 `agent/guides/`，再查 `agent/index.json` 按 `files` 获取资产：
 
 ```text
 agent/blocks/<id>.html   body

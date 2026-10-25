@@ -36,6 +36,7 @@ import { readFile, writeFile, mkdir, readdir, unlink, stat } from 'node:fs/promi
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { guideProducts } from './guides.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..');
@@ -624,6 +625,7 @@ function llmsTxt(tk, assets, cats, counts, dataRoot) {
 function buildProducts(ctx) {
   const { tk, assets, cats, counts, dataRoot } = ctx;
   const products = new Map();
+  for (const [file, text] of guideProducts(dataRoot)) products.set(file, text);
   products.set('agent/index.json', indexJson(assets, tk.version, cats, counts));
   // 变量契约：单条 blocks/*.css 直接拿出来也能跑（不依赖预览页注入的 :root）
   products.set('agent/tokens.css', '/* 仅供预览的默认值；正式项目可全部重定义，不构成风格规范。 */' + NL + tokenVarBlock(tk) + NL);
@@ -647,13 +649,13 @@ function buildProducts(ctx) {
       const md = [
         '# ' + L.name + '（' + L.id + '）',
         '',
-        '> 可修改的结构示例；尺寸、字体和动效均为示意，不约束消费方的视觉风格。',
+        '> 可修改的局部结构参考；不是整页模板，也不是必须选择的有限列表。尺寸、字体和动效不约束消费方风格。',
         '',
         '- 栅格：' + L.grid,
         '- 行宽/字号：' + L.measure,
         '- 层级：' + L.hierarchy,
         '- 留白节奏：' + L.rhythm,
-        '- 典型区块顺序：' + (L.blocks || []).join(' → '),
+        '- 可选内容关系（按需求取舍、重排，不是页面顺序）：' + (L.blocks || []).join('；'),
         '- 动效性格：' + L.motion,
         '- 别这么干：' + L.avoid,
         ''

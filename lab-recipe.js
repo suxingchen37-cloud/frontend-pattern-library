@@ -27,7 +27,7 @@
       var base = new URL('.', location.href).href.replace(/\/$/, '');
       var out = [
         '参考这个库的资产与质量要求做一页，视觉风格按本次需求决定：' + base + '/llms.txt',
-        '先读 ' + base + '/agent/index.json（只读 items 里对应的几条），再用这些原件：'
+        '先根据本次内容与任务决定结构，按需读 ' + base + '/agent/guides/index.json；再查 ' + base + '/agent/index.json（只读 items 里对应的几条），取这些原件：'
       ];
       ids.forEach(function (id) {
         out.push('- ' + id + '｜' + nameOf(items, id) + ' → ' + base + '/agent/blocks/' + id + '.html + .css' + (function () {
@@ -37,6 +37,7 @@
       });
       out.push('要求：（一句话：要做什么页面、给谁用、最重要的一个动作是什么）');
       out.push('设计要求：依据实际内容组织层级，避免无意义的卡片堆砌、重复版式和装饰抢内容；不要求刻意破格。');
+      out.push('选中的资产是可修改的零件，不规定整页顺序或使用数量；不要从整页例子换字起步，也不随机换风格制造差异。');
       out.push('做完跑一遍 llms.txt 的「交付前自检」，把没过的条目贴给我。');
       return out.join('\n');
     });

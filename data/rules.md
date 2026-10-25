@@ -3,12 +3,20 @@
 本库完全不预设视觉风格。先理解本次页面的内容、受众和关键任务，再决定布局与表现；没有必须照搬的配色、字体、圆角、材质、曲线或装饰。
 本库提供可复用资产与质量要求；示例页面的外观只是示例，不是消费方的默认风格。
 
-## 取料顺序
-1. 读 agent/index.json 的 items，按 id / cat / t / en / d / motion / tags 检索。
-2. 按 files 取原文：blocks/<id>.html 是 body，.css 是样式；hasInit 为 true 时才有 .js。
-3. 打开 preview/<id>.html 检查交互，再按需求修改和组合；不要凭记忆补写已有资产。
-4. agent/typography.md 提供排版判断方法；agent/layouts/ 是可修改的结构示例，无需从中强选骨架。ai-tells.html 按任务检查模板化问题，不提供必须照抄的正确外观。
-5. 本库是取材源。消费方在自己的工程里改代码；维护本库时才修改 data/ 并重跑生成器，不手改 agent/** 或 llms.txt。
+## 从需求到取料
+1. 先理解本次用户、内容与目标操作，再决定需要什么结构和行为；不要从整页例子开始换字。
+2. 读 agent/guides/index.json，按问题选取相关方法，不要求每次通读全部材料或输出固定思考格式。
+3. 确认行为后读 agent/index.json 的 items，按 id / cat / t / en / d / motion / tags 检索；可以改造、组合或不用现成资产。
+4. 按 files 取原文：blocks/<id>.html 是 body，.css 是样式；hasInit 为 true 时才有 .js。打开 preview/<id>.html 检查交互，不凭记忆补写依赖。
+5. agent/typography.md 提供排版判断方法；agent/layouts/ 只记录可选的局部结构关系，不是整页模板、固定页面顺序或必须选择的有限名单。ai-tells.html 按任务检查模板化问题。
+6. 本库是取材源。消费方在自己的工程里改代码；维护本库时才修改 data/ 并重跑生成器，不手改 agent/** 或 llms.txt。
+
+## 按需读取的方法材料
+- agent/guides/decisions.md：理解任务、内容和约束，再决定结构与表现，不选风格菜单。
+- agent/guides/composition.md：按信息关系组合零件，检查共享状态、作用域与依赖，不设组件或区块配额。
+- agent/guides/interaction.md：补全当前操作的真实结果、等待、失败、取消和返回等必要分支，不强加统一流程。
+- agent/guides/adaptation.md：用内容、数据、语言、设备和输入方式的变化检查适配，不只等比例缩小页面。
+- agent/guides/review.md：走通实际任务、发现机械套版并记录验证证据，不以外观元素判错。
 
 ## 现在有什么
 - 资产 {{assetCount}} 条，分类 {{catCount}} 个，令牌表 v{{tokensVersion}}。数量以 agent/index.json 为准。
