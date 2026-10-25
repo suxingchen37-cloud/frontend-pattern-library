@@ -128,7 +128,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-xt-stage" tabindex="0" aria-label="立体文字：移动指针它会跟着偏"><span class="d-xt-word" data-word="缓坡">缓坡</span><span class="d-xt-sub">SLOPE · 2026</span></div>
 </div>
-<p class="pv-note">厚度用 14 层同字叠出来，每层错 1px：用阴影做会糊，用 3D 变换做会连字重一起变形。指针只让整块偏 8°，超过就开始晕，而且字要能被读出来，不能被当成一张立体贴纸。厚度色比正面深一档，光才像是从左上来的。</p>
+<p class="pv-note">本例通过同字分层偏移模拟厚度，并让指针改变视角。层数、偏移、配色与运动幅度可修改，检查文字可读性、性能和减少动效偏好。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

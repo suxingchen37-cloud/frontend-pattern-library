@@ -130,7 +130,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-su" data-box><div class="d-su-toast" data-toast>已删除 1 条场记</div><button type="button" class="d-su-btn" data-shake>模拟摇一下</button><button type="button" class="d-su-undo" data-undo hidden>撤销</button><p class="d-su-note" data-note>摇晃手机，或点上面的按钮</p></div>
 </div>
-<p class="pv-note">手机上摇一摇是少数不需要看屏幕的手势：删除后想撤销，手已经在抖了。判定看两次加速度的间隔（180ms 内反向），不动手机永远不会触发。桌面没有加速度计，所以下面永远放一个普通按钮兜底——不能只有一种触发方式。</p>
+<p class="pv-note">本例模拟摇动触发撤销，并保留普通按钮作为替代入口。阈值与时间窗口是示例，实际设备还需检查传感器能力、权限和误触情况。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

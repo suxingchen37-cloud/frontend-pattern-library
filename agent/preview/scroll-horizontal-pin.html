@@ -132,7 +132,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-hp" tabindex="0" aria-label="横向锁定：纵向滚动带动横向位移"><div class="d-hp-space"><div class="d-hp-pin"><div class="d-hp-track"><span class="d-hp-panel">01 印前</span><span class="d-hp-panel">02 上机</span><span class="d-hp-panel">03 装订</span></div></div></div></div>
 </div>
-<p class="pv-note">纵向留 390px 换横向 600px，不是 1:1：横向三块各 300，必须走满 600 才能让第三块贴住左边；纵向 390 是「走完横向刚好也到底」，多一屏会让人以为卡住。pin 用 sticky 而不是 transform 顶住，因为 sticky 在滚动容器里天然对齐，不用算偏移。</p>
+<p class="pv-note">本例用粘性区域把纵向滚动映射为横向内容移动。滚动行程应根据实际内容尺寸计算，避免未展示完整或长时间停滞；映射比例与表现可调整。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

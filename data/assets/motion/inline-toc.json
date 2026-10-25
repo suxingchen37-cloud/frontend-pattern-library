@@ -3,7 +3,7 @@
   "cat": "内容",
   "t": "正文小目录",
   "en": "inline toc",
-  "d": "小目录放在正文开头、只列三到五节：长文才需要目录，而长文的目录放在开头比固定在侧边更适合窄屏。当前小节在滚动中高亮，但只高亮不滚动——目录自己会跟着跳的，人就没法点别处。",
+  "d": "正文目录帮助理解文章结构并跳到章节。位置、章节数量与当前节提示按内容和屏宽决定，避免自动移动打断正在执行的导航。",
   "body": "<div class=\"d-it\" data-toc><b>本文分四节</b><ol><li><a href=\"#\" data-to=\"0\" class=\"d-it-on\">一、光从哪来</a></li><li><a href=\"#\" data-to=\"1\">二、色温</a></li><li><a href=\"#\" data-to=\"2\">三、显色</a></li><li><a href=\"#\" data-to=\"3\">四、阴影</a></li></ol></div>",
   "css": ".d-it{max-width:340px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}\n.d-it>b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--faint);font-weight:400;margin-bottom:6px}\n.d-it ol{list-style:none;margin:0;padding:0;display:grid;gap:3px}\n.d-it a{display:block;padding:2px 0;color:var(--muted);text-decoration:none;font-size:12px;border-left:2px solid transparent;padding-left:8px}\n.d-it a.d-it-on{color:var(--ink);border-left-color:var(--ink)}\n.d-it a:hover{color:var(--ink)}",
   "init": "root => {\n  var links = [].slice.call(root.querySelectorAll('[data-to]'));\n  if (!links.length) return;\n  links.forEach(function (a) {\n    a.addEventListener('click', function (e) {\n      e.preventDefault();\n      links.forEach(function (x) { x.classList.toggle('d-it-on', x === a); });\n    });\n  });\n}",

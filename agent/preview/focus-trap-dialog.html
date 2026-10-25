@@ -141,7 +141,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-ftd"><div class="d-ftd-page"><p class="d-ftd-line">改字号会重排整页，所以先问一句。</p><button class="d-ftd-open" type="button" aria-haspopup="dialog">打开对话框</button></div><div class="d-ftd-scrim" hidden></div><div class="d-ftd-box" role="dialog" aria-modal="true" aria-label="套用字号确认" hidden><b class="d-ftd-title">套用这个字号？</b><div class="d-ftd-row"><button class="d-ftd-opt" type="button">套用</button><button class="d-ftd-opt" type="button">先看</button><button class="d-ftd-opt" type="button">取消</button></div><i class="d-ftd-caret" aria-hidden="true"></i><span class="d-ftd-hint">Tab 循环三点 · Esc 关</span></div></div>
 </div>
-<p class="pv-note">焦点不淡入：三个按钮下面那根 1px 游标用 120ms 的 steps(6) 一格格挪，像字车走位，读者能数出焦点在第几个；弹层本身也只用 120ms 六步从 6px 外落到位，不给缓动。Tab 到底回第一个、Esc 关掉并把焦点送回触发按钮——这两条缺一条，键盘用户就不敢在弹层里按回车。</p>
+<p class="pv-note">模态对话框打开后焦点进入，Tab 在当前层循环，关闭后返回触发位置。游标、入场形式与全部视觉参数只是示例，实际项目可使用其他清楚的焦点提示。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

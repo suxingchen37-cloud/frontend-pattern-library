@@ -3,7 +3,7 @@
   "cat": "内容",
   "t": "要点摘要",
   "en": "key takeaways",
-  "d": "要点放三到四条、每条一行半以内：再多就变成目录，就该放正文里了。不加图标、不加序号圆圈——序号会让人以为有先后顺序，而这些点是并列的。位置固定在标题下，滚动时跟着走，读完正文还能回来对。",
+  "d": "摘要提取真实要点，帮助决定是否继续阅读。数量、长度、位置与是否使用图标或编号由内容关系决定，不为凑数补造信息。",
   "body": "<div class=\"d-kt\"><b>读完你会知道</b><ul><li>为什么台灯的色温比亮度更影响阅读</li><li>三千五百开尔文适合哪种房间</li><li>怎么用一张白纸判断显色够不够</li></ul></div>",
   "css": ".d-kt{max-width:340px;padding:14px 16px;border-left:2px solid var(--ink);background:var(--paper)}\n.d-kt b{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;color:var(--faint);font-weight:400;margin-bottom:6px}\n.d-kt ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}\n.d-kt li{position:relative;padding-left:14px;font-size:13px;line-height:1.6}\n.d-kt li:before{content:\"\";position:absolute;left:0;top:10px;width:5px;height:1px;background:var(--ink)}",
   "init": null,

@@ -30,7 +30,7 @@
   --sh1:var(--shadow-divider);--sh2:var(--shadow-overlay);--sh3:var(--shadow-overlay);
   --f11:var(--fs-11);--f12:var(--fs-11);--f13:var(--fs-13);--f14:var(--fs-15);--f17:var(--fs-21);--f22:var(--fs-34);--f28:var(--fs-34);
   --ease:var(--ease-print);
-  /* 退役色：只保留给本页旧的示例块，新代码别用 */
+  /* 历史示例色：可按项目需求继续使用或重定义 */
   --lime:var(--marker-hi);--mint:color-mix(in srgb,var(--ink) 14%,var(--paper));--amber:var(--ink-yellow);
   --coral:var(--ink-vermilion);--red:var(--ink-vermilion);--lav:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));--blue:var(--ink-indigo);
 }
@@ -187,8 +187,8 @@ html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
 <main>
 <p class="lead" style="padding:16px 24px;margin:0">以下配色、字阶、圆角与材质仅用于本页示例，不是本库的推荐或强制风格。正式项目按内容、品牌与用户需求决定视觉表现；通用质量要求见 <a href="llms.txt">AI 取料入口</a>。</p>
 <section id="design">
-  <h2>A 颜色：三层，一层比一层省</h2>
-  <p class="lead">纸与墨是底，油墨只标状态，标记笔只做荧光笔。换主题只换纸与墨，油墨不动。<b>正文对比度 ≥ 7:1，次要 ≥ 4.5:1。</b></p>
+  <h2>A 配色示例：根据内容与品牌重定</h2>
+  <p class="lead">本页采用浅底与墨色作演示；这是一种展示选择。正式项目可改变全部色值、色彩数量和强调方式，并根据目标可访问性要求实测文字与控件对比度。</p>
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr))">
     <div class="token"><i class="sw" style="background:var(--bg)"></i>--bg 纸底</div>
     <div class="token"><i class="sw" style="background:var(--paper)"></i>--paper 面板</div>
@@ -198,20 +198,20 @@ html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
     <div class="token"><i class="sw" style="background:var(--line)"></i>--line 描边</div>
   </div>
   <table class="spec" style="margin-top:16px">
-    <tr><th>油墨</th><th>值</th><th>用在哪</th><th>规矩</th></tr>
-    <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--ink-vermilion);border-radius:2px"></span> --ink-vermilion 朱</td><td>#c2402a</td><td>危险、删除、当前选中</td><td rowspan="3">一页最多两种油墨，禁止三色同屏</td></tr>
+    <tr><th>油墨</th><th>值</th><th>用在哪</th><th>本页示例用途</th></tr>
+    <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--ink-vermilion);border-radius:2px"></span> --ink-vermilion 朱</td><td>#c2402a</td><td>危险、删除、当前选中</td><td rowspan="3">本页演示不同语义；项目可自定配色与颜色数量</td></tr>
     <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--ink-indigo);border-radius:2px"></span> --ink-indigo 靛</td><td>#2b4b8f</td><td>焦点环、信息、链接</td></tr>
     <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--ink-yellow);border-radius:2px"></span> --ink-yellow 黄</td><td>#e8c34a</td><td>提醒、待处理</td></tr>
-    <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--marker-hi);border-radius:2px"></span> --marker-hi 荧光</td><td>#d9f875</td><td>只在「此刻看这里」时用</td><td>全站 ≤3 处，禁作背景</td></tr>
-    <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--ok);border-radius:2px"></span> --ok 成功</td><td>#3d7347</td><td>成功、已完成</td><td rowspan="2">只标状态，不作装饰</td></tr>
+    <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--marker-hi);border-radius:2px"></span> --marker-hi 荧光</td><td>#d9f875</td><td>本页用于标记阅读位置</td><td>用途与面积按内容决定，同时检查可读性</td></tr>
+    <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--ok);border-radius:2px"></span> --ok 成功</td><td>#3d7347</td><td>成功、已完成</td><td rowspan="2">本页用作状态色；项目可重定义并搭配文字说明</td></tr>
     <tr><td><span class="sw" style="display:inline-block;width:14px;height:14px;vertical-align:-2px;background:var(--warn);border-radius:2px"></span> --warn 警示</td><td>#a8502f</td><td>警示、待确认</td></tr>
   </table>
-  <p class="lead" style="margin:14px 0 0">退役：<span style="background:color-mix(in srgb,var(--ink) 14%,var(--paper));padding:1px 6px;border-radius:2px;font-family:var(--font-mono,ui-monospace);font-size:11px">--mint</span> <span style="background:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));padding:1px 6px;border-radius:2px;font-family:var(--font-mono,ui-monospace);font-size:11px">--lav</span> 这类彩色只留在存量老资产里，新资产只用上面两行油墨。</p>
+  <p class="lead" style="margin:14px 0 0">其他示例色：<span style="background:color-mix(in srgb,var(--ink) 14%,var(--paper));padding:1px 6px;border-radius:2px;font-family:var(--font-mono,ui-monospace);font-size:11px">--mint</span> <span style="background:color-mix(in srgb,var(--ink-indigo) 14%,var(--paper));padding:1px 6px;border-radius:2px;font-family:var(--font-mono,ui-monospace);font-size:11px">--lav</span> 这些色值同样可使用、替换或删除，不按颜色给资产设准入限制。</p>
 </section>
 
 <section>
   <h2 id="type">B 字阶、间距、圆角、阴影</h2>
-  <p class="lead">八档字阶、八档间距、五档圆角、三档阴影。表外数字一律不用；圆角按层级取，禁止整页同值。</p>
+  <p class="lead">下表展示本页使用的一组字号、间距、圆角与阴影。正式项目可增加、减少或重定全部档位；一致圆角或不同圆角都可采用，由内容关系与品牌决定。</p>
   <table class="spec">
     <tr><th>令牌</th><th>字号 / 行高</th><th>用在哪</th><th>样例</th></tr>
     <tr><td>--fs-9</td><td>9px</td><td>角标、编号、图注编号</td><td><span style="font-size:var(--fs-9);color:var(--faint);font-family:var(--font-mono,ui-monospace)">SPEC 04 · 2026</span></td></tr>
@@ -220,8 +220,8 @@ html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
     <tr><td>--fs-15</td><td>15px / 1.7</td><td><b>正文默认</b></td><td><span style="font-size:var(--fs-15)">把复杂留给系统，把简单留给用户。</span></td></tr>
     <tr><td>--fs-21</td><td>21px</td><td>区块标题、页面小节</td><td><span style="font-size:var(--fs-21);font-weight:650;letter-spacing:-.01em">把重要的留下来</span></td></tr>
     <tr><td>--fs-34</td><td>34px</td><td>页面主标题</td><td><span style="font-size:var(--fs-34);font-weight:650;letter-spacing:-.02em">把复杂交给我们</span></td></tr>
-    <tr><td>--fs-56</td><td>56px</td><td>首屏大字（每页 ≤1 处）</td><td><span style="font-size:var(--fs-56);font-weight:650;letter-spacing:-.03em">缓坡</span></td></tr>
-    <tr><td>--fs-96</td><td>96px</td><td>封面字（仅示范站）</td><td><span style="font-size:var(--fs-96);font-weight:700;letter-spacing:-.03em;line-height:1">格</span></td></tr>
+    <tr><td>--fs-56</td><td>56px</td><td>本页的大字示例</td><td><span style="font-size:var(--fs-56);font-weight:650;letter-spacing:-.03em">缓坡</span></td></tr>
+    <tr><td>--fs-96</td><td>96px</td><td>本页的封面字示例</td><td><span style="font-size:var(--fs-96);font-weight:700;letter-spacing:-.03em;line-height:1">格</span></td></tr>
   </table>
   <div class="chips" style="margin-top:16px">
     <span class="token"><i class="sw" style="height:12px;width:var(--sp-4)"></i>4</span>
@@ -248,31 +248,31 @@ html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
     <tr><td>--dur-feedback</td><td>120ms</td><td>按下、悬停、勾选这类小反馈</td></tr>
     <tr><td>--dur-move</td><td>180ms</td><td>位移、展开、抽屉</td></tr>
     <tr><td>--dur-reveal</td><td>280ms</td><td>整块揭示、翻面、滚动立起</td></tr>
-    <tr><td>--dur-ambient</td><td>900ms</td><td>环境动画；超过必须写理由</td></tr>
+    <tr><td>--dur-ambient</td><td>900ms</td><td>本页环境动画示例，时长按用途调整</td></tr>
   </table>
 </section>
 
 <section>
-  <h2 id="icons-sec">C 图标集（24 个 · 24×24 线性 · stroke 1.8）</h2>
+  <h2 id="icons-sec">C 图标集（本页线性示例，可调整尺寸与笔触）</h2>
   <p class="lead">点任意一个复制它的 SVG。命名按"它在表达什么"，不按形状。</p>
   <div class="ico-grid" id="icons"></div>
 </section>
 
 <section>
-  <h2 id="empties-sec">D 空态插画（几何 ✳ 体系）</h2>
-  <p class="lead">只用圆、轨道、✳ 三种元素组合，跟随主题色；每种空态给一句能照做的文案。</p>
+  <h2 id="empties-sec">D 空态插画（可替换的几何示例）</h2>
+  <p class="lead">本页用圆、轨道与星形演示空态图形；正式项目可使用其他插画、照片、图标或纯文字。先说明当前状态，再按任务提供可行的下一步。</p>
   <div class="empty-set" id="empties"></div>
 </section>
 
 <section>
   <h2 id="matrix-sec">E 组件状态矩阵</h2>
-  <p class="lead">任何可点组件都必须定义这 6 态；缺"焦点"和"禁用"是最常见的问题。</p>
+  <p class="lead">根据组件实际行为覆盖需要的状态；键盘焦点清楚可见。下面的外观与参数只是示例，未涉及的状态无需为了凑数而添加。</p>
   <table class="spec matrix">
     <tr><th>状态</th><th>按钮</th><th>说明</th></tr>
     <tr><td>默认</td><td><button class="mx-btn">发送</button></td><td>无修饰</td></tr>
-    <tr><td>悬停</td><td><button class="mx-btn hover">发送</button></td><td>底色加深一档，不加边框</td></tr>
-    <tr><td>按下</td><td><button class="mx-btn active">发送</button></td><td>缩放 0.97，不要改变位置</td></tr>
-    <tr><td>焦点</td><td><button class="mx-btn focus">发送</button></td><td>2px 焦点环 + 3px 偏移，仅键盘</td></tr>
+    <tr><td>悬停</td><td><button class="mx-btn hover">发送</button></td><td>本例以底色变化演示悬停反馈，可换用其他可辨识方式</td></tr>
+    <tr><td>按下</td><td><button class="mx-btn active">发送</button></td><td>本例以缩放演示按下，实际反馈按任务与 reduced-motion 设置调整</td></tr>
+    <tr><td>焦点</td><td><button class="mx-btn focus">发送</button></td><td>本例使用焦点环；实际尺寸、颜色与显示方式需保证焦点可见</td></tr>
     <tr><td>禁用</td><td><button class="mx-btn disabled">发送</button></td><td>不透明度 0.42，不拦 hover</td></tr>
     <tr><td>加载</td><td><button class="mx-btn loading">发送</button></td><td>文字隐藏、原地转圈，宽度不变</td></tr>
   </table>
@@ -339,7 +339,7 @@ html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
     <div class="add">+ "vite": "^6.1.0",</div>
     <div class="ctx">  "private": true,</div>
   </div>
-  <p class="caption">红=删、绿=增、灰=上下文；超过 8 行折叠成「展开其余 12 行」。</p>
+  <p class="caption">本例用红绿配色与加减号区分增删；颜色和折叠方式可调整，保留文字或符号等非颜色提示。</p>
 </section>
 
 <section>
@@ -359,7 +359,7 @@ html:not(.embedded) .lab-rail2{top:62px;max-height:calc(100vh - 78px)}
     <div><b>错误</b><p>连不上服务端：接口 502，网关没有响应。重载一次页面再试。</p></div>
     <div><b>确认</b><p>要删除「素材库」吗？其中的文件会一起消失，其他内容不受影响。</p></div>
   </div>
-  <p class="caption">三条规矩：说清发生了什么、给一个能照做的动作、不吓人也不卖萌。</p>
+  <p class="caption">本页空态示例说明当前情况并提供下一步；语气、插画和操作数量按受众与任务决定。</p>
 </section>
 
 <section id="content-specs" class="lab-section">

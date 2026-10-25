@@ -28,8 +28,8 @@
       <h3>${item.t}</h3>
       <div class="stage">${item.body}</div>
       <style>${scoped(prefix, item.id, item.css)}</style>
-      <p class="lab-rule">${item.rule}</p>
-      ${item.dont ? `<p class="lab-dont">别这样：${item.dont}</p>` : ''}
+      <p class="lab-rule"><b>使用判断：</b>${item.rule}</p>
+      ${item.dont ? `<p class="lab-dont">需避免的问题：${item.dont}</p>` : ''}
     </article>`;
   }
 

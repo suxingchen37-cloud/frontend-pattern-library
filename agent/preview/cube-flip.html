@@ -133,7 +133,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <button type="button" class="d-cube" aria-pressed="false" aria-label="立方体翻转：A 面与 B 面互换"><span class="d-cube-in"><span class="d-cube-face d-cube-a"><span class="d-cube-ch">A</span><span class="d-cube-k">正面</span></span><span class="d-cube-face d-cube-b"><span class="d-cube-ch">B</span><span class="d-cube-k">底面</span></span></span></button>
 </div>
-<p class="pv-note">90° 是面间夹角，多一度露缝、少一度会看到第二条面；两面必须同尺寸同圆角，否则转过去边缘对不齐，这是立方体最容易露馅的地方。B 面给 34px 大字压在朱墨块上：换面时最先被认出来的是整块颜色，不是小字。</p>
+<p class="pv-note">本例用两面翻转展示内容切换，面间几何关系需要保持衔接；尺寸、圆角、颜色与文字层级均可修改，转场后仍需读清内容并尊重减少动效偏好。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

@@ -135,7 +135,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-skn"><a class="d-skn-link" href="#">跳到主内容</a><div class="d-skn-nav"><span>导航</span><span>本期</span><span>往期</span><span>关于</span></div><div class="d-skn-body"><p class="d-skn-lead">跳转条平时藏在版面外，第一次 Tab 才落下来；回车之后焦点进正文。</p><main class="d-skn-main" tabindex="-1" aria-label="主内容">主内容区 · 焦点落在这里</main><button class="d-skn-try" type="button">按一下＝第一次 Tab</button></div></div>
 </div>
-<p class="pv-note">跳转条从版面外落下来只用 120ms 的 linear，一点不加缓动：它是「立刻能用」的东西，一被缓动就像还没加载完。落位停在 8px 而不贴顶，是让它的上下两条边都露出来——读者一眼看出这是压在页头上的浮条，不是新长出来的页头。焦点环只给正文不给跳转条，因为读者要确认的是「我到了」，不是「我按到了」。</p>
+<p class="pv-note">跳转链接帮助键盘用户越过重复导航，激活后到达可识别的正文位置。入口与目标焦点都应可见，位置、样式和动效按项目需要调整。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

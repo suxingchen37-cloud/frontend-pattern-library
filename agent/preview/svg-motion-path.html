@@ -134,7 +134,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-mp"><svg class="d-mp-art" viewBox="0 0 260 112" aria-hidden="true"><path class="d-mp-curve" d="M14 88C58 88 62 26 108 26S164 88 208 66 236 22 246 30"/></svg><i class="d-mp-dot"></i><button class="d-mp-btn" type="button" aria-pressed="false">暂停</button></div>
 </div>
-<p class="pv-note">圆点用 offset-path 沿弧长跑，中段曲率最大的地方也不会被拽快——写四组 translate 关键帧做不到匀速；offset-rotate 必须设 0deg 关掉自动朝向，否则点会自己跟着切线打转。</p>
+<p class="pv-note">本例让对象沿路径运动；自动朝向可按图形与任务开启或关闭，不能把本例的角度和曲线当作固定要求。保留清楚的路径关系并尊重减少动效偏好。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

@@ -158,7 +158,7 @@ function need(tk, dotted, label) {
 
 /** 预览页的 :root 变量块：只从 tokens.json 取值，一个数字都不手抄。 */
 function tokenVarBlock(tk) {
-  // 这套值是**中性占位**：只为让预览页/单条资产能渲染，不是推荐风格。
+  // 这套值是展示默认值：只为让预览页/单条资产能渲染，不是推荐风格。
   // 正式项目按内容与品牌需要覆盖；变量名是兼容接口，不代表风格约束。
   const L = [];
   const put = (name, value, note) => {
@@ -626,7 +626,7 @@ function buildProducts(ctx) {
   const products = new Map();
   products.set('agent/index.json', indexJson(assets, tk.version, cats, counts));
   // 变量契约：单条 blocks/*.css 直接拿出来也能跑（不依赖预览页注入的 :root）
-  products.set('agent/tokens.css', tokenVarBlock(tk) + NL);
+  products.set('agent/tokens.css', '/* 仅供预览的默认值；正式项目可全部重定义，不构成风格规范。 */' + NL + tokenVarBlock(tk) + NL);
   for (const a of assets) {
     products.set('agent/blocks/' + a.id + '.html', oneText(a.body));
     products.set('agent/blocks/' + a.id + '.css', oneText(a.css));

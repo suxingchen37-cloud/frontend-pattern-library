@@ -134,7 +134,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-wf"><svg class="d-wf-svg" viewBox="0 0 320 170" role="img" aria-label="月度变化瀑布图：起点、三次增减、终点"></svg><p class="d-wf-note">每根从上根的落点起</p></div>
 </div>
-<p class="pv-note">先给起点、再给每次增减、最后落到终点，中间那几根悬空才是瀑布图的意义：每一段从上一段的落点开始，不是从零开始。桥接线用虚线，是在说「这两根不是并列，是接力」。增减只用一个墨色加一档透明，不靠红绿——色盲跟打印都还看得懂上下。</p>
+<p class="pv-note">瀑布图按前一步落点衔接增减，帮助理解起点如何到达终点。连接线、配色与纹理均可按项目调整，并以符号、文字或几何关系补充增减含义。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

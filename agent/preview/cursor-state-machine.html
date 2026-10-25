@@ -136,7 +136,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-cursor-states" tabindex="0" role="group" aria-label="光标状态机，方向键移动，空格抓取"><i class="d-cs-cursor" aria-hidden="true"><b class="d-cs-shape"></b></i><span class="d-cs-block">拖我</span><em class="d-cs-tip" aria-live="polite">待机</em></div>
 </div>
-<p class="pv-note">四种形态只改尺寸、圆角和一个描边色，尺寸用 steps(6) 跳着变——机械感来自「跳」而不是「滑」；放下后 900ms 的等待态是必须的，否则「正在处理」和「卡住」看起来一模一样。</p>
+<p class="pv-note">本例让光标在悬停、按下与等待状态间变化，帮助理解操作进度。尺寸、形状、颜色、时长与曲线均可重定；等待应由真实任务状态驱动。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');

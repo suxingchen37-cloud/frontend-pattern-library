@@ -3,7 +3,7 @@
   "cat": "内容",
   "t": "图上标注",
   "en": "image annotation",
-  "d": "标注点只放数字，说明放图下面按编号排：点旁边写全句会挡住画面。标注点固定 18px，加一圈描边，保证在任何底色上都看得见。编号和下方说明用同一套等宽字，斜着扫也能对上。",
+  "d": "图像标注把定位点与说明对应，避免长文字遮挡关键信息。标注大小、形状、字体和说明位置按画面与设备调整，并检查对比度和触达。",
   "body": "<figure class=\"d-ia\"><div class=\"d-ia-art\"><span class=\"d-ia-dot\" style=\"--x:26%;--y:32%\">1</span><span class=\"d-ia-dot\" style=\"--x:62%;--y:54%\">2</span><span class=\"d-ia-dot\" style=\"--x:44%;--y:78%\">3</span></div><figcaption><p><b>1</b>东窗，早上七点最亮。</p><p><b>2</b>桌角，木头在这里开始褪色。</p><p><b>3</b>插座位置，决定灯能放哪儿。</p></figcaption></figure>",
   "css": ".d-ia{margin:0;max-width:340px}\n.d-ia-art{position:relative;height:150px;border:1px solid var(--line);border-radius:6px;background:repeating-linear-gradient(45deg,var(--paper) 0 10px,color-mix(in srgb,var(--ink) 4%,var(--paper)) 10px 20px)}\n.d-ia-dot{position:absolute;left:var(--x);top:var(--y);width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:9px;box-shadow:0 0 0 3px var(--paper)}\n.d-ia figcaption{margin-top:8px;display:grid;gap:3px}\n.d-ia figcaption p{margin:0;display:flex;gap:8px;font-size:11px;line-height:1.7;color:var(--muted)}\n.d-ia figcaption b{font-family:var(--font-mono);font-size:9px;color:var(--ink);font-weight:400;padding-top:2px}",
   "init": null,

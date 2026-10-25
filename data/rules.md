@@ -7,7 +7,7 @@
 1. 读 agent/index.json 的 items，按 id / cat / t / en / d / motion / tags 检索。
 2. 按 files 取原文：blocks/<id>.html 是 body，.css 是样式；hasInit 为 true 时才有 .js。
 3. 打开 preview/<id>.html 检查交互，再按需求修改和组合；不要凭记忆补写已有资产。
-4. agent/typography.md 提供排版判断方法；agent/layouts/ 是可修改的结构示例，无需从中强选骨架。
+4. agent/typography.md 提供排版判断方法；agent/layouts/ 是可修改的结构示例，无需从中强选骨架。ai-tells.html 按任务检查模板化问题，不提供必须照抄的正确外观。
 5. 本库是取材源。消费方在自己的工程里改代码；维护本库时才修改 data/ 并重跑生成器，不手改 agent/** 或 llms.txt。
 
 ## 现在有什么

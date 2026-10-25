@@ -130,7 +130,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-siz
 <div class="pv-stage" id="pv-stage">
 <div class="d-cc" data-box><div class="d-cc-frame"><p class="d-cc-line" data-line></p></div><div class="d-cc-foot"><span data-idx>01 / 04</span><button type="button" data-next>下一句</button></div></div>
 </div>
-<p class="pv-note">字幕按句上屏，一句停留的时间按字数算（每秒约 5 字），不是固定 2 秒：长句没读完就换、短句停太久，都是硬伤。换句时不做淡入淡出，直接切——淡出会让字幕先变灰再消失，像信号不良。</p>
+<p class="pv-note">本例按句展示字幕，以字数估计停留时间；实际应用应结合语音时间轴、语言和阅读速度调整。换句形式与样式可修改，避免在切换中影响阅读。</p>
 <script>
 (function () {
   var root = document.getElementById('pv-stage');
